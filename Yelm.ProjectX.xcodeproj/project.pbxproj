@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		4C70236325A749BF00A750D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C70236225A749BF00A750D2 /* Assets.xcassets */; };
 		4C70236625A749BF00A750D2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C70236525A749BF00A750D2 /* Preview Assets.xcassets */; };
 		4C70236925A749BF00A750D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C70236725A749BF00A750D2 /* LaunchScreen.storyboard */; };
+		4C70237825A74C1200A750D2 /* Yelm.Server in Frameworks */ = {isa = PBXBuildFile; productRef = 4C70237725A74C1200A750D2 /* Yelm.Server */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4C70236525A749BF00A750D2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4C70236825A749BF00A750D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C70236A25A749BF00A750D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C70237425A74BEE00A750D2 /* Yelm.Server */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Server; path = ../../../Yelm.Server; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C70237825A74C1200A750D2 /* Yelm.Server in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +45,7 @@
 			children = (
 				4C70235B25A749BD00A750D2 /* Yelm.ProjectX */,
 				4C70235A25A749BD00A750D2 /* Products */,
+				4C70237625A74C1200A750D2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +60,7 @@
 		4C70235B25A749BD00A750D2 /* Yelm.ProjectX */ = {
 			isa = PBXGroup;
 			children = (
+				4C70237325A74BE300A750D2 /* libs */,
 				4C70235C25A749BD00A750D2 /* AppDelegate.swift */,
 				4C70235E25A749BD00A750D2 /* SceneDelegate.swift */,
 				4C70236025A749BD00A750D2 /* ContentView.swift */,
@@ -75,6 +80,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		4C70237325A74BE300A750D2 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				4C70237425A74BEE00A750D2 /* Yelm.Server */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		4C70237625A74C1200A750D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -91,6 +111,9 @@
 			dependencies = (
 			);
 			name = Yelm.ProjectX;
+			packageProductDependencies = (
+				4C70237725A74C1200A750D2 /* Yelm.Server */,
+			);
 			productName = Yelm.ProjectX;
 			productReference = 4C70235925A749BD00A750D2 /* Yelm.ProjectX.app */;
 			productType = "com.apple.product-type.application";
@@ -345,6 +368,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4C70237725A74C1200A750D2 /* Yelm.Server */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Yelm.Server;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4C70235125A749BD00A750D2 /* Project object */;
 }
