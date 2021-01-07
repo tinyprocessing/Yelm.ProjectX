@@ -14,6 +14,7 @@
 		4C70236625A749BF00A750D2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C70236525A749BF00A750D2 /* Preview Assets.xcassets */; };
 		4C70236925A749BF00A750D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C70236725A749BF00A750D2 /* LaunchScreen.storyboard */; };
 		4C70237825A74C1200A750D2 /* Yelm.Server in Frameworks */ = {isa = PBXBuildFile; productRef = 4C70237725A74C1200A750D2 /* Yelm.Server */; };
+		4CDE834625A74ED700F3453D /* Yelm.Pay in Frameworks */ = {isa = PBXBuildFile; productRef = 4CDE834525A74ED700F3453D /* Yelm.Pay */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4C70236825A749BF00A750D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C70236A25A749BF00A750D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C70237425A74BEE00A750D2 /* Yelm.Server */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Server; path = ../../../Yelm.Server; sourceTree = "<group>"; };
+		4CDE834325A74EBE00F3453D /* Yelm.Pay */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Pay; path = ../../../Yelm.Pay; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +36,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C70237825A74C1200A750D2 /* Yelm.Server in Frameworks */,
+				4CDE834625A74ED700F3453D /* Yelm.Pay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +86,7 @@
 		4C70237325A74BE300A750D2 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				4CDE834325A74EBE00F3453D /* Yelm.Pay */,
 				4C70237425A74BEE00A750D2 /* Yelm.Server */,
 			);
 			path = libs;
@@ -113,6 +117,7 @@
 			name = Yelm.ProjectX;
 			packageProductDependencies = (
 				4C70237725A74C1200A750D2 /* Yelm.Server */,
+				4CDE834525A74ED700F3453D /* Yelm.Pay */,
 			);
 			productName = Yelm.ProjectX;
 			productReference = 4C70235925A749BD00A750D2 /* Yelm.ProjectX.app */;
@@ -373,6 +378,10 @@
 		4C70237725A74C1200A750D2 /* Yelm.Server */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Yelm.Server;
+		};
+		4CDE834525A74ED700F3453D /* Yelm.Pay */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Yelm.Pay;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

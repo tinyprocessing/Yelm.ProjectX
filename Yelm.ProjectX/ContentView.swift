@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-import Yelm.Server
+import Yelm_Server
+import Yelm_Pay
 
 struct ContentView: View {
     var body: some View {
