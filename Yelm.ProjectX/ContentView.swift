@@ -7,12 +7,18 @@
 
 import SwiftUI
 import Yelm_Server
-import Yelm_Pay
+
+
 
 struct ContentView: View {
     var body: some View {
         Text("Hello, world!")
             .padding()
+        
+            .onAppear{
+                ServerAPI.system.auth()
+            }
+        
     }
 }
 
