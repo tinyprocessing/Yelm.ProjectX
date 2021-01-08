@@ -108,7 +108,14 @@ struct Start: View {
                 ServerAPI.start(platform: "5fd33466e17963.29052139", position: position) { (result) in
                     if (result == true){
                         ServerAPI.settings.get_settings()
-                        
+                        let user = UserDefaults.standard.string(forKey: "USER") ?? ""
+                        if (user == ""){
+                            ServerAPI.user.registration { (load, user) in
+                                if (load){
+                                    UserDefaults.standard.set(user, forKey: "USER")
+                                }
+                            }
+                        }
                         ServerAPI.items.get_items { (load, items) in
                             if (load){
                                 self.items = items
