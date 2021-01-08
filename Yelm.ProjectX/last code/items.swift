@@ -232,11 +232,11 @@ struct ItemsViewLine: View {
                                         
                                         if (Float(tag.discount) != tag.price_float){
                                             
-                                            Text("\(tag.price_float) ₽")
+                                            Text("\(String(format:"%.2f", tag.price_float)) ₽")
                                                 .strikethrough()
                                                 .lineLimit(1)
                                                 .foregroundColor(.gray)
-                                                .font(.system(size: 14, weight: .medium, design: .rounded))
+                                                .font(.system(size: 12, weight: .medium, design: .rounded))
                                         }
                                         
                                         
