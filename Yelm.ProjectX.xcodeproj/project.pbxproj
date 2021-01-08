@@ -59,7 +59,6 @@
 		4CDE83C725A78A4D00F3453D /* CircleProgressShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE83C225A78A4D00F3453D /* CircleProgressShape.swift */; };
 		4CDE83C825A78A4D00F3453D /* CircleActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE83C325A78A4D00F3453D /* CircleActivityView.swift */; };
 		4CDE83C925A78A4D00F3453D /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE83C425A78A4D00F3453D /* CircleProgressView.swift */; };
-		4CDE83CC25A78A7000F3453D /* modals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE83CB25A78A7000F3453D /* modals.swift */; };
 		4CDE83CF25A78B2000F3453D /* buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE83CE25A78B2000F3453D /* buttons.swift */; };
 		4CDE83D725A78DF500F3453D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 4CDE83D625A78DF500F3453D /* Realm */; };
 		4CDE83D925A78DF500F3453D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4CDE83D825A78DF500F3453D /* RealmSwift */; };
@@ -71,9 +70,17 @@
 		4CDE83ED25A7A57C00F3453D /* realm_classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE83EC25A7A57C00F3453D /* realm_classes.swift */; };
 		4CDE83F025A7A75200F3453D /* structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE83EF25A7A75200F3453D /* structures.swift */; };
 		4CDE83F325A7A7D700F3453D /* realm_locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE83F225A7A7D700F3453D /* realm_locations.swift */; };
+		4CDE83FA25A86E9F00F3453D /* location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE83F925A86E9F00F3453D /* location.swift */; };
+		4CDE83FE25A86FAE00F3453D /* core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE83FD25A86FAE00F3453D /* core.swift */; };
+		4CDE840725A873D800F3453D /* add_location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE840625A873D800F3453D /* add_location.swift */; };
+		4CDE840C25A874BB00F3453D /* maps_classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE840B25A874BB00F3453D /* maps_classes.swift */; };
+		4CDE841125A8764300F3453D /* map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE841025A8764300F3453D /* map.swift */; };
+		4CDE841825A8785100F3453D /* view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE841725A8785100F3453D /* view.swift */; };
+		A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B69168527B2637AB35B1B9A /* Pods-Yelm.ProjectX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelm.ProjectX.release.xcconfig"; path = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.release.xcconfig"; sourceTree = "<group>"; };
 		4C70235925A749BD00A750D2 /* Yelm.ProjectX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yelm.ProjectX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C70235C25A749BD00A750D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C70235E25A749BD00A750D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,7 +135,6 @@
 		4CDE83C225A78A4D00F3453D /* CircleProgressShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressShape.swift; sourceTree = "<group>"; };
 		4CDE83C325A78A4D00F3453D /* CircleActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleActivityView.swift; sourceTree = "<group>"; };
 		4CDE83C425A78A4D00F3453D /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
-		4CDE83CB25A78A7000F3453D /* modals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modals.swift; sourceTree = "<group>"; };
 		4CDE83CE25A78B2000F3453D /* buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buttons.swift; sourceTree = "<group>"; };
 		4CDE83DB25A78E2300F3453D /* realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = realm.swift; sourceTree = "<group>"; };
 		4CDE83DF25A794BA00F3453D /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -138,6 +144,15 @@
 		4CDE83EC25A7A57C00F3453D /* realm_classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = realm_classes.swift; sourceTree = "<group>"; };
 		4CDE83EF25A7A75200F3453D /* structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = structures.swift; sourceTree = "<group>"; };
 		4CDE83F225A7A7D700F3453D /* realm_locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = realm_locations.swift; sourceTree = "<group>"; };
+		4CDE83F925A86E9F00F3453D /* location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = location.swift; sourceTree = "<group>"; };
+		4CDE83FD25A86FAE00F3453D /* core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = core.swift; sourceTree = "<group>"; };
+		4CDE840625A873D800F3453D /* add_location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = add_location.swift; sourceTree = "<group>"; };
+		4CDE840B25A874BB00F3453D /* maps_classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = maps_classes.swift; sourceTree = "<group>"; };
+		4CDE841025A8764300F3453D /* map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = map.swift; sourceTree = "<group>"; };
+		4CDE841725A8785100F3453D /* view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view.swift; sourceTree = "<group>"; };
+		4CDE841A25A8820F00F3453D /* location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = location.gpx; path = /Users/michael/Desktop/Yelm.ProjectX/Yelm.ProjectX/extensions/location.gpx; sourceTree = "<absolute>"; };
+		58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelm_ProjectX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		736B0EF31A2553BDC8E3C2BA /* Pods-Yelm.ProjectX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelm.ProjectX.debug.xcconfig"; path = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +165,7 @@
 				4CDE83D725A78DF500F3453D /* Realm in Frameworks */,
 				4CDE83D925A78DF500F3453D /* RealmSwift in Frameworks */,
 				4CDE834625A74ED700F3453D /* Yelm.Pay in Frameworks */,
+				A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +178,7 @@
 				4C70235B25A749BD00A750D2 /* Yelm.ProjectX */,
 				4C70235A25A749BD00A750D2 /* Products */,
 				4C70237625A74C1200A750D2 /* Frameworks */,
+				748C13968F0BBEB99F72135E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -211,6 +228,7 @@
 		4C70237625A74C1200A750D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -236,16 +254,19 @@
 		4CDE835925A780F100F3453D /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4CDE841A25A8820F00F3453D /* location.gpx */,
+				4CDE840A25A874AE00F3453D /* maps */,
+				4CDE83F825A86E8B00F3453D /* modal views */,
 				4CDE836825A78A1C00F3453D /* images */,
 				4CDE835F25A7899E00F3453D /* blur.swift */,
 				4CDE836225A789B800F3453D /* shapes.swift */,
 				4CDE836525A789D000F3453D /* color.swift */,
-				4CDE83CB25A78A7000F3453D /* modals.swift */,
 				4CDE83CE25A78B2000F3453D /* buttons.swift */,
 				4CDE83E325A797FA00F3453D /* animations.swift */,
 				4CDE83E625A79C0900F3453D /* classes.swift */,
 				4CDE83E925A7A26200F3453D /* gestures.swift */,
 				4CDE83EF25A7A75200F3453D /* structures.swift */,
+				4CDE841725A8785100F3453D /* view.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -434,6 +455,34 @@
 			path = realm;
 			sourceTree = "<group>";
 		};
+		4CDE83F825A86E8B00F3453D /* modal views */ = {
+			isa = PBXGroup;
+			children = (
+				4CDE840625A873D800F3453D /* add_location.swift */,
+				4CDE83F925A86E9F00F3453D /* location.swift */,
+				4CDE83FD25A86FAE00F3453D /* core.swift */,
+			);
+			path = "modal views";
+			sourceTree = "<group>";
+		};
+		4CDE840A25A874AE00F3453D /* maps */ = {
+			isa = PBXGroup;
+			children = (
+				4CDE840B25A874BB00F3453D /* maps_classes.swift */,
+				4CDE841025A8764300F3453D /* map.swift */,
+			);
+			path = maps;
+			sourceTree = "<group>";
+		};
+		748C13968F0BBEB99F72135E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				736B0EF31A2553BDC8E3C2BA /* Pods-Yelm.ProjectX.debug.xcconfig */,
+				1B69168527B2637AB35B1B9A /* Pods-Yelm.ProjectX.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -441,9 +490,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4C70236D25A749BF00A750D2 /* Build configuration list for PBXNativeTarget "Yelm.ProjectX" */;
 			buildPhases = (
+				4EDB17A33E7DC3251770B527 /* [CP] Check Pods Manifest.lock */,
 				4C70235525A749BD00A750D2 /* Sources */,
 				4C70235625A749BD00A750D2 /* Frameworks */,
 				4C70235725A749BD00A750D2 /* Resources */,
+				43B772D37976AF9E321BDC83 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -509,6 +560,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		43B772D37976AF9E321BDC83 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4EDB17A33E7DC3251770B527 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Yelm.ProjectX-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4C70235525A749BD00A750D2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -518,6 +611,7 @@
 				4CDE83A225A78A3F00F3453D /* DownloadCoordinator.swift in Sources */,
 				4CDE83A025A78A3F00F3453D /* ImageProxy.swift in Sources */,
 				4CDE836625A789D000F3453D /* color.swift in Sources */,
+				4CDE840725A873D800F3453D /* add_location.swift in Sources */,
 				4CDE83C825A78A4D00F3453D /* CircleActivityView.swift in Sources */,
 				4CDE83A925A78A3F00F3453D /* ImageLoaderView.swift in Sources */,
 				4CDE83E725A79C0900F3453D /* classes.swift in Sources */,
@@ -531,6 +625,7 @@
 				4C70235D25A749BD00A750D2 /* AppDelegate.swift in Sources */,
 				4C70235F25A749BD00A750D2 /* SceneDelegate.swift in Sources */,
 				4CDE839D25A78A3F00F3453D /* ImageProcessorClosure.swift in Sources */,
+				4CDE841125A8764300F3453D /* map.swift in Sources */,
 				4CDE83B325A78A3F00F3453D /* CoreDataFetchIndexDescription.swift in Sources */,
 				4C70236125A749BD00A750D2 /* Start.swift in Sources */,
 				4CDE83B425A78A3F00F3453D /* CoreDataAttributeDescription.swift in Sources */,
@@ -541,7 +636,6 @@
 				4CDE836F25A78A3200F3453D /* FileIndex.swift in Sources */,
 				4CDE83EA25A7A26200F3453D /* gestures.swift in Sources */,
 				4CDE83E025A794BA00F3453D /* Home.swift in Sources */,
-				4CDE83CC25A78A7000F3453D /* modals.swift in Sources */,
 				4CDE83AB25A78A3F00F3453D /* CGContext+Extensions.swift in Sources */,
 				4CDE83AE25A78A3F00F3453D /* CacheHelper.swift in Sources */,
 				4CDE837025A78A3200F3453D /* RemoteFileCacheService.swift in Sources */,
@@ -554,6 +648,8 @@
 				4CDE83A425A78A3F00F3453D /* DownloadHandler.swift in Sources */,
 				4CDE83BB25A78A4500F3453D /* URLImage.swift in Sources */,
 				4CDE83A125A78A3F00F3453D /* DownloadProgressWrapper.swift in Sources */,
+				4CDE840C25A874BB00F3453D /* maps_classes.swift in Sources */,
+				4CDE83FE25A86FAE00F3453D /* core.swift in Sources */,
 				4CDE839B25A78A3F00F3453D /* ImageProcessing.swift in Sources */,
 				4CDE836025A7899E00F3453D /* blur.swift in Sources */,
 				4CDE83AC25A78A3F00F3453D /* CGImage+Extensions.swift in Sources */,
@@ -565,9 +661,11 @@
 				4CDE83C725A78A4D00F3453D /* CircleProgressShape.swift in Sources */,
 				4CDE836A25A78A2A00F3453D /* URLImageService.swift in Sources */,
 				4CDE83B725A78A3F00F3453D /* ImageIOUtils.swift in Sources */,
+				4CDE83FA25A86E9F00F3453D /* location.swift in Sources */,
 				4CDE83A825A78A3F00F3453D /* ImageLoaderContentView.swift in Sources */,
 				4CDE83B125A78A3F00F3453D /* CoreDataModelDescription.swift in Sources */,
 				4CDE83B525A78A3F00F3453D /* DefaultPlaceholder.swift in Sources */,
+				4CDE841825A8785100F3453D /* view.swift in Sources */,
 				4CDE83AD25A78A3F00F3453D /* Log.swift in Sources */,
 				4CDE83C525A78A4D00F3453D /* AnimatedImageView.swift in Sources */,
 			);
@@ -705,6 +803,7 @@
 		};
 		4C70236E25A749BF00A750D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 736B0EF31A2553BDC8E3C2BA /* Pods-Yelm.ProjectX.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -727,6 +826,7 @@
 		};
 		4C70236F25A749BF00A750D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B69168527B2637AB35B1B9A /* Pods-Yelm.ProjectX.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -1,8 +1,8 @@
 //
-//  modals.swift
+//  core.swift
 //  Yelm.ProjectX
 //
-//  Created by Michael on 07.01.2021.
+//  Created by Michael on 08.01.2021.
 //
 
 import Foundation
@@ -52,6 +52,7 @@ class ModalManager: ObservableObject {
     @Published var modal: Modal = Modal(position: .closed, content: nil)
     
     func newModal<Content: View>(position: ModalState, @ViewBuilder content: () -> Content ) {
+        print("newModal")
         modal = Modal(position: position, content: AnyView(content()))
     }
     

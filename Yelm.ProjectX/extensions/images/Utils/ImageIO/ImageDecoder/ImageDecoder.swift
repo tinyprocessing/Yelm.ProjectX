@@ -307,10 +307,10 @@ extension ImageDecoder {
             return pngProperties
         }
 
-        if #available(iOS 13.0, tvOS 13.0, macOS 10.15, watchOS 6.0, *) {
+//        if #available(iOS 13.0, tvOS 13.0, macOS 10.15, watchOS 6.0, *) {
             if let heicsProperties = properties[kCGImagePropertyHEICSDictionary] as? [CFString: Any] {
                 return heicsProperties
-            }
+//            }
         }
 
         return nil
@@ -325,7 +325,7 @@ extension ImageDecoder {
         //      LoopCount = 0;
         //      ...
         //  };
-        if #available(iOS 13.0, tvOS 13.0, macOS 10.15, watchOS 6.0, *) {
+//        if #available(iOS 13.0, tvOS 13.0, macOS 10.15, watchOS 6.0, *) {
             guard let heicsProperties = properties[kCGImagePropertyHEICSDictionary] as? [CFString: Any] else {
                 return nil
             }
@@ -335,8 +335,8 @@ extension ImageDecoder {
             }
 
             return array[index]
-        }
+//        }
 
-        return nil
+//        return nil
     }
 }

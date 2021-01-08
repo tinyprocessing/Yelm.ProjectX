@@ -10,6 +10,8 @@ import RealmSwift
 
 
 
+var GlobalRealmLocations: RealmLocations = RealmLocations()
+
 class RealmLocations: ObservableObject, Identifiable {
     var id: Int = 0
     
