@@ -14,6 +14,7 @@ struct Start: View {
     
     
     @ObservedObject var realm: RealmControl = GlobalRealm
+    @ObservedObject var notification : notification = GlobalNotification
     @ObservedObject var location : location_cache = GlobalLocation
 
     @State var nav_bar_hide: Bool = true
@@ -109,6 +110,7 @@ struct Start: View {
                     if (result == true){
                         ServerAPI.settings.get_settings()
                         let user = UserDefaults.standard.string(forKey: "USER") ?? ""
+                        
                         if (user == ""){
                             ServerAPI.user.registration { (load, user) in
                                 if (load){

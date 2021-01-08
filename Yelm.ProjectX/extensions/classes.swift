@@ -10,10 +10,17 @@ import Foundation
 
 var GlobalLoading: loading = loading()
 var GlobalLocation: location_cache = location_cache()
+var GlobalNotification: notification = notification()
 
 class loading: ObservableObject, Identifiable {
     var id : Int = 0
     @Published var loading : Bool = false
+}
+
+
+class notification: ObservableObject, Identifiable {
+    var id : Int = 0
+    @Published var token : String = ""
 }
 
 
