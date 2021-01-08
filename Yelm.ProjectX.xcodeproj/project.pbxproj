@@ -151,6 +151,7 @@
 		4CDE841025A8764300F3453D /* map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = map.swift; sourceTree = "<group>"; };
 		4CDE841725A8785100F3453D /* view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view.swift; sourceTree = "<group>"; };
 		4CDE841A25A8820F00F3453D /* location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = location.gpx; path = /Users/michael/Desktop/Yelm.ProjectX/Yelm.ProjectX/extensions/location.gpx; sourceTree = "<absolute>"; };
+		4CDE841C25A89A4700F3453D /* Yelm.ProjectX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yelm.ProjectX.entitlements; sourceTree = "<group>"; };
 		58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelm_ProjectX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		736B0EF31A2553BDC8E3C2BA /* Pods-Yelm.ProjectX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelm.ProjectX.debug.xcconfig"; path = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -193,6 +194,7 @@
 		4C70235B25A749BD00A750D2 /* Yelm.ProjectX */ = {
 			isa = PBXGroup;
 			children = (
+				4CDE841C25A89A4700F3453D /* Yelm.ProjectX.entitlements */,
 				4CDE835A25A788C400F3453D /* last code */,
 				4CDE835925A780F100F3453D /* extensions */,
 				4C70237325A74BE300A750D2 /* libs */,
@@ -807,6 +809,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Yelm.ProjectX/Yelm.ProjectX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Yelm.ProjectX/asl/Preview Content\"";
 				DEVELOPMENT_TEAM = 9DFQMR4JG9;
@@ -830,6 +833,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Yelm.ProjectX/Yelm.ProjectX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Yelm.ProjectX/asl/Preview Content\"";
 				DEVELOPMENT_TEAM = 9DFQMR4JG9;

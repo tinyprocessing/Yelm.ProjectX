@@ -8,16 +8,84 @@
 import UIKit
 import Yelm_Server
 import YandexMapKit
+import UserNotifications
+import SwiftUI
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
 
+    @ObservedObject var notification : notification = GlobalNotification
+
+    
+    func registerForPushNotifications() {
+
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+
+            guard granted else { return }
+            self.getNotificationSettings()
+        }
+    }
+    
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+
+
+            guard settings.authorizationStatus == .authorized else { return }
+
+            DispatchQueue.main.async(execute: {
+                
+                UIApplication.shared.registerForRemoteNotifications()
+                
+
+            })
+
+        }
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+         print("Failed to register for notifications: \(error.localizedDescription)")
+     }
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+
+
+        let tokenParts = deviceToken.map { data -> String in
+            return String(format: "%02.2hhx", data)
+        }
+
+        let token = tokenParts.joined()
+        self.notification.token = token
+      
+        
+        let user = UserDefaults.standard.string(forKey: "USER") ?? ""
+        
+        if (user != ""){
+            ServerAPI.user.notifications(user: user, token: self.notification.token)
+        }else{
+          
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                let user = UserDefaults.standard.string(forKey: "USER") ?? ""
+                if (user != ""){
+                    ServerAPI.user.notifications(user: user, token: self.notification.token)
+                }
+            }
+            
+        }
+        
+
+
+    }
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         YMKMapKit.setApiKey("09ee0a39-0ad1-490a-9ea8-8600c46b9ef8")
 
+        registerForPushNotifications()
+        application.applicationIconBadgeNumber = 0
+        UNUserNotificationCenter.current().delegate = self
         
         return true
     }
