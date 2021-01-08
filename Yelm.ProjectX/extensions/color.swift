@@ -13,12 +13,12 @@ extension Color {
     static let neuBackground = Color("Background")
     static let dropShadow = Color("Dark")
     static let dropLight = Color("Light")
+    static let theme = Color.init(hex: "34495E")
 }
 
 extension Color {
     init(hex: String) {
         let scanner = Scanner(string: hex)
-        scanner.scanLocation = 0
         var rgbValue: UInt64 = 0
         scanner.scanHexInt64(&rgbValue)
 

@@ -14,12 +14,13 @@ struct Start: View {
     
     
     @ObservedObject var realm: RealmControl = GlobalRealm
+    @ObservedObject var location : location_cache = GlobalLocation
 
     @State var nav_bar_hide: Bool = true
     @State var items : [items_main_cateroties] = []
     
     var body: some View {
-       
+        ZStack{
         ZStack(alignment: .bottomLeading){
             NavigationView{
                 VStack{
@@ -51,7 +52,7 @@ struct Start: View {
                         }
                         .padding()
                         .frame(height: 40)
-                        .background(Color.blue)
+                        .background(Color.theme)
                         .foregroundColor(.white)
                         .clipShape(Circle())
 
@@ -74,7 +75,7 @@ struct Start: View {
                         }
                         .padding()
                         .frame(height: 40)
-                        .background(Color.blue)
+                        .background(Color.theme)
                         .foregroundColor(.white)
                         .cornerRadius(20)
 
@@ -91,12 +92,20 @@ struct Start: View {
 
             
         }.edgesIgnoringSafeArea(.bottom)
+        ModalAnchorView()
+        }
       
         
             .onAppear{
                 self.nav_bar_hide = true
                 self.realm.get_total_price()
-                ServerAPI.start(platform: "5fd33466e17963.29052139", position: "") { (result) in
+                
+                self.location.name = UserDefaults.standard.string(forKey: "SELECTED_SHOP_NAME") ?? "Выберите адрес"
+                self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "LAT=0&LON=0"
+                
+                let position = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "LAT=0&LON=0"
+                ServerAPI.settings.debug = true
+                ServerAPI.start(platform: "5fd33466e17963.29052139", position: position) { (result) in
                     if (result == true){
                         ServerAPI.settings.get_settings()
                         

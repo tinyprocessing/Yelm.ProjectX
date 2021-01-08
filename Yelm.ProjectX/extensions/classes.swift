@@ -9,6 +9,7 @@ import Foundation
 
 
 var GlobalLoading: loading = loading()
+var GlobalLocation: location_cache = location_cache()
 
 class loading: ObservableObject, Identifiable {
     var id : Int = 0
@@ -22,4 +23,11 @@ extension Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded() / divisor
     }
+}
+
+
+class location_cache: ObservableObject, Identifiable {
+    var id : Int = 0
+    @Published var point : String = ""
+    @Published var name : String = ""
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" creator="Open GPX Tracker for iOS">
+	<wpt lat="55.78487156516409" lon="37.56303011869478">
+		<ele>187.8868408203125</ele>
+		<time>2021-01-08T12:04:40Z</time>
+		<name>15:04:40</name>
+		<desc>8 Jan 2021, 15:04:40</desc>
+	</wpt>
+	<trk>
+	</trk>
+</gpx>

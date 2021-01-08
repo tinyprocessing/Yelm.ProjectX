@@ -35,7 +35,7 @@ struct ItemsViewLine: View {
                         
                         .font(.system(size: 12, weight: .bold, design: .rounded))
                         
-                        .background(Color.blue)
+                        .background(Color.theme)
                         .clipShape(Circle())
                 }.buttonStyle(ScaleButtonStyle())
                 
@@ -152,7 +152,7 @@ struct ItemsViewLine: View {
                                             }) {
                                                 
                                                 Rectangle()
-                                                    .fill(Color.blue)
+                                                    .fill(Color.theme)
                                                     .frame(width: 16, height: 30)
                                                     .overlay(
                                                         Image(systemName: "minus")
@@ -177,7 +177,7 @@ struct ItemsViewLine: View {
                                             .foregroundColor(.white)
                                             .font(.system(size: 16, weight: .medium, design: .rounded))
                                             .padding([.top, .bottom], 7)
-                                            .background(Color.blue)
+                                            .background(Color.theme)
                                             .cornerRadius(20)
                                             .fixedSize()
                                             .padding(.leading, self.realm.get_item_access(ID: tag.id) ? 0 : 12)
@@ -209,7 +209,7 @@ struct ItemsViewLine: View {
                                         }) {
                                             
                                             Rectangle()
-                                                .fill(Color.blue)
+                                                .fill(Color.theme)
                                                 .frame(width: 16, height: 30)
                                                 .overlay(
                                                     Image(systemName: "plus")
@@ -223,7 +223,7 @@ struct ItemsViewLine: View {
                                         .buttonStyle(PlainButtonStyle())
                                         
                                     }
-                                    .background(Color.blue)
+                                    .background(Color.theme)
                                     .cornerRadius(20)
                                     
                                     Spacer()

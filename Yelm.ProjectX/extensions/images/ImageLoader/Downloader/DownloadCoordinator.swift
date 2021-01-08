@@ -163,7 +163,7 @@ class DownloadCoordinator {
     @discardableResult
     fileprivate func transition(to newState: LoadingState, error: Error? = nil) -> Bool {
         if newState == .failed {
-            log_error(self, "Download failed for: \"\(url)\" with error: \(error). Set breakpoint in \(#function) to investigate.")
+            log_error(self, "Download failed for: \"\(url)\" with error: \(String(describing: error)). Set breakpoint in \(#function) to investigate.")
         }
 
         guard state.canTransition(to: newState) else {

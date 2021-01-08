@@ -13,6 +13,8 @@ import Yelm_Server
 
 struct Home: View {
     
+    @ObservedObject var location : location_cache = GlobalLocation
+    @ObservedObject var modal : ModalManager = GlobalModular
     @ObservedObject var loading: loading = GlobalLoading
     @Binding var items : [items_main_cateroties]
     @State var selection: Int? = nil
@@ -85,7 +87,16 @@ struct Home: View {
                                 
                                 
                                 Button(action: {
+//                                    Open modal with locations
                                     
+                                    self.modal.newModal(position: .closed) {
+                                        ModalLocation()
+                                            .clipped()
+                                    }
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [self] in
+                                        self.modal.openModal()
+                                    }
                                     
                                 }) {
                                     
@@ -111,7 +122,7 @@ struct Home: View {
                                             
                                         }else{
                                             ZStack(alignment: .center){
-                                                Text(" Улица Косыгина ")
+                                                Text(" \(self.location.name) ")
                                                     .font(.system(size: 16, weight: .bold, design: .rounded))
                                                     .foregroundColor(.white)
                                                     .lineLimit(1)
@@ -135,7 +146,7 @@ struct Home: View {
                                     .frame(width: self.loading.loading == false ? (geo.frame(in: .global).minY <= 43.5 ? UIScreen.main.bounds.width-90 : width(y: geo.frame(in: .global).minY)) : 40)
                                     .frame(height: 40)
                                     .transition(.slide)
-                                    .background(Color.blue)
+                                    .background(Color.theme)
                                     .cornerRadius(20)
                                     .background(
                                         RoundedRectangle(cornerRadius: 20)
@@ -182,6 +193,9 @@ struct Home: View {
                         ForEach(self.items, id: \.self) { object in
                             ItemsViewLine(items: object.items, name: object.name)
                         }
+                        
+                        
+                        Spacer(minLength: 150)
                     }
                     
                 }
