@@ -12,6 +12,7 @@ import Yelm_Server
 /// Для товаров на главной
 struct ItemsViewLine: View {
     
+    @ObservedObject var item: items = GlobalItems
     @State var items : [items_structure] = []
     @State var name : String = ""
     @State var selection: Int? = nil
@@ -50,7 +51,7 @@ struct ItemsViewLine: View {
                     
                     ForEach(self.items, id: \.self) { tag in
                         
-                        NavigationLink(destination: Text(""), tag: 4, selection:  $selection){
+                        NavigationLink(destination: Item(), tag: 4, selection:  $selection){
                             
                             VStack(alignment: .leading, spacing: 0){
                                 
@@ -265,8 +266,10 @@ struct ItemsViewLine: View {
                         
                         
                         .simultaneousGesture(TapGesture().onEnded{
-//                         Create pass to NL
+                            let item = tag
+                            self.item.item = item
                         })
+                        
                         
                         
                         

@@ -76,6 +76,7 @@
 		4CDE840C25A874BB00F3453D /* maps_classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE840B25A874BB00F3453D /* maps_classes.swift */; };
 		4CDE841125A8764300F3453D /* map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE841025A8764300F3453D /* map.swift */; };
 		4CDE841825A8785100F3453D /* view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE841725A8785100F3453D /* view.swift */; };
+		4CDE841F25A8AA5A00F3453D /* item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE841E25A8AA5A00F3453D /* item.swift */; };
 		A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */; };
 /* End PBXBuildFile section */
 
@@ -152,6 +153,7 @@
 		4CDE841725A8785100F3453D /* view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view.swift; sourceTree = "<group>"; };
 		4CDE841A25A8820F00F3453D /* location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = location.gpx; path = /Users/michael/Desktop/Yelm.ProjectX/Yelm.ProjectX/extensions/location.gpx; sourceTree = "<absolute>"; };
 		4CDE841C25A89A4700F3453D /* Yelm.ProjectX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yelm.ProjectX.entitlements; sourceTree = "<group>"; };
+		4CDE841E25A8AA5A00F3453D /* item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = item.swift; sourceTree = "<group>"; };
 		58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelm_ProjectX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		736B0EF31A2553BDC8E3C2BA /* Pods-Yelm.ProjectX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelm.ProjectX.debug.xcconfig"; path = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				4CDE835B25A788DD00F3453D /* items.swift */,
+				4CDE841E25A8AA5A00F3453D /* item.swift */,
 			);
 			path = "last code";
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				4CDE83AC25A78A3F00F3453D /* CGImage+Extensions.swift in Sources */,
 				4CDE83AA25A78A3F00F3453D /* ImageDownloadHandler.swift in Sources */,
 				4CDE83C925A78A4D00F3453D /* CircleProgressView.swift in Sources */,
+				4CDE841F25A8AA5A00F3453D /* item.swift in Sources */,
 				4CDE835C25A788DD00F3453D /* items.swift in Sources */,
 				4CDE83F025A7A75200F3453D /* structures.swift in Sources */,
 				4CDE83AF25A78A3F00F3453D /* Version.swift in Sources */,

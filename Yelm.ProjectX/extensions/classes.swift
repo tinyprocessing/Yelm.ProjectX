@@ -6,17 +6,29 @@
 //
 
 import Foundation
-
+import Yelm_Server
 
 var GlobalLoading: loading = loading()
 var GlobalLocation: location_cache = location_cache()
 var GlobalNotification: notification = notification()
+var GlobalItems: items = items()
+var GlobalBottom: bottom = bottom()
+
+
+class bottom: ObservableObject, Identifiable {
+    var id : Int = 0
+    @Published var hide : Bool = false
+}
 
 class loading: ObservableObject, Identifiable {
     var id : Int = 0
     @Published var loading : Bool = false
 }
 
+class items: ObservableObject, Identifiable {
+    var id : Int = 0
+    @Published var item : items_structure = items_structure(id: 0)
+}
 
 class notification: ObservableObject, Identifiable {
     var id : Int = 0
