@@ -13,5 +13,16 @@ struct locations_structure: Identifiable, Hashable {
     var id: Int
     var name: String = ""
     var point: String = ""
-   
+}
+
+
+struct cart_structure: Identifiable, Hashable {
+    var id: Int
+    var image: String = ""
+    var title: String = ""
+    var price: String = ""
+    var price_float: Float = 0.0
+    var count: Int = 0
+    var type: String = ""
+    var quantity: String = ""
 }

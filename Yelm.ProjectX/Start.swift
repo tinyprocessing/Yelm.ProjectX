@@ -19,16 +19,25 @@ struct Start: View {
 
     @State var nav_bar_hide: Bool = true
     @State var items : [items_main_cateroties] = []
-    
+    @State private var selection: String? = nil
+
     var body: some View {
         ZStack{
         ZStack(alignment: .bottomLeading){
             NavigationView{
+                
+              
                 VStack{
+                    
+                    NavigationLink(destination: Cart().accentColor(Color("BLWH")), tag: "cart", selection: $selection) {
+                        EmptyView()
+                    }
+                    
                     
                     Home(items: self.$items)
 
                 }
+                
                 
                 .edgesIgnoringSafeArea(.bottom)
                 .accentColor(Color("BLWH"))
@@ -68,7 +77,7 @@ struct Start: View {
                     if (true){
                         
                         Button(action: {
-
+                            self.selection = "cart"
 
                         }) {
                             HStack{
