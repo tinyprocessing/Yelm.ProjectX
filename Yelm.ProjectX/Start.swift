@@ -12,7 +12,7 @@ import Yelm_Server
 
 struct Start: View {
     
-    
+    @ObservedObject var bottom: bottom = GlobalBottom
     @ObservedObject var realm: RealmControl = GlobalRealm
     @ObservedObject var notification : notification = GlobalNotification
     @ObservedObject var location : location_cache = GlobalLocation
@@ -36,60 +36,62 @@ struct Start: View {
                 .navigationBarHidden(self.nav_bar_hide)
             }
             
-            HStack{
-                
-                
-                if (true){
-                    Button(action: {
+            if (self.bottom.hide == false){
+                HStack{
+                    
+                    
+                    if (true){
+                        Button(action: {
+                            
+                            withAnimation{
+                                windows?.rootViewController =  UIHostingController(rootView: Start())
+                            }
+
+                        }) {
+                            HStack{
+                                Image(systemName: "house.fill").font(.system(size: 16, weight: .bold, design: .rounded))
+                              
+                            }
+                            .padding()
+                            .frame(height: 40)
+                            .background(Color.theme)
+                            .foregroundColor(.white)
+                            .clipShape(Circle())
+
+                        }.buttonStyle(ScaleButtonStyle())
+                    }
+                    
+                  
+                    
+                    Spacer()
+                    
+                    if (true){
                         
-                        withAnimation{
-                            windows?.rootViewController =  UIHostingController(rootView: Start())
-                        }
+                        Button(action: {
 
-                    }) {
-                        HStack{
-                            Image(systemName: "house.fill").font(.system(size: 16, weight: .bold, design: .rounded))
-                          
-                        }
-                        .padding()
-                        .frame(height: 40)
-                        .background(Color.theme)
-                        .foregroundColor(.white)
-                        .clipShape(Circle())
 
-                    }.buttonStyle(ScaleButtonStyle())
-                }
-                
+                        }) {
+                            HStack{
+                                Image(systemName: "cart").font(.system(size: 16, weight: .bold, design: .rounded))
+                                Text("\(String(format:"%.2f", self.realm.price))").font(.system(size: 16, weight: .bold, design: .rounded))
+                            }
+                            .padding()
+                            .frame(height: 40)
+                            .background(Color.theme)
+                            .foregroundColor(.white)
+                            .cornerRadius(20)
+
+                        }.buttonStyle(ScaleButtonStyle())
+                        
+                    }
+                 
+                    
+                    
               
-                
-                Spacer()
-                
-                if (true){
-                    
-                    Button(action: {
-
-
-                    }) {
-                        HStack{
-                            Image(systemName: "cart").font(.system(size: 16, weight: .bold, design: .rounded))
-                            Text("\(String(format:"%.2f", self.realm.price))").font(.system(size: 16, weight: .bold, design: .rounded))
-                        }
-                        .padding()
-                        .frame(height: 40)
-                        .background(Color.theme)
-                        .foregroundColor(.white)
-                        .cornerRadius(20)
-
-                    }.buttonStyle(ScaleButtonStyle())
-                    
                 }
-             
-                
-                
-          
+                .padding()
+                .padding(.bottom, 20)
             }
-            .padding()
-            .padding(.bottom, 20)
 
             
         }.edgesIgnoringSafeArea(.bottom)

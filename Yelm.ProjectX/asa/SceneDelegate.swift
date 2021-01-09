@@ -7,11 +7,11 @@
 
 import UIKit
 import SwiftUI
-
+import Foundation
 
 var windows: UIWindow?
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate, UIGestureRecognizerDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     
 
