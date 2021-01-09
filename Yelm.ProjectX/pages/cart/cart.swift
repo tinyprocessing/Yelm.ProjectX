@@ -164,7 +164,7 @@ struct Cart: View {
                         
                         
                         
-                        NavigationLink(destination: EmptyView()) {
+                        NavigationLink(destination: Offer()) {
                             HStack{
                                 Spacer()
                                 Text("Оформить")
@@ -178,7 +178,7 @@ struct Cart: View {
                             
                         }.buttonStyle(ScaleButtonStyle())
                         .simultaneousGesture(TapGesture().onEnded{
-                            
+                            open_offer = true
                         })
                         
                         
@@ -210,8 +210,9 @@ struct Cart: View {
         }
         
         .onDisappear{
-            
-            self.bottom.hide = false
+            if (open_offer == false){
+                self.bottom.hide = false
+            }
             
         }
         
