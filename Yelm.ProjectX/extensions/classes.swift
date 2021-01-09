@@ -13,6 +13,7 @@ var GlobalLocation: location_cache = location_cache()
 var GlobalNotification: notification = notification()
 var GlobalItems: items = items()
 var GlobalBottom: bottom = bottom()
+var GlobalCart: cart = cart()
 
 
 class bottom: ObservableObject, Identifiable {
@@ -23,6 +24,11 @@ class bottom: ObservableObject, Identifiable {
 class loading: ObservableObject, Identifiable {
     var id : Int = 0
     @Published var loading : Bool = false
+}
+
+class cart: ObservableObject, Identifiable {
+    var id : Int = 0
+    @Published var cart_items : [cart_structure] = []
 }
 
 class items: ObservableObject, Identifiable {

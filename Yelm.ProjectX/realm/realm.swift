@@ -8,13 +8,14 @@
 
 import Foundation
 import RealmSwift
+import SwiftUI
 
 var GlobalRealm: RealmControl = RealmControl()
 
 class RealmControl: ObservableObject, Identifiable {
     var id: Int = 0
 
-
+    @ObservedObject var cart: cart = GlobalCart
     @Published var price: Float = 0
     
     
@@ -71,10 +72,12 @@ class RealmControl: ObservableObject, Identifiable {
     func get_total_price() {
         
         let realm = try! Realm()
+
         let objects = realm.objects(ItemRealm.self)
         
         var Price : Float = 0.0
             if (objects.count > 0){
+                self.cart.cart_items.removeAll()
                 for i in 0...objects.count - 1 {
                     
                     if (objects[i].Discount != 0){
@@ -87,10 +90,32 @@ class RealmControl: ObservableObject, Identifiable {
                         
                         Price += (final * Float(objects[i].Count))
                         
+                        let quantity = String(Int(objects[i].quantity)!*objects[i].Count)
+                        
+                        self.cart.cart_items.append(cart_structure(id: objects[i].ID,
+                                                                   image: objects[i].Thumbnail,
+                                                                   title: objects[i].Title,
+                                                                   price: "\(objects[i].Price)",
+                                                                   price_float: (final * Float(objects[i].Count)),
+                                                                   count: objects[i].Count,
+                                                                   type: objects[i].ItemType,
+                                                                   quantity: quantity))
+                        
                       
 
                     }else{
                         Price += Float((Int(objects[i].Price) * objects[i].Count))
+                        
+                        let quantity = String(Int(objects[i].quantity)!*objects[i].Count)
+
+                        self.cart.cart_items.append(cart_structure(id: objects[i].ID,
+                                                                   image: objects[i].Thumbnail,
+                                                                   title: objects[i].Title,
+                                                                   price: "\(objects[i].Price)",
+                                                                   price_float: Float((Int(objects[i].Price) * objects[i].Count)),
+                                                                   count: objects[i].Count,
+                                                                   type: objects[i].ItemType,
+                                                                   quantity: quantity))
                     
                     }
             }
@@ -105,13 +130,26 @@ class RealmControl: ObservableObject, Identifiable {
         
     }
     
-    
+ 
   
 
     func get_items_realmtype() -> Results<ItemRealm> {
         let realm = try! Realm()
         let objects = realm.objects(ItemRealm.self)
         return objects
+    }
+    
+    func clear_cart() {
+        
+        let realm = try! Realm()
+        try! realm.write {
+            let cart = realm.objects(ItemRealm.self)
+            realm.delete(cart)
+        }
+        
+        self.cart.cart_items.removeAll()
+        self.get_total_price()
+        
     }
 
     func delete_item(ID: Int) {
