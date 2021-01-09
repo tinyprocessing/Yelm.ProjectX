@@ -79,6 +79,8 @@
 		4CDE841F25A8AA5A00F3453D /* item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE841E25A8AA5A00F3453D /* item.swift */; };
 		4CDE842225A9E10300F3453D /* cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE842125A9E10300F3453D /* cart.swift */; };
 		4CDE842625A9E33400F3453D /* cart_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE842525A9E33400F3453D /* cart_item.swift */; };
+		4CDE843025A9EFC300F3453D /* offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE842F25A9EFC300F3453D /* offer.swift */; };
+		4CDE843425A9F15500F3453D /* variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE843325A9F15500F3453D /* variables.swift */; };
 		A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +160,8 @@
 		4CDE841E25A8AA5A00F3453D /* item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = item.swift; sourceTree = "<group>"; };
 		4CDE842125A9E10300F3453D /* cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cart.swift; sourceTree = "<group>"; };
 		4CDE842525A9E33400F3453D /* cart_item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cart_item.swift; sourceTree = "<group>"; };
+		4CDE842F25A9EFC300F3453D /* offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = offer.swift; sourceTree = "<group>"; };
+		4CDE843325A9F15500F3453D /* variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = variables.swift; sourceTree = "<group>"; };
 		58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelm_ProjectX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		736B0EF31A2553BDC8E3C2BA /* Pods-Yelm.ProjectX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelm.ProjectX.debug.xcconfig"; path = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -275,6 +279,7 @@
 				4CDE83E925A7A26200F3453D /* gestures.swift */,
 				4CDE83EF25A7A75200F3453D /* structures.swift */,
 				4CDE841725A8785100F3453D /* view.swift */,
+				4CDE843325A9F15500F3453D /* variables.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -284,6 +289,7 @@
 			children = (
 				4CDE835B25A788DD00F3453D /* items.swift */,
 				4CDE841E25A8AA5A00F3453D /* item.swift */,
+				4CDE842F25A9EFC300F3453D /* offer.swift */,
 				4CDE842825A9E33900F3453D /* cart */,
 			);
 			path = pages;
@@ -639,6 +645,7 @@
 				4CDE83CF25A78B2000F3453D /* buttons.swift in Sources */,
 				4CDE83DC25A78E2300F3453D /* realm.swift in Sources */,
 				4CDE839F25A78A3F00F3453D /* ImageProcessorGroup.swift in Sources */,
+				4CDE843025A9EFC300F3453D /* offer.swift in Sources */,
 				4CDE83ED25A7A57C00F3453D /* realm_classes.swift in Sources */,
 				4CDE83A525A78A3F00F3453D /* URLSessionDownloadDelegateWrapper.swift in Sources */,
 				4C70235D25A749BD00A750D2 /* AppDelegate.swift in Sources */,
@@ -662,6 +669,7 @@
 				4CDE83B825A78A3F00F3453D /* ImageDecoder.swift in Sources */,
 				4CDE842625A9E33400F3453D /* cart_item.swift in Sources */,
 				4CDE83B225A78A3F00F3453D /* CoreDataEntityDescription.swift in Sources */,
+				4CDE843425A9F15500F3453D /* variables.swift in Sources */,
 				4CDE83B625A78A3F00F3453D /* FileManager+Extensions.swift in Sources */,
 				4CDE839C25A78A3F00F3453D /* CoreImageFilterProcessor.swift in Sources */,
 				4CDE83F325A7A7D700F3453D /* realm_locations.swift in Sources */,
