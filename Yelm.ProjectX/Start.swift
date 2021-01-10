@@ -16,6 +16,7 @@ struct Start: View {
     @ObservedObject var realm: RealmControl = GlobalRealm
     @ObservedObject var notification : notification = GlobalNotification
     @ObservedObject var location : location_cache = GlobalLocation
+    @ObservedObject var search : search = GlobalSearch
 
     @State var nav_bar_hide: Bool = true
     @State var items : [items_main_cateroties] = []
@@ -116,7 +117,7 @@ struct Start: View {
                 self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "LAT=0&LON=0"
                 
                 let position = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "LAT=0&LON=0"
-                ServerAPI.settings.debug = true
+                ServerAPI.settings.debug = false
                 ServerAPI.start(platform: "5fd33466e17963.29052139", position: position) { (result) in
                     if (result == true){
                         ServerAPI.settings.get_settings()
@@ -132,6 +133,15 @@ struct Start: View {
                         ServerAPI.items.get_items { (load, items) in
                             if (load){
                                 self.items = items
+                            }
+                        }
+                        
+                        ServerAPI.items.get_items_all { (load, items) in
+                            if (load){
+                                print("load fine")
+                                self.search.items = items
+                            }else{
+                                print("load not fine")
                             }
                         }
                     }

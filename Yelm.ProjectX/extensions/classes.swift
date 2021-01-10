@@ -11,6 +11,7 @@ import Yelm_Server
 var GlobalLoading: loading = loading()
 var GlobalLocation: location_cache = location_cache()
 var GlobalNotification: notification = notification()
+var GlobalSearch: search = search()
 var GlobalItems: items = items()
 var GlobalBottom: bottom = bottom()
 var GlobalCart: cart = cart()
@@ -34,6 +35,11 @@ class cart: ObservableObject, Identifiable {
 class items: ObservableObject, Identifiable {
     var id : Int = 0
     @Published var item : items_structure = items_structure(id: 0)
+}
+
+class search: ObservableObject, Identifiable {
+    var id : Int = 0
+    @Published var items : [items_structure] = []
 }
 
 class notification: ObservableObject, Identifiable {
