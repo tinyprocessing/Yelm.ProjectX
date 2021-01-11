@@ -14,6 +14,7 @@ var windows: UIWindow?
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     
+    @ObservedObject var chat: chat = GlobalChat
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -32,11 +33,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.makeKeyAndVisible()
         }
         
-        let tapGesture = AnyGestureRecognizer(target: windows, action:#selector(UIView.endEditing))
+        let tapGesture = AnyGestureRecognizer(target: self, action: #selector(self.decline(_:)))
         tapGesture.requiresExclusiveTouchType = false
         tapGesture.cancelsTouchesInView = false
         tapGesture.delegate = self //I don't use window as delegate to minimize possible side effects
         windows?.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func decline(_ sender: UITapGestureRecognizer? = nil) {
+//        print(sender?.location(in: sender?.view)
+        let height = sender?.view?.hitTest(sender?.location(in: sender?.view) ?? CGPoint(x: 0, y: 0), with: nil)?.frame.height
+       
+        
+        if (height != 35.0 && height != 13.0 && height != 22.0){
+            UIApplication.shared.sendAction(#selector(self.resignFirstResponder), to:nil, from:nil, for:nil)
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -83,6 +83,10 @@
 		4CDE843425A9F15500F3453D /* variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE843325A9F15500F3453D /* variables.swift */; };
 		4CDE843725AB37AE00F3453D /* search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE843625AB37AE00F3453D /* search.swift */; };
 		4CDE843B25AB3B2D00F3453D /* search_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE843A25AB3B2D00F3453D /* search_item.swift */; };
+		4CDE843F25AB5EEF00F3453D /* chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE843E25AB5EEF00F3453D /* chat.swift */; };
+		4CDE844325AB613700F3453D /* chat_classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE844225AB613700F3453D /* chat_classes.swift */; };
+		4CDE844625AB614800F3453D /* ui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE844525AB614800F3453D /* ui.swift */; };
+		4CDE844925AB685700F3453D /* chat_structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE844825AB685700F3453D /* chat_structures.swift */; };
 		A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */; };
 /* End PBXBuildFile section */
 
@@ -166,6 +170,10 @@
 		4CDE843325A9F15500F3453D /* variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = variables.swift; sourceTree = "<group>"; };
 		4CDE843625AB37AE00F3453D /* search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = search.swift; sourceTree = "<group>"; };
 		4CDE843A25AB3B2D00F3453D /* search_item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = search_item.swift; sourceTree = "<group>"; };
+		4CDE843E25AB5EEF00F3453D /* chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chat.swift; sourceTree = "<group>"; };
+		4CDE844225AB613700F3453D /* chat_classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chat_classes.swift; sourceTree = "<group>"; };
+		4CDE844525AB614800F3453D /* ui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ui.swift; sourceTree = "<group>"; };
+		4CDE844825AB685700F3453D /* chat_structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chat_structures.swift; sourceTree = "<group>"; };
 		58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelm_ProjectX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		736B0EF31A2553BDC8E3C2BA /* Pods-Yelm.ProjectX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelm.ProjectX.debug.xcconfig"; path = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -270,6 +278,7 @@
 		4CDE835925A780F100F3453D /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4CDE844125AB612300F3453D /* chat */,
 				4CDE841A25A8820F00F3453D /* location.gpx */,
 				4CDE840A25A874AE00F3453D /* maps */,
 				4CDE83F825A86E8B00F3453D /* modal views */,
@@ -296,6 +305,7 @@
 				4CDE842F25A9EFC300F3453D /* offer.swift */,
 				4CDE843625AB37AE00F3453D /* search.swift */,
 				4CDE843A25AB3B2D00F3453D /* search_item.swift */,
+				4CDE843E25AB5EEF00F3453D /* chat.swift */,
 				4CDE842825A9E33900F3453D /* cart */,
 			);
 			path = pages;
@@ -505,6 +515,16 @@
 			path = cart;
 			sourceTree = "<group>";
 		};
+		4CDE844125AB612300F3453D /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				4CDE844225AB613700F3453D /* chat_classes.swift */,
+				4CDE844825AB685700F3453D /* chat_structures.swift */,
+				4CDE844525AB614800F3453D /* ui.swift */,
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
 		748C13968F0BBEB99F72135E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -638,6 +658,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CDE844325AB613700F3453D /* chat_classes.swift in Sources */,
 				4CDE83B025A78A3F00F3453D /* ImageSource.swift in Sources */,
 				4CDE83A225A78A3F00F3453D /* DownloadCoordinator.swift in Sources */,
 				4CDE83A025A78A3F00F3453D /* ImageProxy.swift in Sources */,
@@ -672,6 +693,8 @@
 				4CDE83AB25A78A3F00F3453D /* CGContext+Extensions.swift in Sources */,
 				4CDE83AE25A78A3F00F3453D /* CacheHelper.swift in Sources */,
 				4CDE837025A78A3200F3453D /* RemoteFileCacheService.swift in Sources */,
+				4CDE843F25AB5EEF00F3453D /* chat.swift in Sources */,
+				4CDE844625AB614800F3453D /* ui.swift in Sources */,
 				4CDE83A325A78A3F00F3453D /* LoadingState.swift in Sources */,
 				4CDE83B825A78A3F00F3453D /* ImageDecoder.swift in Sources */,
 				4CDE842625A9E33400F3453D /* cart_item.swift in Sources */,
@@ -694,6 +717,7 @@
 				4CDE841F25A8AA5A00F3453D /* item.swift in Sources */,
 				4CDE835C25A788DD00F3453D /* items.swift in Sources */,
 				4CDE83F025A7A75200F3453D /* structures.swift in Sources */,
+				4CDE844925AB685700F3453D /* chat_structures.swift in Sources */,
 				4CDE843B25AB3B2D00F3453D /* search_item.swift in Sources */,
 				4CDE83AF25A78A3F00F3453D /* Version.swift in Sources */,
 				4CDE83C725A78A4D00F3453D /* CircleProgressShape.swift in Sources */,

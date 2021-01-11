@@ -160,7 +160,7 @@ struct Home: View {
                                 }.buttonStyle(ScaleButtonStyle())
                                 Spacer()
                                 
-                                NavigationLink(destination: EmptyView(), tag: 2, selection: $selection) {
+                                NavigationLink(destination: Chat(), tag: 2, selection: $selection) {
                                     ZStack(alignment: .top){
                                         HStack{
                                             Image(systemName: "bubble.left").font(.system(size: 18, weight: .medium, design: .rounded))
