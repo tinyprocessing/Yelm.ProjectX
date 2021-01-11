@@ -227,6 +227,22 @@ struct Chat : View {
                     
                     
                     HStack(alignment: .center){
+                        
+                        Button(action: {
+                            
+                        }) {
+                            
+                            Image(systemName: "plus")
+                                .foregroundColor(Color.theme)
+                                .padding(10)
+                                .font(.system(size: 20, weight: .bold, design: .rounded))
+
+                            
+                        }
+                        .buttonStyle(ScaleButtonStyle())
+                        
+                        Spacer(minLength: 10)
+                        
                         ChatTextField(label: "Ваше сообщение",
                                       value: $text,
                                       showLabel: false,
