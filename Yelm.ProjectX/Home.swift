@@ -77,7 +77,7 @@ struct Home: View {
                             
                             HStack{
                                 
-                                NavigationLink(destination: Search(), tag: 3, selection: $selection) {
+                                NavigationLink(destination: Search().accentColor(Color("BLWH")), tag: 3, selection: $selection) {
                                     HStack{
                                         Image(systemName: "magnifyingglass").font(.system(size: 18, weight: .medium, design: .rounded))
                                     }

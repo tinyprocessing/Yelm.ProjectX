@@ -9,3 +9,4 @@ import Foundation
 
 
 var open_offer = false
+var open_item = false
