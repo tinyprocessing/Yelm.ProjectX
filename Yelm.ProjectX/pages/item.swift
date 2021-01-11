@@ -520,7 +520,6 @@ struct Item : View {
         }
 
         .onDisappear{
-//            self.bottom.hide = false
             
             if (open_item == false){
                 self.bottom.hide = false
