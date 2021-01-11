@@ -13,6 +13,8 @@ import Combine
 struct Search: View {
     
     
+    @State var selection: Int? = nil
+    @ObservedObject var item: items = GlobalItems
 
     @ObservedObject var bottom: bottom = GlobalBottom
     @ObservedObject var realm: RealmControl = GlobalRealm
@@ -77,8 +79,17 @@ struct Search: View {
             
             ScrollView(showsIndicators: false){
                 
+                
                 ForEach(self.search_server.items.filter { $0.title.lowercased().contains(search.lowercased()) || search.isEmpty || $0.title.lowercased().contains(search.lowercased())}, id: \.self) { tag in
-                    SearchItem(title: tag.title, image: tag.thubnail, price: tag.price, type: tag.type, quanity: tag.quanity)
+                    NavigationLink(destination: Item(), tag: 7, selection:  $selection){
+                        SearchItem(title: tag.title, image: tag.thubnail, price: tag.price, type: tag.type, quanity: tag.quanity)
+                    }
+                    .simultaneousGesture(TapGesture().onEnded{
+                        let item = tag
+                        open_item = true
+                        self.item.item = item
+                    })
+                    
                 }
 
             }.frame(width: UIScreen.main.bounds.size.width-30)
@@ -95,7 +106,9 @@ struct Search: View {
         }
         
         .onDisappear{
-            self.bottom.hide = false
+            if (open_item == false){
+                self.bottom.hide = false
+            }
         }
     }
 }
