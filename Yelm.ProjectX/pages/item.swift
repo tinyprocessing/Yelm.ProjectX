@@ -58,7 +58,7 @@ struct Item : View {
                                             .frame(width: UIScreen.main.bounds.width+20, height: reader.frame(in: .global).minY > 0 ? CGFloat(Int(reader.frame(in: .global).minY + 245)) : 245)
                                             // adjusting view postion when scrolls...
                                             .offset(y: -reader.frame(in: .global).minY)
-                                        
+
                                         
                                         
                                     }

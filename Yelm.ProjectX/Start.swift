@@ -117,7 +117,7 @@ struct Start: View {
                 self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "LAT=0&LON=0"
                 
                 let position = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "LAT=0&LON=0"
-                ServerAPI.settings.debug = false
+                ServerAPI.settings.debug = true
                 ServerAPI.start(platform: "5fd33466e17963.29052139", position: position) { (result) in
                     if (result == true){
                         ServerAPI.settings.get_settings()
@@ -126,6 +126,7 @@ struct Start: View {
                         if (user == ""){
                             ServerAPI.user.registration { (load, user) in
                                 if (load){
+                                    print("user registered")
                                     UserDefaults.standard.set(user, forKey: "USER")
                                 }
                             }

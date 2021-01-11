@@ -54,6 +54,30 @@ public extension ImageProxy {
         return Image(decorative: cgImage, scale: 1.0, orientation: Image.Orientation(cgOrientation))
     }
 }
+
+public extension ImageProxy {
+
+    var size: CGSize {
+        
+        
+        let size_aspect = uiImage.size
+        
+    
+        
+        let ratio = size_aspect.width / size_aspect.height;
+        var new_width = UIScreen.main.bounds.size.width / 1.7;
+        
+        if (size_aspect.height > size_aspect.width){
+            new_width = UIScreen.main.bounds.size.width / 2.4;
+        }
+        let new_height = new_width / ratio;
+
+        print(CGSize(width: Int(new_width), height: Int(new_height)))
+        return CGSize(width: Int(new_width), height: Int(new_height))
+        
+    }
+}
+
 #endif
 
 

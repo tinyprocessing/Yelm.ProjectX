@@ -135,3 +135,5 @@ struct SearchBar: View {
         } .padding([.leading, .trailing], 18)
     }
 }
+
+
