@@ -126,7 +126,7 @@ struct Start: View {
                         if (user == ""){
                             ServerAPI.user.registration { (load, user) in
                                 if (load){
-                                    print("user registered")
+                                    
                                     UserDefaults.standard.set(user, forKey: "USER")
                                 }
                             }
@@ -139,10 +139,10 @@ struct Start: View {
                         
                         ServerAPI.items.get_items_all { (load, items) in
                             if (load){
-                                print("load fine")
+                                
                                 self.search.items = items
                             }else{
-                                print("load not fine")
+                                
                             }
                         }
                     }

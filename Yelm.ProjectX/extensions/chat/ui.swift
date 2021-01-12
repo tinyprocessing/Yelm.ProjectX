@@ -18,7 +18,8 @@ struct Message: View {
     @State var alignment: HorizontalAlignment = .leading
     @State var message_color: Color = Color.theme
     @State var message_text_color: Color = Color.white
-    
+
+
     
     @State private var rect: CGRect = CGRect()
     
@@ -58,6 +59,7 @@ struct Message: View {
                                     .frame(width: proxy.size.width, height: proxy.size.height)
                                     .aspectRatio(contentMode: .fill)
                                     .cornerRadius(15)
+                                    .addBorder(message_color, width: 5, cornerRadius: 15)
                                     .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                                     .contextMenu {
                                         Button(action: {
@@ -70,6 +72,7 @@ struct Message: View {
                             }
                             
                         }
+
                     }else{
                         VStack(alignment: .leading) {
                             
@@ -214,3 +217,11 @@ struct AdvancedTextField: UIViewRepresentable {
         }
     }
 }
+
+extension View {
+     public func addBorder<S>(_ content: S, width: CGFloat = 1, cornerRadius: CGFloat) -> some View where S : ShapeStyle {
+         let roundedRect = RoundedRectangle(cornerRadius: cornerRadius)
+         return clipShape(roundedRect)
+              .overlay(roundedRect.strokeBorder(content, lineWidth: width))
+     }
+ }
