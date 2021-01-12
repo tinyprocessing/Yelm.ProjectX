@@ -77,12 +77,37 @@ struct Chat : View {
                         .padding(.trailing, 10)
                         .buttonStyle(ScaleButtonStyle())
                         
-                        Text("Чат")
-                            .padding(.top, 10)
-                            .font(.system(size: 28, weight: .semibold, design: .rounded))
+                        VStack{
+                            Text("Чат")
+                                .padding(.top, 10)
+                                .font(.system(size: 28, weight: .semibold, design: .rounded))
+                            
+                            Text("Онлайн")
+                                .foregroundColor(.green)
+                                .font(.system(size: 12, weight: .semibold, design: .rounded))
+                                .lineLimit(1)
+                            
+                        }
+                      
                         
                         
                         Spacer()
+                        
+                        
+                        Button(action: {
+                            
+                        }) {
+                            
+                            Image(systemName: "gear")
+                                .foregroundColor(Color.white)
+                                .frame(width: 18, height: 18, alignment: .center)
+                                .padding(5)
+                                .font(.system(size: 16, weight: .bold, design: .rounded))
+                                .background(Color.theme)
+                                .clipShape(Circle())
+                            
+                        }
+                        .buttonStyle(ScaleButtonStyle())
                     }
                     
                 }
@@ -98,12 +123,80 @@ struct Chat : View {
                 
                 VStack{
                     
-                    
+
                     ScrollView {
-                        if #available(iOS 14.0, *) {
-                            ScrollViewReader { proxy in // 1
+                    if #available(iOS 14.0, *) {
+                        ScrollViewReader { proxy in // 1
+                            
+                            ForEach(self.messages) { message in
+                                if (message.user.name == UserDefaults.standard.string(forKey: "USER") ?? "user16"){
+                                    Message(message: message.text,
+                                            user: message.user.name,
+                                            time: message.time,
+                                            attachment: message.attachments,
+                                            alignment: .trailing,
+                                            message_color: Color.theme,
+                                            message_text_color: .white)
+                                        .id(message.id) // 2
+                                }
                                 
-                                ForEach(self.messages) { message in
+                                if (message.user.name == "shop"){
+                                    Message(message: message.text,
+                                            user: message.user.name,
+                                            time: message.time,
+                                            attachment: message.attachments,
+                                            alignment: .leading,
+                                            message_color: Color.init(hex: "F2F3F4"),
+                                            message_text_color: .black)
+                                        .id(message.id) // 2
+
+                                }
+                                
+                                if (message.user.name == "server"){
+                                    Message(message: message.text,
+                                            user: message.user.name,
+                                            time: message.time,
+                                            attachment: message.attachments,
+                                            alignment: .center,
+                                            message_color: Color.clear,
+                                            message_text_color: .black)
+                                        .id(message.id) // 2
+    
+
+                                }
+
+                                
+                            }
+                            
+                            
+                            .onReceive(Just(self.$writing), perform: { (publisher) in
+                                if (self.writing == true){
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                        scrollToLastMessage(proxy: proxy)
+                                    }
+                                }
+                            })
+                            .onChange(of: self.messages.count) { _ in // 3
+                                print("messages add")
+                                scrollToLastMessage(proxy: proxy)
+                                print(proxy)
+                            }
+                            
+                            
+                            
+                        }
+                    } else {
+                        
+                        
+                        GeometryReader { geometry in
+
+
+                            ScrollView(.vertical, showsIndicators: false) {
+
+
+
+                                ForEach(self.messages.reversed(), id: \.self){ message in
+
                                     if (message.user.name == UserDefaults.standard.string(forKey: "USER") ?? "user16"){
                                         Message(message: message.text,
                                                 user: message.user.name,
@@ -112,9 +205,13 @@ struct Chat : View {
                                                 alignment: .trailing,
                                                 message_color: Color.theme,
                                                 message_text_color: .white)
-                                            .id(message.id) // 2
+                                            .rotationEffect(.radians(.pi))
+
+
+
+
                                     }
-                                    
+
                                     if (message.user.name == "shop"){
                                         Message(message: message.text,
                                                 user: message.user.name,
@@ -123,10 +220,13 @@ struct Chat : View {
                                                 alignment: .leading,
                                                 message_color: Color.init(hex: "F2F3F4"),
                                                 message_text_color: .black)
-                                            .id(message.id) // 2
+                                            .rotationEffect(.radians(.pi))
+
+
+
 
                                     }
-                                    
+
                                     if (message.user.name == "server"){
                                         Message(message: message.text,
                                                 user: message.user.name,
@@ -135,96 +235,22 @@ struct Chat : View {
                                                 alignment: .center,
                                                 message_color: Color.clear,
                                                 message_text_color: .black)
-                                            .id(message.id) // 2
-       
-
+                                            .rotationEffect(.radians(.pi))
                                     }
-
-                                    
                                 }
-                             
-                                
-                                .onReceive(Just(self.$writing), perform: { (publisher) in
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        scrollToLastMessage(proxy: proxy)
-                                    }
-                                })
-                                .onChange(of: self.messages.count) { _ in // 3
-                                    scrollToLastMessage(proxy: proxy)
-                                    print(proxy)
-                                }
-                                
-                                
-                                
-                            }
-                        } else {
-                           
-                            
-                            GeometryReader { geometry in
-
-
-                                ScrollView(.vertical, showsIndicators: false) {
-
-
-
-                                    ForEach(self.messages.reversed(), id: \.self){ message in
-
-                                        if (message.user.name == UserDefaults.standard.string(forKey: "USER") ?? "user16"){
-                                            Message(message: message.text,
-                                                    user: message.user.name,
-                                                    time: message.time,
-                                                    attachment: message.attachments,
-                                                    alignment: .trailing,
-                                                    message_color: Color.theme,
-                                                    message_text_color: .white)
-                                                .rotationEffect(.radians(.pi))
-
-
-
-
-                                        }
-
-                                        if (message.user.name == "shop"){
-                                            Message(message: message.text,
-                                                    user: message.user.name,
-                                                    time: message.time,
-                                                    attachment: message.attachments,
-                                                    alignment: .leading,
-                                                    message_color: Color.init(hex: "F2F3F4"),
-                                                    message_text_color: .black)
-                                                .rotationEffect(.radians(.pi))
-
-
-
-
-                                        }
-
-                                        if (message.user.name == "server"){
-                                            Message(message: message.text,
-                                                    user: message.user.name,
-                                                    time: message.time,
-                                                    attachment: message.attachments,
-                                                    alignment: .center,
-                                                    message_color: Color.clear,
-                                                    message_text_color: .black)
-                                                .rotationEffect(.radians(.pi))
-                                        }
-                                    }
-
-
-                                }
-                                .background(Color.clear)
-                                .rotationEffect(.radians(.pi))
-                                .scaleEffect(x: -1, y: 1, anchor: .center)
 
 
                             }
-                            
+                            .background(Color.clear)
+                            .rotationEffect(.radians(.pi))
+                            .scaleEffect(x: -1, y: 1, anchor: .center)
+
+
                         }
+                        
                     }
-                    
-            
-                    
+                }.background(Color.clear)
+  
                     
                     HStack(alignment: .center){
                         
@@ -251,7 +277,6 @@ struct Chat : View {
                                         
                                       },
                                       onEditingChanged: { (editing) in
-                                      
                                         withAnimation {
                                             self.writing = editing
                                         }
@@ -303,6 +328,8 @@ struct Chat : View {
                         
                         
                     } .padding()
+                    
+    
                     
                 }
                 
