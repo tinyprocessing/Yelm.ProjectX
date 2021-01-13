@@ -122,7 +122,7 @@ struct ModalView: View {
                 }
                 .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
                 .offset(y: max(0, self.modal.position.offsetFromTop() + self.dragState.translation.height + geometry.safeAreaInsets.top))
-                .gesture(drag)
+//                .gesture(drag)
                 .animation(self.dragState.isDragging ? nil : self.animation)
             }
         }

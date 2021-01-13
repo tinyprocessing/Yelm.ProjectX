@@ -16,7 +16,8 @@ struct Chat : View {
     
     @State private var writing: Bool = false
     @State private var text: String = ""
-    
+    @ObservedObject var modal : ModalManager = GlobalModular
+
     
     @State private var messages : [chat_message] = [
         chat_message(id: 0, user: chat_user(id: 0, name: "user16", online: ""), text: "Добрый день, подскажите пожалуйста есть ли сыр в продаже головками?", time: "12:00", attachments: [:]),
@@ -255,6 +256,16 @@ struct Chat : View {
                     HStack(alignment: .center){
                         
                         Button(action: {
+                            
+                            
+                            self.modal.newModal(position: .closed) {
+                                ModalImages()
+                                    .clipped()
+                            }
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [self] in
+                                self.modal.openModal()
+                            }
                             
                         }) {
                             
