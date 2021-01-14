@@ -88,6 +88,7 @@
 		4CDE844625AB614800F3453D /* ui.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE844525AB614800F3453D /* ui.swift */; };
 		4CDE844925AB685700F3453D /* chat_structures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE844825AB685700F3453D /* chat_structures.swift */; };
 		4CF55FC325AEFE2B0038A4CC /* images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF55FC225AEFE2B0038A4CC /* images.swift */; };
+		4CF55FC725B070B20038A4CC /* camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF55FC625B070B20038A4CC /* camera.swift */; };
 		A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */; };
 /* End PBXBuildFile section */
 
@@ -176,6 +177,7 @@
 		4CDE844525AB614800F3453D /* ui.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ui.swift; sourceTree = "<group>"; };
 		4CDE844825AB685700F3453D /* chat_structures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chat_structures.swift; sourceTree = "<group>"; };
 		4CF55FC225AEFE2B0038A4CC /* images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = images.swift; sourceTree = "<group>"; };
+		4CF55FC625B070B20038A4CC /* camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = camera.swift; sourceTree = "<group>"; };
 		58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelm_ProjectX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		736B0EF31A2553BDC8E3C2BA /* Pods-Yelm.ProjectX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelm.ProjectX.debug.xcconfig"; path = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -524,6 +526,7 @@
 				4CDE844225AB613700F3453D /* chat_classes.swift */,
 				4CDE844825AB685700F3453D /* chat_structures.swift */,
 				4CDE844525AB614800F3453D /* ui.swift */,
+				4CF55FC625B070B20038A4CC /* camera.swift */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				4CDE83A025A78A3F00F3453D /* ImageProxy.swift in Sources */,
 				4CDE836625A789D000F3453D /* color.swift in Sources */,
 				4CDE840725A873D800F3453D /* add_location.swift in Sources */,
+				4CF55FC725B070B20038A4CC /* camera.swift in Sources */,
 				4CDE83C825A78A4D00F3453D /* CircleActivityView.swift in Sources */,
 				4CDE83A925A78A3F00F3453D /* ImageLoaderView.swift in Sources */,
 				4CDE83E725A79C0900F3453D /* classes.swift in Sources */,
