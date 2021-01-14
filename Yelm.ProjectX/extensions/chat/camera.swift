@@ -143,7 +143,7 @@ class CustomCameraController: UIViewController {
         self.cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         self.cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         self.cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
-        self.cameraPreviewLayer?.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        self.cameraPreviewLayer?.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         self.view.layer.insertSublayer(cameraPreviewLayer!, at: 0)
         
     }

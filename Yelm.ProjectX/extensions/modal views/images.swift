@@ -16,7 +16,7 @@ struct ModalImages: View {
     
     @State var selected : [selected_images] = []
     @State var grid : [images] = []
-    
+    @State var height : CGFloat = 150
     
     @ObservedObject var realm: RealmLocations = GlobalRealmLocations
     @ObservedObject var modal : ModalManager = GlobalModular
@@ -42,7 +42,8 @@ struct ModalImages: View {
         
         let options_fetch = PHFetchOptions()
         options_fetch.sortDescriptors =  [NSSortDescriptor(key: "creationDate", ascending: false)]
-        options_fetch.fetchLimit = 50
+        options_fetch.fetchLimit = 100
+        
         
         let req = PHAsset.fetchAssets(with: .image, options: options_fetch)
         
@@ -80,6 +81,23 @@ struct ModalImages: View {
         }
     }
     
+    func scaledWidth(image: UIImage) -> CGFloat {
+        
+        if (self.selected.count > 0){
+            let size_aspect = image.size
+            
+            let ratio = size_aspect.width / size_aspect.height;
+            
+            let new_height : CGFloat =  150
+            
+            let new_width = new_height * ratio;
+            
+            return new_width
+        }
+        
+        return 80
+    }
+    
     var body: some View {
         
         VStack(){
@@ -113,7 +131,7 @@ struct ModalImages: View {
                                 
                                 ZStack{
                                     CustomCameraView()
-                                        .frame(width: 80, height: 80)
+                                        .frame(width: self.selected.count == 0 ? 80 : self.height, height: self.selected.count == 0 ? 80 : self.height)
                                         .cornerRadius(10)
                                         .padding(.trailing, 4)
                                     
@@ -134,7 +152,7 @@ struct ModalImages: View {
                                             
                                             
                                         }
-                                        .frame(width: 80, height: 80)
+                                        .frame(width: self.scaledWidth(image: image.image), height: self.selected.count == 0 ? 80 : self.height)
                                         .clipShape(CustomShape(corner: .allCorners, radii: 10))
                                         
 
@@ -146,7 +164,7 @@ struct ModalImages: View {
                                             .offset(x: -11, y: 6)
                                             
                                     }
-                                    .frame(width: 80, height: 80)
+                                    .frame(width: self.scaledWidth(image: image.image), height: self.selected.count == 0 ? 80 : self.height)
                                     .clipShape(CustomShape(corner: .allCorners, radii: 10))
                                     .padding(.trailing, 4)
                                     .onTapGesture() {
@@ -170,7 +188,7 @@ struct ModalImages: View {
                             .padding(.leading, 20)
                         }.padding(.bottom, 10)
 //                    }
-                }.frame(height: 80)
+                }.frame(height: self.selected.count == 0 ? 80 : self.height)
                 
                 VStack{
                     HStack{
