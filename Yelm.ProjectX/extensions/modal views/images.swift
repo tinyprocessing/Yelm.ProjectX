@@ -28,9 +28,22 @@ struct ModalImages: View {
     
     @State var showmap : Bool = false
     
+    
+    
+    func check(id: Int) -> Bool {
+        
+        let results = selected.filter { $0.id == id }
+        let exists = results.isEmpty == false
+        
+        return exists
+    }
+    
     func get_images(){
         
-        let req = PHAsset.fetchAssets(with: .image, options: .none)
+        let options_fetch = PHFetchOptions()
+        options_fetch.sortDescriptors =  [NSSortDescriptor(key: "creationDate", ascending: false)]
+        
+        let req = PHAsset.fetchAssets(with: .image, options: options_fetch)
         
         DispatchQueue.global().asyncAfter(deadline: .now()) {
        
@@ -39,8 +52,11 @@ struct ModalImages: View {
                 
                 let options = PHImageRequestOptions()
                 options.isSynchronous = true
+                options.deliveryMode = .opportunistic
                 
                 PHCachingImageManager.default().requestImage(for: asset, targetSize: .init(), contentMode: .default, options: options) { (image, _) in
+                    
+                    
                     
                     let images_data = images(id: id, image: image!, selected: false)
                     DispatchQueue.main.async {
@@ -81,22 +97,48 @@ struct ModalImages: View {
                 }.padding(.horizontal, 20)
                 
                 VStack{
-                    if (!self.grid.isEmpty){
+//                    if (!self.grid.isEmpty){
                         ScrollView(.horizontal, showsIndicators: false){
                             HStack{
                                 
                                 ForEach(self.grid, id: \.self){ image in
-                                    Image(uiImage: image.image)
-                                        .resizable()
-                                        .cornerRadius(10)
-                                        .frame(width: 80, height: 80)
-                                        .padding(.trailing, 4)
-                                       
                                     
+                                    ZStack(alignment: .topTrailing){
+                                        Image(uiImage: image.image)
+                                            .resizable()
+                                            .cornerRadius(10)
+                                            .frame(width: 80, height: 80)
+                                            .padding(.trailing, 4)
+                                        
+                                        Image(systemName: check(id: image.id) ?  "checkmark.circle.fill" : "circle")
+                                            .renderingMode(check(id: image.id) ? .original : .template)
+                                            .foregroundColor(!check(id: image.id) ? Color.init(hex: "F2F3F4") : Color.theme)
+                                            .font(.system(size: 20, weight: .bold, design: .rounded))
+                                            .frame(width: 20, height: 20)
+                                            .offset(x: -11, y: 6)
+                                            
+                                    }
+                                    .onTapGesture() {
+                                        
+                                        if (check(id: image.id)){
+                                            
+                                            selected.removeAll{$0.id == image.id}
+                                            
+                                        }else{
+                                            self.selected.append(selected_images(id: image.id, image: image.image))
+                                        }
+                                        
+                                    }
                                 }
-                            }.padding(.leading, 20)
+                                
+                                Text("")
+                                    .padding(.trailing, 10)
+                                
+                            }
+                           
+                            .padding(.leading, 20)
                         }.padding(.bottom, 10)
-                    }
+//                    }
                 }.frame(height: 80)
                 
                 VStack{
@@ -107,7 +149,7 @@ struct ModalImages: View {
                         }) {
                             HStack{
                                 Spacer()
-                                Text("Отправить")
+                                Text("Отправить: (\(selected.count))")
                                 Spacer()
                             }
                             .padding(.horizontal)
@@ -124,7 +166,8 @@ struct ModalImages: View {
             }
 //            .frame(width: UIScreen.main.bounds.width, alignment: .center)
             .background(Color.white)
-            .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 30))
+            .cornerRadius(30)
+//            .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 30))
         }
 //        .frame(width: UIScreen.main.bounds.width)
         
