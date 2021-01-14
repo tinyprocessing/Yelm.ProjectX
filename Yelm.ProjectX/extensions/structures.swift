@@ -30,11 +30,10 @@ struct cart_structure: Identifiable, Hashable {
 
 struct images: Hashable {
     var id: Int
-    var image : UIImage
-    var selected : Bool
+    var image_asset : PHAsset
 }
 
 struct selected_images: Hashable{
     var id: Int
-    var image : UIImage
+    var image_asset : PHAsset
 }
