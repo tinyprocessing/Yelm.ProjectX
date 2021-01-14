@@ -42,6 +42,7 @@ struct ModalImages: View {
         
         let options_fetch = PHFetchOptions()
         options_fetch.sortDescriptors =  [NSSortDescriptor(key: "creationDate", ascending: false)]
+        options_fetch.fetchLimit = 50
         
         let req = PHAsset.fetchAssets(with: .image, options: options_fetch)
         
@@ -52,17 +53,26 @@ struct ModalImages: View {
                 
                 let options = PHImageRequestOptions()
                 options.isSynchronous = true
-                options.deliveryMode = .opportunistic
+                options.deliveryMode = PHImageRequestOptionsDeliveryMode.opportunistic
+                options.isNetworkAccessAllowed = true
                 
-                PHCachingImageManager.default().requestImage(for: asset, targetSize: .init(), contentMode: .default, options: options) { (image, _) in
+                options.progressHandler = {  (progress, error, stop, info) in
+                       print("progress: \(progress)")
+                }
+                
+                PHImageManager.default().requestImage(for: asset, targetSize: .init(), contentMode: .aspectFill, options: options) { (image, _) in
                     
                     
-                    
-                    let images_data = images(id: id, image: image!, selected: false)
-                    DispatchQueue.main.async {
-                        self.grid.append(images_data)
+                    if let image_ready = image as? UIImage {
+                        
+                        let images_data = images(id: id, image: image_ready, selected: false)
+                        DispatchQueue.main.async {
+                            self.grid.append(images_data)
+                        }
+                        id += 1
                     }
-                    id += 1
+                    
+                  
                     
                 }
             }
@@ -104,12 +114,17 @@ struct ModalImages: View {
                                 ForEach(self.grid, id: \.self){ image in
                                     
                                     ZStack(alignment: .topTrailing){
+                                        VStack{
                                         Image(uiImage: image.image)
                                             .resizable()
-                                            .cornerRadius(10)
-                                            .frame(width: 80, height: 80)
-                                            .padding(.trailing, 4)
+                                            .aspectRatio(contentMode: .fill)
+                                            
+                                            
+                                        }
+                                        .frame(width: 80, height: 80)
+                                        .clipShape(CustomShape(corner: .allCorners, radii: 10))
                                         
+
                                         Image(systemName: check(id: image.id) ?  "checkmark.circle.fill" : "circle")
                                             .renderingMode(check(id: image.id) ? .original : .template)
                                             .foregroundColor(!check(id: image.id) ? Color.init(hex: "F2F3F4") : Color.theme)
@@ -118,6 +133,9 @@ struct ModalImages: View {
                                             .offset(x: -11, y: 6)
                                             
                                     }
+                                    .frame(width: 80, height: 80)
+                                    .clipShape(CustomShape(corner: .allCorners, radii: 10))
+                                    .padding(.trailing, 4)
                                     .onTapGesture() {
                                         
                                         if (check(id: image.id)){
