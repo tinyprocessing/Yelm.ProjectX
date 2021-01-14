@@ -111,7 +111,20 @@ struct ModalImages: View {
                         ScrollView(.horizontal, showsIndicators: false){
                             HStack{
                                 
+                                ZStack{
+                                    CustomCameraView()
+                                        .frame(width: 80, height: 80)
+                                        .cornerRadius(10)
+                                        .padding(.trailing, 4)
+                                    
+                                    Image(systemName: "camera")
+                                        .font(.system(size: 20, weight: .bold, design: .rounded))
+                                        .foregroundColor(Color.init(hex: "F2F3F4"))
+                                }
+                               
+                                
                                 ForEach(self.grid, id: \.self){ image in
+                                    
                                     
                                     ZStack(alignment: .topTrailing){
                                         VStack{
