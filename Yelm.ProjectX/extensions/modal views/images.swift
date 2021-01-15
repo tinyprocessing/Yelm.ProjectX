@@ -14,7 +14,7 @@ import Photos
 struct ModalImages: View {
     
     @ObservedObject var chat: chat = GlobalChat
-
+    
     
     @State var selected : [selected_images] = []
     @State var grid : [images] = []
@@ -36,7 +36,7 @@ struct ModalImages: View {
         
         let results = selected.filter { $0.id == id }
         let exists = results.isEmpty == false
-
+        
         
         return exists
     }
@@ -95,169 +95,242 @@ struct ModalImages: View {
         return 80
     }
     
+    
+    @State var open_camera : Bool = false
+    
     var body: some View {
-        
-        VStack(){
-            Spacer()
-            
-            HStack{
-                Spacer()
-                Rectangle()
-                    .background(Color.gray)
-                    .cornerRadius(10)
-                    .frame(width: 30, height: 5)
-                    .opacity(0.4)
-                Spacer()
-            }.padding(.bottom, 5)
-            VStack{
+        VStack{
+            ZStack{
                 VStack(){
-                    Text("")
-                        .frame(width: 10, height: 20)
-                    HStack{
-                        Text("Фотографии")
-                            .font(.system(size: 22, weight: .bold, design: .rounded))
-                        
-                        Spacer()
-                    }
-                }.padding(.horizontal, 20)
-                
-                VStack{
+                    Spacer()
                     
-                    ScrollView(.horizontal, showsIndicators: false){
-                        HStack{
-                            
-                            ZStack{
-                                CustomCameraView()
-                                    .frame(width: 80, height: 80)
-                                    .cornerRadius(10)
-                                    .padding(.trailing, 4)
+                    HStack{
+                        Spacer()
+                        Rectangle()
+                            .background(Color.gray)
+                            .cornerRadius(10)
+                            .frame(width: 30, height: 5)
+                            .opacity(0.4)
+                        Spacer()
+                    }.padding(.bottom, 5)
+                    VStack{
+                        VStack(){
+                            Text("")
+                                .frame(width: 10, height: 20)
+                            HStack{
+                                Text("Фотографии")
+                                    .font(.system(size: 22, weight: .bold, design: .rounded))
                                 
-                                Image(systemName: "camera")
-                                    .font(.system(size: 20, weight: .bold, design: .rounded))
-                                    .foregroundColor(Color.init(hex: "F2F3F4"))
+                                Spacer()
                             }
+                        }.padding(.horizontal, 20)
+                        
+                        VStack{
                             
-                            
-                            ForEach(self.grid, id: \.self){ image in
-                                
-                                GeometryReader{ geo in
-                                    if (geo.frame(in: .global).minX > -400 && geo.frame(in: .global).minX  < UIScreen.main.bounds.size.width+400){
-                                        
-                                         
-                                            ZStack(alignment: .topTrailing){
-                                                VStack{
-
-                                                    ImageLoaderLibrary(id: image.id, asset: image.image_asset)
-                                                        
-
-
-
-                                                }
-                                                .frame(width: 80, height: 80)
-                                                .clipShape(CustomShape(corner: .allCorners, radii: 10))
-
-
-                                                Image(systemName: check(id: image.id, x: geo.frame(in: .global).minX) ?  "checkmark.circle.fill" : "circle")
-                                                    .renderingMode(check(id: image.id, x: geo.frame(in: .global).minX) ? .original : .template)
-                                                    .foregroundColor(!check(id: image.id, x: geo.frame(in: .global).minX) ? Color.init(hex: "F2F3F4") : Color.theme)
-                                                    .font(.system(size: 20, weight: .bold, design: .rounded))
-                                                    .frame(width: 20, height: 20)
-                                                    .offset(x: -11, y: 6)
-
-                                            }
-                                 
-                                            .clipShape(CustomShape(corner: .allCorners, radii: 10))
+                            ScrollView(.horizontal, showsIndicators: false){
+                                HStack{
+                                    
+                                    ZStack{
+                                        CustomCameraView()
+                                            .frame(width: 80, height: 80)
+                                            .cornerRadius(10)
                                             .padding(.trailing, 4)
-                                            
-                                            .onTapGesture() {
-
-                                                print(self.grid.count)
-                                                if (check(id: image.id, x: geo.frame(in: .global).minX)){
-
-                                                    selected.removeAll{$0.id == image.id}
-
-                                                }else{
-                                                    self.selected.append(selected_images(id: image.id, image_asset: image.image_asset))
-                                                }
-
-                                            }
                                         
+                                        Image(systemName: "camera")
+                                            .font(.system(size: 20, weight: .bold, design: .rounded))
+                                            .foregroundColor(Color.init(hex: "F2F3F4"))
+                                    }.onTapGesture {
+                                        self.open_camera.toggle()
                                     }
                                     
-                                }.frame(width: 80)
-                            }
+                                    
+                                    ForEach(self.grid, id: \.self){ image in
+                                        
+                                        GeometryReader{ geo in
+                                            if (geo.frame(in: .global).minX > -400 && geo.frame(in: .global).minX  < UIScreen.main.bounds.size.width+400){
+                                                
+                                                
+                                                ZStack(alignment: .topTrailing){
+                                                    VStack{
+                                                        
+                                                        ImageLoaderLibrary(id: image.id, asset: image.image_asset)
+                                                        
+                                                        
+                                                        
+                                                        
+                                                    }
+                                                    .frame(width: 80, height: 80)
+                                                    .clipShape(CustomShape(corner: .allCorners, radii: 10))
+                                                    
+                                                    
+                                                    Image(systemName: check(id: image.id, x: geo.frame(in: .global).minX) ?  "checkmark.circle.fill" : "circle")
+                                                        .renderingMode(check(id: image.id, x: geo.frame(in: .global).minX) ? .original : .template)
+                                                        .foregroundColor(!check(id: image.id, x: geo.frame(in: .global).minX) ? Color.init(hex: "F2F3F4") : Color.theme)
+                                                        .font(.system(size: 20, weight: .bold, design: .rounded))
+                                                        .frame(width: 20, height: 20)
+                                                        .offset(x: -11, y: 6)
+                                                    
+                                                }
+                                                
+                                                .clipShape(CustomShape(corner: .allCorners, radii: 10))
+                                                .padding(.trailing, 4)
+                                                
+                                                .onTapGesture() {
+                                                    
+                                                    print(self.grid.count)
+                                                    if (check(id: image.id, x: geo.frame(in: .global).minX)){
+                                                        
+                                                        selected.removeAll{$0.id == image.id}
+                                                        
+                                                    }else{
+                                                        self.selected.append(selected_images(id: image.id, image_asset: image.image_asset))
+                                                    }
+                                                    
+                                                }
+                                                
+                                            }
+                                            
+                                        }.frame(width: 80)
+                                    }
+                                    
+                                    Text("")
+                                        .padding(.trailing, 10)
+                                    
+                                }
+                                
+                                .padding(.leading, 20)
+                            }.padding(.bottom, 10)
                             
-                            Text("")
-                                .padding(.trailing, 10)
-                            
-                        }
+                        }.frame(height: 80)
                         
-                        .padding(.leading, 20)
-                    }.padding(.bottom, 10)
-                    
-                }.frame(height: 80)
-                
-                VStack{
-                    HStack{
-                        
-                        Button(action: {
-                            
-                            
-                            
-                            let date = Date()
-                            let calendar = Calendar.current
-                            let hour = calendar.component(.hour, from: date)
-                            let minutes = calendar.component(.minute, from: date)
-                            
-                            let time = "\(hour):\(minutes)"
-                            let generator = UIImpactFeedbackGenerator(style: .soft)
-                            generator.impactOccurred()
-                            let user_cache = UserDefaults.standard.string(forKey: "USER") ?? "user16"
-                            var user = chat_user(id: 0, name: user_cache, online: "yes")
-                            
-                          
-                            for i in 0...self.selected.count-1{
-                                self.chat.objectWillChange.send()
-                                self.chat.messages.append(chat_message(id: (self.chat.messages.count+1),
-                                                                  user: user,
-                                                                  text: "",
-                                                                  time: time,
-                                                                  attachments: ["data" : "PHAsset"],
-                                                                  asset: self.selected[i].image_asset))
-                            }
-
-                            
-                            print(self.chat.messages)
-                            
-                            self.selected.removeAll()
-                            
-                            self.modal.objectWillChange.send()
-                            self.modal.closeModal()
-                            
-                        }) {
+                        VStack{
                             HStack{
-                                Spacer()
-                                Text("Отправить: (\(selected.count))")
-                                Spacer()
+                                
+                                Button(action: {
+                                    
+                                    
+                                    
+                                    let date = Date()
+                                    let calendar = Calendar.current
+                                    let hour = calendar.component(.hour, from: date)
+                                    let minutes = calendar.component(.minute, from: date)
+                                    
+                                    let time = "\(hour):\(minutes)"
+                                    let generator = UIImpactFeedbackGenerator(style: .soft)
+                                    generator.impactOccurred()
+                                    let user_cache = UserDefaults.standard.string(forKey: "USER") ?? "user16"
+                                    var user = chat_user(id: 0, name: user_cache, online: "yes")
+                                    
+                                    
+                                    for i in 0...self.selected.count-1{
+                                        self.chat.objectWillChange.send()
+                                        self.chat.messages.append(chat_message(id: (self.chat.messages.count+1),
+                                                                               user: user,
+                                                                               text: "",
+                                                                               time: time,
+                                                                               attachments: ["data" : "PHAsset"],
+                                                                               asset: self.selected[i].image_asset))
+                                    }
+                                    
+                                    
+                                    print(self.chat.messages)
+                                    
+                                    self.selected.removeAll()
+                                    
+                                    self.modal.objectWillChange.send()
+                                    self.modal.closeModal()
+                                    
+                                }) {
+                                    HStack{
+                                        Spacer()
+                                        Text("Отправить: (\(selected.count))")
+                                        Spacer()
+                                    }
+                                    .padding(.horizontal)
+                                    .padding(.vertical, 10)
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                                }.buttonStyle(ScaleButtonStyle())
+                                
+                            }.padding(.bottom, 30)
+                            
+                            
+                        }.padding(.horizontal, 20)
+                    }
+                    //            .frame(width: UIScreen.main.bounds.width, alignment: .center)
+                    .background(Color.white)
+                    .cornerRadius(30)
+                    //            .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 30))
+                }
+                
+                if (open_camera){
+                    Rectangle()
+                        .fill(Color.clear)
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/1.3)
+                        .overlay(
+                            
+                            ZStack(alignment: .top){
+                                
+                            ZStack(alignment: .bottom){
+                                CustomCameraViewFull()
+                                
+                                Button(action: {
+                                    
+                                    
+                                }) {
+                                    VStack{
+                                        ZStack{
+                                            Circle()
+                                                .fill(Color.theme)
+                                                .frame(width: 80, height: 80)
+                                            
+                                            
+                                            Circle()
+                                                .fill(Color.white)
+                                                .frame(width: 70, height: 70)
+                                            
+                                            
+                                            Circle()
+                                                .fill(Color.theme)
+                                                .frame(width: 40, height: 40)
+                                        }
+                                    }
+                                    .padding(.bottom, 50)
+                                }.buttonStyle(ScaleButtonStyle())
+                                
+                                
                             }
-                            .padding(.horizontal)
-                            .padding(.vertical, 10)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                        }.buttonStyle(ScaleButtonStyle())
-                        
-                    }.padding(.bottom, 30)
-                    
-                    
-                }.padding(.horizontal, 20)
+                                
+                                HStack{
+                                    HStack{
+                                        Image(systemName: "bolt.slash.fill")
+                                            .foregroundColor(Color.white)
+                                            .font(.system(size: 20, weight: .bold, design: .rounded))
+                                        
+                                        Spacer()
+                                        
+                                        Image(systemName: "xmark")
+                                            .foregroundColor(Color.white)
+                                            .font(.system(size: 20, weight: .bold, design: .rounded))
+                                            
+                                        
+                                    }
+                                    .padding(.horizontal, 30)
+                                    .padding(.top, 8)
+                                    
+                                }
+                               
+                                .frame(width: UIScreen.main.bounds.width, height: 50)
+                                .background(Color.black.opacity(0.3))
+                                
+                            }
+                        )
+                }
+                
             }
-            //            .frame(width: UIScreen.main.bounds.width, alignment: .center)
-            .background(Color.white)
-            .cornerRadius(30)
-            //            .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 30))
         }
-        //        .frame(width: UIScreen.main.bounds.width)
+        
         
         .onAppear {
             
@@ -323,19 +396,19 @@ struct ImageLoaderLibrary: View {
                         .foregroundColor(Color.init(hex: "F2F3F4"))
                         .aspectRatio(contentMode: .fit)
                 }
-                    .frame(width: 80, height: 80)
+                .frame(width: 80, height: 80)
             }
-               
+            
             
         }.onAppear{
             
-
+            
             if (true){
                 DispatchQueue.global(qos: .utility).async {
-
-
-
-
+                    
+                    
+                    
+                    
                     let options = PHImageRequestOptions()
                     options.isSynchronous = true
                     options.deliveryMode = PHImageRequestOptionsDeliveryMode.opportunistic
@@ -343,16 +416,16 @@ struct ImageLoaderLibrary: View {
                     
                     manager.requestImage(for: asset, targetSize: .init(width: 380, height: 380), contentMode: .aspectFill, options: options) { (image, _) in
                         let compressed = UIImage(data: image!.jpeg(.lowest)!)
-
+                        
                         print("Result Size Is \(image!.size)")
-
+                        
                         DispatchQueue.main.async {
                             self.image = compressed!
                             self.process = true
                         }
                     }
                     
-
+                    
                     
                 }
             }
@@ -372,11 +445,11 @@ extension UIImage {
         case high    = 0.75
         case highest = 1
     }
-
+    
     /// Returns the data for the specified image in JPEG format.
     /// If the image object’s underlying image data has been purged, calling this function forces that data to be reloaded into memory.
     /// - returns: A data object containing the JPEG data, or nil if there was a problem generating the data. This function may return nil if the image has no data or if the underlying CGImageRef contains data in an unsupported bitmap format.
     func jpeg(_ jpegQuality: JPEGQuality) -> Data? {
-           return jpegData(compressionQuality: jpegQuality.rawValue)
+        return jpegData(compressionQuality: jpegQuality.rawValue)
     }
 }
