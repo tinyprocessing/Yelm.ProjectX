@@ -136,7 +136,7 @@ struct MapLocations: View {
                         UserDefaults.standard.set(self.service.point, forKey: "SELECTED_SHOP_POINTS")
                         
                         self.location.name = UserDefaults.standard.string(forKey: "SELECTED_SHOP_NAME") ?? "Выберите адрес"
-                        self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "LAT=0&LON=0"
+                        self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
                         
                         
                         

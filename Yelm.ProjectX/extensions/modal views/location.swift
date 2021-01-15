@@ -64,7 +64,7 @@ struct ModalLocation: View {
                             UserDefaults.standard.set(row.point, forKey: "SELECTED_SHOP_POINTS")
                             
                             self.location.name = UserDefaults.standard.string(forKey: "SELECTED_SHOP_NAME") ?? "Выберите адрес"
-                            self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "LAT=0&LON=0"
+                            self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
                             
                             
                         }) {
@@ -100,7 +100,7 @@ struct ModalLocation: View {
                                 UserDefaults.standard.set(self.realm.locations[0].point, forKey: "SELECTED_SHOP_POINTS")
                                 
                                 self.location.name = UserDefaults.standard.string(forKey: "SELECTED_SHOP_NAME") ?? "Выберите адрес"
-                                self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "LAT=0&LON=0"
+                                self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
 
                             }else{
                                 if (ServerAPI.settings.position == row.point && self.realm.locations.count > 0){
@@ -111,7 +111,7 @@ struct ModalLocation: View {
                                     UserDefaults.standard.set(self.realm.locations.last?.point, forKey: "SELECTED_SHOP_POINTS")
                                     
                                     self.location.name = UserDefaults.standard.string(forKey: "SELECTED_SHOP_NAME") ?? "Выберите адрес"
-                                    self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "LAT=0&LON=0"
+                                    self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
 
                                 }
                             }

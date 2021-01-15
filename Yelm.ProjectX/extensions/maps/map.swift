@@ -109,7 +109,7 @@ struct MapCreatePoint: UIViewRepresentable {
 
                                     self.service.objectWillChange.send()
                                     self.service.name = res.name!
-                                    let position_to_server = "LAT="+String(cameraPosition.target.latitude) + "&LON=" + String(cameraPosition.target.longitude)
+                                    let position_to_server = "lat="+String(cameraPosition.target.latitude) + "&lon=" + String(cameraPosition.target.longitude)
                                     
 
                                     self.service.point = position_to_server
