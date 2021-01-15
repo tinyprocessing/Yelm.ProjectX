@@ -35,22 +35,6 @@ struct ModalImages: View {
         let results = selected.filter { $0.id == id }
         let exists = results.isEmpty == false
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            if (x < -100){
-                print("remove index")
-                loaded_images_ids.removeAll{$0 == id}
-
-            }
-            
-            if (x > UIScreen.main.bounds.width + 100){
-                print("remove image")
-                
-                if (check_image(key: id)){
-                    loaded_images_images[id] = nil
-                }
-
-            }
-        }
         
         if (x < -100){
             print("remove index")
@@ -346,15 +330,18 @@ struct ImageLoaderLibrary: View {
 
 
                         
-                        if let image_ready = image {
+                        if var image_ready = image {
                             
-                            let compressed = UIImage(data: image_ready.jpeg(.lowest)!)
+                            var compressed = UIImage(data: image_ready.jpeg(.lowest)!)
 
                             DispatchQueue.main.async {
                                 self.image = compressed!
                                 self.process = true
                                 loaded_images_ids.append(self.id)
                                 loaded_images_images[self.id] = compressed
+                                
+                                image_ready = UIImage.init()
+                                compressed = nil
                             }
                         
 

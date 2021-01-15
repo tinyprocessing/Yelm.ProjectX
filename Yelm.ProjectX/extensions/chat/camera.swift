@@ -17,8 +17,13 @@ struct CustomCameraView: View {
 
     
     var body: some View {
-        
-        CustomCameraRepresentable(image: self.$image, didTapCapture: $capture)
+        #if targetEnvironment(simulator)
+        VStack{
+            Text("S")
+        }
+        #else
+            CustomCameraRepresentable(image: self.$image, didTapCapture: $capture)
+        #endif
 
     }
     
