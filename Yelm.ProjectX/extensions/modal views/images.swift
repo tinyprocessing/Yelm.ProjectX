@@ -13,6 +13,8 @@ import Photos
 
 struct ModalImages: View {
     
+    @ObservedObject var chat: chat = GlobalChat
+
     
     @State var selected : [selected_images] = []
     @State var grid : [images] = []
@@ -34,22 +36,7 @@ struct ModalImages: View {
         
         let results = selected.filter { $0.id == id }
         let exists = results.isEmpty == false
-        
-        
-        if (x < -100){
-            print("remove index")
-            loaded_images_ids.removeAll{$0 == id}
 
-        }
-        
-        if (x > UIScreen.main.bounds.width + 100){
-            print("remove image")
-            
-            if (check_image(key: id)){
-                loaded_images_images[id] = nil
-            }
-
-        }
         
         return exists
     }
@@ -58,7 +45,7 @@ struct ModalImages: View {
         
         let options_fetch = PHFetchOptions()
         options_fetch.sortDescriptors =  [NSSortDescriptor(key: "creationDate", ascending: false)]
-        options_fetch.fetchLimit = 300
+        options_fetch.fetchLimit = 1000
         
         
         let req = PHAsset.fetchAssets(with: .image, options: options_fetch)
@@ -69,7 +56,7 @@ struct ModalImages: View {
             req.enumerateObjects { (asset, _, _) in
                 
                 let options = PHImageRequestOptions()
-                options.isSynchronous = false
+                options.isSynchronous = true
                 options.deliveryMode = PHImageRequestOptionsDeliveryMode.fastFormat
                 options.isNetworkAccessAllowed = true
                 
@@ -215,6 +202,38 @@ struct ModalImages: View {
                         
                         Button(action: {
                             
+                            
+                            
+                            let date = Date()
+                            let calendar = Calendar.current
+                            let hour = calendar.component(.hour, from: date)
+                            let minutes = calendar.component(.minute, from: date)
+                            
+                            let time = "\(hour):\(minutes)"
+                            let generator = UIImpactFeedbackGenerator(style: .soft)
+                            generator.impactOccurred()
+                            let user_cache = UserDefaults.standard.string(forKey: "USER") ?? "user16"
+                            var user = chat_user(id: 0, name: user_cache, online: "yes")
+                            
+                          
+                            for i in 0...self.selected.count-1{
+                                self.chat.objectWillChange.send()
+                                self.chat.messages.append(chat_message(id: (self.chat.messages.count+1),
+                                                                  user: user,
+                                                                  text: "",
+                                                                  time: time,
+                                                                  attachments: ["data" : "PHAsset"],
+                                                                  asset: self.selected[i].image_asset))
+                            }
+
+                            
+                            print(self.chat.messages)
+                            
+                            self.selected.removeAll()
+                            
+                            self.modal.objectWillChange.send()
+                            self.modal.closeModal()
+                            
                         }) {
                             HStack{
                                 Spacer()
@@ -277,6 +296,11 @@ func check_image(key: Int) -> Bool {
     
     return false
 }
+
+
+
+let manager = PHImageManager.default()
+
 struct ImageLoaderLibrary: View {
     
     @State var id : Int = 0
@@ -306,11 +330,7 @@ struct ImageLoaderLibrary: View {
         }.onAppear{
             
 
-           
-            
-            if (!loaded_images_ids.contains(self.id) && check_image(key: self.id) == false){
-
-
+            if (true){
                 DispatchQueue.global(qos: .utility).async {
 
 
@@ -320,52 +340,22 @@ struct ImageLoaderLibrary: View {
                     options.isSynchronous = true
                     options.deliveryMode = PHImageRequestOptionsDeliveryMode.opportunistic
                     options.isNetworkAccessAllowed = true
+                    
+                    manager.requestImage(for: asset, targetSize: .init(width: 380, height: 380), contentMode: .aspectFill, options: options) { (image, _) in
+                        let compressed = UIImage(data: image!.jpeg(.lowest)!)
 
-                    options.progressHandler = {  (progress, error, stop, info) in
-                        print("progress: \(progress)")
-                    }
+                        print("Result Size Is \(image!.size)")
 
-
-                    PHImageManager.default().requestImage(for: asset, targetSize: .init(), contentMode: .aspectFill, options: options) { (image, _) in
-
-
-                        
-                        if var image_ready = image {
-                            
-                            var compressed = UIImage(data: image_ready.jpeg(.lowest)!)
-
-                            DispatchQueue.main.async {
-                                self.image = compressed!
-                                self.process = true
-                                loaded_images_ids.append(self.id)
-                                loaded_images_images[self.id] = compressed
-                                
-                                image_ready = UIImage.init()
-                                compressed = nil
-                            }
-                        
-
-
+                        DispatchQueue.main.async {
+                            self.image = compressed!
+                            self.process = true
                         }
-
-
-
                     }
+                    
 
+                    
                 }
-
-            }else{
-                print("im get all from cache")
-                if (check_image(key: self.id)){
-                    self.image = loaded_images_images[self.id]!
-                    self.process = true
-                }
-            
-                
-                
             }
-
-            
             
             
             
