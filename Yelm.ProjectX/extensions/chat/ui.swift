@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+import Photos
 
 
 struct Message: View {
@@ -18,6 +18,10 @@ struct Message: View {
     @State var alignment: HorizontalAlignment = .leading
     @State var message_color: Color = Color.theme
     @State var message_text_color: Color = Color.white
+    @State var image: UIImage = UIImage.init()
+    @State var image_asset_loaded : Bool = false
+    @State var image_asset: PHAsset? = nil
+    @State var image_asset_size : CGSize = CGSize(width: 300, height: 300)
 
 
     
@@ -28,19 +32,21 @@ struct Message: View {
         VStack{
             
             VStack(alignment: self.alignment) {
-                HStack {
-                    if alignment == .trailing {
-                        Spacer()
+                if(self.user == "shop"){
+                    HStack {
+                        if alignment == .trailing {
+                            Spacer()
+                        }
+                        Text("Магазин")
+                            .foregroundColor(Color.init(hex: "BDBDBD"))
+                            .font(.footnote)
+                            .padding(.bottom, 0)
+                        
+                        if alignment == .leading {
+                            Spacer()
+                        }
+                        
                     }
-                    Text(self.user == "shop" ? "Магазин" : "Вы")
-                        .foregroundColor(Color.init(hex: "BDBDBD"))
-                        .font(.footnote)
-                        .padding(.bottom, 0)
-                    
-                    if alignment == .leading {
-                        Spacer()
-                    }
-                    
                 }
                 
                 HStack {
@@ -51,6 +57,7 @@ struct Message: View {
                     
                     if (self.message.count == 0 && self.attachment.count > 0){
                         
+                        if ((self.attachment["image"]) != nil){
                         VStack(alignment: .leading) {
                             
                             URLImage(URL(string: self.attachment["image"]!)!) { proxy in
@@ -59,7 +66,7 @@ struct Message: View {
                                     .frame(width: proxy.size.width, height: proxy.size.height)
                                     .aspectRatio(contentMode: .fill)
                                     .cornerRadius(15)
-                                    .addBorder(message_color, width: 5, cornerRadius: 15)
+                                    .addBorder(message_color, width: 2, cornerRadius: 15)
                                     .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                                     .contextMenu {
                                         Button(action: {
@@ -71,6 +78,71 @@ struct Message: View {
                                     }
                             }
                             
+                        }
+                        }
+                        
+                        if ((self.attachment["data"]) != nil){
+                            if (self.attachment["data"] == "PHAsset"){
+                                VStack(alignment: .leading) {
+                                    
+                                    if (self.image_asset_loaded){
+                                    Image(uiImage: self.image)
+                                        .resizable()
+                                        .frame(width: self.image_asset_size.width, height: self.image_asset_size.height)
+                                        .aspectRatio(contentMode: .fill)
+                                        .cornerRadius(15)
+                                        .addBorder(message_color, width: 2, cornerRadius: 15)
+                                        .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                                        .contextMenu {
+                                            Button(action: {
+                                                
+                                            }) {
+                                                Text("Сохранить")
+                                                Image(systemName: "square.and.arrow.down")
+                                            }
+                                        }
+                                    }
+                                }.onAppear{
+                                    
+                                    DispatchQueue.global(qos: .utility).async {
+
+
+                                        let options = PHImageRequestOptions()
+                                        options.isSynchronous = true
+                                        options.deliveryMode = PHImageRequestOptionsDeliveryMode.opportunistic
+                                        options.isNetworkAccessAllowed = true
+                                        
+                                        manager.requestImage(for: self.image_asset!, targetSize: .init(), contentMode: .aspectFill, options: options) { (image, _) in
+                                            let compressed = UIImage(data: image!.jpeg(.lowest)!)
+
+                                            
+
+                                            
+                                            let size_aspect = image!.size
+                                            
+                                            let ratio = size_aspect.width / size_aspect.height;
+                                            var new_width = UIScreen.main.bounds.size.width / 1.7;
+                                            
+                                            if (size_aspect.height > size_aspect.width){
+                                                new_width = UIScreen.main.bounds.size.width / 2.4;
+                                            }
+                                            let new_height = new_width / ratio;
+
+                                            self.image_asset_size = CGSize(width: Int(new_width), height: Int(new_height))
+                                            
+
+                                            DispatchQueue.main.async {
+                                                self.image = compressed!
+                                                self.image_asset_loaded = true
+                                            }
+                                        }
+                                        
+
+                                        
+                                    }
+                                    
+                                }
+                            }
                         }
 
                     }else{

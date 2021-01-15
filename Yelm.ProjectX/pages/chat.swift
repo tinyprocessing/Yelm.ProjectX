@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-//"image" : "https://smart-questions.ru/wp-content/uploads/2016/11/ubjWmePYKD4.jpg"
-//https://images.pexels.com/photos/1407346/pexels-photo-1407346.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940
+
 
 struct Chat : View {
     
@@ -19,11 +18,7 @@ struct Chat : View {
     @ObservedObject var modal : ModalManager = GlobalModular
 
     
-    @State private var messages : [chat_message] = [
-        chat_message(id: 0, user: chat_user(id: 0, name: "user16", online: ""), text: "Добрый день, подскажите пожалуйста есть ли сыр в продаже головками?", time: "12:00", attachments: [:]),
-        chat_message(id: 1, user: chat_user(id: 1, name: "shop", online: ""), text: "Да, конечно!", time: "12:01", attachments: [:]),
-        chat_message(id: 3, user: chat_user(id: 1, name: "shop", online: ""), text: "", time: "12:04",
-                     attachments: ["image" : "https://avatars.mds.yandex.net/get-eda/3682162/00c405007ab3e1be279544a8eabd0673/1200x1200"])]
+   
     
     @ObservedObject var chat: chat = GlobalChat
     @ObservedObject var bottom: bottom = GlobalBottom
@@ -35,7 +30,7 @@ struct Chat : View {
     
     @available(iOS 14.0, *)
     private func scrollToLastMessage(proxy: ScrollViewProxy) {
-        if let lastMessage = self.messages.last { // 4
+        if let lastMessage = self.chat.messages.last { // 4
             withAnimation(.easeOut(duration: 0.1)) {
                 proxy.scrollTo(lastMessage.id, anchor: .bottom) // 5
             }
@@ -129,7 +124,7 @@ struct Chat : View {
                     if #available(iOS 14.0, *) {
                         ScrollViewReader { proxy in // 1
                             
-                            ForEach(self.messages) { message in
+                            ForEach(self.chat.messages, id: \.self) { message in
                                 if (message.user.name == UserDefaults.standard.string(forKey: "USER") ?? "user16"){
                                     Message(message: message.text,
                                             user: message.user.name,
@@ -137,7 +132,8 @@ struct Chat : View {
                                             attachment: message.attachments,
                                             alignment: .trailing,
                                             message_color: Color.theme,
-                                            message_text_color: .white)
+                                            message_text_color: .white,
+                                            image_asset: message.asset)
                                         .id(message.id) // 2
                                 }
                                 
@@ -177,7 +173,7 @@ struct Chat : View {
                                     }
                                 }
                             })
-                            .onChange(of: self.messages.count) { _ in // 3
+                            .onChange(of: self.chat.messages.count) { _ in // 3
                                 print("messages add")
                                 scrollToLastMessage(proxy: proxy)
                                 print(proxy)
@@ -196,7 +192,7 @@ struct Chat : View {
 
 
 
-                                ForEach(self.messages.reversed(), id: \.self){ message in
+                                ForEach(self.chat.messages.reversed(), id: \.self){ message in
 
                                     if (message.user.name == UserDefaults.standard.string(forKey: "USER") ?? "user16"){
                                         Message(message: message.text,
@@ -310,13 +306,13 @@ struct Chat : View {
                             let user_cache = UserDefaults.standard.string(forKey: "USER") ?? "user16"
                             var user = chat_user(id: 0, name: user_cache, online: "yes")
                             
-                            if (self.messages.count > 0){
-                                if (self.messages.last?.user.name == user_cache){
+                            if (self.chat.messages.count > 0){
+                                if (self.chat.messages.last?.user.name == user_cache){
                                     user = chat_user(id: 1, name: "shop", online: "yes")
                                 }
                             }
                             
-                            self.messages.append(chat_message(id: (self.messages.count+1),
+                            self.chat.messages.append(chat_message(id: (self.chat.messages.count+1),
                                                               user: user,
                                                               text: self.text,
                                                               time: time,
