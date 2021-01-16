@@ -45,7 +45,7 @@ struct News : View {
                
             }.frame(height: 110)
         }
-        .padding(.bottom, 15)
+        .padding(.bottom, 20)
         .onAppear{
             
         }
