@@ -346,6 +346,9 @@ struct Chat : View {
             
         }
         
+        .navigationBarTitle("hidden_layer")
+        .navigationBarHidden(self.nav_bar_hide)
+        
         .onAppear {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
