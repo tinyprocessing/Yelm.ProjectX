@@ -195,6 +195,9 @@ struct Home: View {
                     .frame(height: 50)
                     
                     ScrollView(.vertical, showsIndicators: false){
+                        
+                        News()
+                        
                         ForEach(self.items, id: \.self) { object in
                             ItemsViewLine(items: object.items, name: object.name)
                         }
