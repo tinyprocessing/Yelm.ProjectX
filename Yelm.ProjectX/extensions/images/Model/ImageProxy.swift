@@ -78,6 +78,27 @@ public extension ImageProxy {
     }
 }
 
+
+public extension ImageProxy {
+
+    var news: CGSize {
+        
+        
+        let size_aspect = uiImage.size
+        
+    
+        
+        let ratio = size_aspect.width / size_aspect.height;
+        let new_height : CGFloat = 110;
+        
+      
+        let new_width = new_height * ratio;
+
+        return CGSize(width: Int(new_width), height: Int(new_height))
+        
+    }
+}
+
 #endif
 
 
