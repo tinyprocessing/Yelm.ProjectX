@@ -43,10 +43,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     @objc func decline(_ sender: UITapGestureRecognizer? = nil) {
 //        print(sender?.location(in: sender?.view)
         let height = sender?.view?.hitTest(sender?.location(in: sender?.view) ?? CGPoint(x: 0, y: 0), with: nil)?.frame.height
-       
+     
         
         if (height != 35.0 && height != 13.0 && height != 22.0){
             UIApplication.shared.sendAction(#selector(self.resignFirstResponder), to:nil, from:nil, for:nil)
+            print("re decline")
+        }else{
+            print("decline")
         }
     }
 

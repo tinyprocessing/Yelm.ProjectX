@@ -89,13 +89,14 @@ struct Home: View {
                                 Button(action: {
 //                                    Open modal with locations
                                     
-                                    self.modal.newModal(position: .closed) {
-                                        ModalLocation()
-                                            .clipped()
-                                    }
-                                    
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [self] in
-                                        self.modal.openModal()
+                                        self.modal.newModal(position: .closed) {
+                                            ModalLocation()
+                                                .clipped()
+                                        }
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [self] in
+                                            self.modal.openModal()
+                                        }
                                     }
                                     
                                 }) {
@@ -165,21 +166,25 @@ struct Home: View {
                                         HStack{
                                             Image(systemName: "bubble.left").font(.system(size: 18, weight: .medium, design: .rounded))
                                         }
-                                        .overlay(
-                                            ZStack{
-                                                Circle()
-                                                    .foregroundColor(.red)
-                                                    .frame(width: 15, height: 15)
-                                                
-                                                Text("!")
-                                                    .foregroundColor(.white)
-                                                    .font(Font.system(size: 11))
-                                            }.offset(x: 12, y: -11)
-                                        )
+//                                        .overlay(
+//                                            ZStack{
+//                                                Circle()
+//                                                    .foregroundColor(.red)
+//                                                    .frame(width: 15, height: 15)
+//                                                
+//                                                Text("!")
+//                                                    .foregroundColor(.white)
+//                                                    .font(Font.system(size: 11))
+//                                            }
+//                                            .offset(x: 15, y: -11)
+//                                           
+//                                        )
+                                        
                                         
                                         
                                     }
                                 }.buttonStyle(ScaleButtonStyle())
+                              
                                 
                             }.frame(width: UIScreen.main.bounds.width-30)
                             

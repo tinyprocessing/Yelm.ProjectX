@@ -254,12 +254,9 @@ struct Chat : View {
                         Button(action: {
                             
                             
-                            self.modal.newModal(position: .closed) {
-                                ModalImages()
-                                    .clipped()
-                            }
+                         
                             
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [self] in
+                            DispatchQueue.main.asyncAfter(deadline: .now()) { [self] in
                                 self.modal.openModal()
                             }
                             
@@ -350,11 +347,23 @@ struct Chat : View {
         }
         
         .onAppear {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.modal.newModal(position: .closed) {
+                    ModalImages()
+                        .clipped()
+                }
+            }
+            
             self.nav_bar_hide = true
             self.bottom.hide = true
         }
         
         .onDisappear{
+            
+            self.modal.closeModal()
+            
+            
             self.bottom.hide = false
         }
     }
