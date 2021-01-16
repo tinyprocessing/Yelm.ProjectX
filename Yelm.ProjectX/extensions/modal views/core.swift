@@ -16,7 +16,7 @@ enum ModalState: CGFloat {
     func offsetFromTop() -> CGFloat {
         switch self {
         case .closed:
-            return UIScreen.main.bounds.height
+            return UIScreen.main.bounds.height + 200
         case .partiallyRevealed:
             return UIScreen.main.bounds.height * 1/4
         case .open:
@@ -67,7 +67,7 @@ class ModalManager: ObservableObject {
         modal.position = .closed
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [self] in
             withAnimation {
-                self.modal =  Modal(position: .closed, content: nil)
+//                self.modal =  Modal(position: .closed, content: nil)
             }
         }
     }
@@ -108,7 +108,7 @@ struct ModalView: View {
                         }
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [self] in
                             withAnimation {
-                                self.modal =  Modal(position: .closed, content: nil)
+//                                self.modal =  Modal(position: .closed, content: nil)
                             }
                         }
                         
@@ -151,11 +151,11 @@ struct ModalView: View {
             
             lowerStop = .closed
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [self] in
-                withAnimation {
-                    self.modal =  Modal(position: .closed, content: nil)
-                }
-            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [self] in
+//                withAnimation {
+//                    self.modal =  Modal(position: .closed, content: nil)
+//                }
+//            }
 
             
           

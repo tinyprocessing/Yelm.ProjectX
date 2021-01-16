@@ -304,15 +304,36 @@ struct ModalImages: View {
                                 
                                 HStack{
                                     HStack{
-                                        Image(systemName: "bolt.slash.fill")
-                                            .foregroundColor(Color.white)
-                                            .font(.system(size: 20, weight: .bold, design: .rounded))
+                                        
+//                                        Button(action: {
+//
+//                                            self.open_camera.toggle()
+//
+//                                        }) {
+//                                            Image(systemName: "bolt.slash.fill")
+//                                                .foregroundColor(Color.white)
+//                                                .font(.system(size: 20, weight: .bold, design: .rounded))
+//
+//                                        }.buttonStyle(ScaleButtonStyle())
+                                        
+                                       
                                         
                                         Spacer()
                                         
-                                        Image(systemName: "xmark")
-                                            .foregroundColor(Color.white)
-                                            .font(.system(size: 20, weight: .bold, design: .rounded))
+                                        
+                                        Button(action: {
+                                            
+                                            self.open_camera.toggle()
+                                            
+                                        }) {
+                                            Image(systemName: "xmark")
+                                                .foregroundColor(Color.white)
+                                                .font(.system(size: 20, weight: .bold, design: .rounded))
+                                            
+                                        }.buttonStyle(ScaleButtonStyle())
+
+                                        
+                                      
                                             
                                         
                                     }

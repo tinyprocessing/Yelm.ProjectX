@@ -18,6 +18,9 @@ struct Start: View {
     @ObservedObject var location : location_cache = GlobalLocation
     @ObservedObject var search : search = GlobalSearch
 
+    
+    @State var app_loaded : Bool = false
+    
     @State var nav_bar_hide: Bool = true
     @State var items : [items_main_cateroties] = []
     @State private var selection: String? = nil
@@ -34,8 +37,9 @@ struct Start: View {
                         EmptyView()
                     }
                     
-                    
+                    if (app_loaded){
                     Home(items: self.$items)
+                    }
 
                 }
                 
@@ -51,24 +55,24 @@ struct Start: View {
                     
                     
                     if (true){
-                        Button(action: {
-                            
-                            withAnimation{
-                                windows?.rootViewController =  UIHostingController(rootView: Start())
-                            }
-
-                        }) {
-                            HStack{
-                                Image(systemName: "house.fill").font(.system(size: 16, weight: .bold, design: .rounded))
-                              
-                            }
-                            .padding()
-                            .frame(height: 40)
-                            .background(Color.theme)
-                            .foregroundColor(.white)
-                            .clipShape(Circle())
-
-                        }.buttonStyle(ScaleButtonStyle())
+//                        Button(action: {
+//
+//                            withAnimation{
+//                                windows?.rootViewController =  UIHostingController(rootView: Start())
+//                            }
+//
+//                        }) {
+//                            HStack{
+//                                Image(systemName: "house.fill").font(.system(size: 16, weight: .bold, design: .rounded))
+//
+//                            }
+//                            .padding()
+//                            .frame(height: 40)
+//                            .background(Color.theme)
+//                            .foregroundColor(.white)
+//                            .clipShape(Circle())
+//
+//                        }.buttonStyle(ScaleButtonStyle())
                     }
                     
                   
@@ -106,6 +110,7 @@ struct Start: View {
             
         }.edgesIgnoringSafeArea(.bottom)
         ModalAnchorView()
+            
         }
       
         
@@ -120,6 +125,7 @@ struct Start: View {
                 ServerAPI.settings.debug = true
                 ServerAPI.start(platform: "5fd33466e17963.29052139", position: position) { (result) in
                     if (result == true){
+                        self.app_loaded = true
                         ServerAPI.settings.get_settings()
                         let user = UserDefaults.standard.string(forKey: "USER") ?? ""
                         
@@ -133,6 +139,7 @@ struct Start: View {
                         }
                         ServerAPI.items.get_items { (load, items) in
                             if (load){
+                               
                                 self.items = items
                             }
                         }
