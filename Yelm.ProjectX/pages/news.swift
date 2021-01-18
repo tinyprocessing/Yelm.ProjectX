@@ -28,7 +28,7 @@ struct News : View {
                     ForEach(self.news.news, id: \.self){ object in
                         NavigationLink(destination: NewsSingle(), tag: 12, selection:  $selection){
                             VStack{
-                            URLImage(URL(string: object.images)!) { proxy in
+                            URLImage(URL(string: object.thubnail)!) { proxy in
                                 proxy.image
                                     .resizable()
                                     .frame(width: proxy.news.width, height: proxy.news.height)
