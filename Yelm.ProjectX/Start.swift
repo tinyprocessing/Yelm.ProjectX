@@ -18,6 +18,8 @@ struct Start: View {
     @ObservedObject var location : location_cache = GlobalLocation
     @ObservedObject var search : search = GlobalSearch
 
+    @ObservedObject var news : news = GlobalNews
+
     
     @State var app_loaded : Bool = false
     
@@ -123,7 +125,7 @@ struct Start: View {
                 
                 let position = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
                 ServerAPI.settings.debug = true
-                ServerAPI.start(platform: "5fd33466e17963.29052139", position: position) { (result) in
+                ServerAPI.start(platform: "5f771d465f4191.76733056", position: position) { (result) in
                     if (result == true){
                         self.app_loaded = true
                         ServerAPI.settings.get_settings()
@@ -148,6 +150,14 @@ struct Start: View {
                             if (load){
                                 
                                 self.search.items = items
+                            }else{
+                                
+                            }
+                        }
+                        
+                        ServerAPI.news.get_news { (load, news) in
+                            if (load){
+                                self.news.news = news
                             }else{
                                 
                             }

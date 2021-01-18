@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 import SwiftUI
 import Photos
 
@@ -20,9 +21,9 @@ struct ModalImages: View {
     @State var grid : [images] = []
     @State var height : CGFloat = 150
     
-    @ObservedObject var realm: RealmLocations = GlobalRealmLocations
+    
     @ObservedObject var modal : ModalManager = GlobalModular
-    @ObservedObject var location : location_cache = GlobalLocation
+    
     
     
     @State var disabled = false
