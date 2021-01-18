@@ -41,7 +41,7 @@ struct HTMLStringView: UIViewRepresentable {
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             
-            let js = "document.getElementsByTagName('body')[0].style.color='#000000'; document.getElementsByTagName('img')[0].style.width='100%';"
+            let js = "document.getElementsByTagName('body')[0].style.color='#000000'; document.getElementsByTagName('img')[0].style.width='100%'; "
             webView.evaluateJavaScript(js) { (response, error) in
                 
                 
