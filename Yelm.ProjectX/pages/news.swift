@@ -11,7 +11,8 @@ import Yelm_Server
 
 struct News : View {
     
-    @State var news : [String] = ["https://www.delivery-club.ru/pcs/selections/img_5fd9ed6ec43e37.97408392_orig.jpg?resize=fit&width=2048&height=162&gravity=ce&out=webp", "https://www.delivery-club.ru/pcs/selections/img_5f6e03b6d12dc7.58964341_orig.jpg?resize=fit&width=2048&height=162&gravity=ce&out=webp", "https://www.delivery-club.ru/pcs/selections/img_5fd3485d763ae2.16057645_orig.jpg?resize=fit&width=2048&height=162&gravity=ce&out=webp", "https://www.delivery-club.ru/pcs/selections/img_5fc52afd906468.94679436_orig.jpg?resize=fit&width=2048&height=162&gravity=ce&out=webp"]
+    @ObservedObject var news : news = GlobalNews
+    @State var selection: Int? = nil
     
     var body: some View{
         VStack(spacing: 10){
@@ -24,9 +25,10 @@ struct News : View {
             
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing: 0){
-                    ForEach(self.news, id: \.self){ object in
-                        VStack{
-                            URLImage(URL(string: object)!) { proxy in
+                    ForEach(self.news.news, id: \.self){ object in
+                        NavigationLink(destination: EmptyView(), tag: 12, selection:  $selection){
+                            VStack{
+                            URLImage(URL(string: object.images[0])!) { proxy in
                                 proxy.image
                                     .resizable()
                                     .frame(width: proxy.news.width, height: proxy.news.height)
@@ -36,6 +38,12 @@ struct News : View {
                                   
                             }
                         }.padding(.trailing, 15)
+                        }.buttonStyle(ScaleButtonStyle())
+                        
+                        .simultaneousGesture(TapGesture().onEnded{
+                            let news = object
+                            self.news.news_single = news
+                        })
                         
                         
                     }

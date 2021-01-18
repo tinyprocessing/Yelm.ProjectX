@@ -51,7 +51,8 @@ struct ItemsViewLine: View {
                     
                     ForEach(self.items, id: \.self) { tag in
                         
-                        NavigationLink(destination: Item(), tag: 4, selection:  $selection){
+                        VStack{
+                            NavigationLink(destination: Item(), tag: 4, selection:  $selection){
                             
                             VStack(alignment: .leading, spacing: 0){
                                 
@@ -263,8 +264,9 @@ struct ItemsViewLine: View {
                             .padding(.bottom, 30)
                             
                         }.buttonStyle(ScaleButtonStyle())
-                        
-                        
+                        }.background(Color.white)
+
+                                            
                         .simultaneousGesture(TapGesture().onEnded{
                             let item = tag
                             self.item.item = item

@@ -13,6 +13,7 @@ var GlobalLocation: location_cache = location_cache()
 var GlobalNotification: notification = notification()
 var GlobalSearch: search = search()
 var GlobalItems: items = items()
+var GlobalNews: news = news()
 var GlobalBottom: bottom = bottom()
 var GlobalCart: cart = cart()
 
@@ -35,6 +36,12 @@ class cart: ObservableObject, Identifiable {
 class items: ObservableObject, Identifiable {
     var id : Int = 0
     @Published var item : items_structure = items_structure(id: 0)
+}
+
+class news: ObservableObject, Identifiable {
+    var id : Int = 0
+    @Published var news : [news_structure] = []
+    @Published var news_single : news_structure = news_structure(id: 0)
 }
 
 class search: ObservableObject, Identifiable {
