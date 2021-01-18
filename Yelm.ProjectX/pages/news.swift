@@ -26,9 +26,9 @@ struct News : View {
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing: 0){
                     ForEach(self.news.news, id: \.self){ object in
-                        NavigationLink(destination: EmptyView(), tag: 12, selection:  $selection){
+                        NavigationLink(destination: NewsSingle(), tag: 12, selection:  $selection){
                             VStack{
-                            URLImage(URL(string: object.images[0])!) { proxy in
+                            URLImage(URL(string: object.images)!) { proxy in
                                 proxy.image
                                     .resizable()
                                     .frame(width: proxy.news.width, height: proxy.news.height)

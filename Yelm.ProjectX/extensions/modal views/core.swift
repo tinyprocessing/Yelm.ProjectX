@@ -66,7 +66,7 @@ class ModalManager: ObservableObject {
     
     func closeModal() {
         modal.position = .closed
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             withAnimation {
 //                self.modal =  Modal(position: .closed, content: nil)
             }
@@ -107,7 +107,7 @@ struct ModalView: View {
                         withAnimation {
                             self.modal.position = .closed
                         }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) { [self] in
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                             withAnimation {
 //                                self.modal =  Modal(position: .closed, content: nil)
                             }

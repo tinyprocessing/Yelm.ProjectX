@@ -7,6 +7,7 @@
 
 import Foundation
 import Yelm_Server
+import UIKit
 
 var GlobalLoading: loading = loading()
 var GlobalLocation: location_cache = location_cache()
@@ -16,11 +17,18 @@ var GlobalItems: items = items()
 var GlobalNews: news = news()
 var GlobalBottom: bottom = bottom()
 var GlobalCart: cart = cart()
+var GlobalWebview: loading_webview = loading_webview()
 
 
 class bottom: ObservableObject, Identifiable {
     var id : Int = 0
     @Published var hide : Bool = false
+}
+
+
+class loading_webview: ObservableObject, Identifiable {
+    var id : Int = 0
+    @Published var height : CGFloat = 0.0
 }
 
 class loading: ObservableObject, Identifiable {
