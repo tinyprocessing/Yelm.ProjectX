@@ -220,7 +220,7 @@ struct ModalImages: View {
                                     let generator = UIImpactFeedbackGenerator(style: .soft)
                                     generator.impactOccurred()
                                     let user_cache = UserDefaults.standard.string(forKey: "USER") ?? "user16"
-                                    var user = chat_user(id: 0, name: user_cache, online: "yes")
+                                    let user = chat_user(id: 0, name: user_cache, online: "yes")
                                     
                                     
                                     for i in 0...self.selected.count-1{
@@ -389,7 +389,6 @@ func check_image(key: Int) -> Bool {
         return false
     }
     
-    return false
 }
 
 
