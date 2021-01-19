@@ -20,7 +20,7 @@ struct Subcategories : View {
     @ObservedObject var realm: RealmControl = GlobalRealm
     @State var selection: Int? = nil
     
-    
+    @State var name : String = ""
     
     
     @State var items : [items_main_cateroties] = []
@@ -54,7 +54,7 @@ struct Subcategories : View {
                     .padding(.trailing, 10)
                     .buttonStyle(ScaleButtonStyle())
                     
-                    Text("Товары")
+                    Text("\(self.name)")
                         .padding(.top, 10)
                         .font(.system(size: 28, weight: .semibold, design: .rounded))
                     
@@ -80,7 +80,7 @@ struct Subcategories : View {
                             Spacer()
                             
                             
-                            NavigationLink(destination: Subcategories(), tag: object.id, selection: $selection) {
+                            NavigationLink(destination: Subcategories(name: object.name), tag: object.id, selection: $selection) {
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(Color.white)
                                     .frame(width: 15, height: 15, alignment: .center)
