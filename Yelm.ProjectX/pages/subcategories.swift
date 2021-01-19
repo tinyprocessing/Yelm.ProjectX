@@ -179,12 +179,16 @@ struct Subcategories : View {
                                     Spacer()
                                 }
                                 
-                                Text(tag.title)
-                                    .frame(height: 50)
-                                    .font(.system(size: 14, weight: .regular, design: .rounded))
-                                    .lineSpacing(2)
-                                    .lineLimit(2)
-                                    .frame(alignment: .leading)
+                                VStack{
+                                Text("\(tag.title) ").font(.system(size: 14, weight: .regular, design: .rounded)) + Text("\(tag.quanity) \(tag.type)").foregroundColor(Color.gray).font(.system(size: 14, weight: .regular, design: .rounded))
+                                }.frame(height: 60)
+//                                Text(tag.title + " ")
+////                                    .frame(height: 60)
+//                                    .font(.system(size: 14, weight: .regular, design: .rounded))
+//                                    .lineSpacing(2)
+//                                    .lineLimit(2)
+//                                    .frame(alignment: .leading)
+//                                    + Text("100 г").foreground(Color.gray)
                                 
                                 HStack{
                                     
