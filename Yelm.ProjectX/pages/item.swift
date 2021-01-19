@@ -48,23 +48,21 @@ struct Item : View {
                             GeometryReader{reader in
                                 
                                 VStack{
-                                    
-                                    
-                                    URLImage(URL(string: self.item.item.thubnail)!) { proxy in
-                                        proxy.image
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            // default widht...
-                                            .frame(width: UIScreen.main.bounds.width+20, height: reader.frame(in: .global).minY > 0 ? CGFloat(Int(reader.frame(in: .global).minY + 245)) : 245)
-                                            // adjusting view postion when scrolls...
-                                            .offset(y: -reader.frame(in: .global).minY)
+                                    if (self.item.item.thubnail != ""){
+                                        
+                                        URLImage(URL(string: self.item.item.thubnail)!) { proxy in
+                                            proxy.image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                // default widht...
+                                                .frame(width: UIScreen.main.bounds.width+20, height: reader.frame(in: .global).minY > 0 ? CGFloat(Int(reader.frame(in: .global).minY + 245)) : 245)
+                                                // adjusting view postion when scrolls...
+                                                .offset(y: -reader.frame(in: .global).minY)
 
-                                        
-                                        
+                                            
+                                            
+                                        }
                                     }
-                                    
-                                    
-                                    
                                 }
                             }
                             // setting default height...

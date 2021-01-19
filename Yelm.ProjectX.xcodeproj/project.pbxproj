@@ -93,6 +93,7 @@
 		4CF5601525B5ADD60038A4CC /* news_single.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF5601425B5ADD60038A4CC /* news_single.swift */; };
 		4CF5601925B5AFA40038A4CC /* webview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF5601825B5AFA40038A4CC /* webview.swift */; };
 		4CF5601C25B7124F0038A4CC /* subcategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF5601B25B7124E0038A4CC /* subcategories.swift */; };
+		4CF5602125B716FF0038A4CC /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = 4CF5602025B716FF0038A4CC /* Grid */; };
 		A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */; };
 /* End PBXBuildFile section */
 
@@ -198,6 +199,7 @@
 				4CDE834B25A74F8F00F3453D /* Yelm.Logistics in Frameworks */,
 				4C70237825A74C1200A750D2 /* Yelm.Server in Frameworks */,
 				4CDE83D725A78DF500F3453D /* Realm in Frameworks */,
+				4CF5602125B716FF0038A4CC /* Grid in Frameworks */,
 				4CDE83D925A78DF500F3453D /* RealmSwift in Frameworks */,
 				4CDE834625A74ED700F3453D /* Yelm.Pay in Frameworks */,
 				A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */,
@@ -576,6 +578,7 @@
 				4CDE834A25A74F8F00F3453D /* Yelm.Logistics */,
 				4CDE83D625A78DF500F3453D /* Realm */,
 				4CDE83D825A78DF500F3453D /* RealmSwift */,
+				4CF5602025B716FF0038A4CC /* Grid */,
 			);
 			productName = Yelm.ProjectX;
 			productReference = 4C70235925A749BD00A750D2 /* Yelm.ProjectX.app */;
@@ -606,6 +609,7 @@
 			mainGroup = 4C70235025A749BD00A750D2;
 			packageReferences = (
 				4CDE83D525A78DF500F3453D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				4CF5601F25B716FF0038A4CC /* XCRemoteSwiftPackageReference "swiftui-grid" */,
 			);
 			productRefGroup = 4C70235A25A749BD00A750D2 /* Products */;
 			projectDirPath = "";
@@ -967,6 +971,14 @@
 				minimumVersion = 10.5.0;
 			};
 		};
+		4CF5601F25B716FF0038A4CC /* XCRemoteSwiftPackageReference "swiftui-grid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/spacenation/swiftui-grid.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -991,6 +1003,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4CDE83D525A78DF500F3453D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
+		};
+		4CF5602025B716FF0038A4CC /* Grid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4CF5601F25B716FF0038A4CC /* XCRemoteSwiftPackageReference "swiftui-grid" */;
+			productName = Grid;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
