@@ -28,7 +28,7 @@ struct ItemsViewLine: View {
                 Spacer()
                 
                 
-                NavigationLink(destination: EmptyView(), tag: 11, selection: $selection) {
+                NavigationLink(destination: Subcategories(), tag: 11, selection: $selection) {
                     Image(systemName: "chevron.right")
                         .foregroundColor(Color.white)
                         .frame(width: 15, height: 15, alignment: .center)
