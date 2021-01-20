@@ -14,6 +14,8 @@
 		4C70236625A749BF00A750D2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C70236525A749BF00A750D2 /* Preview Assets.xcassets */; };
 		4C70236925A749BF00A750D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C70236725A749BF00A750D2 /* LaunchScreen.storyboard */; };
 		4C70237825A74C1200A750D2 /* Yelm.Server in Frameworks */ = {isa = PBXBuildFile; productRef = 4C70237725A74C1200A750D2 /* Yelm.Server */; };
+		4CAA9F6D25B83B04005CEB96 /* subcategoies_grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAA9F6C25B83B04005CEB96 /* subcategoies_grid.swift */; };
+		4CAA9F7125B83D78005CEB96 /* subcategories_grid_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAA9F7025B83D78005CEB96 /* subcategories_grid_item.swift */; };
 		4CDE834625A74ED700F3453D /* Yelm.Pay in Frameworks */ = {isa = PBXBuildFile; productRef = 4CDE834525A74ED700F3453D /* Yelm.Pay */; };
 		4CDE834B25A74F8F00F3453D /* Yelm.Logistics in Frameworks */ = {isa = PBXBuildFile; productRef = 4CDE834A25A74F8F00F3453D /* Yelm.Logistics */; };
 		4CDE835C25A788DD00F3453D /* items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE835B25A788DD00F3453D /* items.swift */; };
@@ -108,6 +110,8 @@
 		4C70236825A749BF00A750D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C70236A25A749BF00A750D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C70237425A74BEE00A750D2 /* Yelm.Server */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Server; path = ../../../Yelm.Server; sourceTree = "<group>"; };
+		4CAA9F6C25B83B04005CEB96 /* subcategoies_grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subcategoies_grid.swift; sourceTree = "<group>"; };
+		4CAA9F7025B83D78005CEB96 /* subcategories_grid_item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subcategories_grid_item.swift; sourceTree = "<group>"; };
 		4CDE834325A74EBE00F3453D /* Yelm.Pay */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Pay; path = ../../../Yelm.Pay; sourceTree = "<group>"; };
 		4CDE834825A74F8800F3453D /* Yelm.Logistics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Logistics; path = ../../../Yelm.Logistics; sourceTree = "<group>"; };
 		4CDE835B25A788DD00F3453D /* items.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = items.swift; sourceTree = "<group>"; };
@@ -324,6 +328,8 @@
 				4CF55FCE25B2F5270038A4CC /* news.swift */,
 				4CF5601425B5ADD60038A4CC /* news_single.swift */,
 				4CF5601B25B7124E0038A4CC /* subcategories.swift */,
+				4CAA9F6C25B83B04005CEB96 /* subcategoies_grid.swift */,
+				4CAA9F7025B83D78005CEB96 /* subcategories_grid_item.swift */,
 				4CDE842825A9E33900F3453D /* cart */,
 			);
 			path = pages;
@@ -739,6 +745,7 @@
 				4CDE836025A7899E00F3453D /* blur.swift in Sources */,
 				4CDE83AC25A78A3F00F3453D /* CGImage+Extensions.swift in Sources */,
 				4CDE83AA25A78A3F00F3453D /* ImageDownloadHandler.swift in Sources */,
+				4CAA9F7125B83D78005CEB96 /* subcategories_grid_item.swift in Sources */,
 				4CDE83C925A78A4D00F3453D /* CircleProgressView.swift in Sources */,
 				4CDE842225A9E10300F3453D /* cart.swift in Sources */,
 				4CDE841F25A8AA5A00F3453D /* item.swift in Sources */,
@@ -758,6 +765,7 @@
 				4CDE841825A8785100F3453D /* view.swift in Sources */,
 				4CDE83AD25A78A3F00F3453D /* Log.swift in Sources */,
 				4CDE83C525A78A4D00F3453D /* AnimatedImageView.swift in Sources */,
+				4CAA9F6D25B83B04005CEB96 /* subcategoies_grid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
