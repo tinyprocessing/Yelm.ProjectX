@@ -77,23 +77,24 @@ struct Subcategories : View {
                         HStack(alignment: .center) {
                             Text(object.name)
                                 .font(.system(size: 26, weight: .bold, design: .rounded))
+                            if (object.items.filter{$0.discount_present != "-0%"}.count > 0){
+
+                            Text("%")
+                                .foregroundColor(Color.white)
+                                .frame(width: 16, height: 16, alignment: .center)
+                                .padding([.top, .leading, .bottom, .trailing], 5)
+                                .font(.system(size: 12, weight: .bold, design: .rounded))
+                                .background(Color.green)
+                                .clipShape(Circle())
+                                .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
+                                .shadow(color: .dropLight, radius: 15, x: -10, y: -10)
+                            }
+                            
                             Spacer()
                             
                             
-                            NavigationLink(destination: Subcategories(name: object.name), tag: object.id, selection: $selection) {
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(Color.white)
-                                    .frame(width: 15, height: 15, alignment: .center)
-                                    .padding(7)
-                                    
-                                    .font(.system(size: 12, weight: .bold, design: .rounded))
-                                    
-                                    .background(Color.theme)
-                                    .clipShape(Circle())
-                            }.buttonStyle(ScaleButtonStyle())
-                            
-                            
                         }.frame(width: UIScreen.main.bounds.width-30)
+                        .padding(.bottom, 15)
                         
                         
                         Grid(object.items, id: \.self) { tag in
@@ -106,7 +107,7 @@ struct Subcategories : View {
                                     URLImage(URL(string: tag.thubnail)!) { proxy in
                                         proxy.image
                                             .resizable()
-                                            .frame(width: (UIScreen.main.bounds.width-60)/2, height: (UIScreen.main.bounds.width-60)/2)
+                                            .frame(width: (UIScreen.main.bounds.width-40)/2, height: (UIScreen.main.bounds.width-40)/2)
                                             .cornerRadius(20)
                                     }
                                     .overlay(
@@ -176,19 +177,15 @@ struct Subcategories : View {
                                     }
                                     
                                 }
-                                    Spacer()
+//                                    Spacer()
                                 }
                                 
                                 VStack{
                                 Text("\(tag.title) ").font(.system(size: 14, weight: .regular, design: .rounded)) + Text("\(tag.quanity) \(tag.type)").foregroundColor(Color.gray).font(.system(size: 14, weight: .regular, design: .rounded))
-                                }.frame(height: 60)
-//                                Text(tag.title + " ")
-////                                    .frame(height: 60)
-//                                    .font(.system(size: 14, weight: .regular, design: .rounded))
-//                                    .lineSpacing(2)
-//                                    .lineLimit(2)
-//                                    .frame(alignment: .leading)
-//                                    + Text("100 г").foreground(Color.gray)
+                                }
+                                .frame(height: 60)
+                                .lineSpacing(2)
+
                                 
                                 HStack{
                                     
@@ -207,7 +204,7 @@ struct Subcategories : View {
                                                 
                                                 Rectangle()
                                                     .fill(Color.theme)
-                                                    .frame(width: 16, height: 30)
+                                                    .frame(width: 14, height: 26)
                                                     .overlay(
                                                         Image(systemName: "minus")
                                                             .font(.system(size: 16, weight: .medium, design: .rounded))
@@ -229,7 +226,7 @@ struct Subcategories : View {
                                         Text("\(tag.discount) ₽")
                                             .lineLimit(1)
                                             .foregroundColor(.white)
-                                            .font(.system(size: 16, weight: .medium, design: .rounded))
+                                            .font(.system(size: 14, weight: .medium, design: .rounded))
                                             .padding([.top, .bottom], 7)
                                             .background(Color.theme)
                                             .cornerRadius(20)
@@ -264,7 +261,7 @@ struct Subcategories : View {
                                             
                                             Rectangle()
                                                 .fill(Color.theme)
-                                                .frame(width: 16, height: 30)
+                                                .frame(width: 14, height: 26)
                                                 .overlay(
                                                     Image(systemName: "plus")
                                                         .font(.system(size: 16, weight: .medium, design: .rounded))
@@ -311,6 +308,7 @@ struct Subcategories : View {
                                 .frame(height: 245)
                                 .padding(.top, 15)
                                 .padding(.bottom, 30)
+//                                .background(Color.red)
                             }
                             .buttonStyle(ScaleButtonStyle())
                             .simultaneousGesture(TapGesture().onEnded{
@@ -322,7 +320,7 @@ struct Subcategories : View {
                             
                         }.gridStyle(
                             //.frame(width: 180, height: 245)
-                            ModularGridStyle(columns: 2, rows: .fixed(265))
+                            ModularGridStyle(columns: 2, rows: .fixed(275))
                         )
                     }
                     
