@@ -141,7 +141,7 @@ struct ModalLocation: View {
                         }) {
                             Image(systemName: "plus")
                                 .font(.system(size: 25, weight: .medium, design: .rounded))
-                                .foregroundColor(.blue)
+                                .foregroundColor(.theme)
                             Text("Добавить новый")
                            
                         }
@@ -188,7 +188,7 @@ struct ModalLocation: View {
                         }
                             .padding(.horizontal)
                             .padding(.vertical, 10)
-                            .background(Color.blue)
+                            .background(Color.theme)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }.buttonStyle(ScaleButtonStyle())

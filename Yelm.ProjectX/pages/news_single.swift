@@ -179,7 +179,7 @@ struct NewsSingle : View {
                                 
                                 .font(.system(size: 15, weight: .bold, design: .rounded))
                                 
-                                .background(Color.blue)
+                                .background(Color.theme)
                                 .clipShape(Circle())
                             
                         }
@@ -217,7 +217,7 @@ struct NewsSingle : View {
                                 
                                 .font(.system(size: 15, weight: .bold, design: .rounded))
                                 
-                                .background(Color.blue)
+                                .background(Color.theme)
                                 .clipShape(Circle())
                             
                         }
