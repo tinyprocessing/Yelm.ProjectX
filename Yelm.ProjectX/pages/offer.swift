@@ -23,7 +23,7 @@ struct Offer: View {
     
     
     init() {
-        UISegmentedControl.appearance().selectedSegmentTintColor = .systemBlue
+        UISegmentedControl.appearance().selectedSegmentTintColor = Color.theme.uiColor()
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
     }
@@ -66,7 +66,7 @@ struct Offer: View {
 
                                     .font(.system(size: 15, weight: .bold, design: .rounded))
 
-                                    .background(Color.blue)
+                                    .background(Color.theme)
                                     .clipShape(Circle())
 
                             }
@@ -125,7 +125,7 @@ struct Offer: View {
                                                 }) {
                                                     
                                                     Rectangle()
-                                                        .fill(Color.blue)
+                                                        .fill(Color.theme)
                                                         .frame(width: 50)
                                                         .clipShape(CustomShape(corner: [.topRight, .bottomRight], radii: 8))
                                                         .overlay(
@@ -253,7 +253,7 @@ struct Offer: View {
                             
                             Text("720 руб")
                                 .font(.system(size: 16, weight: .medium, design: .rounded))
-                                .foregroundColor(Color.blue)
+                                .foregroundColor(Color.theme)
                         }.padding(.bottom , 5)
                         
                         
@@ -279,7 +279,7 @@ struct Offer: View {
                             
                             Text("-86 руб")
                                 .font(.system(size: 16, weight: .medium, design: .rounded))
-                                .foregroundColor(Color.blue)
+                                .foregroundColor(Color.theme)
                         }.padding(.bottom , 8)
                     }
                     
@@ -323,7 +323,7 @@ struct Offer: View {
                     VStack(spacing: 5){
                         Text("\(String(format:"%.2f", self.realm.price)) ₽")
                             .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundColor(.blue)
+                            .foregroundColor(.theme)
                         Text("Итого")
                             .font(.system(size: 12, weight: .semibold, design: .rounded))
                             .foregroundColor(.secondary)
@@ -344,7 +344,7 @@ struct Offer: View {
                         }
                             .padding(.horizontal)
                             .padding(.vertical, 10)
-                            .background(Color.blue)
+                            .background(Color.theme)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                          

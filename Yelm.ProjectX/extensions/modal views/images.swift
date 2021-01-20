@@ -249,7 +249,7 @@ struct ModalImages: View {
                                     }
                                     .padding(.horizontal)
                                     .padding(.vertical, 10)
-                                    .background(Color.blue)
+                                    .background(Color.theme)
                                     .foregroundColor(.white)
                                     .cornerRadius(10)
                                 }.buttonStyle(ScaleButtonStyle())

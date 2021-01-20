@@ -106,7 +106,7 @@ struct MapLocations: View {
                             }
                                 .frame(width: 15, height: 15)
                                 .padding()
-                                .background(Color.blue)
+                                .background(Color.theme)
                                 .clipShape(Circle())
                                
                         }.buttonStyle(ScaleButtonStyle())
@@ -149,7 +149,7 @@ struct MapLocations: View {
                         }
                             .padding(.horizontal)
                             .padding(.vertical, 10)
-                            .background(Color.blue)
+                            .background(Color.theme)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }.buttonStyle(ScaleButtonStyle())

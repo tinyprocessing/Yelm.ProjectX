@@ -43,7 +43,7 @@ struct Cart: View {
                                     
                                     .font(.system(size: 15, weight: .bold, design: .rounded))
                                     
-                                    .background(Color.blue)
+                                    .background(Color.theme)
                                     .clipShape(Circle())
                                 
                             }
@@ -130,7 +130,7 @@ struct Cart: View {
                                 VStack(alignment: .trailing){
                                     Text("150 ₽")
                                         .fontWeight(.semibold)
-                                        .foregroundColor(.blue)
+                                        .foregroundColor(.theme)
                                     
                                 } .padding(.horizontal, 10)
                                 
@@ -155,7 +155,7 @@ struct Cart: View {
                         VStack(spacing: 5){
                             Text("\(String(format:"%.2f", self.realm.price)) ₽")
                                 .font(.system(size: 20, weight: .bold, design: .rounded))
-                                .foregroundColor(.blue)
+                                .foregroundColor(.theme)
                             Text("15-20 мин")
                                 .font(.system(size: 12, weight: .semibold, design: .rounded))
                                 .foregroundColor(.secondary)
@@ -172,7 +172,7 @@ struct Cart: View {
                             }
                             .padding(.horizontal)
                             .padding(.vertical, 10)
-                            .background(Color.blue)
+                            .background(Color.theme)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                             

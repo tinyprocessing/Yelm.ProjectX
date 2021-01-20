@@ -58,7 +58,7 @@ struct CartItem: View {
 
                                 .font(.system(size: 12, weight: .bold, design: .rounded))
 
-                                .background(Color.blue)
+                                .background(Color.theme)
                                 .clipShape(Circle())
 
                         }
@@ -85,7 +85,7 @@ struct CartItem: View {
 
                                 .font(.system(size: 12, weight: .bold, design: .rounded))
 
-                                .background(Color.blue)
+                                .background(Color.theme)
                                 .clipShape(Circle())
 
                         }
@@ -103,7 +103,7 @@ struct CartItem: View {
                 VStack(alignment: .trailing, spacing: 5){
                     Text("\(String(format:"%.2f", price_float)) ₽")
                         .fontWeight(.semibold)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.theme)
                        
                     
                     Text("\(quanity) \(type) ")

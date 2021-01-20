@@ -300,7 +300,7 @@ struct Item : View {
 
                                     .font(.system(size: 15, weight: .bold, design: .rounded))
 
-                                    .background(Color.blue)
+                                    .background(Color.theme)
                                     .clipShape(Circle())
 
                             }
@@ -338,7 +338,7 @@ struct Item : View {
 
                                     .font(.system(size: 15, weight: .bold, design: .rounded))
 
-                                    .background(Color.blue)
+                                    .background(Color.theme)
                                     .clipShape(Circle())
 
                             }
@@ -362,7 +362,7 @@ struct Item : View {
                     VStack(spacing: 5){
                         Text("\(self.item.item.discount) ₽")
                             .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundColor(.blue)
+                            .foregroundColor(.theme)
                         Text("\(self.item.item.quanity) \(self.item.item.type)")
                             .font(.system(size: 12, weight: .semibold, design: .rounded))
                             .foregroundColor(.secondary)
@@ -400,7 +400,7 @@ struct Item : View {
                             }
                             .padding(.horizontal)
                             .padding(.vertical, 10)
-                            .background(Color.blue)
+                            .background(Color.theme)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                         }.buttonStyle(ScaleButtonStyle())
@@ -423,7 +423,7 @@ struct Item : View {
                                 }) {
 
                                     Rectangle()
-                                        .fill(Color.blue)
+                                        .fill(Color.theme)
                                         .frame(width: 20, height: 20)
                                         .overlay(
                                             Image(systemName: "minus")
@@ -448,7 +448,7 @@ struct Item : View {
                                 .foregroundColor(.white)
                                 .font(.system(size: 20, weight: .medium, design: .rounded))
                                 .padding([.top, .bottom], 7)
-                                .background(Color.blue)
+                                .background(Color.theme)
                                 .fixedSize()
                                 .padding(.horizontal, 15)
 
@@ -470,7 +470,7 @@ struct Item : View {
                             }) {
 
                                 Rectangle()
-                                    .fill(Color.blue)
+                                    .fill(Color.theme)
                                     .frame(width: 20, height: 20)
                                     .overlay(
                                         Image(systemName: "plus")
@@ -484,7 +484,7 @@ struct Item : View {
                             .buttonStyle(PlainButtonStyle())
 
                         }
-                        .background(Color.blue)
+                        .background(Color.theme)
                         .cornerRadius(10)
 
 
