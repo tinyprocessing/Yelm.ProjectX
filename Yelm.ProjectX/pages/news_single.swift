@@ -8,27 +8,29 @@
 import Foundation
 import SwiftUI
 import Yelm_Server
+import Grid
 
 struct NewsSingle : View {
     
-    @ObservedObject var bottom: bottom = GlobalBottom
-    @ObservedObject var news: news = GlobalNews
+    
     @State var nav_bar_hide: Bool = true
     @State var time = Timer.publish(every: 0.1, on: .current, in: .tracking).autoconnect()
-    
-    @ObservedObject var status: loading_webview = GlobalWebview
-    @ObservedObject var realm: RealmControl = GlobalRealm
-    
-    
-    
-    
+    @State var items : [items_structure] = []
+    @State var selection: Int? = nil
     @State var color = 0
     @State var height = UIScreen.main.bounds.height
     @State var width = UIScreen.main.bounds.width
+    @State var show : Float = 0.0
     
+    @ObservedObject var bottom: bottom = GlobalBottom
+    @ObservedObject var news: news = GlobalNews
+    @ObservedObject var item: items = GlobalItems
+    @ObservedObject var status: loading_webview = GlobalWebview
+    @ObservedObject var realm: RealmControl = GlobalRealm
+
     @Environment(\.presentationMode) var presentation
     
-    @State var show : Float = 0.0
+  
     
     
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
@@ -123,18 +125,270 @@ struct NewsSingle : View {
                                             
                                             
                                             HTMLStringView(htmlContent: self.news.news_single.description)
-                                                .frame(height: self.status.height+(UIScreen.main.bounds.height-self.status.height))
+                                                .frame(height: self.status.height)
                                                 .padding(.horizontal, 16)
                                                 .padding(.top, 5)
+//                                                .background(Color.red)
                                             
-//                                            Text(self.news.news_single.description)
-//                                                .foregroundColor(Color.secondary)
-//                                                .font(.system(size: 16, weight: .medium, design: .rounded))
-//                                                .padding(.horizontal, 20)
-//                                                .padding(.top, 5)
                                             
                                         }
                                         
+                                        
+                                        HStack {
+                                            
+                                            
+                                            Text("Товары: ")
+                                                .font(.system(size: 26, weight: .bold, design: .rounded))
+                                            
+                                            
+                                            Spacer()
+                                            
+                                            
+                                            
+                                        }
+                                        .padding(.horizontal, 20)
+                                     
+                                        
+                                        
+                                        ScrollView(.horizontal, showsIndicators: false){
+                                            
+                                            HStack{
+                                                
+                                                ForEach(self.items, id: \.self) { tag in
+                                                    
+                                                    VStack{
+                                                        NavigationLink(destination: Item(), tag: 4, selection:  $selection){
+                                                        
+                                                        VStack(alignment: .leading, spacing: 0){
+                                                            
+                                                            ZStack(alignment: .top){
+                                                                URLImage(URL(string: tag.thubnail)!) { proxy in
+                                                                    proxy.image
+                                                                        .resizable()
+                                                                        .frame(width: 180, height: 180)
+                                                                        .cornerRadius(20)
+                                                                }
+                                                                .overlay(
+                                                                    Rectangle()
+                                                                        .fill(Color.black)
+                                                                        .cornerRadius(20)
+                                                                        .opacity( self.realm.get_item_access(ID: tag.id) ? 0.3 : 0)
+                                                                        .overlay(
+                                                                            
+                                                                            VStack{
+                                                                                if (self.realm.get_item_access(ID: tag.id)){
+                                                                                    Text(String(self.realm.get_items_count(ID: tag.id)))
+                                                                                        .font(.system(size: 40, weight: .bold, design: .rounded))
+                                                                                        .foregroundColor(.white)
+                                                                                        .frame(width: 100, height: 50)
+                                                                                    
+                                                                                }
+                                                                                
+                                                                            }
+                                                                        )
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                    
+                                                                )
+                                                                HStack(spacing: 0){
+                                                                    
+                                                                    Spacer()
+                                                                    
+                                                                    HStack{
+                                                                        
+                                                                        if (tag.action.contains("1+1")){
+                                                                            VStack{
+                                                                                Text("1+1")
+                                                                                    .font(.system(size: 12, weight: .medium, design: .rounded))
+                                                                                    .padding(5)
+                                                                                    .padding(.horizontal, 10)
+                                                                                    .foregroundColor(.white)
+                                                                            }
+                                                                            .background(Color.orange)
+                                                                            .cornerRadius(20)
+                                                                            .padding(.top, 7)
+                                                                            .padding(.trailing, 5)
+                                                                        }
+                                                                        
+                                                                    }
+                                                                    
+                                                                    HStack{
+                                                                        
+                                                                        if (tag.discount_present != "-0%"){
+                                                                            
+                                                                            VStack{
+                                                                                Text("\(tag.discount_present)")
+                                                                                    .font(.system(size: 12, weight: .medium, design: .rounded))
+                                                                                    .padding(5)
+                                                                                    .padding(.horizontal, 10)
+                                                                                    .foregroundColor(.white)
+                                                                            }
+                                                                            .background(Color.green)
+                                                                            .cornerRadius(20)
+                                                                            .padding(.top, 7)
+                                                                            .padding(.trailing, 7)
+                                                                            
+                                                                        }
+                                                                    }
+                                                                }
+                                                                
+                                                            }
+                                                            
+                                                            Text(tag.title)
+                                                                .frame(height: 50)
+                                                                .font(.system(size: 14, weight: .regular, design: .rounded))
+                                                                .lineSpacing(2)
+                                                                .lineLimit(2)
+                                                                .frame(alignment: .leading)
+                                                            
+                                                            HStack{
+                                                                
+                                                                HStack(spacing: 0){
+                                                                    
+                                                                    if (self.realm.get_item_access(ID: tag.id)){
+                                                                        
+                                                                        
+                                                                        Button(action: {
+                                                                            
+                                                                            
+                                                                            self.realm.post_cart(ID: tag.id, method: "decrement")
+                                                                            
+                                                                            
+                                                                        }) {
+                                                                            
+                                                                            Rectangle()
+                                                                                .fill(Color.theme)
+                                                                                .frame(width: 16, height: 30)
+                                                                                .overlay(
+                                                                                    Image(systemName: "minus")
+                                                                                        .font(.system(size: 16, weight: .medium, design: .rounded))
+                                                                                        .foregroundColor(.white)
+                                                                                )
+                                                                            
+                                                                            
+                                                                            
+                                                                            
+                                                                        }
+                                                                        
+                                                                        .padding(.leading, 8)
+                                                                        .padding(.trailing, 5)
+                                                                        .buttonStyle(PlainButtonStyle())
+                                                                        
+                                                                    }
+                                                                    
+                                                                    
+                                                                    Text("\(tag.discount) ₽")
+                                                                        .lineLimit(1)
+                                                                        .foregroundColor(.white)
+                                                                        .font(.system(size: 16, weight: .medium, design: .rounded))
+                                                                        .padding([.top, .bottom], 7)
+                                                                        .background(Color.theme)
+                                                                        .cornerRadius(20)
+                                                                        .fixedSize()
+                                                                        .padding(.leading, self.realm.get_item_access(ID: tag.id) ? 0 : 12)
+                                                                    
+                                                                    
+                                                                    Button(action: {
+                                                                        
+                                                                        
+                                                                        
+                                                                        if (self.realm.get_item_access(ID: tag.id) == false) {
+                                                                            
+                                                                            
+                                                                            self.realm.objectWillChange.send()
+                                                                            self.realm.create_item_cart(ID: tag.id, Title: tag.title, Price: tag.price_float, PriceItem: tag.price_float, Count: 1, Thumbnail: tag.thubnail, ItemType: tag.type, Quantity: tag.quanity, CanIncrement: "1", Discount: tag.discount_value)
+                                                                            
+                                                                            
+                                                                            self.realm.objectWillChange.send()
+                                                                            
+                                                                            
+                                                                            let generator = UIImpactFeedbackGenerator(style: .soft)
+                                                                            generator.impactOccurred()
+                                                                        }else{
+                                                                            self.realm.post_cart(ID: tag.id, method: "increment")
+                                                                        }
+                                                                        
+                                                                        
+                                                                        
+                                                                        
+                                                                    }) {
+                                                                        
+                                                                        Rectangle()
+                                                                            .fill(Color.theme)
+                                                                            .frame(width: 16, height: 30)
+                                                                            .overlay(
+                                                                                Image(systemName: "plus")
+                                                                                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                                                                                    .foregroundColor(.white)
+                                                                            )
+                                                                        
+                                                                    }
+                                                                    .padding(.trailing, 8)
+                                                                    .padding(.leading, 5)
+                                                                    .buttonStyle(PlainButtonStyle())
+                                                                    
+                                                                }
+                                                                .background(Color.theme)
+                                                                .cornerRadius(20)
+                                                                
+                                                                Spacer()
+                                                                
+                                                                VStack{
+                                                                    
+                                                                    if (Float(tag.discount) != tag.price_float){
+                                                                        
+                                                                        Text("\(String(format:"%.2f", tag.price_float)) ₽")
+                                                                            .strikethrough()
+                                                                            .lineLimit(1)
+                                                                            .foregroundColor(.gray)
+                                                                            .font(.system(size: 12, weight: .medium, design: .rounded))
+                                                                    }
+                                                                    
+                                                                    
+                                                                    
+                                                                    Text("\(tag.quanity) \(tag.type)")
+                                                                        .lineLimit(1)
+                                                                        .foregroundColor(.gray)
+                                                                        .font(.system(size: 12, weight: .medium, design: .rounded))
+                                                                }
+                                                                
+                                                                
+                                                                
+                                                            }
+                                                            
+                                                            Spacer()
+                                                            
+                                                        }
+                                                        
+                                                        .frame(width: 180, height: 245)
+                                                        
+                                                        .padding(.leading, 20)
+                                                        .padding(.top, 15)
+                                                        .padding(.bottom, 30)
+                                                        
+                                                    }.buttonStyle(ScaleButtonStyle())
+                                                    }.background(Color.white)
+
+                                                                        
+                                                    .simultaneousGesture(TapGesture().onEnded{
+                                                        let item = tag
+                                                        self.item.item = item
+                                                    })
+                                                    
+                                                    
+                                                    
+                                                    
+                                                    
+                                                }
+                                                
+                                                
+                                                
+                                                Spacer()
+                                            }
+                                            
+                                        }
                                         
                                         
                                         
@@ -153,8 +407,8 @@ struct NewsSingle : View {
                             }
                             .padding(.vertical)
                             .background(Color.white)
-                            
-                            .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 40))
+                            .cornerRadius(40)
+//                            .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 40))
                             
                         } .background(Color.white)
                     }
@@ -249,6 +503,13 @@ struct NewsSingle : View {
         .onAppear {
             self.bottom.hide = true
             self.nav_bar_hide = true
+            print("id: \(self.news.news_single.id)")
+            ServerAPI.news.get_news_items(id: self.news.news_single.id) { (load, items) in
+                if (load){
+                    self.items = items
+                    print(items)
+                }
+            }
         }
         
         .onDisappear{
