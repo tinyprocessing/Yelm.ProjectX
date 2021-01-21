@@ -30,7 +30,7 @@ struct ItemsViewLine: View {
                 
                 NavigationLink(destination: Subcategories(name: self.name), tag: 11, selection: $selection) {
                     Image(systemName: "chevron.right")
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.theme_foreground)
                         .frame(width: 15, height: 15, alignment: .center)
                         .padding(7)
                         
@@ -159,7 +159,7 @@ struct ItemsViewLine: View {
                                                     .overlay(
                                                         Image(systemName: "minus")
                                                             .font(.system(size: 16, weight: .medium, design: .rounded))
-                                                            .foregroundColor(.white)
+                                                            .foregroundColor(.theme_foreground)
                                                     )
                                                 
                                                 
@@ -176,7 +176,7 @@ struct ItemsViewLine: View {
                                         
                                         Text("\(tag.discount) ₽")
                                             .lineLimit(1)
-                                            .foregroundColor(.white)
+                                            .foregroundColor(.theme_foreground)
                                             .font(.system(size: 16, weight: .medium, design: .rounded))
                                             .padding([.top, .bottom], 7)
                                             .background(Color.theme)
@@ -216,7 +216,7 @@ struct ItemsViewLine: View {
                                                 .overlay(
                                                     Image(systemName: "plus")
                                                         .font(.system(size: 16, weight: .medium, design: .rounded))
-                                                        .foregroundColor(.white)
+                                                        .foregroundColor(.theme_foreground)
                                                 )
                                             
                                         }

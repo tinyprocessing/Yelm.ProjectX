@@ -143,6 +143,7 @@ struct ModalLocation: View {
                                 .font(.system(size: 25, weight: .medium, design: .rounded))
                                 .foregroundColor(.theme)
                             Text("Добавить новый")
+                                .foregroundColor(.black)
                            
                         }
                         
@@ -189,7 +190,7 @@ struct ModalLocation: View {
                             .padding(.horizontal)
                             .padding(.vertical, 10)
                             .background(Color.theme)
-                            .foregroundColor(.white)
+                            .foregroundColor(.theme_foreground)
                             .cornerRadius(10)
                     }.buttonStyle(ScaleButtonStyle())
                    

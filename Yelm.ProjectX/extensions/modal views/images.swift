@@ -250,7 +250,7 @@ struct ModalImages: View {
                                     .padding(.horizontal)
                                     .padding(.vertical, 10)
                                     .background(Color.theme)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.theme_foreground)
                                     .cornerRadius(10)
                                 }.buttonStyle(ScaleButtonStyle())
                                 
@@ -328,7 +328,7 @@ struct ModalImages: View {
                                             
                                         }) {
                                             Image(systemName: "xmark")
-                                                .foregroundColor(Color.white)
+                                                .foregroundColor(Color.theme_foreground)
                                                 .font(.system(size: 20, weight: .bold, design: .rounded))
                                             
                                         }.buttonStyle(ScaleButtonStyle())

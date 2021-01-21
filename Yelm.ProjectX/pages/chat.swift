@@ -59,7 +59,7 @@ struct Chat : View {
                         }) {
                             
                             Image(systemName: "arrow.backward")
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color.theme_foreground)
                                 .frame(width: 15, height: 15, alignment: .center)
                                 .padding([.top, .leading, .bottom, .trailing], 10)
                                 
@@ -95,7 +95,7 @@ struct Chat : View {
                         }) {
                             
                             Image(systemName: "gear")
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color.theme_foreground)
                                 .frame(width: 18, height: 18, alignment: .center)
                                 .padding(5)
                                 .font(.system(size: 16, weight: .bold, design: .rounded))

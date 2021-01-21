@@ -94,7 +94,7 @@ struct Start: View {
                             .padding()
                             .frame(height: 40)
                             .background(Color.theme)
-                            .foregroundColor(.white)
+                            .foregroundColor(.theme_foreground)
                             .cornerRadius(20)
 
                         }.buttonStyle(ScaleButtonStyle())

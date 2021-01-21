@@ -42,7 +42,7 @@ struct Subcategories : View {
                     }) {
                         
                         Image(systemName: "arrow.backward")
-                            .foregroundColor(Color.white)
+                            .foregroundColor(Color.theme_foreground)
                             .frame(width: 15, height: 15, alignment: .center)
                             .padding([.top, .leading, .bottom, .trailing], 10)
                             
