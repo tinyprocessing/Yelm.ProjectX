@@ -109,7 +109,7 @@ struct Home: View {
                                             
                                             
                                             Image(systemName: "arrow.2.circlepath")
-                                                .foregroundColor(.white)
+                                                .foregroundColor(.theme_foreground)
                                                 .transition(.opacity)
                                                 
                                                 .font(.system(size: 16, weight: .bold, design: .rounded))
