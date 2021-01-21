@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+import Yelm_Server
 
 
 
@@ -39,7 +39,7 @@ struct SearchItem : View {
                 Spacer()
                 
                 VStack{
-                    Text("\(price) ₽")
+                    Text("\(price) \(ServerAPI.settings.symbol)")
                         .foregroundColor(.secondary)
                        
                     

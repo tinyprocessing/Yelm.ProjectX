@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Yelm_Server
 
 struct Cart: View {
     
@@ -128,7 +129,7 @@ struct Cart: View {
                                 Spacer()
                                 
                                 VStack(alignment: .trailing){
-                                    Text("150 ₽")
+                                    Text("150 \(ServerAPI.settings.symbol)")
                                         .fontWeight(.semibold)
                                         .foregroundColor(.theme)
                                     
@@ -153,7 +154,7 @@ struct Cart: View {
                 VStack(spacing: 0){
                     HStack(spacing: 15){
                         VStack(spacing: 5){
-                            Text("\(String(format:"%.2f", self.realm.price)) ₽")
+                            Text("\(String(format:"%.2f", self.realm.price)) \(ServerAPI.settings.symbol)")
                                 .font(.system(size: 20, weight: .bold, design: .rounded))
                                 .foregroundColor(.theme)
                             Text("15-20 мин")

@@ -279,7 +279,7 @@ struct NewsSingle : View {
                                                                     }
                                                                     
                                                                     
-                                                                    Text("\(tag.discount) ₽")
+                                                                    Text("\(tag.discount) \(ServerAPI.settings.symbol)")
                                                                         .lineLimit(1)
                                                                         .foregroundColor(.theme_foreground)
                                                                         .font(.system(size: 16, weight: .medium, design: .rounded))
@@ -339,7 +339,7 @@ struct NewsSingle : View {
                                                                     
                                                                     if (Float(tag.discount) != tag.price_float){
                                                                         
-                                                                        Text("\(String(format:"%.2f", tag.price_float)) ₽")
+                                                                        Text("\(String(format:"%.2f", tag.price_float)) \(ServerAPI.settings.symbol)")
                                                                             .strikethrough()
                                                                             .lineLimit(1)
                                                                             .foregroundColor(.gray)

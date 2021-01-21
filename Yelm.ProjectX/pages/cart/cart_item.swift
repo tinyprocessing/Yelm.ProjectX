@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-
+import Yelm_Server
 
 
 struct CartItem: View {
@@ -101,7 +101,7 @@ struct CartItem: View {
                 Spacer()
                 
                 VStack(alignment: .trailing, spacing: 5){
-                    Text("\(String(format:"%.2f", price_float)) ₽")
+                    Text("\(String(format:"%.2f", price_float)) \(ServerAPI.settings.symbol)")
                         .fontWeight(.semibold)
                         .foregroundColor(.theme)
                        

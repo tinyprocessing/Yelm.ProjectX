@@ -360,7 +360,7 @@ struct Item : View {
             VStack(spacing: 0){
                 HStack(spacing: 15){
                     VStack(spacing: 5){
-                        Text("\(self.item.item.discount) ₽")
+                        Text("\(self.item.item.discount) \(ServerAPI.settings.symbol)")
                             .font(.system(size: 20, weight: .bold, design: .rounded))
                             .foregroundColor(.theme)
                         Text("\(self.item.item.quanity) \(self.item.item.type)")

@@ -175,7 +175,7 @@ struct ItemsViewLine: View {
                                         
                                         if (floor((tag.discount as NSString).floatValue) == (tag.discount as NSString).floatValue){
                                             
-                                            Text("\(String(format:"%.0f", (tag.discount as NSString).floatValue) ) ₽")
+                                            Text("\(String(format:"%.0f", (tag.discount as NSString).floatValue) ) \(ServerAPI.settings.symbol)")
                                                 .lineLimit(1)
                                                 .foregroundColor(.theme_foreground)
                                                 .font(.system(size: 16, weight: .medium, design: .rounded))
@@ -187,7 +187,7 @@ struct ItemsViewLine: View {
                                             
                                         }else{
                                             
-                                            Text("\(tag.discount) ₽")
+                                            Text("\(tag.discount) \(ServerAPI.settings.symbol)")
                                                 .lineLimit(1)
                                                 .foregroundColor(.theme_foreground)
                                                 .font(.system(size: 16, weight: .medium, design: .rounded))
@@ -250,14 +250,14 @@ struct ItemsViewLine: View {
                                             
                                             if (floor(tag.price_float) == tag.price_float){
                                                 
-                                                Text("\(String(format:"%.0f", tag.price_float)) ₽")
+                                                Text("\(String(format:"%.0f", tag.price_float)) \(ServerAPI.settings.symbol)")
                                                     .strikethrough()
                                                     .lineLimit(1)
                                                     .foregroundColor(.gray)
                                                     .font(.system(size: 12, weight: .medium, design: .rounded))
                                             }else{
                                                 
-                                                Text("\(String(format:"%.2f", tag.price_float)) ₽")
+                                                Text("\(String(format:"%.2f", tag.price_float)) \(ServerAPI.settings.symbol)")
                                                     .strikethrough()
                                                     .lineLimit(1)
                                                     .foregroundColor(.gray)
