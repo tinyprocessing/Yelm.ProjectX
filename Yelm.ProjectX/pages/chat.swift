@@ -97,7 +97,7 @@ struct Chat : View {
                             Image(systemName: "gear")
                                 .foregroundColor(Color.theme_foreground)
                                 .frame(width: 18, height: 18, alignment: .center)
-                                .padding(5)
+                                .padding(7)
                                 .font(.system(size: 16, weight: .bold, design: .rounded))
                                 .background(Color.theme)
                                 .clipShape(Circle())

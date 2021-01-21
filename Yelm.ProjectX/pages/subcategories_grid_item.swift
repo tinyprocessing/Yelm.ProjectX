@@ -139,7 +139,7 @@ struct SubcategoriesGridObject : View {
                     }
 
 
-                    Text("\(tag.discount) ₽")
+                    Text("\(tag.discount) \(ServerAPI.settings.symbol)")
                         .lineLimit(1)
                         .foregroundColor(.theme_foreground)
                         .font(.system(size: 14, weight: .medium, design: .rounded))
