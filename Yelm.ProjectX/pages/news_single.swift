@@ -179,7 +179,7 @@ struct NewsSingle : View {
                                                                                 if (self.realm.get_item_access(ID: tag.id)){
                                                                                     Text(String(self.realm.get_items_count(ID: tag.id)))
                                                                                         .font(.system(size: 40, weight: .bold, design: .rounded))
-                                                                                        .foregroundColor(.white)
+                                                                                        .foregroundColor(.theme_foreground)
                                                                                         .frame(width: 100, height: 50)
                                                                                     
                                                                                 }
@@ -204,7 +204,7 @@ struct NewsSingle : View {
                                                                                     .font(.system(size: 12, weight: .medium, design: .rounded))
                                                                                     .padding(5)
                                                                                     .padding(.horizontal, 10)
-                                                                                    .foregroundColor(.white)
+                                                                                    .foregroundColor(.theme_foreground)
                                                                             }
                                                                             .background(Color.orange)
                                                                             .cornerRadius(20)
@@ -223,7 +223,7 @@ struct NewsSingle : View {
                                                                                     .font(.system(size: 12, weight: .medium, design: .rounded))
                                                                                     .padding(5)
                                                                                     .padding(.horizontal, 10)
-                                                                                    .foregroundColor(.white)
+                                                                                    .foregroundColor(.theme_foreground)
                                                                             }
                                                                             .background(Color.green)
                                                                             .cornerRadius(20)
@@ -264,7 +264,7 @@ struct NewsSingle : View {
                                                                                 .overlay(
                                                                                     Image(systemName: "minus")
                                                                                         .font(.system(size: 16, weight: .medium, design: .rounded))
-                                                                                        .foregroundColor(.white)
+                                                                                        .foregroundColor(.theme_foreground)
                                                                                 )
                                                                             
                                                                             
@@ -281,7 +281,7 @@ struct NewsSingle : View {
                                                                     
                                                                     Text("\(tag.discount) ₽")
                                                                         .lineLimit(1)
-                                                                        .foregroundColor(.white)
+                                                                        .foregroundColor(.theme_foreground)
                                                                         .font(.system(size: 16, weight: .medium, design: .rounded))
                                                                         .padding([.top, .bottom], 7)
                                                                         .background(Color.theme)
@@ -321,7 +321,7 @@ struct NewsSingle : View {
                                                                             .overlay(
                                                                                 Image(systemName: "plus")
                                                                                     .font(.system(size: 16, weight: .medium, design: .rounded))
-                                                                                    .foregroundColor(.white)
+                                                                                    .foregroundColor(.theme_foreground)
                                                                             )
                                                                         
                                                                     }
@@ -427,7 +427,7 @@ struct NewsSingle : View {
                         }) {
                             
                             Image(systemName: "arrow.backward")
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color.theme_foreground)
                                 .frame(width: 15, height: 15, alignment: .center)
                                 .padding([.top, .leading, .bottom, .trailing], 10)
                                 
@@ -465,7 +465,7 @@ struct NewsSingle : View {
                         }) {
                             
                             Image(systemName: "square.and.arrow.up")
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color.theme_foreground)
                                 .frame(width: 15, height: 15, alignment: .center)
                                 .padding([.top, .leading, .bottom, .trailing], 10)
                                 

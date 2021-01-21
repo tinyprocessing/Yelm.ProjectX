@@ -125,13 +125,13 @@ struct Home: View {
                                             ZStack(alignment: .center){
                                                 Text(" \(self.location.name) ")
                                                     .font(.system(size: 16, weight: .bold, design: .rounded))
-                                                    .foregroundColor(.white)
+                                                    .foregroundColor(.theme_foreground)
                                                     .lineLimit(1)
                                                     .opacity(Double((width(y: geo.frame(in: .global).minY)-110) * 0.01))
                                                 
                                                 if (Double((width(y: geo.frame(in: .global).minY)-110) * 0.01) < 0.6){
                                                     Image(systemName: "arrow.2.circlepath")
-                                                        .foregroundColor(.white)
+                                                        .foregroundColor(.theme_foreground)
                                                         .font(.system(size: 16, weight: .bold, design: .rounded))
                                                         .transition(.opacity)
                                                         

@@ -24,7 +24,7 @@ struct Offer: View {
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = Color.theme.uiColor()
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: Color.theme_foreground.uiColor()], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
     }
     
@@ -60,7 +60,7 @@ struct Offer: View {
                             }) {
 
                                 Image(systemName: "arrow.backward")
-                                    .foregroundColor(Color.white)
+                                    .foregroundColor(Color.theme_foreground)
                                     .frame(width: 15, height: 15, alignment: .center)
                                     .padding([.top, .leading, .bottom, .trailing], 10)
 
@@ -131,7 +131,7 @@ struct Offer: View {
                                                         .overlay(
                                                             Image(systemName: "wand.and.rays")
                                                                 .font(.system(size: 16, weight: .medium, design: .rounded))
-                                                                .foregroundColor(.white)
+                                                                .foregroundColor(.theme_foreground)
                                                         )
 
                                                 }
@@ -296,7 +296,7 @@ struct Offer: View {
                     Picker(selection: $pickerSelection, label: Text("")) {
                                Text("Карта")
                                 .tag(0)
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color.theme_foreground)
                                 .font(.system(size: 16, weight: .medium, design: .rounded))
                                 
                                Text("Apple Pay")
@@ -345,7 +345,7 @@ struct Offer: View {
                             .padding(.horizontal)
                             .padding(.vertical, 10)
                             .background(Color.theme)
-                            .foregroundColor(.white)
+                            .foregroundColor(.theme_foreground)
                             .cornerRadius(10)
                          
 

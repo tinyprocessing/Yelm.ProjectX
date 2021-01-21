@@ -52,7 +52,7 @@ struct CartItem: View {
                         }) {
 
                             Image(systemName: "minus")
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color.theme_foreground)
                                 .frame(width: 12, height: 12, alignment: .center)
                                 .padding([.top, .leading, .bottom, .trailing], 7)
 
@@ -79,7 +79,7 @@ struct CartItem: View {
                         }) {
 
                             Image(systemName: "plus")
-                                .foregroundColor(Color.white)
+                                .foregroundColor(Color.theme_foreground)
                                 .frame(width: 12, height: 12, alignment: .center)
                                 .padding([.top, .leading, .bottom, .trailing], 7)
 

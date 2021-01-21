@@ -100,7 +100,7 @@ struct MapLocations: View {
                         }) {
                             VStack{
                                 Image(systemName: "location.fill")
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.theme_foreground)
                                     
                                     
                             }
@@ -150,7 +150,7 @@ struct MapLocations: View {
                             .padding(.horizontal)
                             .padding(.vertical, 10)
                             .background(Color.theme)
-                            .foregroundColor(.white)
+                            .foregroundColor(.theme_foreground)
                             .cornerRadius(10)
                     }.buttonStyle(ScaleButtonStyle())
                     Spacer()

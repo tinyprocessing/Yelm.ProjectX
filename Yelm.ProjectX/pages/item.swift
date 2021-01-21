@@ -294,7 +294,7 @@ struct Item : View {
                             }) {
 
                                 Image(systemName: "arrow.backward")
-                                    .foregroundColor(Color.white)
+                                    .foregroundColor(Color.theme_foreground)
                                     .frame(width: 15, height: 15, alignment: .center)
                                     .padding([.top, .leading, .bottom, .trailing], 10)
 
@@ -332,7 +332,7 @@ struct Item : View {
                             }) {
 
                                 Image(systemName: "square.and.arrow.up")
-                                    .foregroundColor(Color.white)
+                                    .foregroundColor(Color.theme_foreground)
                                     .frame(width: 15, height: 15, alignment: .center)
                                     .padding([.top, .leading, .bottom, .trailing], 10)
 
@@ -401,7 +401,7 @@ struct Item : View {
                             .padding(.horizontal)
                             .padding(.vertical, 10)
                             .background(Color.theme)
-                            .foregroundColor(.white)
+                            .foregroundColor(.theme_foreground)
                             .cornerRadius(10)
                         }.buttonStyle(ScaleButtonStyle())
 
@@ -428,7 +428,7 @@ struct Item : View {
                                         .overlay(
                                             Image(systemName: "minus")
                                                 .font(.system(size: 20, weight: .medium, design: .rounded))
-                                                .foregroundColor(.white)
+                                                .foregroundColor(.theme_foreground)
                                         )
 
 
@@ -445,7 +445,7 @@ struct Item : View {
 
                             Text("\(self.realm.get_items_count(ID: self.item.item.id))")
                                 .lineLimit(1)
-                                .foregroundColor(.white)
+                                .foregroundColor(.theme_foreground)
                                 .font(.system(size: 20, weight: .medium, design: .rounded))
                                 .padding([.top, .bottom], 7)
                                 .background(Color.theme)
@@ -475,7 +475,7 @@ struct Item : View {
                                     .overlay(
                                         Image(systemName: "plus")
                                             .font(.system(size: 20, weight: .medium, design: .rounded))
-                                            .foregroundColor(.white)
+                                            .foregroundColor(.theme_foreground)
                                     )
 
                             }
