@@ -173,16 +173,30 @@ struct ItemsViewLine: View {
                                             
                                         }
                                         
-                                        
-                                        Text("\(tag.discount) ₽")
-                                            .lineLimit(1)
-                                            .foregroundColor(.theme_foreground)
-                                            .font(.system(size: 16, weight: .medium, design: .rounded))
-                                            .padding([.top, .bottom], 7)
-                                            .background(Color.theme)
-                                            .cornerRadius(20)
-                                            .fixedSize()
-                                            .padding(.leading, self.realm.get_item_access(ID: tag.id) ? 0 : 12)
+                                        if (floor((tag.discount as NSString).floatValue) == (tag.discount as NSString).floatValue){
+                                            
+                                            Text("\(String(format:"%.0f", (tag.discount as NSString).floatValue) ) ₽")
+                                                .lineLimit(1)
+                                                .foregroundColor(.theme_foreground)
+                                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                                                .padding([.top, .bottom], 7)
+                                                .background(Color.theme)
+                                                .cornerRadius(20)
+                                                .fixedSize()
+                                                .padding(.leading, self.realm.get_item_access(ID: tag.id) ? 0 : 12)
+                                            
+                                        }else{
+                                            
+                                            Text("\(tag.discount) ₽")
+                                                .lineLimit(1)
+                                                .foregroundColor(.theme_foreground)
+                                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                                                .padding([.top, .bottom], 7)
+                                                .background(Color.theme)
+                                                .cornerRadius(20)
+                                                .fixedSize()
+                                                .padding(.leading, self.realm.get_item_access(ID: tag.id) ? 0 : 12)
+                                        }
                                         
                                         
                                         Button(action: {
@@ -234,11 +248,23 @@ struct ItemsViewLine: View {
                                         
                                         if (Float(tag.discount) != tag.price_float){
                                             
-                                            Text("\(String(format:"%.2f", tag.price_float)) ₽")
-                                                .strikethrough()
-                                                .lineLimit(1)
-                                                .foregroundColor(.gray)
-                                                .font(.system(size: 12, weight: .medium, design: .rounded))
+                                            if (floor(tag.price_float) == tag.price_float){
+                                                
+                                                Text("\(String(format:"%.0f", tag.price_float)) ₽")
+                                                    .strikethrough()
+                                                    .lineLimit(1)
+                                                    .foregroundColor(.gray)
+                                                    .font(.system(size: 12, weight: .medium, design: .rounded))
+                                            }else{
+                                                
+                                                Text("\(String(format:"%.2f", tag.price_float)) ₽")
+                                                    .strikethrough()
+                                                    .lineLimit(1)
+                                                    .foregroundColor(.gray)
+                                                    .font(.system(size: 12, weight: .medium, design: .rounded))
+                                            
+                                            }
+                                          
                                         }
                                         
                                         
