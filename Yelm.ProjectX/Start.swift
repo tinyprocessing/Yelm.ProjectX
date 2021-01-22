@@ -29,7 +29,8 @@ struct Start: View {
 
     var body: some View {
         ZStack{
-        ZStack(alignment: .bottomLeading){
+            if (app_loaded){
+                ZStack(alignment: .bottomLeading){
             NavigationView{
                 
               
@@ -39,9 +40,9 @@ struct Start: View {
                         EmptyView()
                     }
                     
-                    if (app_loaded){
+               
                     Home(items: self.$items)
-                    }
+                    
 
                 }
                 
@@ -89,7 +90,7 @@ struct Start: View {
                         }) {
                             HStack{
                                 Image(systemName: "cart").font(.system(size: 16, weight: .bold, design: .rounded))
-                                Text("\(String(format:"%.2f", self.realm.price))").font(.system(size: 16, weight: .bold, design: .rounded))
+                                Text("\(String(format:"%.2f", self.realm.price)) \(ServerAPI.settings.symbol)").font(.system(size: 16, weight: .bold, design: .rounded))
                             }
                             .padding()
                             .frame(height: 40)
@@ -111,7 +112,9 @@ struct Start: View {
 
             
         }.edgesIgnoringSafeArea(.bottom)
-        ModalAnchorView()
+                ModalAnchorView()
+                
+            }
             
         }
       
@@ -127,8 +130,16 @@ struct Start: View {
                 ServerAPI.settings.debug = true
                 ServerAPI.start(platform: "5fd33466e17963.29052139", position: position) { (result) in
                     if (result == true){
-                        self.app_loaded = true
-                        ServerAPI.settings.get_settings()
+                        
+                        ServerAPI.settings.get_settings { (load) in
+                            if (load){
+                                
+                                Color.theme = Color.init(hex: ServerAPI.settings.theme)
+                                Color.theme_foreground = Color.init(hex: ServerAPI.settings.foreground)
+                                
+                                self.app_loaded = true
+                            }
+                        }
                         let user = UserDefaults.standard.string(forKey: "USER") ?? ""
                         
                         if (user == ""){
