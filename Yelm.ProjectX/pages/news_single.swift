@@ -133,20 +133,21 @@ struct NewsSingle : View {
                                             
                                         }
                                         
-                                        
-                                        HStack {
-                                            
-                                            
-                                            Text("Товары: ")
-                                                .font(.system(size: 26, weight: .bold, design: .rounded))
-                                            
-                                            
-                                            Spacer()
-                                            
-                                            
-                                            
+                                        if (self.items.count > 0){
+                                            HStack {
+                                                
+                                                
+                                                Text("Товары: ")
+                                                    .font(.system(size: 26, weight: .bold, design: .rounded))
+                                                
+                                                
+                                                Spacer()
+                                                
+                                                
+                                                
+                                            }
+                                            .padding(.horizontal, 20)
                                         }
-                                        .padding(.horizontal, 20)
                                      
                                         
                                         

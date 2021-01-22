@@ -330,8 +330,8 @@ struct Offer: View {
                     }
                     
                     
-                    
-                    
+                    if (self.pickerSelection == 1){
+                        
                     Button(action: {
                         
 
@@ -355,6 +355,34 @@ struct Offer: View {
                     .frame(height: 50)
                     .buttonStyle(ApplePayButtonStyle())
                     .clipShape(CustomShape(corner: .allCorners, radii: 10))
+                        
+                    }else{
+                        
+                        Button(action: {
+                            
+
+                        }) {
+                            
+                            HStack{
+                                Spacer()
+                                Text("Оплатить")
+                                Spacer()
+                            }
+                                .padding(.horizontal)
+                                .padding(.vertical, 10)
+                                .background(Color.theme)
+                                .foregroundColor(.theme_foreground)
+                                .cornerRadius(10)
+                             
+
+
+                        }
+
+                        .frame(height: 50)
+                        .buttonStyle(ScaleButtonStyle())
+                        .clipShape(CustomShape(corner: .allCorners, radii: 10))
+                        
+                    }
                     
                     
                     
