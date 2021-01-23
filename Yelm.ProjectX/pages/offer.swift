@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 import Yelm_Server
-
+import Yelm_Pay
 
 struct Offer: View {
     
@@ -333,6 +333,18 @@ struct Offer: View {
                     if (self.pickerSelection == 1){
                         
                     Button(action: {
+                        YelmPay.start(platform: "5f771d465f4191.76733056", auth: "", d3ds: "", charge: "", payment_url: "") { (load) in
+                            
+                            YelmPay.apple_pay.apple_pay(price: 10, delivery: 10, merchant: "merchant.io.yelm.io", country: "RU", currency: "RUB") { (payment) in
+                                if (payment){
+                                    print("done payment")
+                                }else{
+                                    print("error")
+                                }
+                            }
+                            
+                        }
+                     
                         
 
                     }) {
@@ -358,10 +370,8 @@ struct Offer: View {
                         
                     }else{
                         
-                        Button(action: {
-                            
+                        NavigationLink(destination: Payment(), tag: 100, selection: $selection) {
 
-                        }) {
                             
                             HStack{
                                 Spacer()
@@ -374,10 +384,7 @@ struct Offer: View {
                                 .foregroundColor(.theme_foreground)
                                 .cornerRadius(10)
                              
-
-
                         }
-
                         .frame(height: 50)
                         .buttonStyle(ScaleButtonStyle())
                         .clipShape(CustomShape(corner: .allCorners, radii: 10))
