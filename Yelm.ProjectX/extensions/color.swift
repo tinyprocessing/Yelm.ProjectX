@@ -13,8 +13,8 @@ extension Color {
     static let neuBackground = Color("Background")
     static let dropShadow = Color("Dark")
     static let dropLight = Color("Light")
-    static var theme = Color.init(hex: "F1C40F")
-    static var theme_foreground = Color.black
+    static var theme = Color.blue
+    static var theme_foreground = Color.white
 }
 
 extension Color {

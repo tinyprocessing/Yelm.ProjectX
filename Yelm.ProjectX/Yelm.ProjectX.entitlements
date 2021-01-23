@@ -4,5 +4,9 @@
 <dict>
 	<key>aps-environment</key>
 	<string>development</string>
+	<key>com.apple.developer.in-app-payments</key>
+	<array>
+		<string>merchant.5fd33466e17963.29052139.yelm.io</string>
+	</array>
 </dict>
 </plist>

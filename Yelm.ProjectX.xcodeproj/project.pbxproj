@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C192AFD25BCD44D00059597 /* payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C192AFC25BCD44C00059597 /* payment.swift */; };
 		4C70235D25A749BD00A750D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C70235C25A749BD00A750D2 /* AppDelegate.swift */; };
 		4C70235F25A749BD00A750D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C70235E25A749BD00A750D2 /* SceneDelegate.swift */; };
 		4C70236125A749BD00A750D2 /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C70236025A749BD00A750D2 /* Start.swift */; };
@@ -101,6 +102,7 @@
 
 /* Begin PBXFileReference section */
 		1B69168527B2637AB35B1B9A /* Pods-Yelm.ProjectX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelm.ProjectX.release.xcconfig"; path = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.release.xcconfig"; sourceTree = "<group>"; };
+		4C192AFC25BCD44C00059597 /* payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payment.swift; sourceTree = "<group>"; };
 		4C70235925A749BD00A750D2 /* Yelm.ProjectX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yelm.ProjectX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C70235C25A749BD00A750D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C70235E25A749BD00A750D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 				4CF5601B25B7124E0038A4CC /* subcategories.swift */,
 				4CAA9F6C25B83B04005CEB96 /* subcategoies_grid.swift */,
 				4CAA9F7025B83D78005CEB96 /* subcategories_grid_item.swift */,
+				4C192AFC25BCD44C00059597 /* payment.swift */,
 				4CDE842825A9E33900F3453D /* cart */,
 			);
 			path = pages;
@@ -733,6 +736,7 @@
 				4CDE842625A9E33400F3453D /* cart_item.swift in Sources */,
 				4CDE83B225A78A3F00F3453D /* CoreDataEntityDescription.swift in Sources */,
 				4CDE843425A9F15500F3453D /* variables.swift in Sources */,
+				4C192AFD25BCD44D00059597 /* payment.swift in Sources */,
 				4CDE83B625A78A3F00F3453D /* FileManager+Extensions.swift in Sources */,
 				4CDE839C25A78A3F00F3453D /* CoreImageFilterProcessor.swift in Sources */,
 				4CDE83F325A7A7D700F3453D /* realm_locations.swift in Sources */,
