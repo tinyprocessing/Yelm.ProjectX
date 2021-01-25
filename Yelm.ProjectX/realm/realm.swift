@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import SwiftUI
+import SwiftyJSON
 
 var GlobalRealm: RealmControl = RealmControl()
 
@@ -69,18 +70,27 @@ class RealmControl: ObservableObject, Identifiable {
     }
 
     
-    func get_ids() -> [Int] {
+    func get_ids() -> JSON {
         let realm = try! Realm()
         let objects = realm.objects(ItemRealm.self)
-        var items : [Int] = []
+        var items : JSON = []
         if (objects.count > 0){
             for i in 0...objects.count - 1 {
-                items.append(objects[i].ID)
+                let item : JSON = [
+                    "id" : objects[i].ID,
+                    "count" : objects[i].Count
+                ]
+                
+                items.arrayObject?.append(item)
+
+                
             }
+            
             return items
+
         }
         
-        return []
+        return JSON()
         
     }
 
