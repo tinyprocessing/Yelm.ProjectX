@@ -68,6 +68,21 @@ class RealmControl: ObservableObject, Identifiable {
         }
     }
 
+    
+    func get_ids() -> [Int] {
+        let realm = try! Realm()
+        let objects = realm.objects(ItemRealm.self)
+        var items : [Int] = []
+        if (objects.count > 0){
+            for i in 0...objects.count - 1 {
+                items.append(objects[i].ID)
+            }
+            return items
+        }
+        
+        return []
+        
+    }
 
     func get_total_price() {
         
