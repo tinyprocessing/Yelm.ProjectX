@@ -17,6 +17,11 @@ struct Cart: View {
     @ObservedObject var bottom: bottom = GlobalBottom
     @Environment(\.presentationMode) var presentation
     
+    
+    @State var time : String = ""
+    @State var price : Float = 0
+    
+    
     var body: some View {
         
         
@@ -129,7 +134,7 @@ struct Cart: View {
                                 Spacer()
                                 
                                 VStack(alignment: .trailing){
-                                    Text("150 \(ServerAPI.settings.symbol)")
+                                    Text("\(String(format:"%.2f", self.price)) \(ServerAPI.settings.symbol)")
                                         .fontWeight(.semibold)
                                         .foregroundColor(.theme)
                                     
@@ -157,7 +162,7 @@ struct Cart: View {
                             Text("\(String(format:"%.2f", self.realm.price)) \(ServerAPI.settings.symbol)")
                                 .font(.system(size: 20, weight: .bold, design: .rounded))
                                 .foregroundColor(.theme)
-                            Text("15-20 мин")
+                            Text("\(self.time) мин")
                                 .font(.system(size: 12, weight: .semibold, design: .rounded))
                                 .foregroundColor(.secondary)
                         }
@@ -208,6 +213,17 @@ struct Cart: View {
             self.realm.objectWillChange.send()
             self.bottom.hide = true
             self.nav_bar_hide = true
+            
+            
+            
+            ServerAPI.basket.get_basket(items: self.realm.get_ids()) { (load) in
+                if (load){
+                    self.time = ServerAPI.settings.deliverly_time
+                    self.price = ServerAPI.settings.deliverly_price
+                }
+            }
+
+            
         }
         
         .onDisappear{

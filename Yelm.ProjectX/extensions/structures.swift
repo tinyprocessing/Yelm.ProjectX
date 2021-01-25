@@ -16,6 +16,7 @@ struct locations_structure: Identifiable, Hashable {
 }
 
 
+
 struct cart_structure: Identifiable, Hashable {
     var id: Int
     var image: String = ""

@@ -35,6 +35,7 @@ struct Offer: View {
     
     @State var selection: Int? = nil
     
+    
     @State var promocode: String = ""
     
     @ObservedObject var realm: RealmControl = GlobalRealm
@@ -417,6 +418,7 @@ struct Offer: View {
         .onAppear {
             self.nav_bar_hide = true
             self.bottom.hide = true
+            
            
        }
        
