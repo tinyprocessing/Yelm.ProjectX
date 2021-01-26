@@ -166,21 +166,7 @@ struct Home: View {
                                         HStack{
                                             Image(systemName: "bubble.left").font(.system(size: 18, weight: .medium, design: .rounded))
                                         }
-//                                        .overlay(
-//                                            ZStack{
-//                                                Circle()
-//                                                    .foregroundColor(.red)
-//                                                    .frame(width: 15, height: 15)
-//                                                
-//                                                Text("!")
-//                                                    .foregroundColor(.white)
-//                                                    .font(Font.system(size: 11))
-//                                            }
-//                                            .offset(x: 15, y: -11)
-//                                           
-//                                        )
-                                        
-                                        
+
                                         
                                     }
                                 }.buttonStyle(ScaleButtonStyle())
@@ -199,7 +185,7 @@ struct Home: View {
                         News()
                         
                         ForEach(self.items, id: \.self) { object in
-                            ItemsViewLine(items: object.items, name: object.name)
+                            ItemsViewLine(items: object.items, category_id: object.id, name: object.name)
                         }
                         
                         
