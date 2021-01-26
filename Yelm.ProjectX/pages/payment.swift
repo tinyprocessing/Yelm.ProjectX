@@ -10,6 +10,7 @@ import SwiftUI
 import Yelm_Server
 import Yelm_Pay
 
+
 struct Payment: View {
     
 
@@ -22,6 +23,11 @@ struct Payment: View {
     @State var card: String = ""
     @State var date: String = ""
     @State var cvv: String = ""
+    @State var open : Bool = false
+    
+    
+    @State var data : Data = Data()
+    @State var response_main : HTTPURLResponse = HTTPURLResponse()
 
     @Environment(\.presentationMode) var presentation
     
@@ -164,7 +170,24 @@ struct Payment: View {
                         .fontWeight(.bold)
                     
                     Button(action: {
-                        
+                        YelmPay.start(platform: "5f771d465f4191.76733056") { (load) in
+                            YelmPay.core.payment(card_number: self.card,
+                                                 date: self.date,
+                                                 cvv: self.cvv,
+                                                 merchant: "pk_50c51840d2433adbc5c9c13a949d9",
+                                                 price: 10) { (load, response, data)  in
+                                if (load){
+                                    self.response_main = response
+                                    self.data = data
+
+                                    DispatchQueue.main.asyncAfter(deadline: .now()) {
+                                        self.open.toggle()
+                                    }
+                                  
+                                    
+                                }
+                            }
+                        }
 
                     }) {
                         
@@ -186,6 +209,9 @@ struct Payment: View {
                     .frame(height: 50)
                     .buttonStyle(ScaleButtonStyle())
                     .clipShape(CustomShape(corner: .allCorners, radii: 10))
+                    .sheet(isPresented: $open) {
+                        D3DS(response_main: self.$response_main, data: self.$data, open: self.$open)
+                    }
                     
                     
                     Text("Нажимая кнопку «Оплатить», Вы соглашаетесь с офертой")
