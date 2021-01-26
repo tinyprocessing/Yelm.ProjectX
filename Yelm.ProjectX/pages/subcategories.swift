@@ -13,6 +13,7 @@ import Yelm_Server
 struct Subcategories : View {
     
     
+    @State var category_id : Int = 0
     
     @ObservedObject var item: items = GlobalItems
     @ObservedObject var bottom: bottom = GlobalBottom
@@ -125,12 +126,13 @@ struct Subcategories : View {
             self.nav_bar_hide = true
             self.bottom.hide = true
             
-            ServerAPI.items.get_items { (load, items) in
+            print(self.category_id)
+            ServerAPI.items.subcategories(id: self.category_id) { (load, items) in
                 if (load){
-                    
                     self.items = items
                 }
             }
+         
         }
         
         .onDisappear{

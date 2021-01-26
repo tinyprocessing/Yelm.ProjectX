@@ -14,6 +14,7 @@ struct ItemsViewLine: View {
     
     @ObservedObject var item: items = GlobalItems
     @State var items : [items_structure] = []
+    @State var category_id : Int = 0
     @State var name : String = ""
     @State var selection: Int? = nil
     @ObservedObject var realm: RealmControl = GlobalRealm
@@ -28,7 +29,7 @@ struct ItemsViewLine: View {
                 Spacer()
                 
                 
-                NavigationLink(destination: Subcategories(name: self.name), tag: 11, selection: $selection) {
+                NavigationLink(destination: Subcategories(category_id: self.category_id, name: self.name), tag: 11, selection: $selection) {
                     Image(systemName: "chevron.right")
                         .foregroundColor(Color.theme_foreground)
                         .frame(width: 15, height: 15, alignment: .center)
