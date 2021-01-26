@@ -334,7 +334,7 @@ struct Offer: View {
                     if (self.pickerSelection == 1){
                         
                     Button(action: {
-                        YelmPay.start(platform: "5f771d465f4191.76733056", auth: "", d3ds: "", charge: "", payment_url: "") { (load) in
+                        YelmPay.start(platform: "5f771d465f4191.76733056") { (load) in
                             
                             YelmPay.apple_pay.apple_pay(price: 10, delivery: 10, merchant: "merchant.5fd33466e17963.29052139.yelm.io", country: "RU", currency: "RUB") { (payment) in
                                 if (payment){
