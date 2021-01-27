@@ -9,6 +9,43 @@ import Foundation
 import SwiftUI
 import Yelm_Server
 
+struct Rating : View{
+    
+    @ObservedObject var item: items = GlobalItems
+
+  
+    
+    var body: some View{
+        HStack(spacing: 2){
+
+            
+            if (self.item.item.rating > 0){
+                ForEach(0...self.item.item.rating-1, id: \.self){ _ in
+                    
+                    Image(systemName: "star.fill")
+                        .font(.system(size: 16, weight: .bold, design: .rounded))
+                        .foregroundColor(Color.yellow)
+                }
+            }
+            
+            if (self.item.item.rating != 5){
+                
+                ForEach(0...(5-self.item.item.rating)-1, id: \.self){ _ in
+                    
+                    Image(systemName: "star")
+                        .font(.system(size: 16, weight: .bold, design: .rounded))
+                        .foregroundColor(Color.yellow)
+                    
+                }
+                
+            }
+         
+          
+            
+        }
+    }
+}
+
 struct Item : View {
     
     @ObservedObject var bottom: bottom = GlobalBottom
@@ -107,29 +144,7 @@ struct Item : View {
                                         if (self.item.item.discount_present == "-0%"){
                                             
                                             
-                                            HStack(spacing: 2){
-                                                Image(systemName: "star.fill")
-                                                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                                                    .foregroundColor(Color.yellow)
-                                                
-                                                Image(systemName: "star.fill")
-                                                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                                                    .foregroundColor(Color.yellow)
-                                                
-                                                Image(systemName: "star.fill")
-                                                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                                                    .foregroundColor(Color.yellow)
-                                                
-                                                Image(systemName: "star.fill")
-                                                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                                                    .foregroundColor(Color.yellow)
-                                                
-                                                Image(systemName: "star.fill")
-                                                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                                                    .foregroundColor(Color.yellow)
-                                                
-                                                
-                                            }
+                                                Rating(item: self.item)
                                             
                                             
                                         }
@@ -163,29 +178,7 @@ struct Item : View {
                                         
                                         Spacer()
                                         
-                                        HStack(spacing: 2){
-                                            Image(systemName: "star.fill")
-                                                .font(.system(size: 16, weight: .bold, design: .rounded))
-                                                .foregroundColor(Color.yellow)
-                                            
-                                            Image(systemName: "star.fill")
-                                                .font(.system(size: 16, weight: .bold, design: .rounded))
-                                                .foregroundColor(Color.yellow)
-                                            
-                                            Image(systemName: "star.fill")
-                                                .font(.system(size: 16, weight: .bold, design: .rounded))
-                                                .foregroundColor(Color.yellow)
-                                            
-                                            Image(systemName: "star.fill")
-                                                .font(.system(size: 16, weight: .bold, design: .rounded))
-                                                .foregroundColor(Color.yellow)
-                                            
-                                            Image(systemName: "star.fill")
-                                                .font(.system(size: 16, weight: .bold, design: .rounded))
-                                                .foregroundColor(Color.yellow)
-                                            
-                                            
-                                        }
+                                        Rating(item: self.item)
                                         
                                     }
                                     .padding(.horizontal, 20)
