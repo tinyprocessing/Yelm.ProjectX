@@ -85,12 +85,6 @@ struct Payment: View {
                 .shadow(color: .dropLight, radius: 15, x: -10, y: -10)
                 
                 
-                Image("logo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 60, height: 60, alignment: .center)
-                    .clipShape(CustomShape(corner: .allCorners, radii: 10))
-                    .padding()
                 
                 
                 VStack(spacing: 0){
@@ -163,9 +157,10 @@ struct Payment: View {
                 .shadow(color: .dropLight, radius: 15, x: -10, y: -10)
                 .padding([.trailing, .leading], 20)
                 
+                Spacer()
                 
                 VStack(spacing: 15){
-                    Text("700 \(ServerAPI.settings.symbol)")
+                    Text("\(String(format:"%.2f", self.realm.price + ServerAPI.settings.deliverly_price)) \(ServerAPI.settings.symbol)")
                         .font(.title)
                         .fontWeight(.bold)
                     
@@ -221,7 +216,7 @@ struct Payment: View {
                     
                 }.padding()
                 
-                Spacer()
+                
                 
 
                 
