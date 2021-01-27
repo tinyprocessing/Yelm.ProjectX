@@ -102,9 +102,10 @@ struct Payment: View {
                         
                         Line().fill(Color.init(hex: "AEADAD").opacity(0.5)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1)
                     }
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 5)
                     .padding(.horizontal, 2)
 
+                    Text("")
                     
                     HStack(spacing: 25){
                         
@@ -157,7 +158,7 @@ struct Payment: View {
                 .shadow(color: .dropLight, radius: 15, x: -10, y: -10)
                 .padding([.trailing, .leading], 20)
                 
-                Spacer()
+              
                 
                 VStack(spacing: 15){
                     Text("\(String(format:"%.2f", self.realm.price + ServerAPI.settings.deliverly_price)) \(ServerAPI.settings.symbol)")
@@ -218,7 +219,11 @@ struct Payment: View {
                 
                 
                 
+                Spacer()
+                
 
+                Text("")
+                    .padding()
                 
                 
                 
