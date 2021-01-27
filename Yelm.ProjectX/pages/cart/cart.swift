@@ -159,7 +159,7 @@ struct Cart: View {
                 VStack(spacing: 0){
                     HStack(spacing: 15){
                         VStack(spacing: 5){
-                            Text("\(String(format:"%.2f", self.realm.price)) \(ServerAPI.settings.symbol)")
+                            Text("\(String(format:"%.2f", self.realm.price + ServerAPI.settings.deliverly_price)) \(ServerAPI.settings.symbol)")
                                 .font(.system(size: 20, weight: .bold, design: .rounded))
                                 .foregroundColor(.theme)
                             Text("\(self.time) мин")
