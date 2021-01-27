@@ -37,9 +37,14 @@ struct Offer: View {
     
     
     @State var promocode: String = ""
-    
+    @State var entrance: String = ""
+    @State var floor: String = ""
+    @State var apartment: String = ""
+    @State var phone: String = ""
+
     @ObservedObject var realm: RealmControl = GlobalRealm
 
+    
     
     var body: some View {
         
@@ -95,6 +100,8 @@ struct Offer: View {
                 
                 ScrollView(showsIndicators: false) {
                 
+                    if (false){
+                    VStack{
                     HStack(){
                         Text("Промокод")
                             .font(.system(size: 20, weight: .semibold, design: .rounded))
@@ -144,6 +151,8 @@ struct Offer: View {
                             )
                         .padding(.horizontal, 1)
                         .padding(.bottom , 8)
+                    }
+                    }
                     
                     HStack(){
                         Text("Адрес")
@@ -165,7 +174,7 @@ struct Offer: View {
                     HStack(spacing: 10){
                         
                         
-                        TextField("Подъезд", text: $promocode)
+                        TextField("Подъезд", text: $entrance)
                             .padding(.vertical, 10)
                             .foregroundColor(Color.init(hex: "BDBDBD"))
                             .padding(.horizontal, 10)
@@ -180,7 +189,7 @@ struct Offer: View {
                             .padding(.bottom , 8)
                         
                         
-                        TextField("Этаж", text: $promocode)
+                        TextField("Этаж", text: $floor)
                             .padding(.vertical, 10)
                             .foregroundColor(Color.init(hex: "BDBDBD"))
                             .padding(.horizontal, 10)
@@ -195,7 +204,7 @@ struct Offer: View {
                             .padding(.bottom , 8)
                         
                         
-                        TextField("Квартира", text: $promocode)
+                        TextField("Квартира", text: $apartment)
                             .padding(.vertical, 10)
                             .foregroundColor(Color.init(hex: "BDBDBD"))
                             .padding(.horizontal, 10)
@@ -218,7 +227,7 @@ struct Offer: View {
                         Spacer()
                     }.padding(.bottom , 8)
                     
-                    TextField("Номер телефона", text: $promocode)
+                    TextField("Номер телефона", text: $phone)
                         .padding(.vertical, 10)
                         .foregroundColor(Color.init(hex: "BDBDBD"))
                         .padding(.horizontal, 10)
@@ -252,23 +261,23 @@ struct Offer: View {
                                 
                             Spacer()
                             
-                            Text("720 руб")
+                            Text("\(String(format:"%.2f", self.realm.price)) \(ServerAPI.settings.symbol)")
                                 .font(.system(size: 16, weight: .medium, design: .rounded))
                                 .foregroundColor(Color.theme)
                         }.padding(.bottom , 5)
                         
                         
-                        HStack(){
-                            Text("Скидка 5%")
-                                .font(.system(size: 16, weight: .medium, design: .rounded))
-                                .foregroundColor(Color.red)
-                                
-                            Spacer()
-                            
-                            Text("-86 руб")
-                                .font(.system(size: 16, weight: .medium, design: .rounded))
-                                .foregroundColor(Color.red)
-                        }.padding(.bottom , 5)
+//                        HStack(){
+//                            Text("Скидка 5%")
+//                                .font(.system(size: 16, weight: .medium, design: .rounded))
+//                                .foregroundColor(Color.red)
+//
+//                            Spacer()
+//
+//                            Text("-86 руб")
+//                                .font(.system(size: 16, weight: .medium, design: .rounded))
+//                                .foregroundColor(Color.red)
+//                        }.padding(.bottom , 5)
                         
                         
                         HStack(){
@@ -278,7 +287,7 @@ struct Offer: View {
                                 
                             Spacer()
                             
-                            Text("-86 руб")
+                            Text("\(String(format:"%.2f", ServerAPI.settings.deliverly_price)) \(ServerAPI.settings.symbol)")
                                 .font(.system(size: 16, weight: .medium, design: .rounded))
                                 .foregroundColor(Color.theme)
                         }.padding(.bottom , 8)
