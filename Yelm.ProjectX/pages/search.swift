@@ -82,7 +82,7 @@ struct Search: View {
                 
                 ForEach(self.search_server.items.filter { $0.title.lowercased().contains(search.lowercased()) || search.isEmpty || $0.title.lowercased().contains(search.lowercased())}, id: \.self) { tag in
                     NavigationLink(destination: Item(), tag: 7, selection:  $selection){
-                        SearchItem(title: tag.title, image: tag.thubnail, price: tag.price, type: tag.type, quanity: tag.quanity)
+                        SearchItem(item: tag)
                     }
                     .simultaneousGesture(TapGesture().onEnded{
                         let item = tag
