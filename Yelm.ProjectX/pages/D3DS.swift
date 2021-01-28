@@ -19,6 +19,8 @@ struct D3DS : UIViewRepresentable {
     class Coordinator: NSObject, WKNavigationDelegate {
         
         @Binding var open : Bool
+        @ObservedObject var payment: payment = GlobalPayment
+
         
         init(open: Binding<Bool>) {
             _open = open
@@ -50,14 +52,15 @@ struct D3DS : UIViewRepresentable {
 
                             YelmPay.core.check_3d3s(id: json["MD"].string!, res: json["PaRes"].string!) { (payment, message) in
                                 if (payment){
-                                    print(message)
-                                    print("Payment done")
+                                    self.payment.payment_done = true
+                                    self.payment.message = message
                                     self.open.toggle()
                                     
                                 }
                                 
                                 if (!payment){
-                                    print(message)
+                                    self.payment.payment_done = false
+                                    self.payment.message = message
                                     self.open.toggle()
                                 }
                             }
