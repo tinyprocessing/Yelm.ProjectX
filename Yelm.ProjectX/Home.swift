@@ -20,6 +20,8 @@ struct Home: View {
     @State var selection: Int? = nil
     @State private var isAnimating = false
     
+    @ObservedObject var payment: payment = GlobalPayment
+
     
     func width(y: CGFloat) -> CGFloat {
         let screen = CGFloat(UIScreen.main.bounds.width-90)
@@ -195,6 +197,13 @@ struct Home: View {
                 }
             }
             
+        }
+        .onAppear{
+            if(self.payment.payment_done){
+                self.payment.payment_done = false
+                ShowAlert(title: "Отлично", message: "Оплата прошла успешно - детали Вашего заказа отправлены в чат.")
+
+            }
         }
     }
 }
