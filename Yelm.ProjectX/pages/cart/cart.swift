@@ -17,6 +17,8 @@ struct Cart: View {
     @ObservedObject var bottom: bottom = GlobalBottom
     @Environment(\.presentationMode) var presentation
     
+    @ObservedObject var payment: payment = GlobalPayment
+
     
     @State var time : String = ""
     @State var price : Float = 0
@@ -183,8 +185,14 @@ struct Cart: View {
                             .cornerRadius(10)
                             
                         }.buttonStyle(ScaleButtonStyle())
+                        .disabled(ServerAPI.settings.position == "lat=0&lon=0" ? true : false)
+                        .opacity(ServerAPI.settings.position == "lat=0&lon=0" ? 0.7 : 1.0)
                         .simultaneousGesture(TapGesture().onEnded{
                             open_offer = true
+                            if (ServerAPI.settings.position == "lat=0&lon=0" ){
+                                ShowAlert(title: "Адрес", message: "Пожалуйста, выберите адрес для продложения оформления.")
+                            }
+                           
                         })
                         
                         
@@ -221,6 +229,10 @@ struct Cart: View {
                     self.time = ServerAPI.settings.deliverly_time
                     self.price = ServerAPI.settings.deliverly_price
                 }
+            }
+            
+            if (self.payment.payment_done){
+                self.presentation.wrappedValue.dismiss()
             }
 
             
