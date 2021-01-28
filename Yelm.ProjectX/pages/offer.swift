@@ -12,11 +12,14 @@ import Yelm_Pay
 
 struct Offer: View {
     
-
+    
     @ObservedObject var location : location_cache = GlobalLocation
     @ObservedObject var bottom: bottom = GlobalBottom
     @ObservedObject var item: items = GlobalItems
     @State var nav_bar_hide: Bool = true
+    
+    @ObservedObject var payment: payment = GlobalPayment
+
     
     @Environment(\.presentationMode) var presentation
     
@@ -31,7 +34,7 @@ struct Offer: View {
     @State var pickerSelection = 0
     
     @State var isNavigationBarHidden: Bool = true
-
+    
     
     @State var selection: Int? = nil
     
@@ -41,9 +44,9 @@ struct Offer: View {
     @State var floor: String = ""
     @State var apartment: String = ""
     @State var phone: String = ""
-
+    
     @ObservedObject var realm: RealmControl = GlobalRealm
-
+    
     
     
     var body: some View {
@@ -52,43 +55,43 @@ struct Offer: View {
         
         ZStack(alignment: .bottom){
             VStack{
-
+                
                 
                 VStack{
                     
-                        HStack(alignment: .center){
-                            Button(action: {
+                    HStack(alignment: .center){
+                        Button(action: {
+                            
+                            self.presentation.wrappedValue.dismiss()
+                            let generator = UIImpactFeedbackGenerator(style: .soft)
+                            generator.impactOccurred()
+                            
+                        }) {
+                            
+                            Image(systemName: "arrow.backward")
+                                .foregroundColor(Color.theme_foreground)
+                                .frame(width: 15, height: 15, alignment: .center)
+                                .padding([.top, .leading, .bottom, .trailing], 10)
                                 
-                                    self.presentation.wrappedValue.dismiss()
-                                    let generator = UIImpactFeedbackGenerator(style: .soft)
-                                    generator.impactOccurred()
-                             
-                            }) {
-
-                                Image(systemName: "arrow.backward")
-                                    .foregroundColor(Color.theme_foreground)
-                                    .frame(width: 15, height: 15, alignment: .center)
-                                    .padding([.top, .leading, .bottom, .trailing], 10)
-
-                                    .font(.system(size: 15, weight: .bold, design: .rounded))
-
-                                    .background(Color.theme)
-                                    .clipShape(Circle())
-
-                            }
-                                .padding(.top, 10)
-                                .padding(.trailing, 10)
-                                .buttonStyle(ScaleButtonStyle())
+                                .font(.system(size: 15, weight: .bold, design: .rounded))
+                                
+                                .background(Color.theme)
+                                .clipShape(Circle())
                             
-                            Text("Оформление")
-                                .padding(.top, 10)
-                                .font(.system(size: 28, weight: .semibold, design: .rounded))
-                             
-                            
-                            Spacer()
                         }
+                        .padding(.top, 10)
+                        .padding(.trailing, 10)
+                        .buttonStyle(ScaleButtonStyle())
                         
-                     
+                        Text("Оформление")
+                            .padding(.top, 10)
+                            .font(.system(size: 28, weight: .semibold, design: .rounded))
+                        
+                        
+                        Spacer()
+                    }
+                    
+                    
                     
                 }
                 .padding([.trailing, .leading], 20)
@@ -99,25 +102,25 @@ struct Offer: View {
                 
                 
                 ScrollView(showsIndicators: false) {
-                
+                    
                     if (false){
-                    VStack{
-                    HStack(){
-                        Text("Промокод")
-                            .font(.system(size: 20, weight: .semibold, design: .rounded))
+                        VStack{
+                            HStack(){
+                                Text("Промокод")
+                                    .font(.system(size: 20, weight: .semibold, design: .rounded))
+                                
+                                Spacer()
+                            }.padding(.bottom , 8)
                             
-                        Spacer()
-                    }.padding(.bottom , 8)
-                    
-                    
-                    TextField("Промокод", text: $promocode)
-                        .padding(.vertical, 10)
-                        .foregroundColor(Color.init(hex: "BDBDBD"))
-                        .padding(.leading, 10)
-                        .background(Color.white)
-                        .cornerRadius(8)
-                        .overlay(
-                                   RoundedRectangle(cornerRadius: 8)
+                            
+                            TextField("Промокод", text: $promocode)
+                                .padding(.vertical, 10)
+                                .foregroundColor(Color.init(hex: "BDBDBD"))
+                                .padding(.leading, 10)
+                                .background(Color.white)
+                                .cornerRadius(8)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
                                         .stroke(Color.init(hex: "E0E0E0"), lineWidth: 2)
                                         .opacity(0.6)
                                         .overlay(
@@ -129,7 +132,7 @@ struct Offer: View {
                                                     
                                                     print("Some PLUS touch")
                                                     
-
+                                                    
                                                 }) {
                                                     
                                                     Rectangle()
@@ -141,23 +144,23 @@ struct Offer: View {
                                                                 .font(.system(size: 16, weight: .medium, design: .rounded))
                                                                 .foregroundColor(.theme_foreground)
                                                         )
-
+                                                    
                                                 }
                                                 .buttonStyle(PlainButtonStyle())
-
+                                                
                                                 
                                             }
                                         )
-                            )
-                        .padding(.horizontal, 1)
-                        .padding(.bottom , 8)
-                    }
+                                )
+                                .padding(.horizontal, 1)
+                                .padding(.bottom , 8)
+                        }
                     }
                     
                     HStack(){
                         Text("Адрес")
                             .font(.system(size: 20, weight: .semibold, design: .rounded))
-                            
+                        
                         Spacer()
                     }.padding(.bottom , 5)
                     
@@ -165,8 +168,8 @@ struct Offer: View {
                         Text(self.location.name)
                             .font(.system(size: 16, weight: .medium, design: .rounded))
                             .foregroundColor(Color.init(hex: "828282"))
-
-                            
+                        
+                        
                         Spacer()
                     }.padding(.bottom , 5)
                     
@@ -181,10 +184,10 @@ struct Offer: View {
                             .background(Color.white)
                             .cornerRadius(8)
                             .overlay(
-                                       RoundedRectangle(cornerRadius: 8)
-                                           .stroke(Color.init(hex: "E0E0E0"), lineWidth: 2)
-                                        .opacity(0.6)
-                                )
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.init(hex: "E0E0E0"), lineWidth: 2)
+                                    .opacity(0.6)
+                            )
                             .padding(.horizontal, 1)
                             .padding(.bottom , 8)
                         
@@ -196,10 +199,10 @@ struct Offer: View {
                             .background(Color.white)
                             .cornerRadius(8)
                             .overlay(
-                                       RoundedRectangle(cornerRadius: 8)
-                                           .stroke(Color.init(hex: "E0E0E0"), lineWidth: 2)
-                                        .opacity(0.6)
-                                )
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.init(hex: "E0E0E0"), lineWidth: 2)
+                                    .opacity(0.6)
+                            )
                             .padding(.horizontal, 1)
                             .padding(.bottom , 8)
                         
@@ -211,10 +214,10 @@ struct Offer: View {
                             .background(Color.white)
                             .cornerRadius(8)
                             .overlay(
-                                       RoundedRectangle(cornerRadius: 8)
-                                           .stroke(Color.init(hex: "E0E0E0"), lineWidth: 2)
-                                        .opacity(0.6)
-                                )
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.init(hex: "E0E0E0"), lineWidth: 2)
+                                    .opacity(0.6)
+                            )
                             .padding(.horizontal, 1)
                             .padding(.bottom , 8)
                     }
@@ -223,7 +226,7 @@ struct Offer: View {
                     HStack(){
                         Text("Получатель")
                             .font(.system(size: 20, weight: .semibold, design: .rounded))
-                            
+                        
                         Spacer()
                     }.padding(.bottom , 8)
                     
@@ -234,22 +237,22 @@ struct Offer: View {
                         .background(Color.white)
                         .cornerRadius(8)
                         .overlay(
-                                   RoundedRectangle(cornerRadius: 8)
-                                       .stroke(Color.init(hex: "E0E0E0"), lineWidth: 2)
-                                    .opacity(0.6)
-                            )
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.init(hex: "E0E0E0"), lineWidth: 2)
+                                .opacity(0.6)
+                        )
                         .padding(.horizontal, 1)
                         .padding(.bottom , 8)
                     
                     
-
+                    
                     
                     
                     VStack{
                         HStack(){
                             Text("Ваш заказ")
                                 .font(.system(size: 20, weight: .semibold, design: .rounded))
-                                
+                            
                             Spacer()
                         }.padding(.bottom , 8)
                         
@@ -258,7 +261,7 @@ struct Offer: View {
                             Text("Товары")
                                 .font(.system(size: 16, weight: .medium, design: .rounded))
                                 .foregroundColor(Color.init(hex: "828282"))
-                                
+                            
                             Spacer()
                             
                             Text("\(String(format:"%.2f", self.realm.price)) \(ServerAPI.settings.symbol)")
@@ -267,24 +270,24 @@ struct Offer: View {
                         }.padding(.bottom , 5)
                         
                         
-//                        HStack(){
-//                            Text("Скидка 5%")
-//                                .font(.system(size: 16, weight: .medium, design: .rounded))
-//                                .foregroundColor(Color.red)
-//
-//                            Spacer()
-//
-//                            Text("-86 руб")
-//                                .font(.system(size: 16, weight: .medium, design: .rounded))
-//                                .foregroundColor(Color.red)
-//                        }.padding(.bottom , 5)
+                        //                        HStack(){
+                        //                            Text("Скидка 5%")
+                        //                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                        //                                .foregroundColor(Color.red)
+                        //
+                        //                            Spacer()
+                        //
+                        //                            Text("-86 руб")
+                        //                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                        //                                .foregroundColor(Color.red)
+                        //                        }.padding(.bottom , 5)
                         
                         
                         HStack(){
                             Text("Доставка")
                                 .font(.system(size: 16, weight: .medium, design: .rounded))
                                 .foregroundColor(Color.init(hex: "828282"))
-                                
+                            
                             Spacer()
                             
                             Text("\(String(format:"%.2f", ServerAPI.settings.deliverly_price)) \(ServerAPI.settings.symbol)")
@@ -297,34 +300,34 @@ struct Offer: View {
                     HStack(){
                         Text("Способ оплаты")
                             .font(.system(size: 20, weight: .semibold, design: .rounded))
-                            
+                        
                         Spacer()
                     }.padding(.bottom , 5)
                     
-                   
+                    
                     
                     Picker(selection: $pickerSelection, label: Text("")) {
-                               Text("Карта")
-                                .tag(0)
-                                .foregroundColor(Color.theme_foreground)
-                                .font(.system(size: 16, weight: .medium, design: .rounded))
-                                
-                               Text("Apple Pay")
-                                .tag(1)
-                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                        Text("Карта")
+                            .tag(0)
+                            .foregroundColor(Color.theme_foreground)
+                            .font(.system(size: 16, weight: .medium, design: .rounded))
+                        
+                        Text("Apple Pay")
+                            .tag(1)
+                            .font(.system(size: 16, weight: .medium, design: .rounded))
                     }.pickerStyle(SegmentedPickerStyle())
                     
                     
                     
                 }.padding([.trailing, .leading], 20)
-
+                
                 
                 
                 
                 
             }
             
-         
+            
             
             
             
@@ -342,58 +345,60 @@ struct Offer: View {
                     
                     if (self.pickerSelection == 1){
                         
-                    Button(action: {
-                        YelmPay.start(platform: "5f771d465f4191.76733056") { (load) in
-                            
-                            YelmPay.apple_pay.apple_pay(price: 10, delivery: 10, merchant: "merchant.5fd33466e17963.29052139.yelm.io", country: "RU", currency: "RUB") { (payment) in
-                                if (payment){
-                                    print("done payment")
-                                }else{
-                                    print("error")
+                        Button(action: {
+                            YelmPay.start(platform: "5f771d465f4191.76733056") { (load) in
+                                
+                                YelmPay.apple_pay.apple_pay(price: 10, delivery: 10, merchant: "merchant.5fd33466e17963.29052139.yelm.io", country: "RU", currency: "RUB") { (payment) in
+                                    if (payment){
+                                        ShowAlert(title: "Отлично", message: "Оплата прошла успешно - детали Вашего заказа отправлены в чат.")
+                                    }
+                                    
+                                    if (!payment){
+                                        ShowAlert(title: "Упс...", message: "Ошибка")
+                                    }
                                 }
+                                
                             }
                             
-                        }
-                     
-                        
-
-                    }) {
-                        
-                        HStack{
-                            Spacer()
-                            Text("Оплатить")
-                            Spacer()
-                        }
-                            .padding(.horizontal)
-                            .padding(.vertical, 10)
-                            .background(Color.theme)
-                            .foregroundColor(.theme_foreground)
-                            .cornerRadius(10)
-                         
-
-
-                    }
-
-                    .frame(height: 50)
-                    .buttonStyle(ApplePayButtonStyle())
-                    .clipShape(CustomShape(corner: .allCorners, radii: 10))
-                        
-                    }else{
-                        
-                        NavigationLink(destination: Payment(), tag: 100, selection: $selection) {
-
+                            
+                            
+                        }) {
                             
                             HStack{
                                 Spacer()
                                 Text("Оплатить")
                                 Spacer()
                             }
-                                .padding(.horizontal)
-                                .padding(.vertical, 10)
-                                .background(Color.theme)
-                                .foregroundColor(.theme_foreground)
-                                .cornerRadius(10)
-                             
+                            .padding(.horizontal)
+                            .padding(.vertical, 10)
+                            .background(Color.theme)
+                            .foregroundColor(.theme_foreground)
+                            .cornerRadius(10)
+                            
+                            
+                            
+                        }
+                        
+                        .frame(height: 50)
+                        .buttonStyle(ApplePayButtonStyle())
+                        .clipShape(CustomShape(corner: .allCorners, radii: 10))
+                        
+                    }else{
+                        
+                        NavigationLink(destination: Payment(), tag: 100, selection: $selection) {
+                            
+                            
+                            HStack{
+                                Spacer()
+                                Text("Оплатить")
+                                Spacer()
+                            }
+                            .padding(.horizontal)
+                            .padding(.vertical, 10)
+                            .background(Color.theme)
+                            .foregroundColor(.theme_foreground)
+                            .cornerRadius(10)
+                            
                         }
                         .frame(height: 50)
                         .buttonStyle(ScaleButtonStyle())
@@ -403,23 +408,23 @@ struct Offer: View {
                     
                     
                     
-//                        Кнопка для покупки
-//                        Данные о сумме заказа
+                    //                        Кнопка для покупки
+                    //                        Данные о сумме заказа
                 }.padding([.trailing, .leading], 20)
             }
             .padding(.bottom, 40)
             .padding(.top, 30)
             .background(Color.white)
             .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 20))
-//                .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
+            //                .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
             .shadow(color: .dropShadow, radius: 15, x: 0, y: 2)
-
+            
             
         }.edgesIgnoringSafeArea(.bottom)
         
         
-      
-    
+        
+        
         .navigationBarTitle("hidden_layer")
         .navigationBarHidden(self.nav_bar_hide)
         
@@ -428,15 +433,21 @@ struct Offer: View {
             self.nav_bar_hide = true
             self.bottom.hide = true
             
-           
-       }
-       
-     
+            
+            
+            if (self.payment.payment_done){
+                self.presentation.wrappedValue.dismiss()
+            }
+        
+            
+        }
+        
+        
         .onDisappear{
             open_offer = false
         }
-       
-
+        
+        
     }
 }
 

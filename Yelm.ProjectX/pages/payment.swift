@@ -14,11 +14,14 @@ import Yelm_Pay
 struct Payment: View {
     
 
+    @ObservedObject var payment: payment = GlobalPayment
     @ObservedObject var realm: RealmControl = GlobalRealm
     @ObservedObject var bottom: bottom = GlobalBottom
     @ObservedObject var item: items = GlobalItems
     @State var nav_bar_hide: Bool = true
     
+    
+
     
     @State var card: String = ""
     @State var date: String = ""
@@ -207,6 +210,15 @@ struct Payment: View {
                     .clipShape(CustomShape(corner: .allCorners, radii: 10))
                     .sheet(isPresented: $open) {
                         D3DS(response_main: self.$response_main, data: self.$data, open: self.$open)
+                        .onDisappear{
+                            if (self.payment.payment_done){
+                                self.presentation.wrappedValue.dismiss()
+                            }
+                            
+                            if (!self.payment.payment_done){
+                                ShowAlert(title: "Упс...", message: self.payment.message)
+                            }
+                        }
                     }
                     
                     
