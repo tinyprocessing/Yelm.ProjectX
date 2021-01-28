@@ -17,7 +17,16 @@ var GlobalItems: items = items()
 var GlobalNews: news = news()
 var GlobalBottom: bottom = bottom()
 var GlobalCart: cart = cart()
+var GlobalPayment: payment = payment()
 var GlobalWebview: loading_webview = loading_webview()
+
+
+class payment: ObservableObject, Identifiable {
+    var id : Int = 0
+    @Published var payment_done : Bool = true
+    @Published var transaction : String = ""
+    @Published var message : String = ""
+}
 
 
 class bottom: ObservableObject, Identifiable {
@@ -41,9 +50,16 @@ class cart: ObservableObject, Identifiable {
     @Published var cart_items : [cart_structure] = []
 }
 
-class items: ObservableObject, Identifiable {
-    var id : Int = 0
-    @Published var item : items_structure = items_structure(id: 0)
+public class items: ObservableObject, Identifiable {
+    
+    internal init(id: Int = 0, item: items_structure = items_structure()) {
+        self.id = id
+        self.item = item
+    }
+    
+    
+    public var id : Int = 0
+    @Published var item : items_structure
 }
 
 class news: ObservableObject, Identifiable {
