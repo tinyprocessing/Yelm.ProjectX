@@ -87,7 +87,7 @@ struct Item : View {
                                 VStack{
                                     if (self.item.item.thubnail != ""){
                                         
-                                        URLImage(URL(string: self.item.item.thubnail)!) { proxy in
+                                        URLImage(URL(string: self.item.item.all_images[0])!) { proxy in
                                             proxy.image
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fill)
