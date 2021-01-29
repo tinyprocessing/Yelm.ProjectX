@@ -23,7 +23,7 @@ var GlobalWebview: loading_webview = loading_webview()
 
 class payment: ObservableObject, Identifiable {
     var id : Int = 0
-    @Published var payment_done : Bool = true
+    @Published var payment_done : Bool = false
     @Published var transaction : String = ""
     @Published var message : String = ""
 }
