@@ -159,7 +159,7 @@ struct Item : View {
                                                     .padding(.horizontal, 10)
                                                     .background(Color.green)
                                                     .cornerRadius(20)
-                                                    .padding(.top, 5)
+                                                    
                                                     
                                                     
                                                 
@@ -181,7 +181,7 @@ struct Item : View {
                                                     .padding(.horizontal, 10)
                                                     .background(Color.orange)
                                                     .cornerRadius(20)
-                                                    .padding(.top, 5)
+                                                    
                                                 
                                             }
                                             
@@ -201,8 +201,9 @@ struct Item : View {
                                     .padding(.top, 10)
                                     
                                 }
-                                HStack{
+                              
                                     if (self.item.item.discount_present == "-0%"){
+                                        HStack{
                                     if (self.item.item.amount > 5){
                                         
                                         HStack(spacing: 2){
@@ -241,10 +242,11 @@ struct Item : View {
                                             .padding(.top, 5)
                                         
                                     }
-                                    
+                                            
+                                            Spacer()
+                                        }.padding(.horizontal, 20)
                                 }
-                                    Spacer()
-                                }.padding(.horizontal, 20)
+                              
                                 
                                 if (self.item.item.discount_present != "-0%"){
                                     HStack {
