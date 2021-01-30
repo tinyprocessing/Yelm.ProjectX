@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Yelm_Server
-
+import Yelm_Chat
 
 
 struct Start: View {
@@ -57,29 +57,6 @@ struct Start: View {
                 HStack{
                     
                     
-                    if (true){
-//                        Button(action: {
-//
-//                            withAnimation{
-//                                windows?.rootViewController =  UIHostingController(rootView: Start())
-//                            }
-//
-//                        }) {
-//                            HStack{
-//                                Image(systemName: "house.fill").font(.system(size: 16, weight: .bold, design: .rounded))
-//
-//                            }
-//                            .padding()
-//                            .frame(height: 40)
-//                            .background(Color.theme)
-//                            .foregroundColor(.white)
-//                            .clipShape(Circle())
-//
-//                        }.buttonStyle(ScaleButtonStyle())
-                    }
-                    
-                  
-                    
                     Spacer()
                     
                     if (true){
@@ -127,7 +104,7 @@ struct Start: View {
                 self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
                 
                 let position = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
-                ServerAPI.settings.debug = true
+                ServerAPI.settings.debug = false
                 ServerAPI.start(platform: "5fd33466e17963.29052139", position: position) { (result) in
                     if (result == true){
                         
@@ -145,8 +122,26 @@ struct Start: View {
                         if (user == ""){
                             ServerAPI.user.registration { (load, user) in
                                 if (load){
-                                    
                                     UserDefaults.standard.set(user, forKey: "USER")
+                                    YelmChat.start(platform: "5fd33466e17963.29052139", user: user) { (load) in
+                                        if (load){
+                                            YelmChat.core.register { (done) in
+                                                if (done){
+                                                    
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }else{
+                            YelmChat.start(platform: "5fd33466e17963.29052139", user: user) { (load) in
+                                if (load){
+                                    YelmChat.core.register { (done) in
+                                        if (done){
+                                            YelmChat.core.server(host: "https://chat.yelm.io:6001")
+                                        }
+                                    }
                                 }
                             }
                         }
