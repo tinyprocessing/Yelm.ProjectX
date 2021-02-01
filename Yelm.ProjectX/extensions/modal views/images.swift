@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import Yelm_Chat
 import SwiftUI
 import Photos
 
@@ -14,7 +14,7 @@ import Photos
 
 struct ModalImages: View {
     
-    @ObservedObject var chat: chat = GlobalChat
+    @ObservedObject var chat: ChatIO = YelmChat
     
     
     @State var selected : [selected_images] = []
@@ -220,12 +220,12 @@ struct ModalImages: View {
                                     let generator = UIImpactFeedbackGenerator(style: .soft)
                                     generator.impactOccurred()
                                     let user_cache = UserDefaults.standard.string(forKey: "USER") ?? "user16"
-                                    let user = chat_user(id: 0, name: user_cache, online: "yes")
+                                    let user = chat_user(id: 0, name: user_cache)
                                     
                                     
                                     for i in 0...self.selected.count-1{
-                                        self.chat.objectWillChange.send()
-                                        self.chat.messages.append(chat_message(id: (self.chat.messages.count+1),
+                                        self.chat.chat.objectWillChange.send()
+                                        self.chat.chat.messages.append(chat_message(id: (self.chat.chat.messages.count+1),
                                                                                user: user,
                                                                                text: "",
                                                                                time: time,
@@ -234,7 +234,7 @@ struct ModalImages: View {
                                     }
                                     
                                     
-                                    print(self.chat.messages)
+                                    print(self.chat.chat.messages)
                                     
                                     self.selected.removeAll()
                                     
@@ -305,18 +305,6 @@ struct ModalImages: View {
                                 
                                 HStack{
                                     HStack{
-                                        
-//                                        Button(action: {
-//
-//                                            self.open_camera.toggle()
-//
-//                                        }) {
-//                                            Image(systemName: "bolt.slash.fill")
-//                                                .foregroundColor(Color.white)
-//                                                .font(.system(size: 20, weight: .bold, design: .rounded))
-//
-//                                        }.buttonStyle(ScaleButtonStyle())
-                                        
                                        
                                         
                                         Spacer()
@@ -438,7 +426,7 @@ struct ImageLoaderLibrary: View {
                     manager.requestImage(for: asset, targetSize: .init(width: 380, height: 380), contentMode: .aspectFill, options: options) { (image, _) in
                         let compressed = UIImage(data: image!.jpeg(.lowest)!)
                         
-                        print("Result Size Is \(image!.size)")
+                        
                         
                         DispatchQueue.main.async {
                             self.image = compressed!

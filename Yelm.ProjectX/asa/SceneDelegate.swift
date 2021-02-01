@@ -8,13 +8,14 @@
 import UIKit
 import SwiftUI
 import Foundation
+import Yelm_Chat
 
 var windows: UIWindow?
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     
-    @ObservedObject var chat: chat = GlobalChat
+    @ObservedObject var chat: ChatIO = YelmChat
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {

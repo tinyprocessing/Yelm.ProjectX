@@ -13,6 +13,10 @@ import Yelm_Chat
 
 struct Home: View {
     
+    @ObservedObject var chat : ChatIO = YelmChat
+    
+    
+    
     @ObservedObject var location : location_cache = GlobalLocation
     @ObservedObject var modal : ModalManager = GlobalModular
     @ObservedObject var loading: loading = GlobalLoading
@@ -166,8 +170,15 @@ struct Home: View {
                                 NavigationLink(destination: Chat(), tag: 2, selection: $selection) {
                                     ZStack(alignment: .top){
                                         HStack{
+                                            ZStack{
                                             Image(systemName: "bubble.left").font(.system(size: 18, weight: .medium, design: .rounded))
-                                                .foregroundColor(YelmChat.core.socket_state ? .green : .red)
+
+//                                                if (self.chat.core.socket_state == false){
+//                                                    Circle()
+//                                                        .fill(Color.orange)
+//                                                        .frame(width: 1, height: 1)
+//                                                }
+                                            }
                                         }
 
                                         
