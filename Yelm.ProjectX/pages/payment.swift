@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Yelm_Server
 import Yelm_Pay
-
+import Combine
 
 struct Payment: View {
     
@@ -32,6 +32,7 @@ struct Payment: View {
     @State var data : Data = Data()
     @State var response_main : HTTPURLResponse = HTTPURLResponse()
 
+    @State var count : Int = 0
     @Environment(\.presentationMode) var presentation
     
 
@@ -117,6 +118,17 @@ struct Payment: View {
                                 .padding(.vertical, 5)
                                 .foregroundColor(Color.init(hex: "828282"))
                                 .background(Color.init(hex: "FBFCFC"))
+                                .onReceive(Just(date)) { (count_new) in
+                                    if (count < count_new.count){
+                                        if (count_new.count == 2){
+                                            self.date += "/"
+                                        }
+                                        
+                                        count = count_new.count
+                                    }else{
+                                        count = count_new.count
+                                    }
+                                }
                             
                             Line().fill(Color.init(hex: "AEADAD").opacity(0.5)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1)
                         }
