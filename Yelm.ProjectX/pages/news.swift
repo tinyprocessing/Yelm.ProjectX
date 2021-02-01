@@ -16,44 +16,48 @@ struct News : View {
     
     var body: some View{
         VStack(spacing: 10){
-            HStack{
-                Text("Что выбрать?")
-                    .font(.system(size: 26, weight: .bold, design: .rounded))
+            if (self.news.news.count > 0){
+                HStack{
+                    Text("Что выбрать?")
+                        .font(.system(size: 26, weight: .bold, design: .rounded))
+                    
+                    Spacer()
+                }.padding(.leading, 15)
                 
-                Spacer()
-            }.padding(.leading, 15)
-            
-            ScrollView(.horizontal, showsIndicators: false){
-                HStack(spacing: 0){
-                    ForEach(self.news.news, id: \.self){ object in
-                        NavigationLink(destination: NewsSingle(), tag: 12, selection:  $selection){
-                            VStack{
-                            URLImage(URL(string: object.thubnail)!) { proxy in
-                                proxy.image
-                                    .resizable()
-                                    .frame(width: proxy.news.width, height: proxy.news.height)
-                                    .aspectRatio(contentMode: .fill)
-                                    .cornerRadius(15)
-                                    .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
-                                  
-                            }
-                        }.padding(.trailing, 15)
-                        }.buttonStyle(ScaleButtonStyle())
-                        
-                        .simultaneousGesture(TapGesture().onEnded{
-                            let news = object
-                            self.news.news_single = news
-                        })
-                        
-                        
+                ScrollView(.horizontal, showsIndicators: false){
+                    HStack(spacing: 0){
+                        ForEach(self.news.news, id: \.self){ object in
+                            NavigationLink(destination: NewsSingle(), tag: 12, selection:  $selection){
+                                VStack{
+                                URLImage(URL(string: object.thubnail)!) { proxy in
+                                    proxy.image
+                                        .resizable()
+                                        .frame(width: proxy.news.width, height: proxy.news.height)
+                                        .aspectRatio(contentMode: .fill)
+                                        .cornerRadius(15)
+                                        .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
+                                      
+                                }
+                            }.padding(.trailing, 15)
+                            }.buttonStyle(ScaleButtonStyle())
+                            
+                            .simultaneousGesture(TapGesture().onEnded{
+                                let news = object
+                                self.news.news_single = news
+                            })
+                            
+                            
+                        }
                     }
-                }
-                .padding(.leading, 15)
-                .padding(.top, 15)
-               
-            }.frame(height: 110)
+                    .padding(.leading, 15)
+                    .padding(.top, 15)
+                   
+                }.frame(height: 110)
+                
+            }
+          
         }
-        .padding(.bottom, 20)
+        .padding(.bottom, self.news.news.count > 0 ? 20 : 0)
         .onAppear{
             
         }
