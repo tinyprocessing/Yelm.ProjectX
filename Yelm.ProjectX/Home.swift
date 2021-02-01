@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 import Yelm_Server
-
+import Yelm_Chat
 
 
 struct Home: View {
@@ -167,6 +167,7 @@ struct Home: View {
                                     ZStack(alignment: .top){
                                         HStack{
                                             Image(systemName: "bubble.left").font(.system(size: 18, weight: .medium, design: .rounded))
+                                                .foregroundColor(YelmChat.core.socket_state ? .green : .red)
                                         }
 
                                         
