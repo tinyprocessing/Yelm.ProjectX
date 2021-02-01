@@ -139,7 +139,7 @@ struct Start: View {
                                 if (load){
                                     YelmChat.core.register { (done) in
                                         if (done){
-                                            YelmChat.core.server(host: "https://chat.yelm.io:6001")
+                                            YelmChat.core.server(host: "https://chat.yelm.io/")
                                         }
                                     }
                                 }
