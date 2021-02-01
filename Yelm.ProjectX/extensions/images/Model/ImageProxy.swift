@@ -72,7 +72,7 @@ public extension ImageProxy {
         }
         let new_height = new_width / ratio;
 
-        print(CGSize(width: Int(new_width), height: Int(new_height)))
+        
         return CGSize(width: Int(new_width), height: Int(new_height))
         
     }

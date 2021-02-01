@@ -130,7 +130,7 @@ struct Offer: View {
                                                 
                                                 Button(action: {
                                                     
-                                                    print("Some PLUS touch")
+                                                    
                                                     
                                                     
                                                 }) {
