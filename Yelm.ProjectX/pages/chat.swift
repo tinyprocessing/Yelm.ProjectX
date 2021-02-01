@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
-
+import Yelm_Chat
 
 
 struct Chat : View {
@@ -19,8 +19,9 @@ struct Chat : View {
 
     
    
+    @ObservedObject var chat : ChatIO = YelmChat
+
     
-    @ObservedObject var chat: chat = GlobalChat
     @ObservedObject var bottom: bottom = GlobalBottom
     @Environment(\.presentationMode) var presentation
     
@@ -30,7 +31,7 @@ struct Chat : View {
     
     @available(iOS 14.0, *)
     private func scrollToLastMessage(proxy: ScrollViewProxy) {
-        if let lastMessage = self.chat.messages.last { // 4
+        if let lastMessage = self.chat.chat.messages.last { // 4
             withAnimation(.easeOut(duration: 0.1)) {
                 proxy.scrollTo(lastMessage.id, anchor: .bottom) // 5
             }
@@ -73,13 +74,13 @@ struct Chat : View {
                         .padding(.trailing, 10)
                         .buttonStyle(ScaleButtonStyle())
                         
-                        VStack{
+                        VStack(alignment: .leading){
                             Text("Чат")
                                 .padding(.top, 10)
                                 .font(.system(size: 28, weight: .semibold, design: .rounded))
                             
-                            Text("Онлайн")
-                                .foregroundColor(.green)
+                            Text(self.chat.core.socket_state == true ? "Онлайн" : "Оффлайн")
+                                .foregroundColor(self.chat.core.socket_state == true ? .green : .gray)
                                 .font(.system(size: 12, weight: .semibold, design: .rounded))
                                 .lineLimit(1)
                             
@@ -124,7 +125,7 @@ struct Chat : View {
                     if #available(iOS 14.0, *) {
                         ScrollViewReader { proxy in // 1
                             
-                            ForEach(self.chat.messages, id: \.self) { message in
+                            ForEach(self.chat.chat.messages, id: \.self) { message in
                                 if (message.user.name == UserDefaults.standard.string(forKey: "USER") ?? "user16"){
                                     Message(message: message.text,
                                             user: message.user.name,
@@ -173,7 +174,7 @@ struct Chat : View {
                                     }
                                 }
                             })
-                            .onChange(of: self.chat.messages.count) { _ in // 3
+                            .onChange(of: self.chat.chat.messages.count) { _ in // 3
                                 print("messages add")
                                 scrollToLastMessage(proxy: proxy)
                                 print(proxy)
@@ -192,7 +193,7 @@ struct Chat : View {
 
 
 
-                                ForEach(self.chat.messages.reversed(), id: \.self){ message in
+                                ForEach(self.chat.chat.messages.reversed(), id: \.self){ message in
 
                                     if (message.user.name == UserDefaults.standard.string(forKey: "USER") ?? "user16"){
                                         Message(message: message.text,
@@ -301,15 +302,15 @@ struct Chat : View {
                             let generator = UIImpactFeedbackGenerator(style: .soft)
                             generator.impactOccurred()
                             let user_cache = UserDefaults.standard.string(forKey: "USER") ?? "user16"
-                            var user = chat_user(id: 0, name: user_cache, online: "yes")
+                            var user = chat_user(id: 0, name: user_cache)
                             
-                            if (self.chat.messages.count > 0){
-                                if (self.chat.messages.last?.user.name == user_cache){
-                                    user = chat_user(id: 1, name: "shop", online: "yes")
+                            if (self.chat.chat.messages.count > 0){
+                                if (self.chat.chat.messages.last?.user.name == user_cache){
+                                    user = chat_user(id: 1, name: "shop")
                                 }
                             }
                             
-                            self.chat.messages.append(chat_message(id: (self.chat.messages.count+1),
+                            self.chat.chat.messages.append(chat_message(id: (self.chat.chat.messages.count+1),
                                                               user: user,
                                                               text: self.text,
                                                               time: time,
@@ -350,6 +351,7 @@ struct Chat : View {
         .navigationBarHidden(self.nav_bar_hide)
         
         .onAppear {
+            
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.modal.newModal(position: .closed) {
