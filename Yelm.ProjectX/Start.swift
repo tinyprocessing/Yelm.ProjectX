@@ -108,6 +108,8 @@ struct Start: View {
                 ServerAPI.start(platform: "5fd33466e17963.29052139", position: position) { (result) in
                     if (result == true){
                         
+                        
+                        
                         ServerAPI.settings.get_settings { (load) in
                             if (load){
                                 
