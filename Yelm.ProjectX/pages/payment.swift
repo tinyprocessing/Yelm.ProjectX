@@ -29,6 +29,7 @@ struct Payment: View {
     @State var open : Bool = false
     
     
+    @State var save : Bool = true
     @State var data : Data = Data()
     @State var response_main : HTTPURLResponse = HTTPURLResponse()
 
@@ -147,14 +148,22 @@ struct Payment: View {
                     .padding(.horizontal, 2)
                     
                     HStack{
-                        
-                        Image(systemName: "checkmark.square.fill")
-                            .font(.system(size: 20))
-                            .foregroundColor(.blue)
-                        
-                        Text("Запомнить карту")
-                            .font(.system(size: 16, weight: .semibold, design: .rounded))
-                            .foregroundColor(Color.init(hex: "828282"))
+                        Button(action: {
+                     
+                            self.save.toggle()
+                            
+                        }){
+                            
+                            Image(systemName: self.save == true ? "checkmark.square.fill" : "square")
+                                .font(.system(size: 20))
+                                .foregroundColor(self.save == true ? .theme : .theme)
+                            
+                            Text("Запомнить карту")
+                                .font(.system(size: 16, weight: .semibold, design: .rounded))
+                                .foregroundColor(Color.init(hex: "828282"))
+                                
+                            
+                        }
                         
                         Spacer()
                       
@@ -181,6 +190,12 @@ struct Payment: View {
                         .fontWeight(.bold)
                     
                     Button(action: {
+                        
+                        
+                        
+                        UserDefaults.standard.set(self.card, forKey: "card")
+                        UserDefaults.standard.set(self.date, forKey: "date")
+
                         YelmPay.start(platform: "5f771d465f4191.76733056") { (load) in
                             YelmPay.core.payment(card_number: self.card,
                                                  date: self.date,
@@ -265,6 +280,10 @@ struct Payment: View {
         
         
         .onAppear {
+            
+            self.card = UserDefaults.standard.string(forKey: "card") ?? ""
+            self.date = UserDefaults.standard.string(forKey: "date") ?? ""
+            
             self.nav_bar_hide = true
             self.bottom.hide = true
            
