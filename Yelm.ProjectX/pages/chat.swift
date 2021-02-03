@@ -293,28 +293,33 @@ struct Chat : View {
                         
                         Button(action: {
                             
-                            let date = Date()
-                            let calendar = Calendar.current
-                            let hour = calendar.component(.hour, from: date)
-                            let minutes = calendar.component(.minute, from: date)
+//                            let date = Date()
+//                            let calendar = Calendar.current
+//                            let hour = calendar.component(.hour, from: date)
+//                            let minutes = calendar.component(.minute, from: date)
+//
+//                            let time = "\(hour):\(minutes)"
                             
-                            let time = "\(hour):\(minutes)"
                             let generator = UIImpactFeedbackGenerator(style: .soft)
                             generator.impactOccurred()
-                            let user_cache = UserDefaults.standard.string(forKey: "USER") ?? "user16"
-                            var user = chat_user(id: 0, name: user_cache)
                             
-                            if (self.chat.chat.messages.count > 0){
-                                if (self.chat.chat.messages.last?.user.name == user_cache){
-                                    user = chat_user(id: 1, name: "shop")
-                                }
-                            }
+//                            let user_cache = UserDefaults.standard.string(forKey: "USER") ?? "user16"
+//                            var user = chat_user(id: 0, name: user_cache)
+//
+//                            if (self.chat.chat.messages.count > 0){
+//                                if (self.chat.chat.messages.last?.user.name == user_cache){
+//                                    user = chat_user(id: 1, name: "shop")
+//                                }
+//                            }
                             
-                            self.chat.chat.messages.append(chat_message(id: (self.chat.chat.messages.count+1),
-                                                              user: user,
-                                                              text: self.text,
-                                                              time: time,
-                                                              attachments: [:]))
+                            
+                            self.chat.core.send(message: self.text, type: "text")
+                            
+//                            self.chat.chat.messages.append(chat_message(id: (self.chat.chat.messages.count+1),
+//                                                              user: user,
+//                                                              text: self.text,
+//                                                              time: time,
+//                                                              attachments: [:]))
                             
                             self.text = ""
                         }) {
