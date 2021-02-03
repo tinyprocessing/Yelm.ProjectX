@@ -13,6 +13,25 @@ import Yelm_Pay
 struct Offer: View {
     
     
+    private class PaymentContextDelegate: NSObject, APDelegate {
+        
+        func PaymentDone(result: Bool) {
+            if (result){
+                print("PaymentContextDelegate.result.done")
+                ShowAlert(title: "Отлично", message: "Оплата прошла успешно - детали Вашего заказа отправлены в чат.")
+            }
+            
+            if (!result){
+                print("PaymentContextDelegate.result.fail")
+                ShowAlert(title: "Упс...", message: "Ошибка")
+            }
+        }
+        
+    }
+    
+    private var paymentContextDelegate = PaymentContextDelegate()
+
+    
     @ObservedObject var location : location_cache = GlobalLocation
     @ObservedObject var bottom: bottom = GlobalBottom
     @ObservedObject var item: items = GlobalItems
@@ -23,7 +42,7 @@ struct Offer: View {
     
     @Environment(\.presentationMode) var presentation
     
-    
+   
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = Color.theme.uiColor()
@@ -348,15 +367,13 @@ struct Offer: View {
                         Button(action: {
                             YelmPay.start(platform: "5f771d465f4191.76733056") { (load) in
                                 
-                                YelmPay.apple_pay.apple_pay(price: 10, delivery: 10, merchant: "merchant.5fd33466e17963.29052139.yelm.io", country: "RU", currency: "RUB") { (payment) in
-                                    if (payment){
-                                        ShowAlert(title: "Отлично", message: "Оплата прошла успешно - детали Вашего заказа отправлены в чат.")
-                                    }
-                                    
-                                    if (!payment){
-                                        ShowAlert(title: "Упс...", message: "Ошибка")
-                                    }
-                                }
+                                YelmPay.apple_pay.apple_pay(price: 1,
+                                                            delivery: 0,
+                                                            merchant: "merchant.5fd33466e17963.29052139.yelm.io",
+                                                            country: "RU",
+                                                            currency: ServerAPI.settings.currency)
+                                
+                                
                                 
                             }
                             
@@ -433,10 +450,31 @@ struct Offer: View {
             self.nav_bar_hide = true
             self.bottom.hide = true
             
+            YelmPay.apple_pay.delegate = self.paymentContextDelegate
             
             
             if (self.payment.payment_done){
-                self.presentation.wrappedValue.dismiss()
+                
+                let order_detail = OrdersDetail()
+                order_detail.phone = self.phone
+                order_detail.floor = self.floor
+                order_detail.address = self.location.name
+                order_detail.comment = ""
+                order_detail.entrance = self.entrance
+                order_detail.flat = self.apartment
+                order_detail.items = self.realm.get_ids()
+                order_detail.total = self.realm.price
+                order_detail.delivery = ServerAPI.settings.deliverly_price
+                order_detail.payment = "card"
+                order_detail.transaction_id = ""
+                
+                ServerAPI.orders.set_order(order: order_detail) { (load) in
+                    if (load){
+                        self.presentation.wrappedValue.dismiss()
+                    }
+                }
+                
+               
             }
         
             
