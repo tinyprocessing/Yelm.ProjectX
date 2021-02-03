@@ -91,9 +91,12 @@ struct Start: View {
         }.edgesIgnoringSafeArea(.bottom)
                 ModalAnchorView()
                 
+            }else{
+                
             }
             
         }
+            
       
         
             .onAppear{
@@ -104,7 +107,7 @@ struct Start: View {
                 self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
                 
                 let position = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
-                ServerAPI.settings.debug = false
+                ServerAPI.settings.debug = true
                 ServerAPI.start(platform: "5fd33466e17963.29052139", position: position) { (result) in
                     if (result == true){
                         
@@ -117,6 +120,7 @@ struct Start: View {
                                 Color.theme_foreground = Color.init(hex: ServerAPI.settings.foreground)
                                 
                                 self.app_loaded = true
+                                
                             }
                         }
                         let user = UserDefaults.standard.string(forKey: "USER") ?? ""
@@ -149,7 +153,6 @@ struct Start: View {
                         }
                         ServerAPI.items.get_items { (load, items) in
                             if (load){
-                               
                                 self.items = items
                             }
                         }
