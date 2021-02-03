@@ -211,32 +211,59 @@ struct ModalImages: View {
                                     
                                     
                                     
-                                    let date = Date()
-                                    let calendar = Calendar.current
-                                    let hour = calendar.component(.hour, from: date)
-                                    let minutes = calendar.component(.minute, from: date)
-                                    
-                                    let time = "\(hour):\(minutes)"
-                                    let generator = UIImpactFeedbackGenerator(style: .soft)
-                                    generator.impactOccurred()
-                                    let user_cache = UserDefaults.standard.string(forKey: "USER") ?? "user16"
-                                    let user = chat_user(id: 0, name: user_cache)
-                                    
-                                    
-                                    for i in 0...self.selected.count-1{
-                                        self.chat.chat.objectWillChange.send()
-                                        self.chat.chat.messages.append(chat_message(id: (self.chat.chat.messages.count+1),
-                                                                               user: user,
-                                                                               text: "",
-                                                                               time: time,
-                                                                               attachments: ["data" : "PHAsset"],
-                                                                               asset: self.selected[i].image_asset))
+                                    DispatchQueue.global(qos: .utility).async {
+
+                                        for i in 0...self.selected.count-1{
+                                            let options = PHImageRequestOptions()
+                                            options.isSynchronous = true
+                                            options.deliveryMode = PHImageRequestOptionsDeliveryMode.opportunistic
+                                            options.isNetworkAccessAllowed = true
+                                            
+                                            manager.requestImage(for: self.selected[i].image_asset,
+                                                                 targetSize: .init(),
+                                                                 contentMode: .aspectFill,
+                                                                 options: options) { (image, _) in
+                                                
+                                                let compressed = UIImage(data: image!.jpeg(.lowest)!)
+                                                let base64 : String = compressed!.jpegData(compressionQuality: 1)?.base64EncodedString() ?? ""
+                                                
+                                                self.chat.core.send(message: base64, type: "images")
+                                                
+                                            
+                                            }
+                                        }
+                                        self.selected.removeAll()
+
+                                        
                                     }
                                     
                                     
-                                    print(self.chat.chat.messages)
+//                                    let date = Date()
+//                                    let calendar = Calendar.current
+//                                    let hour = calendar.component(.hour, from: date)
+//                                    let minutes = calendar.component(.minute, from: date)
+//
+//                                    let time = "\(hour):\(minutes)"
+//                                    let generator = UIImpactFeedbackGenerator(style: .soft)
+//                                    generator.impactOccurred()
+//                                    let user_cache = UserDefaults.standard.string(forKey: "USER") ?? "user16"
+//                                    let user = chat_user(id: 0, name: user_cache)
+//
+//
+//                                    for i in 0...self.selected.count-1{
+//                                        self.chat.chat.objectWillChange.send()
+//                                        self.chat.chat.messages.append(chat_message(id: (self.chat.chat.messages.count+1),
+//                                                                               user: user,
+//                                                                               text: "",
+//                                                                               time: time,
+//                                                                               attachments: ["data" : "PHAsset"],
+//                                                                               asset: self.selected[i].image_asset))
+//                                    }
+//
+//
+//
                                     
-                                    self.selected.removeAll()
+                                   
                                     
                                     self.modal.objectWillChange.send()
                                     self.modal.closeModal()
