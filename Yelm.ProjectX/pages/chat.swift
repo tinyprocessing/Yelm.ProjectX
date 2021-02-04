@@ -13,7 +13,7 @@ import Yelm_Chat
 
 struct Chat : View {
     
-    @State private var start: Bool = true
+    
     
     @State private var text: String = ""
     @ObservedObject var modal : ModalManager = GlobalModular
@@ -32,11 +32,12 @@ struct Chat : View {
     
     @available(iOS 14.0, *)
     private func scrollToLastMessage(proxy: ScrollViewProxy) {
-        self.chat.objectWillChange.send()
-        print("scrollToLastMessage")
+        
+        
         if let lastMessage = self.chat.chat.messages.last { // 4
-            if (start){
-                self.start = false
+            
+            if (self.chat.chat.animation){
+                self.chat.chat.animation = false
                 
                 DispatchQueue.main.asyncAfter(deadline: .now()) {
                     proxy.scrollTo(lastMessage.id, anchor: .bottom) // 5
@@ -44,9 +45,9 @@ struct Chat : View {
                 
             }
            
-            if (!start){
+            if (!self.chat.chat.animation){
                 
-                print("scrollTo from write")
+                
                 withAnimation(.easeOut(duration: 0.07)) {
                     proxy.scrollTo(lastMessage.id, anchor: .bottom) // 5
                 }
@@ -181,18 +182,11 @@ struct Chat : View {
 
                                 
                             }
-                            
-                            
-                            .onReceive(Just(self.chat.chat.$keyboard_metric), perform: { (publisher) in
-                                print("i was here")
-//                                scrollToLastMessage(proxy: proxy)
-                            })
-                            
                            
                             .onChange(of: self.chat.chat.messages.count) { _ in // 3
-                                print("messages add")
+                                
                                 scrollToLastMessage(proxy: proxy)
-                                print(proxy)
+                                
                             }
                             
                             
@@ -299,17 +293,7 @@ struct Chat : View {
                                       onEditingChanged: { (editing) in
                                       },
                                       disableAutocorrection: false)
-                            .tag("input_view")
-                            .onTapGesture {
-                                
-//                                self.chat.objectWillChange.send()
-//                                self.chat.chat.messages.insert(chat_message(id: 1), at: 0)
-//
-//                                DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
-//                                    self.chat.objectWillChange.send()
-//                                    self.chat.chat.messages.removeFirst()
-//                                }
-                            }
+                            
                         
                         Spacer(minLength: 10)
                         
@@ -360,7 +344,7 @@ struct Chat : View {
         .onAppear {
             
             
-            self.start = true
+            self.chat.chat.animation = true
             self.chat.objectWillChange.send()
             self.chat.chat.messages.insert(chat_message(id: 1), at: 0)
             
