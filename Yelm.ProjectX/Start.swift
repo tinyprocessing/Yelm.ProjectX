@@ -107,7 +107,8 @@ struct Start: View {
                 self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
                 
                 let position = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
-                ServerAPI.settings.debug = true
+                ServerAPI.settings.debug = false
+                YelmChat.settings.debug = false
                 ServerAPI.start(platform: "5fd33466e17963.29052139", position: position) { (result) in
                     if (result == true){
                         
