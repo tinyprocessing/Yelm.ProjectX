@@ -118,7 +118,7 @@ struct ModalView: View {
                 ZStack(alignment: .top) {
                     
                     self.modal.content
-                        .frame(height: UIScreen.main.bounds.height - (self.modal.position.offsetFromTop() + geometry.safeAreaInsets.top + self.dragState.translation.height))
+                        .frame(height: (UIScreen.main.bounds.height - (self.modal.position.offsetFromTop() + geometry.safeAreaInsets.top + self.dragState.translation.height)) <= 0 ? 0 : UIScreen.main.bounds.height - (self.modal.position.offsetFromTop() + geometry.safeAreaInsets.top + self.dragState.translation.height))
                         
                 }
                 .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
