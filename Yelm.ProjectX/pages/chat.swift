@@ -13,7 +13,8 @@ import Yelm_Chat
 
 struct Chat : View {
     
-    @State private var writing: Bool = false
+    @State private var start: Bool = true
+    
     @State private var text: String = ""
     @ObservedObject var modal : ModalManager = GlobalModular
 
@@ -31,9 +32,24 @@ struct Chat : View {
     
     @available(iOS 14.0, *)
     private func scrollToLastMessage(proxy: ScrollViewProxy) {
+        self.chat.objectWillChange.send()
+        print("scrollToLastMessage")
         if let lastMessage = self.chat.chat.messages.last { // 4
-            withAnimation(.easeOut(duration: 0.1)) {
-                proxy.scrollTo(lastMessage.id, anchor: .bottom) // 5
+            if (start){
+                self.start = false
+                
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    proxy.scrollTo(lastMessage.id, anchor: .bottom) // 5
+                }
+                
+            }
+           
+            if (!start){
+                
+                print("scrollTo from write")
+                withAnimation(.easeOut(duration: 0.07)) {
+                    proxy.scrollTo(lastMessage.id, anchor: .bottom) // 5
+                }
             }
         }
     }
@@ -167,13 +183,12 @@ struct Chat : View {
                             }
                             
                             
-                            .onReceive(Just(self.$writing), perform: { (publisher) in
-                                if (self.writing == true){
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                        scrollToLastMessage(proxy: proxy)
-                                    }
-                                }
+                            .onReceive(Just(self.chat.chat.$keyboard_metric), perform: { (publisher) in
+                                print("i was here")
+//                                scrollToLastMessage(proxy: proxy)
                             })
+                            
+                           
                             .onChange(of: self.chat.chat.messages.count) { _ in // 3
                                 print("messages add")
                                 scrollToLastMessage(proxy: proxy)
@@ -282,44 +297,31 @@ struct Chat : View {
                                         
                                       },
                                       onEditingChanged: { (editing) in
-                                        withAnimation {
-                                            self.writing = editing
-                                        }
                                       },
-                                      disableAutocorrection: true)
+                                      disableAutocorrection: false)
                             .tag("input_view")
+                            .onTapGesture {
+                                
+//                                self.chat.objectWillChange.send()
+//                                self.chat.chat.messages.insert(chat_message(id: 1), at: 0)
+//
+//                                DispatchQueue.main.asyncAfter(deadline: .now()+0.3) {
+//                                    self.chat.objectWillChange.send()
+//                                    self.chat.chat.messages.removeFirst()
+//                                }
+                            }
                         
                         Spacer(minLength: 10)
                         
                         Button(action: {
                             
-//                            let date = Date()
-//                            let calendar = Calendar.current
-//                            let hour = calendar.component(.hour, from: date)
-//                            let minutes = calendar.component(.minute, from: date)
-//
-//                            let time = "\(hour):\(minutes)"
-                            
+
                             let generator = UIImpactFeedbackGenerator(style: .soft)
                             generator.impactOccurred()
-                            
-//                            let user_cache = UserDefaults.standard.string(forKey: "USER") ?? "user16"
-//                            var user = chat_user(id: 0, name: user_cache)
-//
-//                            if (self.chat.chat.messages.count > 0){
-//                                if (self.chat.chat.messages.last?.user.name == user_cache){
-//                                    user = chat_user(id: 1, name: "shop")
-//                                }
-//                            }
-                            
-                            
-                            self.chat.core.send(message: self.text, type: "text")
-                            
-//                            self.chat.chat.messages.append(chat_message(id: (self.chat.chat.messages.count+1),
-//                                                              user: user,
-//                                                              text: self.text,
-//                                                              time: time,
-//                                                              attachments: [:]))
+   
+                            if (self.text != ""){
+                                self.chat.core.send(message: self.text, type: "text")
+                            }
                             
                             self.text = ""
                         }) {
@@ -356,6 +358,16 @@ struct Chat : View {
         .navigationBarHidden(self.nav_bar_hide)
         
         .onAppear {
+            
+            
+            self.start = true
+            self.chat.objectWillChange.send()
+            self.chat.chat.messages.insert(chat_message(id: 1), at: 0)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
+                self.chat.objectWillChange.send()
+                self.chat.chat.messages.removeFirst()
+            }
             
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
