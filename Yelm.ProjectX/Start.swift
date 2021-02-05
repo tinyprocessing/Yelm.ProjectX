@@ -8,7 +8,7 @@
 import SwiftUI
 import Yelm_Server
 import Yelm_Chat
-
+import ConfettiView
 
 struct Start: View {
     
@@ -27,7 +27,14 @@ struct Start: View {
     @State var items : [items_main_cateroties] = []
     @State private var selection: String? = nil
 
+    @State private var isShowingConfetti: Bool = false
+
+    
     var body: some View {
+        
+        let confettiCelebrationView = ConfettiCelebrationView(isShowingConfetti: $isShowingConfetti, timeLimit: 4.0)
+
+        
         ZStack{
             if (app_loaded){
                 ZStack(alignment: .bottomLeading){
@@ -94,6 +101,8 @@ struct Start: View {
             }else{
                 
             }
+            
+            confettiCelebrationView
             
         }
             
