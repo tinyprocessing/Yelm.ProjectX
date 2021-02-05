@@ -10,6 +10,8 @@ import Foundation
 import RealmSwift
 import SwiftUI
 import SwiftyJSON
+import Yelm_Chat
+import Yelm_Server
 
 var GlobalRealm: RealmControl = RealmControl()
 
@@ -66,6 +68,12 @@ class RealmControl: ObservableObject, Identifiable {
         try! realm.write {
             realm.add(order)
             get_total_price()
+        }
+        
+        ServerAPI.orders.set_temporary_orders(item_id: ID, action: "Добавил товар", count: 1) { (load) in
+            if (load){
+                YelmChat.core.send(message: "/basket", type: "basket")
+            }
         }
     }
 
@@ -151,7 +159,8 @@ class RealmControl: ObservableObject, Identifiable {
         
         self.price = Price
         
-
+        
+     
         
     }
     
@@ -164,7 +173,7 @@ class RealmControl: ObservableObject, Identifiable {
         return objects
     }
     
-    func clear_cart() {
+    func clear_cart(order: Bool = false) {
         
         let realm = try! Realm()
         try! realm.write {
@@ -175,6 +184,27 @@ class RealmControl: ObservableObject, Identifiable {
         self.cart.cart_items.removeAll()
         self.get_total_price()
         
+        if (order == false){
+            
+            ServerAPI.orders.set_temporary_orders(item_id: 0, action: "Очистил корзину", count: 0) { (load) in
+                if (load){
+                    YelmChat.core.send(message: "/basket", type: "basket")
+                }
+            }
+            
+        }
+        
+        if (order == true){
+            
+            ServerAPI.orders.set_temporary_orders(item_id: 0, action: "Создал заказ", count: 0) { (load) in
+                if (load){
+                    YelmChat.core.send(message: "/basket", type: "basket")
+                }
+            }
+            
+        }
+      
+        
     }
 
     func delete_item(ID: Int) {
@@ -183,6 +213,12 @@ class RealmControl: ObservableObject, Identifiable {
         try! realm.write {
             realm.delete(object)
             get_total_price()
+        }
+        
+        ServerAPI.orders.set_temporary_orders(item_id: ID, action: "Удалил товар", count: 0) { (load) in
+            if (load){
+                YelmChat.core.send(message: "/basket", type: "basket")
+            }
         }
     }
 
@@ -203,7 +239,15 @@ class RealmControl: ObservableObject, Identifiable {
             
             if let object = objects.first {
                 try! realm.write {
-                    object.Count = (object.Count + 1)
+                    let new_count = object.Count + 1
+                    object.Count = new_count
+                    
+                    ServerAPI.orders.set_temporary_orders(item_id: ID, action: "Увеличил товар", count: new_count) { (load) in
+                        if (load){
+                            YelmChat.core.send(message: "/basket", type: "basket")
+                        }
+                    }
+                    
                     get_total_price()
                 }
                 
@@ -217,7 +261,15 @@ class RealmControl: ObservableObject, Identifiable {
             if let object = objects.first {
                 if (object.Count > 1){
                     try! realm.write {
-                        object.Count = (object.Count - 1)
+                        let new_count = object.Count - 1
+                        object.Count =  new_count
+                        
+                        ServerAPI.orders.set_temporary_orders(item_id: ID, action: "Уменьшил товар", count:  new_count) { (load) in
+                            if (load){
+                                YelmChat.core.send(message: "/basket", type: "basket")
+                            }
+                        }
+                        
                         get_total_price()
                     }
                    
