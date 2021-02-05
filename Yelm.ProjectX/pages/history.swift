@@ -8,7 +8,7 @@
 import SwiftUI
 import Foundation
 import Yelm_Server
-
+import YandexMapKit
 
 
 struct History: View {
@@ -25,14 +25,17 @@ struct History: View {
     
     @ObservedObject var bottom: bottom = GlobalBottom
     @ObservedObject var status: loading_webview = GlobalWebview
-
+    
     @Environment(\.presentationMode) var presentation
     
-  
+    
     
     
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
     @State var opacity : Double = 0
+    
+    @State var location_map : YMKMapView = YMKMapView()
+    @State var location_update : Bool = false
     
     var body: some View{
         
@@ -50,26 +53,18 @@ struct History: View {
                                 
                                 VStack{
                                     
+                                    MapHistory(YandexMap: $location_map, location_update_allow: $location_update)
+                                        .frame(width: UIScreen.main.bounds.width+20,
+                                               height: reader.frame(in: .global).minY > 0 ? CGFloat(Int(reader.frame(in: .global).minY + 295)) : 295)
+                                        .offset(y: -reader.frame(in: .global).minY)
                                     
-                                    URLImage(URL(string: "https://cdnimg.rg.ru/img/content/189/26/70/222_d_850.jpg")!) { proxy in
-                                        proxy.image
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            // default widht...
-                                            .frame(width: UIScreen.main.bounds.width+20, height: reader.frame(in: .global).minY > 0 ? CGFloat(Int(reader.frame(in: .global).minY + 245)) : 245)
-                                            // adjusting view postion when scrolls...
-                                            .offset(y: -reader.frame(in: .global).minY)
-                                        
-                                        
-                                        
-                                    }
                                     
                                     
                                     
                                 }
                             }
                             // setting default height...
-                            .frame(height: 200)
+                            .frame(height: 250)
                             
                             // List Of Songs...
                             
@@ -100,8 +95,9 @@ struct History: View {
                                     HStack {
                                         
                                         
-                                        Text("Статус: готово")
+                                        Text("Курьер спешит к Вам")
                                             .font(.title)
+                                            .foregroundColor(Color.green)
                                             .fontWeight(.bold)
                                         
                                         
@@ -110,34 +106,87 @@ struct History: View {
                                         
                                         
                                     }
-                                    .padding(.horizontal, 20)
-                                    .padding(.top, 10)
+                                    .padding(.horizontal, 15)
+                                    
                                     
                                 }
                                 
                                 
-                                ZStack(alignment: .top){
-                                    VStack(alignment: .leading){
-                                      
+                                
+                                HStack{
+                                Text("""
+                                    № 4512
+                                    Сумма заказа: 4501 ₽
+                                    Дата создания: Сегодня
+
+                                    Пожалуйста, оцените товары, которые Вам понравились или разочаровали, мы рады становиться лучше для Вас с каждым отзывом, Спасибо!
+                                    """)
+                                    .foregroundColor(Color.secondary)
+                                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                                    .padding(.horizontal, 15)
+                                    .padding(.top, 5)
+                                 
+                                    Spacer()
+                                }
+                                
+                                
+                                VStack(alignment: .leading, spacing: 5){
+                                    
+                                    
+                                    history_item()
+                                    history_item()
+                                    history_item()
+                                    history_item()
+                                    
+                                }
+                                .padding(10)
+                                
+                                .background(Color.white)
+                                .clipShape(CustomShape(corner: .allCorners, radii: 10))
+                                .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
+                                .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                                
+                                .padding(.horizontal, 15)
+                                .padding(.top, 5)
+                                
+                                
+                                Button(action: {
+                                    
+                                }) {
+                                        Text("Чек покупки")
+                                            .padding(.horizontal, 10)
+                                            .foregroundColor(.theme)
+                                            .padding(.top, 15)
+                                }.buttonStyle(ScaleButtonStyle())
+                                
+                                
+                                Button(action: {
+                                    
+                                }) {
+                                    HStack{
                                         
-                                        
-                                        
-                                        Spacer(minLength: UIScreen.main.bounds.height)
-                                        
+                                        Text("Повторить?")
+                                            .padding(.horizontal, 10)
                                         
                                     }
-                                    
-                                }
+                                        .padding(.horizontal)
+                                        .padding(.vertical, 10)
+                                        .background(Color.theme)
+                                        .foregroundColor(.theme_foreground)
+                                        .cornerRadius(10)
+                                        .padding(.top, 15)
+                                }.buttonStyle(ScaleButtonStyle())
                                 
                                 
                                 
+                                Spacer(minLength: UIScreen.main.bounds.height)
                                 
                                 
                             }
                             .padding(.vertical)
                             .background(Color.white)
                             .cornerRadius(40)
-
+                            
                             
                         } .background(Color.white)
                     }
@@ -176,6 +225,7 @@ struct History: View {
                         if (self.show == 1.0){
                             Text("История заказов")
                                 .padding(.top, 10)
+                                .offset(x: -15)
                                 .font(.system(size: 15, weight: .bold, design: .rounded))
                         }
                         
@@ -185,7 +235,7 @@ struct History: View {
                         Spacer()
                         
                         
-                    
+                        
                         
                         
                         
