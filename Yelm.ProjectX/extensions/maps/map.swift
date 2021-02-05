@@ -247,3 +247,90 @@ struct MapCreatePoint: UIViewRepresentable {
     }
 
 }
+
+
+
+struct MapHistory: UIViewRepresentable {
+
+ 
+    
+    class Coordinator: NSObject, YMKMapCameraListener, YMKUserLocationObjectListener {
+        
+        func onCameraPositionChanged(with map: YMKMap, cameraPosition: YMKCameraPosition, cameraUpdateSource: YMKCameraUpdateSource, finished: Bool) {
+            
+        }
+        
+        
+        func onObjectRemoved(with view: YMKUserLocationView) {
+            
+        }
+        
+        func onObjectUpdated(with view: YMKUserLocationView, event: YMKObjectEvent) {
+            
+        }
+        
+        
+        @Binding var MapControll: YMKMapView
+        
+        func onObjectAdded(with view: YMKUserLocationView) {
+            
+        }
+
+        
+        
+        var searchManager: YMKSearchManager?
+        var searchSession: YMKSearchSession?
+        @ObservedObject var service: MapService = GlobalMapService
+
+        
+        
+        init(mapView: Binding<YMKMapView>) {
+            _MapControll = mapView
+        }
+        
+        
+        
+    }
+
+
+    @Binding var YandexMap : YMKMapView
+    @Binding var location_update_allow : Bool
+    
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(mapView: $YandexMap)
+    }
+    func makeUIView(context: Context) -> YMKMapView {
+        
+
+        YandexMap.mapWindow.map.isRotateGesturesEnabled = false
+        
+
+        YandexMap.mapWindow.map.addCameraListener(with: context.coordinator)
+
+        
+
+        let mapKit = YMKMapKit.sharedInstance()
+        
+
+        let TARGET_LOCATION = YMKPoint(latitude: 55.751244, longitude: 37.618423)
+        
+        YandexMap.mapWindow.map.move(
+                  with: YMKCameraPosition(target: TARGET_LOCATION, zoom: 13, azimuth: 0, tilt: 0),
+                  animationType: YMKAnimation(type: YMKAnimationType.smooth, duration: 0),
+                  cameraCallback: nil)
+        
+    
+        
+        return YandexMap
+    }
+
+
+
+
+     func updateUIView(_ uiView: YMKMapView, context: Context) {
+        
+
+    }
+
+}
