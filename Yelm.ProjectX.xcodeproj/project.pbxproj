@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4C192AFD25BCD44D00059597 /* payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C192AFC25BCD44C00059597 /* payment.swift */; };
 		4C192B0125C0739F00059597 /* D3DS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C192B0025C0739E00059597 /* D3DS.swift */; };
+		4C3CEB0125CC7D4E0089EFF9 /* history.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CEB0025CC7D4E0089EFF9 /* history.swift */; };
+		4C3CEB0625CC8A6C0089EFF9 /* ConfettiView in Frameworks */ = {isa = PBXBuildFile; productRef = 4C3CEB0525CC8A6C0089EFF9 /* ConfettiView */; };
+		4C3CEB0A25CC8AA50089EFF9 /* confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CEB0925CC8AA50089EFF9 /* confetti.swift */; };
 		4C70235D25A749BD00A750D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C70235C25A749BD00A750D2 /* AppDelegate.swift */; };
 		4C70235F25A749BD00A750D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C70235E25A749BD00A750D2 /* SceneDelegate.swift */; };
 		4C70236125A749BD00A750D2 /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C70236025A749BD00A750D2 /* Start.swift */; };
@@ -104,6 +107,8 @@
 		1B69168527B2637AB35B1B9A /* Pods-Yelm.ProjectX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelm.ProjectX.release.xcconfig"; path = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.release.xcconfig"; sourceTree = "<group>"; };
 		4C192AFC25BCD44C00059597 /* payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payment.swift; sourceTree = "<group>"; };
 		4C192B0025C0739E00059597 /* D3DS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D3DS.swift; sourceTree = "<group>"; };
+		4C3CEB0025CC7D4E0089EFF9 /* history.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = history.swift; sourceTree = "<group>"; };
+		4C3CEB0925CC8AA50089EFF9 /* confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confetti.swift; sourceTree = "<group>"; };
 		4C70235925A749BD00A750D2 /* Yelm.ProjectX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yelm.ProjectX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C70235C25A749BD00A750D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C70235E25A749BD00A750D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -210,12 +215,21 @@
 				4CDE834625A74ED700F3453D /* Yelm.Pay in Frameworks */,
 				4C9AC9C125C5F634002C1C04 /* Yelm.Chat in Frameworks */,
 				A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */,
+				4C3CEB0625CC8A6C0089EFF9 /* ConfettiView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C3CEB0825CC8A920089EFF9 /* confetti */ = {
+			isa = PBXGroup;
+			children = (
+				4C3CEB0925CC8AA50089EFF9 /* confetti.swift */,
+			);
+			path = confetti;
+			sourceTree = "<group>";
+		};
 		4C70235025A749BD00A750D2 = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +314,7 @@
 		4CDE835925A780F100F3453D /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4C3CEB0825CC8A920089EFF9 /* confetti */,
 				4CDE844125AB612300F3453D /* chat */,
 				4CDE841A25A8820F00F3453D /* location.gpx */,
 				4CDE840A25A874AE00F3453D /* maps */,
@@ -335,6 +350,7 @@
 				4CAA9F6C25B83B04005CEB96 /* subcategoies_grid.swift */,
 				4CAA9F7025B83D78005CEB96 /* subcategories_grid_item.swift */,
 				4C192AFC25BCD44C00059597 /* payment.swift */,
+				4C3CEB0025CC7D4E0089EFF9 /* history.swift */,
 				4C192B0025C0739E00059597 /* D3DS.swift */,
 				4CDE842825A9E33900F3453D /* cart */,
 			);
@@ -590,6 +606,7 @@
 				4CDE83D825A78DF500F3453D /* RealmSwift */,
 				4CF5602025B716FF0038A4CC /* Grid */,
 				4C9AC9C025C5F634002C1C04 /* Yelm.Chat */,
+				4C3CEB0525CC8A6C0089EFF9 /* ConfettiView */,
 			);
 			productName = Yelm.ProjectX;
 			productReference = 4C70235925A749BD00A750D2 /* Yelm.ProjectX.app */;
@@ -621,6 +638,7 @@
 			packageReferences = (
 				4CDE83D525A78DF500F3453D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				4CF5601F25B716FF0038A4CC /* XCRemoteSwiftPackageReference "swiftui-grid" */,
+				4C3CEB0425CC8A6C0089EFF9 /* XCRemoteSwiftPackageReference "ConfettiView" */,
 			);
 			productRefGroup = 4C70235A25A749BD00A750D2 /* Products */;
 			projectDirPath = "";
@@ -734,8 +752,10 @@
 				4CDE843F25AB5EEF00F3453D /* chat.swift in Sources */,
 				4CDE844625AB614800F3453D /* ui.swift in Sources */,
 				4CDE83A325A78A3F00F3453D /* LoadingState.swift in Sources */,
+				4C3CEB0A25CC8AA50089EFF9 /* confetti.swift in Sources */,
 				4CDE83B825A78A3F00F3453D /* ImageDecoder.swift in Sources */,
 				4CDE842625A9E33400F3453D /* cart_item.swift in Sources */,
+				4C3CEB0125CC7D4E0089EFF9 /* history.swift in Sources */,
 				4CDE83B225A78A3F00F3453D /* CoreDataEntityDescription.swift in Sources */,
 				4CDE843425A9F15500F3453D /* variables.swift in Sources */,
 				4C192AFD25BCD44D00059597 /* payment.swift in Sources */,
@@ -977,6 +997,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4C3CEB0425CC8A6C0089EFF9 /* XCRemoteSwiftPackageReference "ConfettiView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ziligy/ConfettiView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 		4CDE83D525A78DF500F3453D /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
@@ -996,6 +1024,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4C3CEB0525CC8A6C0089EFF9 /* ConfettiView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C3CEB0425CC8A6C0089EFF9 /* XCRemoteSwiftPackageReference "ConfettiView" */;
+			productName = ConfettiView;
+		};
 		4C70237725A74C1200A750D2 /* Yelm.Server */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Yelm.Server;
