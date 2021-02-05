@@ -107,6 +107,7 @@ struct Search: View {
         
         .onDisappear{
             if (open_item == false){
+                self.bottom.objectWillChange.send()
                 self.bottom.hide = false
             }
         }
