@@ -17,7 +17,9 @@ struct Chat : View {
     
     @State private var text: String = ""
     @ObservedObject var modal : ModalManager = GlobalModular
+    @State var time = Timer.publish(every: 0.1, on: .current, in: .tracking).autoconnect()
 
+    @State var offset_moved : Bool = false
     
    
     @ObservedObject var chat : ChatIO = YelmChat
@@ -162,7 +164,8 @@ struct Chat : View {
                                             attachment: message.attachments,
                                             alignment: .leading,
                                             message_color: Color.init(hex: "F2F3F4"),
-                                            message_text_color: .black)
+                                            message_text_color: .black,
+                                            tag: message.item)
                                         .id(message.id) // 2
 
                                 }
@@ -174,7 +177,8 @@ struct Chat : View {
                                             attachment: message.attachments,
                                             alignment: .center,
                                             message_color: Color.clear,
-                                            message_text_color: .black)
+                                            message_text_color: .black,
+                                            tag: message.item)
                                         .id(message.id) // 2
     
 
@@ -185,11 +189,29 @@ struct Chat : View {
                            
                             .onChange(of: self.chat.chat.messages.count) { _ in // 3
                                 
-                                scrollToLastMessage(proxy: proxy)
+                                if (!self.offset_moved){
+                                    scrollToLastMessage(proxy: proxy)
+                                }
+                              
                                 
                             }
                             
                             
+                            GeometryReader{g in
+                                VStack{
+                                    Text("")
+                                }
+                                .onReceive(self.time) { (_) in
+                                    
+                                    if (g.frame(in: .global).minY > UIScreen.main.bounds.height+200){
+                                        self.offset_moved = true
+                                    }else{
+                                        self.offset_moved = false
+                                    }
+
+                                }
+                            } .frame(height: 0)
+
                             
                         }
                     } else {
@@ -302,8 +324,14 @@ struct Chat : View {
 
                             let generator = UIImpactFeedbackGenerator(style: .soft)
                             generator.impactOccurred()
-   
-                            if (self.text != ""){
+                            var pass : Bool = true
+                            
+                            if (self.text == "/love"){
+                                pass = false
+                                NotificationCenter.default.post(name: Notification.Name("play_confetti_celebration"), object: Bool.self)
+                            }
+                            
+                            if (self.text != "" && pass){
                                 self.chat.core.send(message: self.text, type: "text")
                             }
                             
@@ -344,15 +372,7 @@ struct Chat : View {
         .onAppear {
             
             
-            self.chat.chat.animation = true
-            self.chat.objectWillChange.send()
-            self.chat.chat.messages.insert(chat_message(id: 1), at: 0)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
-                self.chat.objectWillChange.send()
-                self.chat.chat.messages.removeFirst()
-            }
-            
+            self.chat.chat.bottom()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.modal.newModal(position: .closed) {
@@ -363,14 +383,18 @@ struct Chat : View {
             
             self.nav_bar_hide = true
             self.bottom.hide = true
+            
         }
         
         .onDisappear{
             
             self.modal.closeModal()
             
+            if (open_item == false){
+                self.bottom.objectWillChange.send()
+                self.bottom.hide = false
+            }
             
-            self.bottom.hide = false
         }
     }
     
