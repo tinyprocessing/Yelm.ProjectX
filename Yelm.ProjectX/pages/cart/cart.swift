@@ -240,6 +240,7 @@ struct Cart: View {
         
         .onDisappear{
             if (open_offer == false){
+                self.bottom.objectWillChange.send()
                 self.bottom.hide = false
             }
             
