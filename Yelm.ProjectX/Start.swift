@@ -116,7 +116,7 @@ struct Start: View {
                 self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
                 
                 let position = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
-                ServerAPI.settings.debug = false
+                ServerAPI.settings.debug = true
                 YelmChat.settings.debug = false
                 ServerAPI.start(platform: "5fd33466e17963.29052139", position: position) { (result) in
                     if (result == true){
@@ -134,11 +134,12 @@ struct Start: View {
                             }
                         }
                         let user = UserDefaults.standard.string(forKey: "USER") ?? ""
-                        
+                        ServerAPI.user.username = user
                         if (user == ""){
                             ServerAPI.user.registration { (load, user) in
                                 if (load){
                                     UserDefaults.standard.set(user, forKey: "USER")
+                                    ServerAPI.user.username = user
                                     YelmChat.start(platform: "5fd33466e17963.29052139", user: user) { (load) in
                                         if (load){
                                             YelmChat.core.register { (done) in

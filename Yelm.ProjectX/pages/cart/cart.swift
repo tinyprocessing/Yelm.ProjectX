@@ -185,8 +185,8 @@ struct Cart: View {
                             .cornerRadius(10)
                             
                         }.buttonStyle(ScaleButtonStyle())
-                        .disabled(ServerAPI.settings.position == "lat=0&lon=0" ? true : false)
-                        .opacity(ServerAPI.settings.position == "lat=0&lon=0" ? 0.7 : 1.0)
+                        .disabled(ServerAPI.settings.position == "lat=0&lon=0" || self.realm.price == 0 ? true : false)
+                        .opacity(ServerAPI.settings.position == "lat=0&lon=0" || self.realm.price == 0 ? 0.7 : 1.0)
                         .simultaneousGesture(TapGesture().onEnded{
                             open_offer = true
                             if (ServerAPI.settings.position == "lat=0&lon=0" ){
