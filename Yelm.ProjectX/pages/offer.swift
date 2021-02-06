@@ -13,24 +13,10 @@ import Yelm_Pay
 struct Offer: View {
     
     
-    private class PaymentContextDelegate: NSObject, APDelegate {
-        
-        func PaymentDone(result: Bool) {
-            if (result){
-                print("PaymentContextDelegate.result.done")
-                ShowAlert(title: "Отлично", message: "Оплата прошла успешно - детали Вашего заказа отправлены в чат.")
-            }
-            
-            if (!result){
-                print("PaymentContextDelegate.result.fail")
-                ShowAlert(title: "Упс...", message: "Ошибка")
-            }
-        }
-        
-    }
+    
     
     private var paymentContextDelegate = PaymentContextDelegate()
-
+    
     
     @ObservedObject var location : location_cache = GlobalLocation
     @ObservedObject var bottom: bottom = GlobalBottom
@@ -38,11 +24,11 @@ struct Offer: View {
     @State var nav_bar_hide: Bool = true
     
     @ObservedObject var payment: payment = GlobalPayment
-
+    
     
     @Environment(\.presentationMode) var presentation
     
-   
+    
     
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = Color.theme.uiColor()
@@ -58,17 +44,64 @@ struct Offer: View {
     @State var selection: Int? = nil
     
     
+    @ObservedObject var offer: offer = GlobalOffer
     @State var promocode: String = ""
-    @State var entrance: String = ""
-    @State var floor: String = ""
-    @State var apartment: String = ""
-    @State var phone: String = ""
+    @State var entrance: String = "7"
+    @State var floor: String = "5"
+    @State var apartment: String = "143"
+    @State var phone: String = "79998394668"
     
     @ObservedObject var realm: RealmControl = GlobalRealm
     
     
+    private class PaymentContextDelegate: NSObject, APDelegate {
+        
+        @ObservedObject var location : location_cache = GlobalLocation
+        @ObservedObject var realm: RealmControl = GlobalRealm
+        @ObservedObject var offer: offer = GlobalOffer
+        
+        
+        func PaymentDone(result: Bool) {
+            if (result){
+                print("PaymentContextDelegate.result.done")
+                ShowAlert(title: "Отлично", message: "Оплата прошла успешно - детали Вашего заказа отправлены в чат.")
+                
+                
+                let order_detail = OrdersDetail()
+                order_detail.phone = self.offer.phone
+                order_detail.floor = self.offer.floor
+                order_detail.address = self.location.name
+                order_detail.comment = ""
+                order_detail.entrance = self.offer.entrance
+                order_detail.flat = self.offer.apartment
+                order_detail.items = self.realm.get_ids()
+                order_detail.total = self.realm.price
+                order_detail.start_price = self.realm.start_price
+                order_detail.delivery_price = ServerAPI.settings.deliverly_price
+                order_detail.currency_value = ServerAPI.settings.currency
+                order_detail.payment = "applepay"
+                order_detail.transaction_id = YelmPay.last_transaction_id
+                
+                ServerAPI.orders.set_order(order: order_detail) { (load) in
+                    if (load){
+                        print("order did send")
+                    }
+                }
+                
+                
+            }
+            
+            if (!result){
+                print("PaymentContextDelegate.result.fail")
+                ShowAlert(title: "Упс...", message: "Ошибка")
+            }
+        }
+        
+    }
+    
     
     var body: some View {
+        
         
         
         
@@ -289,19 +322,6 @@ struct Offer: View {
                         }.padding(.bottom , 5)
                         
                         
-                        //                        HStack(){
-                        //                            Text("Скидка 5%")
-                        //                                .font(.system(size: 16, weight: .medium, design: .rounded))
-                        //                                .foregroundColor(Color.red)
-                        //
-                        //                            Spacer()
-                        //
-                        //                            Text("-86 руб")
-                        //                                .font(.system(size: 16, weight: .medium, design: .rounded))
-                        //                                .foregroundColor(Color.red)
-                        //                        }.padding(.bottom , 5)
-                        
-                        
                         HStack(){
                             Text("Доставка")
                                 .font(.system(size: 16, weight: .medium, design: .rounded))
@@ -367,8 +387,17 @@ struct Offer: View {
                         Button(action: {
                             YelmPay.start(platform: "5f771d465f4191.76733056") { (load) in
                                 
-                                YelmPay.apple_pay.apple_pay(price: 1,
-                                                            delivery: 0,
+                                self.offer.objectWillChange.send()
+                                self.offer.phone = self.phone
+                                self.offer.objectWillChange.send()
+                                self.offer.entrance = self.entrance
+                                self.offer.objectWillChange.send()
+                                self.offer.apartment = self.apartment
+                                self.offer.objectWillChange.send()
+                                self.offer.floor = self.floor
+                                
+                                YelmPay.apple_pay.apple_pay(price: self.realm.price,
+                                                            delivery: ServerAPI.settings.deliverly_price,
                                                             merchant: "merchant.5fd33466e17963.29052139.yelm.io",
                                                             country: "RU",
                                                             currency: ServerAPI.settings.currency)
@@ -376,6 +405,10 @@ struct Offer: View {
                                 
                                 
                             }
+                            
+                            
+                            
+                            
                             
                             
                             
@@ -464,9 +497,11 @@ struct Offer: View {
                 order_detail.flat = self.apartment
                 order_detail.items = self.realm.get_ids()
                 order_detail.total = self.realm.price
-                order_detail.delivery = ServerAPI.settings.deliverly_price
+                order_detail.start_price = self.realm.start_price
+                order_detail.delivery_price = ServerAPI.settings.deliverly_price
+                order_detail.currency_value = ServerAPI.settings.currency
                 order_detail.payment = "card"
-                order_detail.transaction_id = ""
+                order_detail.transaction_id = YelmPay.last_transaction_id
                 
                 ServerAPI.orders.set_order(order: order_detail) { (load) in
                     if (load){
@@ -474,9 +509,9 @@ struct Offer: View {
                     }
                 }
                 
-               
+                
             }
-        
+            
             
         }
         

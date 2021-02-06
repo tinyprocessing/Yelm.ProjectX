@@ -18,8 +18,22 @@ var GlobalNews: news = news()
 var GlobalBottom: bottom = bottom()
 var GlobalCart: cart = cart()
 var GlobalPayment: payment = payment()
+var GlobalOffer: offer = offer()
 var GlobalWebview: loading_webview = loading_webview()
 
+
+class offer: ObservableObject, Identifiable{
+    
+    var id : Int = 0
+    
+    @Published var promocode: String = ""
+    @Published var entrance: String = ""
+    @Published var floor: String = ""
+    @Published var apartment: String = ""
+    @Published var phone: String = ""
+    
+    
+}
 
 class payment: ObservableObject, Identifiable {
     var id : Int = 0
