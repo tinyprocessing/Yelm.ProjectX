@@ -112,40 +112,74 @@ struct Cart: View {
                                 .padding([.trailing, .leading], 20)
                         }
 
-                        VStack{
-                            HStack(spacing: 0){
-                                
-                                
-                                
-                                VStack(alignment: .leading, spacing: 5){
-                                    Text("Доставка")
-                                        .lineLimit(2)
+                        if (ServerAPI.settings.shop_id != 0){
+                            VStack{
+                                HStack(spacing: 0){
+                                    
+                                    
+                                    
+                                    VStack(alignment: .leading, spacing: 5){
+                                        Text("Доставка")
+                                            .lineLimit(2)
+                                            
+                                            .font(.system(size: 18, weight: .semibold, design: .rounded))
                                         
-                                        .font(.system(size: 18, weight: .semibold, design: .rounded))
+    //
+    //                                    Text("Закажите еще на 300 рублей для бесплатной доставки")
+    //                                        .foregroundColor(.secondary)
+    //                                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+    //                                        .lineLimit(2)
+    //                                        .frame(height: 40)
+                                        
+                                        
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    VStack(alignment: .trailing){
+                                        Text("\(String(format:"%.2f", self.price)) \(ServerAPI.settings.symbol)")
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.theme)
+                                        
+                                    } .padding(.horizontal, 10)
                                     
                                     
-                                    Text("Закажите еще на 300 рублей для бесплатной доставки")
-                                        .foregroundColor(.secondary)
-                                        .font(.system(size: 14, weight: .semibold, design: .rounded))
-                                        .lineLimit(2)
-                                        .frame(height: 40)
+                                }.padding([.top, .bottom], 5)
+                                Divider()
+                            }.padding([.trailing, .leading], 20)
+                        }
+                        
+                        if (ServerAPI.settings.shop_id == 0){
+                           
+                            
+                            VStack{
+                                HStack(spacing: 10){
                                     
                                     
-                                }
-                                
-                                Spacer()
-                                
-                                VStack(alignment: .trailing){
-                                    Text("\(String(format:"%.2f", self.price)) \(ServerAPI.settings.symbol)")
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(.theme)
                                     
-                                } .padding(.horizontal, 10)
-                                
-                                
-                            }.padding([.top, .bottom], 5)
-                            Divider()
-                        }.padding([.trailing, .leading], 20)
+                                        Image(systemName: "exclamationmark.triangle")
+                                            .foregroundColor(Color.orange)
+                                            .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                            .lineLimit(2)
+    
+                                        Text("Доставка по этому адресу недоступна")
+                                            .foregroundColor(.secondary)
+                                            .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                            .lineLimit(2)
+                                            .frame(height: 40)
+                                        
+                                        
+                                    
+                                    
+                                    Spacer()
+                                 
+                                    
+                                }.padding([.top, .bottom], 5)
+                                Divider()
+                            }.padding([.trailing, .leading], 20)
+                            
+                            
+                        }
                         
                         Spacer(minLength: 150)
                         
@@ -185,12 +219,16 @@ struct Cart: View {
                             .cornerRadius(10)
                             
                         }.buttonStyle(ScaleButtonStyle())
-                        .disabled(ServerAPI.settings.position == "lat=0&lon=0" || self.realm.price == 0 ? true : false)
-                        .opacity(ServerAPI.settings.position == "lat=0&lon=0" || self.realm.price == 0 ? 0.7 : 1.0)
+                        .disabled(ServerAPI.settings.position == "lat=0&lon=0" || self.realm.price == 0 || ServerAPI.settings.shop_id == 0 ? true : false)
+                        .opacity(ServerAPI.settings.position == "lat=0&lon=0" || self.realm.price == 0 || ServerAPI.settings.shop_id == 0 ? 0.7 : 1.0)
                         .simultaneousGesture(TapGesture().onEnded{
                             open_offer = true
                             if (ServerAPI.settings.position == "lat=0&lon=0" ){
                                 ShowAlert(title: "Адрес", message: "Пожалуйста, выберите адрес для продложения оформления.")
+                            }
+                            
+                            if (ServerAPI.settings.shop_id == 0){
+                                ShowAlert(title: "Адрес", message: "Доставка в данном регионе не производится.")
                             }
                            
                         })
