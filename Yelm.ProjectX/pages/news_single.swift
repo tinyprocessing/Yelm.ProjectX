@@ -166,6 +166,7 @@ struct NewsSingle : View {
                                                                 URLImage(URL(string: tag.thubnail)!) { proxy in
                                                                     proxy.image
                                                                         .resizable()
+                                                                        .aspectRatio(contentMode: .fill)
                                                                         .frame(width: 180, height: 180)
                                                                         .cornerRadius(20)
                                                                 }

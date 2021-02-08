@@ -24,6 +24,7 @@ struct SubcategoriesGridObject : View {
                     URLImage(URL(string: tag.thubnail)!) { proxy in
                         proxy.image
                             .resizable()
+                            .aspectRatio(contentMode: .fill)
                             .frame(width: (UIScreen.main.bounds.width-40)/2, height: (UIScreen.main.bounds.width-40)/2)
                             .cornerRadius(20)
                     }
