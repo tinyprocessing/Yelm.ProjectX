@@ -411,6 +411,7 @@ struct Message: View {
                                 
                                 VStack{
                                     Text(message)
+                                        .fixedSize(horizontal: false, vertical: true)
                                         .foregroundColor(message_text_color)
                                     
                                     NavigationLink(destination: History(id_order: self.attachment["id"]!), tag: 45, selection:  $selection){
@@ -453,6 +454,7 @@ struct Message: View {
                             
                             VStack{
                                 Text(message)
+                                    .fixedSize(horizontal: false, vertical: true)
                                     .foregroundColor(message_text_color)
                             }
                                 .padding(.all, 10)
