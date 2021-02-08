@@ -19,7 +19,16 @@ var GlobalBottom: bottom = bottom()
 var GlobalCart: cart = cart()
 var GlobalPayment: payment = payment()
 var GlobalOffer: offer = offer()
+var GlobalCamera: camera = camera()
+
 var GlobalWebview: loading_webview = loading_webview()
+
+
+class camera: ObservableObject, Identifiable{
+    var id : Int = 0
+    
+    @Published var open: Bool = false
+}
 
 
 class offer: ObservableObject, Identifiable{
