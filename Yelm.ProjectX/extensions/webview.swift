@@ -71,6 +71,8 @@ struct HTMLStringView: UIViewRepresentable {
         webview.navigationDelegate = context.coordinator
     
        
+        
+        
         let htmlEnd = "</BODY></HTML>"
         let dummy_html = htmlContent
         let htmlString = "\(html_start)\(dummy_html)\(htmlEnd)"
