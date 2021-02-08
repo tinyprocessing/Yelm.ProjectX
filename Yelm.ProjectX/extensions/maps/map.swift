@@ -295,6 +295,7 @@ struct MapHistory: UIViewRepresentable {
 
     @Binding var YandexMap : YMKMapView
     @Binding var location_update_allow : Bool
+    @Binding var point : YMKPoint
     
     
     func makeCoordinator() -> Coordinator {
@@ -309,11 +310,12 @@ struct MapHistory: UIViewRepresentable {
         YandexMap.mapWindow.map.addCameraListener(with: context.coordinator)
 
         
+        YandexMap.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width+20, height: 295)
 
         let mapKit = YMKMapKit.sharedInstance()
         
 
-        let TARGET_LOCATION = YMKPoint(latitude: 55.751244, longitude: 37.618423)
+        let TARGET_LOCATION = YMKPoint(latitude: point.latitude, longitude: point.longitude)
         
         YandexMap.mapWindow.map.move(
                   with: YMKCameraPosition(target: TARGET_LOCATION, zoom: 13, azimuth: 0, tilt: 0),
