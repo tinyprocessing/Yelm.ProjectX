@@ -52,8 +52,9 @@ struct ItemsViewLine: View {
                     
                     ForEach(self.items, id: \.self) { tag in
                         
+                        
                         VStack{
-                            NavigationLink(destination: Item(), tag: 4, selection:  $selection){
+                            NavigationLink(destination: Item()){
                             
                             VStack(alignment: .leading, spacing: 0){
                                 

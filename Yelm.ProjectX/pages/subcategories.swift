@@ -129,6 +129,7 @@ struct Subcategories : View {
             print(self.category_id)
             ServerAPI.items.subcategories(id: self.category_id) { (load, items) in
                 if (load){
+                    print(items)
                     self.items = items
                 }
             }
