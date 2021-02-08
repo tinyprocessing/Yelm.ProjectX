@@ -413,7 +413,7 @@ struct Message: View {
                                     Text(message)
                                         .foregroundColor(message_text_color)
                                     
-                                    NavigationLink(destination: History(), tag: 45, selection:  $selection){
+                                    NavigationLink(destination: History(id_order: self.attachment["id"]!), tag: 45, selection:  $selection){
                                         HStack(spacing: 10){
                                             Image(systemName: "map")
                                                 .foregroundColor(.black)

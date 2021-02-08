@@ -23,6 +23,8 @@ struct History: View {
     @State var width = UIScreen.main.bounds.width
     @State var show : Float = 0.0
     
+    @State var id_order : String = ""
+    
     @ObservedObject var bottom: bottom = GlobalBottom
     @ObservedObject var status: loading_webview = GlobalWebview
     
@@ -261,6 +263,14 @@ struct History: View {
         .onAppear {
             self.bottom.hide = true
             self.nav_bar_hide = true
+            
+            
+            ServerAPI.orders.get_order_history(id: self.id_order) { (load) in
+                if (load){
+                    
+                }
+            }
+            print("order_id - \(self.id_order)")
         }
         
         .onDisappear{
