@@ -14,6 +14,8 @@ import YandexMapKit
 struct History: View {
     
     
+    @State var history_object : orders_history_structure = orders_history_structure(id: 0)
+    
     @State var nav_bar_hide: Bool = true
     @State var time = Timer.publish(every: 0.1, on: .current, in: .tracking).autoconnect()
     @State var items : [items_structure] = []
@@ -39,6 +41,8 @@ struct History: View {
     @State var location_map : YMKMapView = YMKMapView()
     @State var location_update : Bool = false
     
+    @State var point : YMKPoint = YMKPoint(latitude: 55.751244, longitude: 37.618423)
+    
     var body: some View{
         
         ZStack(alignment: .bottom){
@@ -55,10 +59,32 @@ struct History: View {
                                 
                                 VStack{
                                     
-                                    MapHistory(YandexMap: $location_map, location_update_allow: $location_update)
-                                        .frame(width: UIScreen.main.bounds.width+20,
-                                               height: reader.frame(in: .global).minY > 0 ? CGFloat(Int(reader.frame(in: .global).minY + 295)) : 295)
-                                        .offset(y: -reader.frame(in: .global).minY)
+                                    
+                                    
+                                        ZStack{
+                                            
+                                            MapHistory(YandexMap: $location_map, location_update_allow: $location_update, point: $point)
+                                                .frame(width: UIScreen.main.bounds.width+20,
+                                                       height: reader.frame(in: .global).minY > 0 ? CGFloat(Int(reader.frame(in: .global).minY + 296)) : 296)
+                                                .offset(y: -reader.frame(in: .global).minY)
+                                            
+                                            ZStack{
+                                                
+                                                Image("map_pin")
+                                                    .resizable()
+                                                    .frame(width: 60, height: 60)
+                                                    .offset(y: 35-reader.frame(in: .global).minY)
+                                                
+                                        }
+                                        .offset(y: -70)
+                                            
+                                        }
+                                        
+                                        
+                                    
+                                    
+                                    
+                                    
                                     
                                     
                                     
@@ -97,7 +123,7 @@ struct History: View {
                                     HStack {
                                         
                                         
-                                        Text("Курьер спешит к Вам")
+                                        Text("\(self.history_object.transaction_status)")
                                             .font(.title)
                                             .foregroundColor(Color.green)
                                             .fontWeight(.bold)
@@ -116,29 +142,28 @@ struct History: View {
                                 
                                 
                                 HStack{
-                                Text("""
-                                    № 4512
-                                    Сумма заказа: 4501 ₽
-                                    Дата создания: Сегодня
+                                    Text("""
+                                    № \(self.id_order)
+                                    Сумма заказа:  \( String(format:"%.2f", self.history_object.end_total)) \(ServerAPI.settings.symbol)
+                                    Дата создания: \(self.history_object.created_at)
+                                    Адрес: \(self.history_object.address)
 
                                     Пожалуйста, оцените товары, которые Вам понравились или разочаровали, мы рады становиться лучше для Вас с каждым отзывом, Спасибо!
                                     """)
-                                    .foregroundColor(Color.secondary)
-                                    .font(.system(size: 16, weight: .medium, design: .rounded))
-                                    .padding(.horizontal, 15)
-                                    .padding(.top, 5)
-                                 
+                                        .foregroundColor(Color.secondary)
+                                        .font(.system(size: 16, weight: .medium, design: .rounded))
+                                        .padding(.horizontal, 15)
+                                        .padding(.top, 5)
+                                    
                                     Spacer()
                                 }
                                 
                                 
                                 VStack(alignment: .leading, spacing: 5){
                                     
-                                    
-                                    history_item()
-                                    history_item()
-                                    history_item()
-                                    history_item()
+                                    ForEach(self.history_object.items, id: \.self){ item in
+                                        history_item(item: item)
+                                    }
                                     
                                 }
                                 .padding(10)
@@ -152,36 +177,37 @@ struct History: View {
                                 .padding(.top, 5)
                                 
                                 
-                                Button(action: {
-                                    
-                                }) {
-                                        Text("Чек покупки")
-                                            .padding(.horizontal, 10)
-                                            .foregroundColor(.theme)
-                                            .padding(.top, 15)
-                                }.buttonStyle(ScaleButtonStyle())
+                                Spacer(minLength: 70)
+//                                Button(action: {
+//
+//                                }) {
+//                                    Text("Чек покупки")
+//                                        .padding(.horizontal, 10)
+//                                        .foregroundColor(.theme)
+//                                        .padding(.top, 15)
+//                                }.buttonStyle(ScaleButtonStyle())
+//
+//
+//                                Button(action: {
+//
+//                                }) {
+//                                    HStack{
+//
+//                                        Text("Повторить?")
+//                                            .padding(.horizontal, 10)
+//
+//                                    }
+//                                    .padding(.horizontal)
+//                                    .padding(.vertical, 10)
+//                                    .background(Color.theme)
+//                                    .foregroundColor(.theme_foreground)
+//                                    .cornerRadius(10)
+//                                    .padding(.top, 15)
+//                                }.buttonStyle(ScaleButtonStyle())
+//
+//
                                 
-                                
-                                Button(action: {
-                                    
-                                }) {
-                                    HStack{
-                                        
-                                        Text("Повторить?")
-                                            .padding(.horizontal, 10)
-                                        
-                                    }
-                                        .padding(.horizontal)
-                                        .padding(.vertical, 10)
-                                        .background(Color.theme)
-                                        .foregroundColor(.theme_foreground)
-                                        .cornerRadius(10)
-                                        .padding(.top, 15)
-                                }.buttonStyle(ScaleButtonStyle())
-                                
-                                
-                                
-                                Spacer(minLength: UIScreen.main.bounds.height)
+//                                Spacer(minLength: UIScreen.main.bounds.height)
                                 
                                 
                             }
@@ -265,9 +291,16 @@ struct History: View {
             self.nav_bar_hide = true
             
             
-            ServerAPI.orders.get_order_history(id: self.id_order) { (load) in
+            ServerAPI.orders.get_order_history(id: self.id_order) { (load, object)  in
                 if (load){
+                    self.history_object = object
                     
+                    self.point = YMKPoint(latitude: Double(object.latitude)!, longitude: Double(object.longitude)!)
+                    
+                    location_map.mapWindow.map.move(
+                              with: YMKCameraPosition(target: self.point, zoom: 15, azimuth: 0, tilt: 0),
+                              animationType: YMKAnimation(type: YMKAnimationType.smooth, duration: 0.4),
+                              cameraCallback: nil)
                 }
             }
             print("order_id - \(self.id_order)")
