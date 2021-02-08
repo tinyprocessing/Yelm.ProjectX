@@ -11,22 +11,7 @@ import Yelm_Server
 struct history_item: View {
     
     
-    @State var item : items_structure = items_structure(id: 1,
-                                                        title: "Плов на компанию",
-                                                        price: "1390",
-                                                        text: "Плов на выбор с говядиной или бараниной",
-                                                        thubnail: "https://eda.yandex/images/3513074/182f90c9673b853b683661abab4fce7d-450x300.jpeg",
-                                                        price_float: 1390,
-                                                        all_images: ["https://eda.yandex/images/3513074/182f90c9673b853b683661abab4fce7d-450x300.jpeg"],
-                                                        parameters: [],
-                                                        type: "кг",
-                                                        quanity: "1",
-                                                        discount: "1320",
-                                                        discount_value: 5,
-                                                        discount_present: "-5%",
-                                                        rating: 5,
-                                                        action: [],
-                                                        amount: 100)
+    @State var item : items_structure = items_structure(id: 0)
     
     
     var body: some View {
