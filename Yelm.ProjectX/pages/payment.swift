@@ -201,8 +201,8 @@ struct Payment: View {
                                                  date: self.date,
                                                  cvv: self.cvv,
                                                  merchant: ServerAPI.settings.public_id,
-                                                 price: (self.realm.price + ServerAPI.settings.deliverly_price),
-                                                 currency: ServerAPI.settings.currency) { (load, response, data)  in
+                                                 price: self.realm.price + ServerAPI.settings.deliverly_price,
+                                                 currency: "RUB") { (load, response, data)  in
                                 if (load){
                                     self.response_main = response
                                     self.data = data
