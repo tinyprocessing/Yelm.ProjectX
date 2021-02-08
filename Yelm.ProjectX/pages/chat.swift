@@ -25,6 +25,8 @@ struct Chat : View {
     @ObservedObject var chat : ChatIO = YelmChat
 
     
+//    GlobalCamera
+    
     @ObservedObject var bottom: bottom = GlobalBottom
     @Environment(\.presentationMode) var presentation
     
@@ -65,55 +67,55 @@ struct Chat : View {
         ZStack{
             
             VStack{
-                
-                
+
+
                 VStack{
-                    
+
                     HStack(alignment: .center){
                         Button(action: {
-                            
+
                             self.presentation.wrappedValue.dismiss()
                             let generator = UIImpactFeedbackGenerator(style: .soft)
                             generator.impactOccurred()
-                            
+
                         }) {
-                            
+
                             Image(systemName: "arrow.backward")
                                 .foregroundColor(Color.theme_foreground)
                                 .frame(width: 15, height: 15, alignment: .center)
                                 .padding([.top, .leading, .bottom, .trailing], 10)
-                                
+
                                 .font(.system(size: 15, weight: .bold, design: .rounded))
-                                
+
                                 .background(Color.theme)
                                 .clipShape(Circle())
-                            
+
                         }
                         .padding(.top, 10)
                         .padding(.trailing, 10)
                         .buttonStyle(ScaleButtonStyle())
-                        
+
                         VStack(alignment: .leading){
                             Text("Чат")
                                 .padding(.top, 10)
                                 .font(.system(size: 28, weight: .semibold, design: .rounded))
-                            
+
                             Text(self.chat.core.socket_state == true ? "Онлайн" : "Оффлайн")
                                 .foregroundColor(self.chat.core.socket_state == true ? .green : .gray)
                                 .font(.system(size: 12, weight: .semibold, design: .rounded))
                                 .lineLimit(1)
-                            
+
                         }
-                      
-                        
-                        
+
+
+
                         Spacer()
-                        
-                        
+
+
                         Button(action: {
-                            
+
                         }) {
-                            
+
                             Image(systemName: "gear")
                                 .foregroundColor(Color.theme_foreground)
                                 .frame(width: 18, height: 18, alignment: .center)
@@ -121,29 +123,29 @@ struct Chat : View {
                                 .font(.system(size: 16, weight: .bold, design: .rounded))
                                 .background(Color.theme)
                                 .clipShape(Circle())
-                            
+
                         }
                         .buttonStyle(ScaleButtonStyle())
                     }
-                    
+
                 }
                 .padding([.trailing, .leading], 20)
                 .padding(.bottom, 10)
                 .clipShape(CustomShape(corner: [.bottomLeft, .bottomRight], radii: 20))
                 .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
                 .shadow(color: .dropLight, radius: 15, x: -10, y: -10)
-                
-                
-                
-                
-                
+
+
+
+
+
                 VStack{
-                    
+
 
                     ScrollView {
                     if #available(iOS 14.0, *) {
                         ScrollViewReader { proxy in // 1
-                            
+
                             ForEach(self.chat.chat.messages, id: \.self) { message in
                                 if (message.user.name == UserDefaults.standard.string(forKey: "USER") ?? "user16"){
                                     Message(message: message.text,
@@ -156,7 +158,7 @@ struct Chat : View {
                                             image_asset: message.asset)
                                         .id(message.id) // 2
                                 }
-                                
+
                                 if (message.user.name == "shop"){
                                     Message(message: message.text,
                                             user: message.user.name,
@@ -169,7 +171,7 @@ struct Chat : View {
                                         .id(message.id) // 2
 
                                 }
-                                
+
                                 if (message.user.name == "server"){
                                     Message(message: message.text,
                                             user: message.user.name,
@@ -180,29 +182,29 @@ struct Chat : View {
                                             message_text_color: .black,
                                             tag: message.item)
                                         .id(message.id) // 2
-    
+
 
                                 }
 
-                                
+
                             }
-                           
+
                             .onChange(of: self.chat.chat.messages.count) { _ in // 3
-                                
+
                                 if (!self.offset_moved){
                                     scrollToLastMessage(proxy: proxy)
                                 }
-                              
-                                
+
+
                             }
-                            
-                            
+
+
                             GeometryReader{g in
                                 VStack{
                                     Text("")
                                 }
                                 .onReceive(self.time) { (_) in
-                                    
+
                                     if (g.frame(in: .global).minY > UIScreen.main.bounds.height+200){
                                         self.offset_moved = true
                                     }else{
@@ -212,11 +214,11 @@ struct Chat : View {
                                 }
                             } .frame(height: 0)
 
-                            
+
                         }
                     } else {
-                        
-                        
+
+
                         GeometryReader { geometry in
 
 
@@ -271,73 +273,73 @@ struct Chat : View {
 
                             }
                             .background(Color.clear)
-                            .rotationEffect(.radians(.pi))
+                            .rotationEffect(.radians(Double.pi))
                             .scaleEffect(x: -1, y: 1, anchor: .center)
 
 
                         }
-                        
+
                     }
                 }.background(Color.clear)
-  
-                    
+
+
                     HStack(alignment: .center){
-                        
+
                         Button(action: {
-                            
-                            
-                         
-                            
+
+
+
+
                             DispatchQueue.main.asyncAfter(deadline: .now()) { [self] in
                                 self.modal.openModal()
                             }
-                            
+
                         }) {
-                            
+
                             Image(systemName: "plus")
                                 .foregroundColor(Color.theme)
                                 .padding(10)
                                 .font(.system(size: 20, weight: .bold, design: .rounded))
 
-                            
+
                         }
                         .buttonStyle(ScaleButtonStyle())
-                        
+
                         Spacer(minLength: 10)
-                        
+
                         ChatTextField(label: "Ваше сообщение",
                                       value: $text,
                                       showLabel: false,
                                       keyboardType: .twitter,
                                       onCommit: {
-                                        
+
                                       },
                                       onEditingChanged: { (editing) in
                                       },
                                       disableAutocorrection: false)
-                            
-                        
+
+
                         Spacer(minLength: 10)
-                        
+
                         Button(action: {
-                            
+
 
                             let generator = UIImpactFeedbackGenerator(style: .soft)
                             generator.impactOccurred()
                             var pass : Bool = true
-                            
+
                             if (self.text == "/love"){
                                 pass = false
                                 NotificationCenter.default.post(name: Notification.Name("play_confetti_celebration"), object: Bool.self)
                             }
-                            
+
                             if (self.text != "" && pass){
                                 self.chat.core.send(message: self.text, type: "text")
                             }
-                            
+
                             self.text = ""
                         }) {
-                            
+
                             Image(systemName: "paperplane")
                                 .tag("chat_button")
                                 .foregroundColor(Color.white)
@@ -346,22 +348,22 @@ struct Chat : View {
                                 .font(.system(size: 12, weight: .bold, design: .rounded))
                                 .background(Color.theme)
                                 .clipShape(Circle())
-                            
+
                         }
                         .buttonStyle(ScaleButtonStyle())
-                        
-                        
+
+
                     } .padding()
-                    
-    
-                    
+
+
+
                 }
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
             }
             
         }

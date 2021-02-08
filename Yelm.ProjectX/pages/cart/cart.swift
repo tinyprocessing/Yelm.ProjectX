@@ -262,10 +262,15 @@ struct Cart: View {
             
             
             
-            ServerAPI.basket.get_basket(items: self.realm.get_ids()) { (load) in
+            ServerAPI.basket.get_basket(items: self.realm.get_ids()) { (load, removable)  in
                 if (load){
                     self.time = ServerAPI.settings.deliverly_time
                     self.price = ServerAPI.settings.deliverly_price
+                    
+                    removable.forEach { (item) in
+                        self.realm.set_count(ID: item.item_id, count: item.count)
+                    }
+                    
                 }
             }
             
