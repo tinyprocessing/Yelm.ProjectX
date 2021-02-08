@@ -27,7 +27,7 @@ struct News : View {
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack(spacing: 0){
                         ForEach(self.news.news, id: \.self){ object in
-                            NavigationLink(destination: NewsSingle(), tag: object.id*object.id, selection:  $selection){
+                            NavigationLink(destination: NewsSingle()){
                                 VStack{
                                 URLImage(URL(string: object.thubnail)!) { proxy in
                                     proxy.image
