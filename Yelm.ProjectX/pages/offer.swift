@@ -385,7 +385,7 @@ struct Offer: View {
                     if (self.pickerSelection == 1){
                         
                         Button(action: {
-                            YelmPay.start(platform: "5f771d465f4191.76733056") { (load) in
+                            YelmPay.start(platform: platform) { (load) in
                                 
                                 self.offer.objectWillChange.send()
                                 self.offer.phone = self.phone
@@ -398,7 +398,7 @@ struct Offer: View {
                                 
                                 YelmPay.apple_pay.apple_pay(price: self.realm.price,
                                                             delivery: ServerAPI.settings.deliverly_price,
-                                                            merchant: "merchant.5fd33466e17963.29052139.yelm.io",
+                                                            merchant: merchant,
                                                             country: "RU",
                                                             currency: ServerAPI.settings.currency)
                                 
