@@ -11,7 +11,8 @@ import Foundation
 var open_offer = false
 var open_item = false
 
-
+// моя - 5fd33466e17963.29052139
+// катя - 5fe5b100a4d2a2.87371907
 var platform : String = "5fd33466e17963.29052139"
 var merchant : String = "merchant.5fd33466e17963.29052139.yelm.io"
 

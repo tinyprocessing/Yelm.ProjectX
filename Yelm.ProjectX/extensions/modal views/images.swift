@@ -23,7 +23,8 @@ struct ModalImages: View {
     
     
     @ObservedObject var modal : ModalManager = GlobalModular
-    
+    @ObservedObject var camera : camera = GlobalCamera
+
     
     
     @State var disabled = false
@@ -97,7 +98,7 @@ struct ModalImages: View {
     }
     
     
-    @State var open_camera : Bool = false
+    
     
     var body: some View {
         VStack{
@@ -141,7 +142,7 @@ struct ModalImages: View {
                                             .font(.system(size: 20, weight: .bold, design: .rounded))
                                             .foregroundColor(Color.init(hex: "F2F3F4"))
                                     }.onTapGesture {
-                                        self.open_camera.toggle()
+                                        self.camera.open.toggle()
                                     }
                                     
                                     
@@ -292,77 +293,8 @@ struct ModalImages: View {
                     //            .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 30))
                 }
                 
-                if (open_camera){
-                    Rectangle()
-                        .fill(Color.clear)
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/1.3)
-                        .overlay(
-                            
-                            ZStack(alignment: .top){
-                                
-                            ZStack(alignment: .bottom){
-                                CustomCameraViewFull()
-                                
-                                Button(action: {
-                                    
-                                    
-                                }) {
-                                    VStack{
-                                        ZStack{
-                                            Circle()
-                                                .fill(Color.theme)
-                                                .frame(width: 80, height: 80)
-                                            
-                                            
-                                            Circle()
-                                                .fill(Color.white)
-                                                .frame(width: 70, height: 70)
-                                            
-                                            
-                                            Circle()
-                                                .fill(Color.theme)
-                                                .frame(width: 40, height: 40)
-                                        }
-                                    }
-                                    .padding(.bottom, 50)
-                                }.buttonStyle(ScaleButtonStyle())
-                                
-                                
-                            }
-                                
-                                HStack{
-                                    HStack{
-                                       
-                                        
-                                        Spacer()
-                                        
-                                        
-                                        Button(action: {
-                                            
-                                            self.open_camera.toggle()
-                                            
-                                        }) {
-                                            Image(systemName: "xmark")
-                                                .foregroundColor(Color.theme_foreground)
-                                                .font(.system(size: 20, weight: .bold, design: .rounded))
-                                            
-                                        }.buttonStyle(ScaleButtonStyle())
-
-                                        
-                                      
-                                            
-                                        
-                                    }
-                                    .padding(.horizontal, 30)
-                                    .padding(.top, 8)
-                                    
-                                }
-                               
-                                .frame(width: UIScreen.main.bounds.width, height: 50)
-                                .background(Color.black.opacity(0.3))
-                                
-                            }
-                        )
+                if (self.camera.open){
+                    CustomCameraViewFull()
                 }
                 
             }
