@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		4C192AFD25BCD44D00059597 /* payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C192AFC25BCD44C00059597 /* payment.swift */; };
 		4C192B0125C0739F00059597 /* D3DS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C192B0025C0739E00059597 /* D3DS.swift */; };
+		4C1BB4E225D1ABC000604276 /* news_single_items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BB4E125D1ABC000604276 /* news_single_items.swift */; };
 		4C3CEB0125CC7D4E0089EFF9 /* history.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CEB0025CC7D4E0089EFF9 /* history.swift */; };
 		4C3CEB0625CC8A6C0089EFF9 /* ConfettiView in Frameworks */ = {isa = PBXBuildFile; productRef = 4C3CEB0525CC8A6C0089EFF9 /* ConfettiView */; };
 		4C3CEB0A25CC8AA50089EFF9 /* confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CEB0925CC8AA50089EFF9 /* confetti.swift */; };
 		4C3CEB0D25CD2B270089EFF9 /* history_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CEB0C25CD2B260089EFF9 /* history_item.swift */; };
+		4C3CEBB125D193540089EFF9 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 4C3CEBB025D193540089EFF9 /* SwiftUIX */; };
 		4C70235D25A749BD00A750D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C70235C25A749BD00A750D2 /* AppDelegate.swift */; };
 		4C70235F25A749BD00A750D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C70235E25A749BD00A750D2 /* SceneDelegate.swift */; };
 		4C70236125A749BD00A750D2 /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C70236025A749BD00A750D2 /* Start.swift */; };
@@ -108,6 +110,7 @@
 		1B69168527B2637AB35B1B9A /* Pods-Yelm.ProjectX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelm.ProjectX.release.xcconfig"; path = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.release.xcconfig"; sourceTree = "<group>"; };
 		4C192AFC25BCD44C00059597 /* payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payment.swift; sourceTree = "<group>"; };
 		4C192B0025C0739E00059597 /* D3DS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D3DS.swift; sourceTree = "<group>"; };
+		4C1BB4E125D1ABC000604276 /* news_single_items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = news_single_items.swift; sourceTree = "<group>"; };
 		4C3CEB0025CC7D4E0089EFF9 /* history.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = history.swift; sourceTree = "<group>"; };
 		4C3CEB0925CC8AA50089EFF9 /* confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confetti.swift; sourceTree = "<group>"; };
 		4C3CEB0C25CD2B260089EFF9 /* history_item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = history_item.swift; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 				4CDE834B25A74F8F00F3453D /* Yelm.Logistics in Frameworks */,
 				4C70237825A74C1200A750D2 /* Yelm.Server in Frameworks */,
 				4CDE83D725A78DF500F3453D /* Realm in Frameworks */,
+				4C3CEBB125D193540089EFF9 /* SwiftUIX in Frameworks */,
 				4CF5602125B716FF0038A4CC /* Grid in Frameworks */,
 				4CDE83D925A78DF500F3453D /* RealmSwift in Frameworks */,
 				4CDE834625A74ED700F3453D /* Yelm.Pay in Frameworks */,
@@ -348,6 +352,7 @@
 				4CDE843E25AB5EEF00F3453D /* chat.swift */,
 				4CF55FCE25B2F5270038A4CC /* news.swift */,
 				4CF5601425B5ADD60038A4CC /* news_single.swift */,
+				4C1BB4E125D1ABC000604276 /* news_single_items.swift */,
 				4CF5601B25B7124E0038A4CC /* subcategories.swift */,
 				4CAA9F6C25B83B04005CEB96 /* subcategoies_grid.swift */,
 				4CAA9F7025B83D78005CEB96 /* subcategories_grid_item.swift */,
@@ -610,6 +615,7 @@
 				4CF5602025B716FF0038A4CC /* Grid */,
 				4C9AC9C025C5F634002C1C04 /* Yelm.Chat */,
 				4C3CEB0525CC8A6C0089EFF9 /* ConfettiView */,
+				4C3CEBB025D193540089EFF9 /* SwiftUIX */,
 			);
 			productName = Yelm.ProjectX;
 			productReference = 4C70235925A749BD00A750D2 /* Yelm.ProjectX.app */;
@@ -642,6 +648,7 @@
 				4CDE83D525A78DF500F3453D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				4CF5601F25B716FF0038A4CC /* XCRemoteSwiftPackageReference "swiftui-grid" */,
 				4C3CEB0425CC8A6C0089EFF9 /* XCRemoteSwiftPackageReference "ConfettiView" */,
+				4C3CEBAF25D193520089EFF9 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 4C70235A25A749BD00A750D2 /* Products */;
 			projectDirPath = "";
@@ -781,6 +788,7 @@
 				4CDE841F25A8AA5A00F3453D /* item.swift in Sources */,
 				4CDE835C25A788DD00F3453D /* items.swift in Sources */,
 				4CDE83F025A7A75200F3453D /* structures.swift in Sources */,
+				4C1BB4E225D1ABC000604276 /* news_single_items.swift in Sources */,
 				4CDE843B25AB3B2D00F3453D /* search_item.swift in Sources */,
 				4CDE83AF25A78A3F00F3453D /* Version.swift in Sources */,
 				4CDE83C725A78A4D00F3453D /* CircleProgressShape.swift in Sources */,
@@ -1009,6 +1017,14 @@
 				minimumVersion = 1.1.0;
 			};
 		};
+		4C3CEBAF25D193520089EFF9 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.5;
+			};
+		};
 		4CDE83D525A78DF500F3453D /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa.git";
@@ -1032,6 +1048,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4C3CEB0425CC8A6C0089EFF9 /* XCRemoteSwiftPackageReference "ConfettiView" */;
 			productName = ConfettiView;
+		};
+		4C3CEBB025D193540089EFF9 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C3CEBAF25D193520089EFF9 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 		4C70237725A74C1200A750D2 /* Yelm.Server */ = {
 			isa = XCSwiftPackageProductDependency;
