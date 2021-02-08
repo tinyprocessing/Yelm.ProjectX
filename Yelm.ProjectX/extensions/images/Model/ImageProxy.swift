@@ -63,6 +63,25 @@ public extension ImageProxy {
         let size_aspect = uiImage.size
         
     
+        print(size_aspect.width)
+        print(size_aspect.height)
+        
+        if (size_aspect.width == 4032.0 && size_aspect.height == 3024){
+            
+            
+            let ratio =   size_aspect.height / size_aspect.width;
+            
+            
+            
+            var new_width = UIScreen.main.bounds.size.width / 2.4;
+            
+            let new_height = new_width / ratio;
+
+            
+            return CGSize(width: Int(new_width), height: Int(new_height))
+            
+        }
+        
         
         let ratio = size_aspect.width / size_aspect.height;
         var new_width = UIScreen.main.bounds.size.width / 1.7;
