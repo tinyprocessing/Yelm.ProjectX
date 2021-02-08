@@ -12,6 +12,8 @@ var open_offer = false
 var open_item = false
 
 
+var platform : String = "5fd33466e17963.29052139"
+var merchant : String = "merchant.5fd33466e17963.29052139.yelm.io"
 
 
 

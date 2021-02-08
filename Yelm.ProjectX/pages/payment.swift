@@ -196,11 +196,11 @@ struct Payment: View {
                         UserDefaults.standard.set(self.card, forKey: "card")
                         UserDefaults.standard.set(self.date, forKey: "date")
 
-                        YelmPay.start(platform: "5f771d465f4191.76733056") { (load) in
+                        YelmPay.start(platform: platform) { (load) in
                             YelmPay.core.payment(card_number: self.card,
                                                  date: self.date,
                                                  cvv: self.cvv,
-                                                 merchant: "pk_50c51840d2433adbc5c9c13a949d9",
+                                                 merchant: ServerAPI.settings.public_id,
                                                  price: (self.realm.price + ServerAPI.settings.deliverly_price),
                                                  currency: ServerAPI.settings.currency) { (load, response, data)  in
                                 if (load){
