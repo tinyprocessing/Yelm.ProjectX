@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import Yelm_Server
 import Yelm_Pay
+import SwiftUIX
 
 struct Offer: View {
     
@@ -53,18 +54,20 @@ struct Offer: View {
     
     @ObservedObject var realm: RealmControl = GlobalRealm
     
+
     
     private class PaymentContextDelegate: NSObject, APDelegate {
         
         @ObservedObject var location : location_cache = GlobalLocation
         @ObservedObject var realm: RealmControl = GlobalRealm
         @ObservedObject var offer: offer = GlobalOffer
-        
-        
+        @ObservedObject var payment: payment = GlobalPayment
+
+        @Environment(\.presenter) var presenter
+
         func PaymentDone(result: Bool) {
             if (result){
                 print("PaymentContextDelegate.result.done")
-                ShowAlert(title: "Отлично", message: "Оплата прошла успешно - детали Вашего заказа отправлены в чат.")
                 
                 
                 let order_detail = OrdersDetail()
@@ -85,6 +88,17 @@ struct Offer: View {
                 ServerAPI.orders.set_order(order: order_detail) { (load) in
                     if (load){
                         print("order did send")
+                        
+                        self.realm.clear_cart(order: true)
+                        self.payment.payment_done = true
+                        
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            windows?.rootViewController =  UIHostingController(rootView: Start())
+                        }
+                        
+                        
+                        
                     }
                 }
                 
@@ -386,7 +400,7 @@ struct Offer: View {
                         
                         Button(action: {
                             YelmPay.start(platform: platform) { (load) in
-                                
+
                                 self.offer.objectWillChange.send()
                                 self.offer.phone = self.phone
                                 self.offer.objectWillChange.send()
@@ -395,16 +409,19 @@ struct Offer: View {
                                 self.offer.apartment = self.apartment
                                 self.offer.objectWillChange.send()
                                 self.offer.floor = self.floor
-                                
-                                YelmPay.apple_pay.apple_pay(price: self.realm.price,
-                                                            delivery: ServerAPI.settings.deliverly_price,
+
+                                YelmPay.apple_pay.apple_pay(price: 1,
+                                                            delivery: 0,
                                                             merchant: merchant,
                                                             country: "RU",
-                                                            currency: ServerAPI.settings.currency)
-                                
-                                
-                                
+                                                            currency: "RUB")
+
+
+
                             }
+                            
+                            
+                          
                             
                             
                             
@@ -505,7 +522,13 @@ struct Offer: View {
                 
                 ServerAPI.orders.set_order(order: order_detail) { (load) in
                     if (load){
-                        self.presentation.wrappedValue.dismiss()
+                        
+                        self.realm.clear_cart(order: true)
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            windows?.rootViewController =  UIHostingController(rootView: Start())
+                        }
+                        
                     }
                 }
                 
