@@ -85,7 +85,7 @@ struct Item : View {
                             GeometryReader{reader in
                                 
                                 VStack{
-                                    if (self.item.item.thubnail != ""){
+                                    if (self.item.item.all_images.count > 0){
                                         
                                         URLImage(URL(string: self.item.item.all_images[0])!) { proxy in
                                             proxy.image
@@ -596,6 +596,8 @@ struct Item : View {
         .onAppear {
             self.bottom.hide = true
             self.nav_bar_hide = true
+            
+          
         }
         
         .onDisappear{
