@@ -26,6 +26,8 @@ struct Home: View {
     
     @ObservedObject var payment: payment = GlobalPayment
 
+    @ObservedObject var news : news = GlobalNews
+    
     
     func width(y: CGFloat) -> CGFloat {
         let screen = CGFloat(UIScreen.main.bounds.width-90)
@@ -36,6 +38,16 @@ struct Home: View {
             if (self.loading.loading == false){
                 self.loading.objectWillChange.send()
                 self.loading.loading = true
+                
+                
+                ServerAPI.news.get_news { (load, news) in
+                    if (load){
+                        self.news.news = news
+                    }else{
+                        
+                    }
+                }
+                
                 ServerAPI.items.get_items { (ready, items) in
                     
                     if (ready){
@@ -213,7 +225,10 @@ struct Home: View {
         .onAppear{
             if(self.payment.payment_done){
                 self.payment.payment_done = false
-                ShowAlert(title: "Отлично", message: "Оплата прошла успешно - детали Вашего заказа отправлены в чат.")
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    ShowAlert(title: "Отлично", message: "Оплата прошла успешно - детали Вашего заказа отправлены в чат.")
+                }
 
             }
         }
