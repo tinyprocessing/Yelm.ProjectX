@@ -10,6 +10,11 @@
 		4C192AFD25BCD44D00059597 /* payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C192AFC25BCD44C00059597 /* payment.swift */; };
 		4C192B0125C0739F00059597 /* D3DS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C192B0025C0739E00059597 /* D3DS.swift */; };
 		4C1BB4E225D1ABC000604276 /* news_single_items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BB4E125D1ABC000604276 /* news_single_items.swift */; };
+		4C1BB4EA25D29DAF00604276 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C1BB4EC25D29DAF00604276 /* Localizable.strings */; };
+		4C1BB4F325D2A76500604276 /* story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BB4F225D2A76500604276 /* story.swift */; };
+		4C1BB4F625D2A77700604276 /* processing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BB4F525D2A77700604276 /* processing.swift */; };
+		4C1BB4F925D2A78700604276 /* story_loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1BB4F825D2A78700604276 /* story_loading.swift */; };
+		4C1BB4FD25D2CF8900604276 /* VideoPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 4C1BB4FC25D2CF8900604276 /* VideoPlayer */; };
 		4C3CEB0125CC7D4E0089EFF9 /* history.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CEB0025CC7D4E0089EFF9 /* history.swift */; };
 		4C3CEB0625CC8A6C0089EFF9 /* ConfettiView in Frameworks */ = {isa = PBXBuildFile; productRef = 4C3CEB0525CC8A6C0089EFF9 /* ConfettiView */; };
 		4C3CEB0A25CC8AA50089EFF9 /* confetti.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3CEB0925CC8AA50089EFF9 /* confetti.swift */; };
@@ -111,6 +116,12 @@
 		4C192AFC25BCD44C00059597 /* payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payment.swift; sourceTree = "<group>"; };
 		4C192B0025C0739E00059597 /* D3DS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = D3DS.swift; sourceTree = "<group>"; };
 		4C1BB4E125D1ABC000604276 /* news_single_items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = news_single_items.swift; sourceTree = "<group>"; };
+		4C1BB4E525D29C6A00604276 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		4C1BB4EB25D29DAF00604276 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4C1BB4EE25D29DB300604276 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4C1BB4F225D2A76500604276 /* story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = story.swift; sourceTree = "<group>"; };
+		4C1BB4F525D2A77700604276 /* processing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = processing.swift; sourceTree = "<group>"; };
+		4C1BB4F825D2A78700604276 /* story_loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = story_loading.swift; sourceTree = "<group>"; };
 		4C3CEB0025CC7D4E0089EFF9 /* history.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = history.swift; sourceTree = "<group>"; };
 		4C3CEB0925CC8AA50089EFF9 /* confetti.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confetti.swift; sourceTree = "<group>"; };
 		4C3CEB0C25CD2B260089EFF9 /* history_item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = history_item.swift; sourceTree = "<group>"; };
@@ -216,6 +227,7 @@
 				4C70237825A74C1200A750D2 /* Yelm.Server in Frameworks */,
 				4CDE83D725A78DF500F3453D /* Realm in Frameworks */,
 				4C3CEBB125D193540089EFF9 /* SwiftUIX in Frameworks */,
+				4C1BB4FD25D2CF8900604276 /* VideoPlayer in Frameworks */,
 				4CF5602125B716FF0038A4CC /* Grid in Frameworks */,
 				4CDE83D925A78DF500F3453D /* RealmSwift in Frameworks */,
 				4CDE834625A74ED700F3453D /* Yelm.Pay in Frameworks */,
@@ -228,6 +240,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C1BB4F125D2A75500604276 /* stroies */ = {
+			isa = PBXGroup;
+			children = (
+				4C1BB4F225D2A76500604276 /* story.swift */,
+				4C1BB4F525D2A77700604276 /* processing.swift */,
+				4C1BB4F825D2A78700604276 /* story_loading.swift */,
+			);
+			path = stroies;
+			sourceTree = "<group>";
+		};
 		4C3CEB0825CC8A920089EFF9 /* confetti */ = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +326,7 @@
 			children = (
 				4C70235C25A749BD00A750D2 /* AppDelegate.swift */,
 				4C70235E25A749BD00A750D2 /* SceneDelegate.swift */,
+				4C1BB4EC25D29DAF00604276 /* Localizable.strings */,
 			);
 			path = asa;
 			sourceTree = "<group>";
@@ -320,6 +343,7 @@
 		4CDE835925A780F100F3453D /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4C1BB4F125D2A75500604276 /* stroies */,
 				4C3CEB0825CC8A920089EFF9 /* confetti */,
 				4CDE844125AB612300F3453D /* chat */,
 				4CDE841A25A8820F00F3453D /* location.gpx */,
@@ -616,6 +640,7 @@
 				4C9AC9C025C5F634002C1C04 /* Yelm.Chat */,
 				4C3CEB0525CC8A6C0089EFF9 /* ConfettiView */,
 				4C3CEBB025D193540089EFF9 /* SwiftUIX */,
+				4C1BB4FC25D2CF8900604276 /* VideoPlayer */,
 			);
 			productName = Yelm.ProjectX;
 			productReference = 4C70235925A749BD00A750D2 /* Yelm.ProjectX.app */;
@@ -642,6 +667,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 4C70235025A749BD00A750D2;
 			packageReferences = (
@@ -649,6 +675,7 @@
 				4CF5601F25B716FF0038A4CC /* XCRemoteSwiftPackageReference "swiftui-grid" */,
 				4C3CEB0425CC8A6C0089EFF9 /* XCRemoteSwiftPackageReference "ConfettiView" */,
 				4C3CEBAF25D193520089EFF9 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				4C1BB4FB25D2CF8900604276 /* XCRemoteSwiftPackageReference "VideoPlayer" */,
 			);
 			productRefGroup = 4C70235A25A749BD00A750D2 /* Products */;
 			projectDirPath = "";
@@ -665,6 +692,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C70236925A749BF00A750D2 /* LaunchScreen.storyboard in Resources */,
+				4C1BB4EA25D29DAF00604276 /* Localizable.strings in Resources */,
 				4C70236625A749BF00A750D2 /* Preview Assets.xcassets in Resources */,
 				4C70236325A749BF00A750D2 /* Assets.xcassets in Resources */,
 			);
@@ -763,7 +791,9 @@
 				4CDE844625AB614800F3453D /* ui.swift in Sources */,
 				4CDE83A325A78A3F00F3453D /* LoadingState.swift in Sources */,
 				4C3CEB0A25CC8AA50089EFF9 /* confetti.swift in Sources */,
+				4C1BB4F325D2A76500604276 /* story.swift in Sources */,
 				4CDE83B825A78A3F00F3453D /* ImageDecoder.swift in Sources */,
+				4C1BB4F625D2A77700604276 /* processing.swift in Sources */,
 				4CDE842625A9E33400F3453D /* cart_item.swift in Sources */,
 				4C3CEB0125CC7D4E0089EFF9 /* history.swift in Sources */,
 				4CDE83B225A78A3F00F3453D /* CoreDataEntityDescription.swift in Sources */,
@@ -777,6 +807,7 @@
 				4CDE83BB25A78A4500F3453D /* URLImage.swift in Sources */,
 				4CDE83A125A78A3F00F3453D /* DownloadProgressWrapper.swift in Sources */,
 				4CDE840C25A874BB00F3453D /* maps_classes.swift in Sources */,
+				4C1BB4F925D2A78700604276 /* story_loading.swift in Sources */,
 				4CDE83FE25A86FAE00F3453D /* core.swift in Sources */,
 				4CDE839B25A78A3F00F3453D /* ImageProcessing.swift in Sources */,
 				4CDE836025A7899E00F3453D /* blur.swift in Sources */,
@@ -809,10 +840,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		4C1BB4EC25D29DAF00604276 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C1BB4EB25D29DAF00604276 /* en */,
+				4C1BB4EE25D29DB300604276 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		4C70236725A749BF00A750D2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				4C70236825A749BF00A750D2 /* Base */,
+				4C1BB4E525D29C6A00604276 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -824,6 +865,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -885,6 +927,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1009,6 +1052,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		4C1BB4FB25D2CF8900604276 /* XCRemoteSwiftPackageReference "VideoPlayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wxxsw/VideoPlayer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.7;
+			};
+		};
 		4C3CEB0425CC8A6C0089EFF9 /* XCRemoteSwiftPackageReference "ConfettiView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ziligy/ConfettiView.git";
@@ -1044,6 +1095,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4C1BB4FC25D2CF8900604276 /* VideoPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C1BB4FB25D2CF8900604276 /* XCRemoteSwiftPackageReference "VideoPlayer" */;
+			productName = VideoPlayer;
+		};
 		4C3CEB0525CC8A6C0089EFF9 /* ConfettiView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4C3CEB0425CC8A6C0089EFF9 /* XCRemoteSwiftPackageReference "ConfettiView" */;

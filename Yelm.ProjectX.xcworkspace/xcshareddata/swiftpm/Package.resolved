@@ -29,6 +29,15 @@
         }
       },
       {
+        "package": "GSPlayer",
+        "repositoryURL": "https://github.com/wxxsw/GSPlayer.git",
+        "state": {
+          "branch": null,
+          "revision": "bce715b60427935902ae2adaa173b594338ca202",
+          "version": "0.2.19"
+        }
+      },
+      {
         "package": "ObjectMapper",
         "repositoryURL": "https://github.com/tristanhimmelman/ObjectMapper.git",
         "state": {
@@ -107,6 +116,15 @@
           "branch": null,
           "revision": "2b6054efa051565954e1d2b9da831680026cd768",
           "version": "4.3.0"
+        }
+      },
+      {
+        "package": "VideoPlayer",
+        "repositoryURL": "https://github.com/wxxsw/VideoPlayer",
+        "state": {
+          "branch": null,
+          "revision": "c79852f86c8e89e6917646be957d1a737d186d5d",
+          "version": "1.1.7"
         }
       }
     ]
