@@ -94,10 +94,12 @@ public struct URLImage<Content, Placeholder, Failure> : View where Content : Vie
                             self.error = nil
                             self.imageProxy = imageProxy
                             YelmChat.chat.bottom()
+                            print("DOWNLOADED IMAGE")
                             
                         case .failure(let error):
                             self.imageProxy = nil
                             self.error = error
+                            print("ERROR IMAGE")
                     }
 
                     self.previousURL = self.url
