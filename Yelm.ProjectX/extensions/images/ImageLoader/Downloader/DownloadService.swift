@@ -169,6 +169,7 @@ final class DownloadServiceImpl: DownloadService {
     func load(urlRequest: URLRequest, withFileIdentifier fileIdentifier: String, after delay: TimeInterval, expiryDate: Date?) {
         if let url = urlRequest.url {
             log_debug(self, "Load \"\(url)\".")
+            print("START LOAD IMAGE")
         }
 
         queue.addOperation {

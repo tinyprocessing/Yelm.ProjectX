@@ -20,8 +20,25 @@ var GlobalCart: cart = cart()
 var GlobalPayment: payment = payment()
 var GlobalOffer: offer = offer()
 var GlobalCamera: camera = camera()
+var GlobalVideo: video = video()
+var GlobalConfetti: confetti = confetti()
 
 var GlobalWebview: loading_webview = loading_webview()
+
+
+class confetti: ObservableObject, Identifiable{
+    var id : Int = 0
+    
+    @Published var object: String = "😂"
+}
+
+
+
+class video: ObservableObject, Identifiable{
+    var id : Int = 0
+    
+    @Published var play: Bool = false
+}
 
 
 class camera: ObservableObject, Identifiable{
