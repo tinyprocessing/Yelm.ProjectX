@@ -18,6 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     @ObservedObject var notification : notification = GlobalNotification
 
     
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+    }
+    
+    
+    
     func registerForPushNotifications() {
 
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
@@ -78,6 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     }
     
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -86,6 +93,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         registerForPushNotifications()
         application.applicationIconBadgeNumber = 0
         UNUserNotificationCenter.current().delegate = self
+        
+        guard let options = launchOptions,  let remoteNotif = options[UIApplication.LaunchOptionsKey.remoteNotification] as? [String: Any]
+        else{
+            return true
+        }
+        print(remoteNotif)
+        print(remoteNotif["aps"] as? [String: Any])
+                
         
         return true
     }
@@ -105,7 +120,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+     
+        print(response.notification.request.content.body)
+        print(response.notification.request.content.attachments)
+        
+    }
 
-
+    
 }
 
