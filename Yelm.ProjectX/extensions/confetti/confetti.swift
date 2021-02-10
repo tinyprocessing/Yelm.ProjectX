@@ -17,19 +17,19 @@ struct ConfettiCelebrationView: View {
     private var timeLimit: TimeInterval // how long to display confetti
     @State private var timer = Timer.publish(every: 0.0, on: .main, in: .common).autoconnect()
 
-    init(isShowingConfetti: Binding<Bool>, timeLimit: TimeInterval = 4.0) {
+    init(isShowingConfetti: Binding<Bool>, timeLimit: TimeInterval = 2.5) {
         self.timeLimit = timeLimit
         _isShowingConfetti = isShowingConfetti
     }
 
+    @ObservedObject var array : confetti = GlobalConfetti
+
+    
     var body: some View {
 
         // define confetti cell elements & fadeout transition
-        let confetti = ConfettiView( confetti: [
-            .text("💖"),
-            .text("🧡"),
-            .text("💜"),
-            .text("💓")
+        var confetti = ConfettiView( confetti: [
+            .text("\(self.array.object)")
         ]).transition(.slowFadeOut)
         
 
@@ -42,6 +42,7 @@ struct ConfettiCelebrationView: View {
             self.isShowingConfetti = false
         }.onReceive(NotificationCenter.default.publisher(for: Notification.Name.playConfettiCelebration)) { _ in
             // got notification so do --> reset & play
+            
             self.resetTimerAndPlay()
         }
     }
@@ -57,6 +58,8 @@ struct ConfettiCelebrationView: View {
 // notification to start timer & display the confetti celebration view
 public extension Notification.Name {
     static let playConfettiCelebration = Notification.Name("play_confetti_celebration")
+
+
 }
 
 // fade in & out transitions for ConfettiView and Play button
