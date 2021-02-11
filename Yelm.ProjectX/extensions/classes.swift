@@ -22,9 +22,18 @@ var GlobalOffer: offer = offer()
 var GlobalCamera: camera = camera()
 var GlobalVideo: video = video()
 var GlobalConfetti: confetti = confetti()
+var GlobalNotificationBanner: notification_banner = notification_banner()
 
 var GlobalWebview: loading_webview = loading_webview()
 
+
+
+class notification_banner: ObservableObject, Identifiable {
+    var id: Int = 0
+    @Published var show : Bool = false
+    @Published var title : String = ""
+    @Published var text : String = ""
+}
 
 class confetti: ObservableObject, Identifiable{
     var id : Int = 0
