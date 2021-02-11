@@ -40,6 +40,7 @@ class timer_story: ObservableObject {
                 
                 if Int(newProgress) >= self.max { newProgress = 0 }
                 self.progress = newProgress
+                
             }
         })
     }
