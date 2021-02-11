@@ -17,6 +17,7 @@ struct Start: View {
     @ObservedObject var notification : notification = GlobalNotification
     @ObservedObject var location : location_cache = GlobalLocation
     @ObservedObject var search : search = GlobalSearch
+    @ObservedObject var banner : notification_banner = GlobalNotificationBanner
     
     @ObservedObject var news : news = GlobalNews
     
@@ -100,6 +101,48 @@ struct Start: View {
                     
                 }
                 confettiCelebrationView
+            }
+            
+            if self.banner.show {
+                VStack {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(self.banner.title)
+                                .foregroundColor(.black)
+                                .bold()
+                            Text(self.banner.text)
+                                .font(Font.system(size: 15, weight: Font.Weight.light, design: Font.Design.default))
+                                .foregroundColor(.black)
+                        }.padding()
+                        Spacer()
+                    }
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color(.systemGray6))
+                    )
+                    .cornerRadius(15)
+                    .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
+                    .shadow(color: .dropLight, radius: 15, x: -10, y: -10)
+                    .foregroundColor(.primary)
+                    
+                    Spacer()
+                }
+                .padding()
+                .animation(.easeInOut)
+                .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
+                .onTapGesture {
+                    withAnimation {
+                        self.banner.objectWillChange.send()
+                        self.banner.show = false
+                    }
+                }.onAppear(perform: {
+                    self.banner.objectWillChange.send()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                        withAnimation {
+                            self.banner.show = false
+                        }
+                    }
+                })
             }
         }
         

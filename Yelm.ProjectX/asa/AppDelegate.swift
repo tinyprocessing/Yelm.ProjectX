@@ -16,12 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 
     @ObservedObject var notification : notification = GlobalNotification
+    @ObservedObject var banner : notification_banner = GlobalNotificationBanner
 
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+   
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        let title = notification.request.content.title
+        let subtitle = notification.request.content.body
+        
+        
+        self.banner.objectWillChange.send()
+        self.banner.title = title
+        self.banner.text = subtitle
+        
+        self.banner.objectWillChange.send()
+        self.banner.show = true
+        
         
     }
-    
     
     
     func registerForPushNotifications() {
@@ -121,12 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-     
-        print(response.notification.request.content.body)
-        print(response.notification.request.content.attachments)
-        
-    }
+ 
 
     
 }
