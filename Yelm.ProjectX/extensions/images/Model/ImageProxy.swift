@@ -108,7 +108,7 @@ public extension ImageProxy {
     
         
         let ratio = size_aspect.width / size_aspect.height;
-        let new_height : CGFloat = 110;
+        let new_height : CGFloat = 100;
         
       
         let new_width = new_height * ratio;
