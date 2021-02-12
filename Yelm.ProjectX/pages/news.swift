@@ -39,7 +39,7 @@ struct News : View {
                                         URLImage(URL(string: object.thubnail)!) { proxy in
                                             proxy.image
                                                 .resizable()
-                                                .frame(width: proxy.news.width-5, height: proxy.news.height-5)
+                                                .frame(width: proxy.news.width-7, height: proxy.news.height-7)
                                                 .aspectRatio(contentMode: .fill)
                                                 .cornerRadius(15)
                                                 .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
