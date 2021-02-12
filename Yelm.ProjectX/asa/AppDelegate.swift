@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let subtitle = notification.request.content.body
         
         
+        
         self.banner.objectWillChange.send()
         self.banner.title = title
         self.banner.text = subtitle
@@ -111,6 +112,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         else{
             return true
         }
+        
+        print("open by notification")
         print(remoteNotif)
         print(remoteNotif["aps"] as? [String: Any])
                 
@@ -118,6 +121,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
 
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+           print("original body was : \(response.notification.request.content.title)")
+           print("Tapped in notification")
+        
+
+            
+        
+        
+        let aps_new = response.notification.request.content.userInfo["aps"] as? [String: Any]
+        let information = aps_new!["news"] ?? ""
+        
+        print(information)
+        
+        print("\(response.notification.request.content.attachments)")
+    }
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
