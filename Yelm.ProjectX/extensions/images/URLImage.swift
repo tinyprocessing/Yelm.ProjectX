@@ -94,7 +94,7 @@ public struct URLImage<Content, Placeholder, Failure> : View where Content : Vie
                             self.error = nil
                             self.imageProxy = imageProxy
                             YelmChat.chat.bottom()
-                            print("DOWNLOADED IMAGE")
+//                            print("DOWNLOADED IMAGE")
                             
                         case .failure(let error):
                             self.imageProxy = nil
