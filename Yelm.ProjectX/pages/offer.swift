@@ -47,10 +47,10 @@ struct Offer: View {
     
     @ObservedObject var offer: offer = GlobalOffer
     @State var promocode: String = ""
-    @State var entrance: String = "7"
-    @State var floor: String = "5"
-    @State var apartment: String = "143"
-    @State var phone: String = "79998394668"
+    @State var entrance: String = ""
+    @State var floor: String = ""
+    @State var apartment: String = ""
+    @State var phone: String = ""
     
     @ObservedObject var realm: RealmControl = GlobalRealm
     
@@ -399,25 +399,49 @@ struct Offer: View {
                     if (self.pickerSelection == 1){
                         
                         Button(action: {
-                            YelmPay.start(platform: platform) { (load) in
+                            
+                            var allow : Bool = true
+                            if (self.floor == ""){
+                                allow = false
+                            }
+                            
+                            if (self.phone == ""){
+                                allow = false
+                            }
+                            
+                            if (self.apartment == ""){
+                                allow = false
+                            }
+                            
+                            if (self.entrance == ""){
+                                allow = false
+                            }
+                            
+                            if (allow == false){
+                                ShowAlert(title: "Данные", message: "Вы не заполнили данные, проверьте обязательные поля, пожалуйста.")
+                            }
+                            
+                            if(allow){
+                                YelmPay.start(platform: platform) { (load) in
 
-                                self.offer.objectWillChange.send()
-                                self.offer.phone = self.phone
-                                self.offer.objectWillChange.send()
-                                self.offer.entrance = self.entrance
-                                self.offer.objectWillChange.send()
-                                self.offer.apartment = self.apartment
-                                self.offer.objectWillChange.send()
-                                self.offer.floor = self.floor
+                                    self.offer.objectWillChange.send()
+                                    self.offer.phone = self.phone
+                                    self.offer.objectWillChange.send()
+                                    self.offer.entrance = self.entrance
+                                    self.offer.objectWillChange.send()
+                                    self.offer.apartment = self.apartment
+                                    self.offer.objectWillChange.send()
+                                    self.offer.floor = self.floor
 
-                                YelmPay.apple_pay.apple_pay(price: 1,
-                                                            delivery: 0,
-                                                            merchant: merchant,
-                                                            country: "RU",
-                                                            currency: "RUB")
+                                    YelmPay.apple_pay.apple_pay(price: 1,
+                                                                delivery: 0,
+                                                                merchant: merchant,
+                                                                country: "RU",
+                                                                currency: "RUB")
 
 
 
+                                }
                             }
                             
                             
@@ -470,6 +494,8 @@ struct Offer: View {
                         .frame(height: 50)
                         .buttonStyle(ScaleButtonStyle())
                         .clipShape(CustomShape(corner: .allCorners, radii: 10))
+                        .disabled(self.floor == "" || self.entrance == "" || self.phone.count < 10 || self.apartment == "" ? true : false)
+                        .opacity(self.floor == "" || self.entrance == "" || self.phone.count < 10 || self.apartment == "" ? 0.7 : 1.0)
                         
                     }
                     
@@ -481,7 +507,7 @@ struct Offer: View {
             }
             .padding(.bottom, 40)
             .padding(.top, 30)
-            .background(Color.white)
+            .background(.theme_black_change_reverse)
             .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 20))
             //                .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
             .shadow(color: .dropShadow, radius: 15, x: 0, y: 2)
