@@ -288,7 +288,7 @@ struct ModalImages: View {
                         }.padding(.horizontal, 20)
                     }
                     //            .frame(width: UIScreen.main.bounds.width, alignment: .center)
-                    .background(Color.white)
+                    .background(Color.theme_black_change_reverse)
                     .cornerRadius(30)
                     //            .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 30))
                 }

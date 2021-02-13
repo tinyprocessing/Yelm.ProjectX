@@ -37,7 +37,7 @@ struct MapLocations: View {
                 ZStack{
                     Text("\(service.name)")
                         .padding()
-                        .background(Blur(style: .light))
+                        .background(Blur(style: .regular))
                         .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
                         .shadow(color: .dropLight, radius: 15, x: -10, y: -10)
                         .foregroundColor(.primary)

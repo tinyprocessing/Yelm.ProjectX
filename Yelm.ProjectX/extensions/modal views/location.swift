@@ -143,7 +143,7 @@ struct ModalLocation: View {
                                 .font(.system(size: 25, weight: .medium, design: .rounded))
                                 .foregroundColor(.theme)
                             Text("Добавить новый")
-                                .foregroundColor(.black)
+                                .foregroundColor(.theme_black_change)
                            
                         }
                         
@@ -199,7 +199,7 @@ struct ModalLocation: View {
                     
             }.padding(.horizontal, 20)
             .frame(width: UIScreen.main.bounds.width, alignment: .center)
-            .background(Color.white)
+            .background(Color.theme_black_change_reverse)
             .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 30))
         }.frame(width: UIScreen.main.bounds.width)
 
