@@ -374,6 +374,9 @@ struct Chat : View {
         .onAppear {
             
             
+            open_chat = true
+            print("Open Chat")
+            
             self.chat.chat.bottom()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -389,6 +392,11 @@ struct Chat : View {
         }
         
         .onDisappear{
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                open_chat = false
+                print("Chat is closed")
+            }
             
             self.modal.closeModal()
             
