@@ -168,7 +168,7 @@ struct History: View {
                                 }
                                 .padding(10)
                                 
-                                .background(Color.white)
+                                .background(Color.theme_black_change_reverse)
                                 .clipShape(CustomShape(corner: .allCorners, radii: 10))
                                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
                                 .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
@@ -212,11 +212,11 @@ struct History: View {
                                 
                             }
                             .padding(.vertical)
-                            .background(Color.white)
+                            .background(Color.theme_black_change_reverse)
                             .cornerRadius(40)
                             
                             
-                        } .background(Color.white)
+                        } .background(Color.theme_black_change_reverse)
                     }
                     
                 }
@@ -271,7 +271,7 @@ struct History: View {
                     .padding(.top, (UIApplication.shared.keyWindow?.safeAreaInsets.bottom)!)
                     .padding([.trailing, .leading], 20)
                     .padding(.bottom, 10)
-                    .background(self.show == 1.0 ? Color.white : Color.clear)
+                    .background(self.show == 1.0 ? Color.theme_black_change_reverse : Color.clear)
                 }
                 
             }

@@ -354,7 +354,7 @@ struct Item : View {
                                 
                             }
                             .padding(.vertical)
-                            .background(Color.white)
+                            .background(.theme_black_change_reverse)
                             
                             .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 40))
                             
@@ -406,6 +406,11 @@ struct Item : View {
                         
                         Button(action: {
                             
+                            ServerAPI.settings.log(action: "share_item", about: "\(self.item.item.id)")
+                            
+                            guard let data = URL(string: "https://yelm.io/item/\(self.item.item.id)") else { return }
+                                  let av = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+                                  UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
                             
                             let generator = UIImpactFeedbackGenerator(style: .soft)
                             generator.impactOccurred()
@@ -433,7 +438,7 @@ struct Item : View {
                     .padding(.top, (UIApplication.shared.keyWindow?.safeAreaInsets.bottom)!)
                     .padding([.trailing, .leading], 20)
                     .padding(.bottom, 10)
-                    .background(self.show == 1.0 ? Color.white : Color.clear)
+                    .background(self.show == 1.0 ? Color.theme_black_change_reverse : Color.clear)
                 }
                 
             }
@@ -579,7 +584,7 @@ struct Item : View {
             }
             .padding(.bottom, 40)
             .padding(.top, 30)
-            .background(Color.white)
+            .background(.theme_black_change_reverse)
             .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 20))
             
             .shadow(color: .dropShadow, radius: 15, x: 0, y: 2)
