@@ -31,8 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.banner.title = title
         self.banner.text = subtitle
         
-        self.banner.objectWillChange.send()
-        self.banner.show = true
+        if (open_chat == false){
+            self.banner.objectWillChange.send()
+            self.banner.show = true
+        }
         
         
     }
