@@ -113,7 +113,12 @@ struct SubcategoriesGridObject : View {
 
                         Button(action: {
 
-
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                print("decrement")
+                                open_item = false
+                            }
+                            
                             self.realm.post_cart(ID: tag.id, method: "decrement")
 
 
@@ -154,6 +159,13 @@ struct SubcategoriesGridObject : View {
                     Button(action: {
 
 
+                        
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            print("increment")
+                            open_item = false
+                        }
+                        
 
                         if (self.realm.get_item_access(ID: tag.id) == false) {
 

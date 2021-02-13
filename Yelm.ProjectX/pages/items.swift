@@ -293,10 +293,11 @@ struct ItemsViewLine: View {
                             .padding(.bottom, 30)
                             
                         }.buttonStyle(ScaleButtonStyle())
-                        }.background(Color.white)
+                        }
 
                                             
                         .simultaneousGesture(TapGesture().onEnded{
+                            ServerAPI.settings.log(action: "open_item", about: "\(tag.id)")
                             let item = tag
                             self.item.item = item
                         })
