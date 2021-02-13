@@ -397,6 +397,7 @@ struct Message: View {
 
                                                 
                             .simultaneousGesture(TapGesture().onEnded{
+                                ServerAPI.settings.log(action: "open_item_chat", about: "\(tag.id)")
                                 open_item = true
                                 let item = self.tag
                                 self.item.item = item
@@ -433,6 +434,7 @@ struct Message: View {
                                     }.buttonStyle(PlainButtonStyle())
                                     
                                     .simultaneousGesture(TapGesture().onEnded{
+                                        ServerAPI.settings.log(action: "open_order_history")
                                         open_item = true
                                     })
                                        
@@ -534,7 +536,7 @@ struct ChatTextField: View {
             TextField(label, text: $value, onEditingChanged: onEditingChanged, onCommit: onCommit)
                 .keyboardType(keyboardType)
                 .padding(.all, 10)
-                .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 0.5))
+                .background(Color(.systemGray6))
                 .cornerRadius(20)
                 .disableAutocorrection(disableAutocorrection)
             

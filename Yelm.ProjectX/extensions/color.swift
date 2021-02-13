@@ -9,8 +9,11 @@ import Foundation
 import SwiftUI
 import UIKit
 
+//BLWH-r
 extension Color {
     static let neuBackground = Color("Background")
+    static let theme_black_change = Color("BLWH")
+    static let theme_black_change_reverse = Color("BLWH-r")
     static let dropShadow = Color("Dark")
     static let dropLight = Color("Light")
     static var theme = Color.blue
