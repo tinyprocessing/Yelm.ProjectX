@@ -108,19 +108,18 @@ struct Start: View {
                     HStack {
                         VStack(alignment: .leading, spacing: 2) {
                             Text(self.banner.title)
-                                .foregroundColor(.black)
+                                .foregroundColor(.theme_black_change)
                                 .bold()
                             Text(self.banner.text)
-                                .font(Font.system(size: 15, weight: Font.Weight.light, design: Font.Design.default))
-                                .foregroundColor(.black)
+                                .font(Font.system(size: 16, weight: .medium, design: Font.Design.default))
+                                .foregroundColor(.secondary)
                         }.padding()
                         Spacer()
                     }
                     .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(.systemGray6))
+                        Blur(style: .regular)
                     )
-                    .cornerRadius(15)
+                    .clipShape(CustomShape(corner: .allCorners, radii: 15))
                     .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
                     .shadow(color: .dropLight, radius: 15, x: -10, y: -10)
                     .foregroundColor(.primary)
@@ -128,21 +127,24 @@ struct Start: View {
                     Spacer()
                 }
                 .padding()
-                .animation(.easeInOut)
-                .transition(AnyTransition.move(edge: .top).combined(with: .opacity))
+                .offset(y: -5)
+                .animation(.linear(duration: 1))
+                .transition(AnyTransition.move(edge: .top))
+                .transition(.move(edge: .top))
                 .onTapGesture {
-                    withAnimation {
+                    withAnimation(.linear){
                         self.banner.objectWillChange.send()
-                        self.banner.show = false
+                        self.banner.show.toggle()
                     }
-                }.onAppear(perform: {
+                }
+                .onAppear{
                     self.banner.objectWillChange.send()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                        withAnimation {
-                            self.banner.show = false
+                        withAnimation(.linear) {
+                            self.banner.show.toggle()
                         }
                     }
-                })
+                }
             }
         }
         
@@ -176,6 +178,7 @@ struct Start: View {
                     let user = UserDefaults.standard.string(forKey: "USER") ?? ""
                     ServerAPI.user.username = user
                     
+                  
                     
                     if (user == ""){
                         
@@ -184,6 +187,9 @@ struct Start: View {
                             if (load){
                                 UserDefaults.standard.set(user, forKey: "USER")
                                 ServerAPI.user.username = user
+                                
+                                ServerAPI.settings.log(action: "registration")
+                                
                                 YelmChat.start(platform: platform, user: user) { (load) in
                                     if (load){
                                         YelmChat.core.register { (done) in
@@ -196,6 +202,9 @@ struct Start: View {
                             }
                         }
                     }else{
+                        
+                        ServerAPI.settings.log(action: "open_load")
+                        
                         YelmChat.start(platform: platform, user: user) { (load) in
                             if (load){
                                 YelmChat.core.register { (done) in
