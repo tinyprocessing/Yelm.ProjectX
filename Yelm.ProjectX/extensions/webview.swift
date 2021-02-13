@@ -69,6 +69,8 @@ struct HTMLStringView: UIViewRepresentable {
     func makeUIView(context: Context) -> WKWebView {
         webview.scrollView.bounces = false
         webview.navigationDelegate = context.coordinator
+        
+        
     
        
         

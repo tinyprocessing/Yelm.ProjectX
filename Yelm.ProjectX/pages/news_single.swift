@@ -131,7 +131,7 @@ struct NewsSingle : View {
                                                 .frame(height: self.status.height)
                                                 .padding(.horizontal, 16)
                                                 .padding(.top, 5)
-                                            //                                                .background(Color.red)
+//                                                .background(Color.theme_black_change_reverse)
                                             
                                             
                                         }
@@ -174,11 +174,11 @@ struct NewsSingle : View {
                                 
                             }
                             .padding(.vertical)
-                            .background(Color.white)
+                            .background(Color.theme_black_change_reverse)
                             .cornerRadius(40)
                             .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 40))
                             
-                        } .background(Color.white)
+                        } .background(Color.theme_black_change_reverse)
                     }
                     
                 }
@@ -227,6 +227,12 @@ struct NewsSingle : View {
                         Button(action: {
                             
                             
+                            ServerAPI.settings.log(action: "share_news", about: "\(self.news.news_single.id)")
+                            
+                            guard let data = URL(string: "https://yelm.io/news/\(self.news.news_single.id)") else { return }
+                                  let av = UIActivityViewController(activityItems: [data], applicationActivities: nil)
+                                  UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
+                            
                             let generator = UIImpactFeedbackGenerator(style: .soft)
                             generator.impactOccurred()
                             
@@ -253,7 +259,7 @@ struct NewsSingle : View {
                     .padding(.top, (UIApplication.shared.keyWindow?.safeAreaInsets.bottom)!)
                     .padding([.trailing, .leading], 20)
                     .padding(.bottom, 10)
-                    .background(self.show == 1.0 ? Color.white : Color.clear)
+                    .background(self.show == 1.0 ? Color.theme_black_change_reverse : Color.clear)
                 }
                 
             }
