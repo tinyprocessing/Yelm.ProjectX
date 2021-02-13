@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 import Foundation
 import Yelm_Chat
+import Yelm_Server
 import SwiftUIX
 
 var windows: UIWindow?
@@ -65,11 +66,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        
+        
+        ServerAPI.settings.log(action: "open_app")
+        
+        
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
+        
+        ServerAPI.settings.log(action: "close_app")
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {

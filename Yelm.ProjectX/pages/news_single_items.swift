@@ -241,10 +241,11 @@ struct ItemsInNews : View {
                             .padding(.bottom, 30)
                             
                         }.buttonStyle(ScaleButtonStyle())
-                    }.background(Color.white)
+                    }
                     
                     
                     .simultaneousGesture(TapGesture().onEnded{
+                        ServerAPI.settings.log(action: "open_item_from_news", about: "\(tag.id)")
                         let item = tag
                         self.item.item = item
                     })

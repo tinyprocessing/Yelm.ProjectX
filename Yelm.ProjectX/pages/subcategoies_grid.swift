@@ -34,6 +34,7 @@ struct SubcategoriesGrid : View {
                 }
                 .buttonStyle(ScaleButtonStyle())
                 .simultaneousGesture(TapGesture().onEnded{
+                    ServerAPI.settings.log(action: "open_item_subcategory", about: "\(tag.id)")
                     open_item = true
                     let item = tag
                     self.item.item = item

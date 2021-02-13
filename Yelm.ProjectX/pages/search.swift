@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
-
+import Yelm_Server
 
 struct Search: View {
     
@@ -85,6 +85,8 @@ struct Search: View {
                         SearchItem(item: tag)
                     }
                     .simultaneousGesture(TapGesture().onEnded{
+                        ServerAPI.settings.log(action: "open_item_search", about: "\(tag.id)")
+                        
                         let item = tag
                         open_item = true
                         self.item.item = item

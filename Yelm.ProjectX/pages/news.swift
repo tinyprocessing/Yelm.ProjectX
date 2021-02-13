@@ -70,7 +70,7 @@ struct News : View {
 //                                .background(Color.blue)
 
                                 .simultaneousGesture(TapGesture().onEnded{
-                                    print("story tapped")
+                                    ServerAPI.settings.log(action: "open_story", about: "\(object.id)")
                                     let news = object
                                     self.news.news_single = news
                                 })
@@ -96,7 +96,7 @@ struct News : View {
                                
                                 
                                 .simultaneousGesture(TapGesture().onEnded{
-                                    print("news tapped")
+                                    ServerAPI.settings.log(action: "open_news", about: "\(object.id)")
                                     let news = object
                                     self.news.news_single = news
                                 })
