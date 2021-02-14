@@ -125,21 +125,38 @@ struct Cart: View {
                                             .font(.system(size: 18, weight: .semibold, design: .rounded))
                                         
     //
-    //                                    Text("Закажите еще на 300 рублей для бесплатной доставки")
-    //                                        .foregroundColor(.secondary)
-    //                                        .font(.system(size: 14, weight: .semibold, design: .rounded))
-    //                                        .lineLimit(2)
-    //                                        .frame(height: 40)
                                         
+                                        if (ServerAPI.settings.order_free_delivery_price > self.realm.price){
+                                            
+                                            Text("Закажите еще на \(String(format:"%.2f", ServerAPI.settings.order_free_delivery_price - self.realm.price)) \(ServerAPI.settings.symbol) для бесплатной доставки")
+                                                .foregroundColor(.secondary)
+                                                .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                                .lineLimit(2)
+                                                .frame(height: 40)
+                                            
+                                        }
+
+//
                                         
                                     }
                                     
                                     Spacer()
                                     
                                     VStack(alignment: .trailing){
-                                        Text("\(String(format:"%.2f", self.price)) \(ServerAPI.settings.symbol)")
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(.theme)
+                                        if (ServerAPI.settings.order_free_delivery_price > self.realm.price){
+                                            
+                                            Text("\(String(format:"%.2f", self.price)) \(ServerAPI.settings.symbol)")
+                                                .fontWeight(.semibold)
+                                                .foregroundColor(.theme)
+                                            
+                                        }else{
+                                            
+                                            Text("0 \(ServerAPI.settings.symbol)")
+                                                .fontWeight(.semibold)
+                                                .foregroundColor(.green)
+                                            
+                                        }
+                                   
                                         
                                     } .padding(.horizontal, 10)
                                     
@@ -148,6 +165,40 @@ struct Cart: View {
                                 Divider()
                             }.padding([.trailing, .leading], 20)
                         }
+                        
+                        
+                        if (ServerAPI.settings.order_minimal_price > self.realm.price){
+                           
+                            
+                            VStack{
+                                HStack(spacing: 10){
+                                    
+                                    
+                                    
+                                        Image(systemName: "exclamationmark.triangle")
+                                            .foregroundColor(Color.orange)
+                                            .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                            .lineLimit(2)
+    
+                                        Text("Минимальная сумма заказа - \( String(format:"%.2f", ServerAPI.settings.order_minimal_price)) \(ServerAPI.settings.symbol)")
+                                            .foregroundColor(.secondary)
+                                            .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                            .lineLimit(2)
+                                            .frame(height: 40)
+                                        
+                                        
+                                    
+                                    
+                                    Spacer()
+                                 
+                                    
+                                }.padding([.top, .bottom], 5)
+                                Divider()
+                            }.padding([.trailing, .leading], 20)
+                            
+                            
+                        }
+                        
                         
                         if (ServerAPI.settings.shop_id == 0){
                            
@@ -195,7 +246,7 @@ struct Cart: View {
                 VStack(spacing: 0){
                     HStack(spacing: 15){
                         VStack(spacing: 5){
-                            Text("\(String(format:"%.2f", self.realm.price + ServerAPI.settings.deliverly_price)) \(ServerAPI.settings.symbol)")
+                            Text("\(String(format:"%.2f", self.realm.get_price_full())) \(ServerAPI.settings.symbol)")
                                 .font(.system(size: 20, weight: .bold, design: .rounded))
                                 .foregroundColor(.theme)
                             Text("\(self.time) мин")
@@ -219,8 +270,8 @@ struct Cart: View {
                             .cornerRadius(10)
                             
                         }.buttonStyle(ScaleButtonStyle())
-                        .disabled(ServerAPI.settings.position == "lat=0&lon=0" || self.realm.price == 0 || ServerAPI.settings.shop_id == 0 ? true : false)
-                        .opacity(ServerAPI.settings.position == "lat=0&lon=0" || self.realm.price == 0 || ServerAPI.settings.shop_id == 0 ? 0.7 : 1.0)
+                        .disabled(ServerAPI.settings.position == "lat=0&lon=0" || self.realm.price == 0 || ServerAPI.settings.shop_id == 0 || ServerAPI.settings.order_minimal_price > self.realm.price ? true : false)
+                        .opacity(ServerAPI.settings.position == "lat=0&lon=0" || self.realm.price == 0 || ServerAPI.settings.shop_id == 0 || ServerAPI.settings.order_minimal_price > self.realm.price ? 0.7 : 1.0)
                         .simultaneousGesture(TapGesture().onEnded{
                             open_offer = true
                             if (ServerAPI.settings.position == "lat=0&lon=0" ){
