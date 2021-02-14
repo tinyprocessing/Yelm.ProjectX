@@ -185,7 +185,7 @@ struct Payment: View {
               
                 
                 VStack(spacing: 15){
-                    Text("\(String(format:"%.2f", self.realm.price + ServerAPI.settings.deliverly_price)) \(ServerAPI.settings.symbol)")
+                    Text("\(String(format:"%.2f", self.realm.get_price_full())) \(ServerAPI.settings.symbol)")
                         .font(.title)
                         .fontWeight(.bold)
                     
@@ -201,7 +201,7 @@ struct Payment: View {
                                                  date: self.date,
                                                  cvv: self.cvv,
                                                  merchant: ServerAPI.settings.public_id,
-                                                 price: self.realm.price + ServerAPI.settings.deliverly_price,
+                                                 price: self.realm.get_price_full(),
                                                  currency: "RUB") { (load, response, data)  in
                                 if (load){
                                     self.response_main = response
