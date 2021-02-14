@@ -46,11 +46,16 @@ struct Offer: View {
     
     
     @ObservedObject var offer: offer = GlobalOffer
-    @State var promocode: String = ""
+    @State var promocode_string: String = ""
     @State var entrance: String = ""
     @State var floor: String = ""
     @State var apartment: String = ""
     @State var phone: String = ""
+    
+    
+    
+    @ObservedObject var promocode : promocode = GlobalPromocode
+    
     
     @ObservedObject var realm: RealmControl = GlobalRealm
     
@@ -62,6 +67,7 @@ struct Offer: View {
         @ObservedObject var realm: RealmControl = GlobalRealm
         @ObservedObject var offer: offer = GlobalOffer
         @ObservedObject var payment: payment = GlobalPayment
+        @ObservedObject var promocode : promocode = GlobalPromocode
 
         @Environment(\.presenter) var presenter
 
@@ -92,6 +98,7 @@ struct Offer: View {
                         self.realm.clear_cart(order: true)
                         self.payment.payment_done = true
                         
+                        self.promocode.active = promocode_structure(id: 0, type: .nonactive, value: 0)
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                             windows?.rootViewController =  UIHostingController(rootView: Start())
@@ -169,7 +176,7 @@ struct Offer: View {
                 
                 ScrollView(showsIndicators: false) {
                     
-                    if (false){
+                    
                         VStack{
                             HStack(){
                                 Text("Промокод")
@@ -179,7 +186,7 @@ struct Offer: View {
                             }.padding(.bottom , 8)
                             
                             
-                            TextField("Промокод", text: $promocode)
+                            TextField("Промокод", text: $promocode_string)
                                 .padding(.vertical, 10)
                                 .foregroundColor(Color.init(hex: "BDBDBD"))
                                 .padding(.leading, 10)
@@ -196,7 +203,11 @@ struct Offer: View {
                                                 
                                                 Button(action: {
                                                     
-                                                    
+                                                    ServerAPI.promocode.set(promo: self.promocode_string) { (load, promocode_data) in
+                                                        if (load){
+                                                            self.promocode.active = promocode_data
+                                                        }
+                                                    }
                                                     
                                                     
                                                 }) {
@@ -221,7 +232,7 @@ struct Offer: View {
                                 .padding(.horizontal, 1)
                                 .padding(.bottom , 8)
                         }
-                    }
+                    
                     
                     HStack(){
                         Text("Адрес")
@@ -336,6 +347,62 @@ struct Offer: View {
                         }.padding(.bottom , 5)
                         
                         
+                        if (self.promocode.active.type != .nonactive){
+                            
+                            if (self.promocode.active.type == .full){
+                                
+                                HStack(){
+                                    Text("Скидка")
+                                        .font(.system(size: 16, weight: .medium, design: .rounded))
+                                        .foregroundColor(Color.init(hex: "828282"))
+                                    
+                                    Spacer()
+                                    
+                                    Text("-\(self.promocode.active.value) \(ServerAPI.settings.symbol)")
+                                        .font(.system(size: 16, weight: .medium, design: .rounded))
+                                        .foregroundColor(Color.red)
+                                }.padding(.bottom , 8)
+                            }
+                            
+                            if (self.promocode.active.type == .percent){
+                                
+                                HStack(){
+                                    Text("Скидка")
+                                        .font(.system(size: 16, weight: .medium, design: .rounded))
+                                        .foregroundColor(Color.init(hex: "828282"))
+                                    
+                                    Spacer()
+                                    
+                                    Text("\(self.promocode.active.value)%")
+                                        .font(.system(size: 16, weight: .medium, design: .rounded))
+                                        .foregroundColor(Color.red)
+                                }.padding(.bottom , 8)
+                                
+                            }
+                            
+                            if (self.promocode.active.type == .delivery){
+                                
+                                HStack(){
+                                    VStack(alignment: .leading, spacing: 2){
+                                        Text("Скидка")
+                                            .font(.system(size: 16, weight: .medium, design: .rounded))
+                                            .foregroundColor(Color.init(hex: "828282"))
+                                        
+                                        Text("На доставку")
+                                            .font(.system(size: 14, weight: .regular, design: .rounded))
+                                            .foregroundColor(Color.init(hex: "828282"))
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    Text("\(self.promocode.active.value)%")
+                                        .font(.system(size: 16, weight: .medium, design: .rounded))
+                                        .foregroundColor(Color.red)
+                                }.padding(.bottom , 8)
+                                
+                            }
+                        }
+                        
                         HStack(){
                             Text("Доставка")
                                 .font(.system(size: 16, weight: .medium, design: .rounded))
@@ -343,7 +410,7 @@ struct Offer: View {
                             
                             Spacer()
                             
-                            Text("\(String(format:"%.2f", ServerAPI.settings.deliverly_price)) \(ServerAPI.settings.symbol)")
+                            Text("\(String(format:"%.2f", self.realm.get_price_delivery())) \(ServerAPI.settings.symbol)")
                                 .font(.system(size: 16, weight: .medium, design: .rounded))
                                 .foregroundColor(Color.theme)
                         }.padding(.bottom , 8)
@@ -387,7 +454,7 @@ struct Offer: View {
             VStack(spacing: 0){
                 HStack(spacing: 15){
                     VStack(spacing: 5){
-                        Text("\(String(format:"%.2f", self.realm.price + ServerAPI.settings.deliverly_price)) \(ServerAPI.settings.symbol)")
+                        Text("\(String(format:"%.2f", self.realm.get_price_full())) \(ServerAPI.settings.symbol)")
                             .font(.system(size: 20, weight: .bold, design: .rounded))
                             .foregroundColor(.theme)
                         Text("Итого")
@@ -433,7 +500,7 @@ struct Offer: View {
                                     self.offer.objectWillChange.send()
                                     self.offer.floor = self.floor
 
-                                    YelmPay.apple_pay.apple_pay(price: 1,
+                                    YelmPay.apple_pay.apple_pay(price: self.realm.get_price_full(),
                                                                 delivery: 0,
                                                                 merchant: merchant,
                                                                 country: "RU",
@@ -546,9 +613,13 @@ struct Offer: View {
                 order_detail.payment = "card"
                 order_detail.transaction_id = YelmPay.last_transaction_id
                 
+                
+              
+                
                 ServerAPI.orders.set_order(order: order_detail) { (load) in
                     if (load){
                         
+                        self.promocode.active = promocode_structure(id: 0, type: .nonactive, value: 0)
                         self.realm.clear_cart(order: true)
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
