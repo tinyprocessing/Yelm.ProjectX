@@ -21,7 +21,7 @@ struct News : View {
         VStack(spacing: 10){
             if (self.news.news.count > 0){
                 HStack{
-                    Text("Что выбрать?")
+                    Text(ServerAPI.settings.news_block_title)
                         .font(.system(size: 26, weight: .bold, design: .rounded))
                     
                     Spacer()
