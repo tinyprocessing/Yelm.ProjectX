@@ -21,6 +21,9 @@ class RealmControl: ObservableObject, Identifiable {
     @ObservedObject var cart: cart = GlobalCart
     @Published var price: Float = 0
     @Published var start_price: Float = 0
+    @ObservedObject var promocode : promocode = GlobalPromocode
+
+    
     
     
     let realm : Realm
@@ -50,7 +53,141 @@ class RealmControl: ObservableObject, Identifiable {
     }
     
     
+    func get_price_delivery() -> Float {
+     
+        if (self.promocode.active.type == .nonactive){
+            if (ServerAPI.settings.order_free_delivery_price <= self.price){
+                return 0
+            }
+        }
+        
+        if (self.promocode.active.type != .nonactive){
+            
+            
+            
+            if (ServerAPI.settings.order_free_delivery_price <= self.price){
+                return 0
+            }
+            
+            if (self.promocode.active.type == .delivery){
+                
+                let value = Float(self.promocode.active.value)
+                
+                
+                var delivery = ServerAPI.settings.deliverly_price
+                if (self.price > ServerAPI.settings.order_free_delivery_price){
+                    delivery = 0
+                }
+                
+                if (value != 100){
+                    let discount : Float = (1.0 - value / 100)
+                    let price_with_discount = (delivery * discount)
+                    return price_with_discount
+                }else{
+                    let price_with_discount = (delivery * 0)
+                    return price_with_discount
+                }
+                
+             
+                
+            }
+            
+        }
+     
+        return ServerAPI.settings.deliverly_price
+    }
     
+    func get_price_full() -> Float {
+        
+        if (self.promocode.active.type == .nonactive){
+            
+            if (ServerAPI.settings.order_free_delivery_price <= self.price){
+                return self.price
+            }else{
+                return self.price + ServerAPI.settings.deliverly_price
+            }
+        }
+        
+        if (self.promocode.active.type != .nonactive){
+            
+            if (self.promocode.active.type == .percent){
+                
+                let value = Float(self.promocode.active.value)
+                
+                print("nonactive .percent value \(value)")
+                
+                var delivery = ServerAPI.settings.deliverly_price
+                if (self.price > ServerAPI.settings.order_free_delivery_price){
+                    delivery = 0
+                }
+                
+                print("nonactive .percent")
+                
+                if (value != 100){
+                    
+                    let discount : Float = (1.0 - value / 100)
+                    print("nonactive .percent .discount = \(discount)")
+                    let price_with_discount = (self.price + delivery) * discount
+                    print("nonactive .percent .discount = \(price_with_discount)")
+                    return price_with_discount
+                }else{
+                    
+                    let price_with_discount = (self.price + delivery) * 0
+                    
+                    return price_with_discount
+                }
+                
+              
+                
+            }
+            
+            if (self.promocode.active.type == .full){
+                
+                let value = self.promocode.active.value
+                
+                
+                var delivery = ServerAPI.settings.deliverly_price
+                if (self.price > ServerAPI.settings.order_free_delivery_price){
+                    delivery = 0
+                }
+                
+                var price_with_discount = (self.price + delivery) - Float(value)
+                
+                if (price_with_discount < 0){
+                    price_with_discount = 0
+                }
+                
+                return price_with_discount
+                
+            }
+            
+            if (self.promocode.active.type == .delivery){
+                
+                let value = Float(self.promocode.active.value)
+                
+                
+                var delivery = ServerAPI.settings.deliverly_price
+                if (self.price > ServerAPI.settings.order_free_delivery_price){
+                    delivery = 0
+                }
+                
+                if (value != 100){
+                    let discount : Float = (1.0 - value / 100)
+                    let price_with_discount = (delivery * discount) + self.price
+                    return price_with_discount
+                }else{
+                    let price_with_discount = (delivery * 0) + self.price
+                    return price_with_discount
+                }
+                
+             
+                
+            }
+            
+        }
+        
+        return 0
+    }
     
     func create_item_cart(ID: Int, Title: String, Price: Float, PriceItem: Float, Count: Int, Thumbnail: String, ItemType: String, Quantity: String, CanIncrement: String, Discount: Int = 0) {
         
@@ -285,7 +422,8 @@ class RealmControl: ObservableObject, Identifiable {
             
         }
         
-        ServerAPI.basket.get_basket(items: self.get_ids()) { (load, removable)  in
+        if (method != "decrement"){
+            ServerAPI.basket.get_basket(items: self.get_ids()) { (load, removable)  in
             if (load){
                 
                 removable.forEach { (item) in
@@ -293,6 +431,7 @@ class RealmControl: ObservableObject, Identifiable {
                 }
                 
             }
+        }
         }
     }
     
