@@ -98,6 +98,11 @@ struct Offer: View {
                         self.realm.clear_cart(order: true)
                         self.payment.payment_done = true
                         
+                        
+                        UserDefaults.standard.removeObject(forKey:"promocode_value")
+                        UserDefaults.standard.removeObject(forKey:"promocode_type")
+                        
+                      
                         self.promocode.active = promocode_structure(id: 0, type: .nonactive, value: 0)
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
@@ -188,6 +193,7 @@ struct Offer: View {
                             
                             TextField("Промокод", text: $promocode_string)
                                 .padding(.vertical, 10)
+                                .autocapitalization(UITextAutocapitalizationType.none)
                                 .foregroundColor(Color.init(hex: "BDBDBD"))
                                 .padding(.leading, 10)
                                 .background(Color.white)
@@ -203,11 +209,30 @@ struct Offer: View {
                                                 
                                                 Button(action: {
                                                     
-                                                    ServerAPI.promocode.set(promo: self.promocode_string) { (load, promocode_data) in
+                                                    
+                                                    ServerAPI.promocode.get(promo: self.promocode_string, user: ServerAPI.user.username) { (load, message, promocode_data) in
                                                         if (load){
                                                             self.promocode.active = promocode_data
+                                                            ShowAlert(title: "Сообщение", message: message)
+                                                            
+                                                            UserDefaults.standard.set(promocode_data.value, forKey: "promocode_value")
+                                                            
+                                                            if (promocode_data.type == .delivery){
+                                                                UserDefaults.standard.set("delivery", forKey: "promocode_type")
+                                                            }
+                                                            
+                                                            if (promocode_data.type == .full){
+                                                                UserDefaults.standard.set("full", forKey: "promocode_type")
+                                                            }
+                                                            
+                                                            if (promocode_data.type == .percent){
+                                                                UserDefaults.standard.set("percent", forKey: "promocode_type")
+                                                            }
+                                                           
                                                         }
                                                     }
+//
+                                                    
                                                     
                                                     
                                                 }) {
@@ -271,6 +296,7 @@ struct Offer: View {
                         
                         TextField("Этаж", text: $floor)
                             .padding(.vertical, 10)
+                            .keyboardType(.numberPad)
                             .foregroundColor(Color.init(hex: "BDBDBD"))
                             .padding(.horizontal, 10)
                             .background(Color.white)
@@ -286,6 +312,7 @@ struct Offer: View {
                         
                         TextField("Квартира", text: $apartment)
                             .padding(.vertical, 10)
+                            .keyboardType(.numberPad)
                             .foregroundColor(Color.init(hex: "BDBDBD"))
                             .padding(.horizontal, 10)
                             .background(Color.white)
@@ -309,6 +336,7 @@ struct Offer: View {
                     
                     TextField("Номер телефона", text: $phone)
                         .padding(.vertical, 10)
+                        .keyboardType(.namePhonePad)
                         .foregroundColor(Color.init(hex: "BDBDBD"))
                         .padding(.horizontal, 10)
                         .background(Color.white)
@@ -373,7 +401,7 @@ struct Offer: View {
                                     
                                     Spacer()
                                     
-                                    Text("\(self.promocode.active.value)%")
+                                    Text("-\(self.promocode.active.value)%")
                                         .font(.system(size: 16, weight: .medium, design: .rounded))
                                         .foregroundColor(Color.red)
                                 }.padding(.bottom , 8)
@@ -395,7 +423,7 @@ struct Offer: View {
                                     
                                     Spacer()
                                     
-                                    Text("\(self.promocode.active.value)%")
+                                    Text("-\(self.promocode.active.value)%")
                                         .font(.system(size: 16, weight: .medium, design: .rounded))
                                         .foregroundColor(Color.red)
                                 }.padding(.bottom , 8)
@@ -438,6 +466,8 @@ struct Offer: View {
                     }.pickerStyle(SegmentedPickerStyle())
                     
                     
+                    
+                    Spacer(minLength: 150)
                     
                 }.padding([.trailing, .leading], 20)
                 
@@ -489,6 +519,13 @@ struct Offer: View {
                             }
                             
                             if(allow){
+                                
+                                
+                                UserDefaults.standard.set(self.entrance, forKey: "entrance")
+                                UserDefaults.standard.set(self.apartment, forKey: "apartment")
+                                UserDefaults.standard.set(self.phone, forKey: "phone")
+                                UserDefaults.standard.set(self.floor, forKey: "floor")
+                                
                                 YelmPay.start(platform: platform) { (load) in
 
                                     self.offer.objectWillChange.send()
@@ -564,6 +601,15 @@ struct Offer: View {
                         .disabled(self.floor == "" || self.entrance == "" || self.phone.count < 10 || self.apartment == "" ? true : false)
                         .opacity(self.floor == "" || self.entrance == "" || self.phone.count < 10 || self.apartment == "" ? 0.7 : 1.0)
                         
+                        .simultaneousGesture(TapGesture().onEnded{
+                           
+                            UserDefaults.standard.set(self.entrance, forKey: "entrance")
+                            UserDefaults.standard.set(self.apartment, forKey: "apartment")
+                            UserDefaults.standard.set(self.phone, forKey: "phone")
+                            UserDefaults.standard.set(self.floor, forKey: "floor")
+                            
+                        })
+                        
                     }
                     
                     
@@ -596,6 +642,34 @@ struct Offer: View {
             YelmPay.apple_pay.delegate = self.paymentContextDelegate
             
             
+            
+            self.entrance = UserDefaults.standard.string(forKey: "entrance") ?? ""
+            self.apartment = UserDefaults.standard.string(forKey: "apartment") ?? ""
+            self.phone = UserDefaults.standard.string(forKey: "phone") ?? ""
+            self.floor = UserDefaults.standard.string(forKey: "floor") ?? ""
+           
+            
+             
+            let type_promocode_load = UserDefaults.standard.string(forKey: "promocode_type") ?? ""
+            if (type_promocode_load != ""){
+                
+                
+                if (type_promocode_load == "full"){
+                    
+                    self.promocode.active = promocode_structure(id: 0, type: .full, value: UserDefaults.standard.integer(forKey: "promocode_value"))
+                }
+                
+                if (type_promocode_load == "delivery"){
+                    self.promocode.active = promocode_structure(id: 0, type: .delivery, value: UserDefaults.standard.integer(forKey: "promocode_value"))
+                }
+                
+                if (type_promocode_load == "percent"){
+                    self.promocode.active = promocode_structure(id: 0, type: .percent, value: UserDefaults.standard.integer(forKey: "promocode_value"))
+                }
+                
+            }
+            
+            
             if (self.payment.payment_done){
                 
                 let order_detail = OrdersDetail()
@@ -621,6 +695,9 @@ struct Offer: View {
                         
                         self.promocode.active = promocode_structure(id: 0, type: .nonactive, value: 0)
                         self.realm.clear_cart(order: true)
+                        
+                        UserDefaults.standard.removeObject(forKey:"promocode_value")
+                        UserDefaults.standard.removeObject(forKey:"promocode_type")
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                             windows?.rootViewController =  UIHostingController(rootView: Start())
