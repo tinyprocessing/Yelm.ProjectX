@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     @ObservedObject var notification : notification = GlobalNotification
     @ObservedObject var banner : notification_banner = GlobalNotificationBanner
+    @ObservedObject var notification_open : notification_open = GlobalNotificationOpen
 
     
    
@@ -129,16 +130,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
            print("original body was : \(response.notification.request.content.title)")
            print("Tapped in notification")
         
+        _ = response.notification.request.content.userInfo["aps"] as? [String: Any]
+        let items = response.notification.request.content.userInfo["items"] ?? 0
+        let news = response.notification.request.content.userInfo["news"] ?? 0
 
+        
+        
+        if (items as! Int != 0){
+            print("hase item")
             
+            self.notification_open.key = "item"
+            self.notification_open.value = items as! Int
+        }
+
         
+        if (news as! Int != 0){
+            self.notification_open.key = "news"
+            self.notification_open.value = items as! Int
+        }
         
-        let aps_new = response.notification.request.content.userInfo["aps"] as? [String: Any]
-        let information = aps_new!["news"] ?? ""
-        
-        print(information)
-        
-        print("\(response.notification.request.content.attachments)")
     }
     // MARK: UISceneSession Lifecycle
 

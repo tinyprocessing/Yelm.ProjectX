@@ -2,15 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Предоставьте доступ к фотографиям для взаимодеййствия с чатом</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Fresher</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -27,6 +22,19 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Предоставьте доступ к камере для сканирования QR кода</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Предоставьте доступ к геолокации, для корректного отображения адреса доставки.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Предоставьте доступ к геолокации, для корректного отображения адреса доставки.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Предоставьте доступ к фотографиям для взаимодеййствия с чатом</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -63,11 +71,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>Предоставьте доступ к камере для сканирования QR кода</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Предоставьте доступ к геолокации, для корректного отображения адреса доставки.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Предоставьте доступ к геолокации, для корректного отображения адреса доставки.</string>
 </dict>
 </plist>
