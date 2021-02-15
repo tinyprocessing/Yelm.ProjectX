@@ -15,16 +15,26 @@ struct Home: View {
     
     @ObservedObject var chat : ChatIO = YelmChat
     
+    @ObservedObject var item: items = GlobalItems
     
+
     
     @ObservedObject var location : location_cache = GlobalLocation
     @ObservedObject var modal : ModalManager = GlobalModular
     @ObservedObject var loading: loading = GlobalLoading
     @Binding var items : [items_main_cateroties]
     @State var selection: Int? = nil
+    
+    
+    @State var time = Timer.publish(every: 2, on: .current, in: .common).autoconnect()
+
+    
+    @State var selection_open: String? = nil
+    
     @State private var isAnimating = false
     
     @ObservedObject var payment: payment = GlobalPayment
+    @ObservedObject var notification_open : notification_open = GlobalNotificationOpen
 
     @ObservedObject var news : news = GlobalNews
     
@@ -219,10 +229,52 @@ struct Home: View {
                     }
                     
                 }
+                
+                NavigationLink(destination: Item(), tag: "open_item", selection: $selection_open) {
+                  
+               }
+                NavigationLink(destination: NewsSingle(), tag: "open_news", selection: $selection_open) {
+                  
+               }
+                
             }
+            .onReceive(self.time, perform: { (_) in
+                
+                
+                
+                if (self.notification_open.key == "news"){
+                    self.notification_open.key = ""
+                    
+                    
+                    ServerAPI.news.get_news_id(id: self.notification_open.value) { (load, object) in
+                        self.selection_open = "open_news"
+                        ServerAPI.settings.log(action: "open_news_notification", about: "\(object.id)")
+                        self.news.news_single = object
+                    }
+                    
+                }
+                
+                if (self.notification_open.key == "item"){
+                    self.notification_open.key = ""
+                    
+                    ServerAPI.items.get_item(id: self.notification_open.value) { (load, object) in
+                        self.selection_open = "open_item"
+                        ServerAPI.settings.log(action: "open_item_notification", about: "\(object.id)")
+                        self.item.item = object
+                    }
+                    
+                }
+                
+            })
+          
+            
+            
             
         }
         .onAppear{
+            
+        
+            
             if(self.payment.payment_done){
                 self.payment.payment_done = false
                 
