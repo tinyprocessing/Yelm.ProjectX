@@ -133,6 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         _ = response.notification.request.content.userInfo["aps"] as? [String: Any]
         let items = response.notification.request.content.userInfo["items"] ?? 0
         let news = response.notification.request.content.userInfo["news"] ?? 0
+        let chat = response.notification.request.content.userInfo["chat"] ?? 0
 
         
         
@@ -146,7 +147,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if (news as! Int != 0){
             self.notification_open.key = "news"
-            self.notification_open.value = items as! Int
+            self.notification_open.value = news as! Int
+        }
+        
+        if (chat as! Int != 0){
+            self.notification_open.key = "chat"
+            self.notification_open.value = chat as! Int
         }
         
     }
