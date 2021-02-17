@@ -237,9 +237,22 @@ struct Home: View {
                   
                }
                 
+                NavigationLink(destination: Chat(), tag: "chat", selection: $selection_open) {
+                  
+               }
+                
             }
             .onReceive(self.time, perform: { (_) in
                 
+                
+                if (self.notification_open.key == "chat"){
+                    self.notification_open.key = ""
+                    
+                    self.selection_open = "open_chat"
+                    ServerAPI.settings.log(action: "open_chat_notification", about: "")
+                  
+                    
+                }
                 
                 
                 if (self.notification_open.key == "news"){
