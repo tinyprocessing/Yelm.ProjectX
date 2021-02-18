@@ -218,6 +218,9 @@ struct Home: View {
                     
                     ScrollView(.vertical, showsIndicators: false){
                         
+                        
+                        catalog()
+                        
                         News()
                         
                         ForEach(self.items, id: \.self) { object in
