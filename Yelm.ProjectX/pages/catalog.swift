@@ -31,20 +31,26 @@ struct catalog: View {
                 
                 Grid(self.images, id: \.self) { tag in
 
-                    
-                    URLImage(URL(string: tag)!) { proxy in
-                        proxy.image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: (UIScreen.main.bounds.width-40)/2, height: (UIScreen.main.bounds.width-40)/2)
-                            .cornerRadius(20)
+                    ZStack(alignment: .topLeading){
+                        URLImage(URL(string: tag)!) { proxy in
+                            proxy.image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: (UIScreen.main.bounds.width-40)/3, height: (UIScreen.main.bounds.width-40)/3)
+                                .cornerRadius(20)
+                        }
+                        
+                        Text("Булочная")
+                            .foregroundColor(.white)
+                            .font(.system(size: 14, weight: .semibold, design: .rounded))
+                            .padding()
                     }
                     
                    
                     
                 }.gridStyle(
                     
-                    ModularGridStyle(columns: 2, rows: .fixed((UIScreen.main.bounds.width-40)/2))
+                    ModularGridStyle(columns: 3, rows: .fixed((UIScreen.main.bounds.width-40)/3))
                 )
                 .frame(width: UIScreen.main.bounds.width-30)
                 

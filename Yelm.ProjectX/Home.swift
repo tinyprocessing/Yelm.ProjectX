@@ -219,7 +219,7 @@ struct Home: View {
                     ScrollView(.vertical, showsIndicators: false){
                         
                         
-                        catalog()
+                       
                         
                         News()
                         
@@ -227,8 +227,9 @@ struct Home: View {
                             ItemsViewLine(items: object.items, category_id: object.id, name: object.name)
                         }
                         
+                        catalog()
                         
-                        Spacer(minLength: 150)
+                        Spacer(minLength: 100)
                     }
                     
                 }
