@@ -23,10 +23,19 @@ var GlobalCamera: camera = camera()
 var GlobalVideo: video = video()
 var GlobalConfetti: confetti = confetti()
 var GlobalPromocode: promocode = promocode()
+var GlobalCategories: categories = categories()
 var GlobalNotificationOpen: notification_open = notification_open()
 var GlobalNotificationBanner: notification_banner = notification_banner()
 
 var GlobalWebview: loading_webview = loading_webview()
+
+
+
+class categories: ObservableObject, Identifiable {
+    var id: Int = 0
+    @Published var all : [categories_local_structure] = []
+
+}
 
 
 class notification_open: ObservableObject, Identifiable {
