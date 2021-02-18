@@ -237,6 +237,12 @@ struct Start: View {
                             
                         }
                     }
+                    
+                    ServerAPI.items.get_catalog { (load, objects) in
+                        if (load){
+                            
+                        }
+                    }
                 }
             }
         }

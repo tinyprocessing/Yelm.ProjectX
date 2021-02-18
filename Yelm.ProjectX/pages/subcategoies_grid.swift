@@ -43,7 +43,7 @@ struct SubcategoriesGrid : View {
                 
             }.gridStyle(
                 //.frame(width: 180, height: 245)
-                ModularGridStyle(columns: 2, rows: .fixed(275))
+                ModularGridStyle(columns: 2, rows: .fixed(300))
             )
             
         }
