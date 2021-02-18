@@ -30,6 +30,7 @@
 		4C9AC9C125C5F634002C1C04 /* Yelm.Chat in Frameworks */ = {isa = PBXBuildFile; productRef = 4C9AC9C025C5F634002C1C04 /* Yelm.Chat */; };
 		4CAA9F6D25B83B04005CEB96 /* subcategoies_grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAA9F6C25B83B04005CEB96 /* subcategoies_grid.swift */; };
 		4CAA9F7125B83D78005CEB96 /* subcategories_grid_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAA9F7025B83D78005CEB96 /* subcategories_grid_item.swift */; };
+		4CC347F825DEBF120018A27A /* catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC347F725DEBF120018A27A /* catalog.swift */; };
 		4CDE834625A74ED700F3453D /* Yelm.Pay in Frameworks */ = {isa = PBXBuildFile; productRef = 4CDE834525A74ED700F3453D /* Yelm.Pay */; };
 		4CDE834B25A74F8F00F3453D /* Yelm.Logistics in Frameworks */ = {isa = PBXBuildFile; productRef = 4CDE834A25A74F8F00F3453D /* Yelm.Logistics */; };
 		4CDE835C25A788DD00F3453D /* items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE835B25A788DD00F3453D /* items.swift */; };
@@ -137,6 +138,7 @@
 		4CAA9F6C25B83B04005CEB96 /* subcategoies_grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subcategoies_grid.swift; sourceTree = "<group>"; };
 		4CAA9F7025B83D78005CEB96 /* subcategories_grid_item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subcategories_grid_item.swift; sourceTree = "<group>"; };
 		4CC33EE325C5C32900A9F80B /* Yelm.Chat */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Chat; path = ../../../Yelm.Chat; sourceTree = "<group>"; };
+		4CC347F725DEBF120018A27A /* catalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catalog.swift; sourceTree = "<group>"; };
 		4CDE834325A74EBE00F3453D /* Yelm.Pay */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Pay; path = ../../../Yelm.Pay; sourceTree = "<group>"; };
 		4CDE834825A74F8800F3453D /* Yelm.Logistics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Logistics; path = ../../../Yelm.Logistics; sourceTree = "<group>"; };
 		4CDE835B25A788DD00F3453D /* items.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = items.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 				4C3CEB0025CC7D4E0089EFF9 /* history.swift */,
 				4C3CEB0C25CD2B260089EFF9 /* history_item.swift */,
 				4C192B0025C0739E00059597 /* D3DS.swift */,
+				4CC347F725DEBF120018A27A /* catalog.swift */,
 				4CDE842825A9E33900F3453D /* cart */,
 			);
 			path = pages;
@@ -814,6 +817,7 @@
 				4CDE83AC25A78A3F00F3453D /* CGImage+Extensions.swift in Sources */,
 				4CDE83AA25A78A3F00F3453D /* ImageDownloadHandler.swift in Sources */,
 				4CAA9F7125B83D78005CEB96 /* subcategories_grid_item.swift in Sources */,
+				4CC347F825DEBF120018A27A /* catalog.swift in Sources */,
 				4CDE83C925A78A4D00F3453D /* CircleProgressView.swift in Sources */,
 				4CDE842225A9E10300F3453D /* cart.swift in Sources */,
 				4CDE841F25A8AA5A00F3453D /* item.swift in Sources */,
