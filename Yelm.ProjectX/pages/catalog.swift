@@ -7,17 +7,13 @@
 
 import SwiftUI
 import Grid
-
+import Yelm_Server
 
 struct catalog: View {
     
     
-    @State var images : [String] = ["https://images.grocery.yandex.net/2756334/224c8808a5fd41908261a104b7f80b4e/400x400.png",
-                                    "https://images.grocery.yandex.net/2750890/7c93a9a8810a45849734d50cc01c7770/400x400.jpeg",
-                                    "https://images.grocery.yandex.net/2888787/4ec36c206f5849d39eec98097d7bed51/400x400.jpeg",
-                                    "https://images.grocery.yandex.net/2750890/c5b0a78e82fd4500830382c1204cc5c7/400x400.jpeg",
-                                    "https://images.grocery.yandex.net/2750890/2497fe547cde49b5bbc1edea328ace6d/400x400.jpeg"]
-    
+    @ObservedObject var categories : categories = GlobalCategories
+
     var body: some View {
         
         VStack(spacing: 10){
@@ -43,38 +39,31 @@ struct catalog: View {
                 .frame(width: UIScreen.main.bounds.width-30)
                 
                 
-                
-                Grid(self.images, id: \.self) { tag in
+
+                Grid(self.categories.all, id: \.self) { tag in
 
                     ZStack(alignment: .topLeading){
-                        URLImage(URL(string: tag)!) { proxy in
+                        URLImage(URL(string: tag.image)!) { proxy in
                             proxy.image
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: (UIScreen.main.bounds.width-40)/2, height: (UIScreen.main.bounds.width-40)/2)
-                                
+
                                 .cornerRadius(20)
                         }
 
-                        Text("Овощи и зелень")
+                        Text(tag.name)
                             .foregroundColor(.white)
                             .font(.system(size: 14, weight: .semibold, design: .rounded))
                             .padding()
 
                     }
-//                    .background(Color.green)
-                    
-
-                    
+//
                 }.gridStyle(
-                    
-
-                    
-                    
                     ModularGridStyle(columns: 2, rows: .fixed((UIScreen.main.bounds.width-40)/2), spacing: 15)
                 )
                 .frame(width: UIScreen.main.bounds.width-30)
-//                .background(Color.red)
+                
                
                 
                 

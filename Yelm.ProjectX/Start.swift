@@ -17,6 +17,7 @@ struct Start: View {
     @ObservedObject var notification : notification = GlobalNotification
     @ObservedObject var location : location_cache = GlobalLocation
     @ObservedObject var search : search = GlobalSearch
+    @ObservedObject var categories : categories = GlobalCategories
     @ObservedObject var banner : notification_banner = GlobalNotificationBanner
     
     @ObservedObject var news : news = GlobalNews
@@ -158,7 +159,7 @@ struct Start: View {
             self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
             
             let position = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
-            ServerAPI.settings.debug = true
+            ServerAPI.settings.debug = false
             YelmChat.settings.debug = false
             ServerAPI.start(platform: platform, position: position) { (result) in
                 if (result == true){
@@ -240,7 +241,7 @@ struct Start: View {
                     
                     ServerAPI.items.get_catalog { (load, objects) in
                         if (load){
-                            
+                            self.categories.all = objects
                         }
                     }
                 }
