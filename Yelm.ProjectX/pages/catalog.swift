@@ -13,7 +13,9 @@ struct catalog: View {
     
     
     @ObservedObject var categories : categories = GlobalCategories
+    @State var selection: String? = nil
 
+    
     var body: some View {
         
         VStack(spacing: 10){
@@ -42,22 +44,30 @@ struct catalog: View {
 
                 Grid(self.categories.all, id: \.self) { tag in
 
-                    ZStack(alignment: .topLeading){
-                        URLImage(URL(string: tag.image)!) { proxy in
-                            proxy.image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: (UIScreen.main.bounds.width-40)/2, height: (UIScreen.main.bounds.width-40)/2)
+                    
+                    
+                    NavigationLink(destination: Subcategories(category_id: tag.id, name: tag.name), tag: "tag.id\(tag.id)", selection: $selection) {
+                        
+                        ZStack(alignment: .topLeading){
+                            URLImage(URL(string: tag.image)!) { proxy in
+                                proxy.image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: (UIScreen.main.bounds.width-40)/2, height: (UIScreen.main.bounds.width-40)/2)
 
-                                .cornerRadius(20)
+                                    .cornerRadius(20)
+                            }
+
+                            Text(tag.name)
+                                .foregroundColor(.black)
+                                .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                .padding()
+
                         }
-
-                        Text(tag.name)
-                            .foregroundColor(.white)
-                            .font(.system(size: 14, weight: .semibold, design: .rounded))
-                            .padding()
-
-                    }
+                        
+                    }.buttonStyle(ScaleButtonStyle())
+                    
+                 
 //
                 }.gridStyle(
                     ModularGridStyle(columns: 2, rows: .fixed((UIScreen.main.bounds.width-40)/2), spacing: 15)
