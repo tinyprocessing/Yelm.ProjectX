@@ -60,7 +60,7 @@ struct catalog: View {
 
                             Text(tag.name)
                                 .foregroundColor(.black)
-                                .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                .font(.system(size: 20, weight: .semibold, design: .rounded))
                                 .padding()
 
                         }
