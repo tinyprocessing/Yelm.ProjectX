@@ -16,7 +16,8 @@ struct Home: View {
     @ObservedObject var chat : ChatIO = YelmChat
     
     @ObservedObject var item: items = GlobalItems
-    
+    @ObservedObject var categories : categories = GlobalCategories
+
 
     
     @ObservedObject var location : location_cache = GlobalLocation
@@ -74,6 +75,12 @@ struct Home: View {
                         }
                     }
                     
+                }
+                
+                ServerAPI.items.get_catalog { (load, objects) in
+                    if (load){
+                        self.categories.all = objects
+                    }
                 }
             }
             return 40.0
