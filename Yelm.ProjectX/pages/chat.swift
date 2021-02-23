@@ -112,19 +112,19 @@ struct Chat : View {
                         Spacer()
                         
                         
-                        Button(action: {
-                            
-                        }) {
-                            
-                            Image(systemName: "phone")
-                                .foregroundColor(Color.theme)
-                                .frame(width: 22, height: 22, alignment: .center)
-                                .padding(7)
-                                .font(.system(size: 20, weight: .bold, design: .rounded))
-                            
-                            
-                        }
-                        .buttonStyle(ScaleButtonStyle())
+//                        Button(action: {
+//
+//                        }) {
+//
+//                            Image(systemName: "phone")
+//                                .foregroundColor(Color.theme)
+//                                .frame(width: 22, height: 22, alignment: .center)
+//                                .padding(7)
+//                                .font(.system(size: 20, weight: .bold, design: .rounded))
+//
+//
+//                        }
+//                        .buttonStyle(ScaleButtonStyle())
                         
                         //                        Button(action: {
                         //
