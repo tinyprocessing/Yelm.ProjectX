@@ -17,6 +17,7 @@ struct Home: View {
     
     @ObservedObject var item: items = GlobalItems
     @ObservedObject var categories : categories = GlobalCategories
+    @ObservedObject var search : search = GlobalSearch
 
 
     
@@ -80,6 +81,16 @@ struct Home: View {
                 ServerAPI.items.get_catalog { (load, objects) in
                     if (load){
                         self.categories.all = objects
+                    }
+                }
+                
+                
+                ServerAPI.items.get_items_all { (load, items) in
+                    if (load){
+                        
+                        self.search.items = items
+                    }else{
+                        
                     }
                 }
             }
