@@ -100,6 +100,8 @@ struct Start: View {
                     }.edgesIgnoringSafeArea(.bottom)
                     ModalAnchorView()
                     
+                }else{
+                    LoaderEnot()
                 }
                 confettiCelebrationView
             }
@@ -172,7 +174,11 @@ struct Start: View {
                             Color.theme = Color.init(hex: ServerAPI.settings.theme)
                             Color.theme_foreground = Color.init(hex: ServerAPI.settings.foreground)
                             
-                            self.app_loaded = true
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+                                self.app_loaded = true
+                            }
+                            
                             
                         }
                     }
