@@ -88,6 +88,7 @@ struct Offer: View {
                 order_detail.start_price = self.realm.start_price
                 order_detail.delivery_price = ServerAPI.settings.deliverly_price
                 order_detail.currency_value = ServerAPI.settings.currency
+                order_detail.shop_id = ServerAPI.settings.shop_id
                 order_detail.payment = "applepay"
                 order_detail.transaction_id = YelmPay.last_transaction_id
                 
@@ -684,6 +685,7 @@ struct Offer: View {
                 order_detail.start_price = self.realm.start_price
                 order_detail.delivery_price = ServerAPI.settings.deliverly_price
                 order_detail.currency_value = ServerAPI.settings.currency
+                order_detail.shop_id = ServerAPI.settings.shop_id
                 order_detail.payment = "card"
                 order_detail.transaction_id = YelmPay.last_transaction_id
                 
