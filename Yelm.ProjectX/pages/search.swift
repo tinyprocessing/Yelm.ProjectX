@@ -13,7 +13,7 @@ import Yelm_Server
 struct Search: View {
     
     
-    @State var selection: Int? = nil
+    @State var selection: String? = nil
     @ObservedObject var item: items = GlobalItems
 
     @ObservedObject var bottom: bottom = GlobalBottom
@@ -81,16 +81,24 @@ struct Search: View {
                 
                 
                 ForEach(self.search_server.items.filter { $0.title.lowercased().contains(search.lowercased()) || search.isEmpty || $0.title.lowercased().contains(search.lowercased())}, id: \.self) { tag in
-                    NavigationLink(destination: Item(), tag: 7, selection:  $selection){
-                        SearchItem(item: tag)
-                    }
-                    .simultaneousGesture(TapGesture().onEnded{
-                        ServerAPI.settings.log(action: "open_item_search", about: "\(tag.id)")
+                    
+                    GeometryReader{ geo in
+                        if (geo.frame(in: .global).minY > -400 && geo.frame(in: .global).minY < UIScreen.main.bounds.size.height+400){
+                            
+                            NavigationLink(destination: Item(), tag: "item_search_\(tag.id)", selection:  $selection){
+                                SearchItem(item: tag)
+                            }
+                            .simultaneousGesture(TapGesture().onEnded{
+                                ServerAPI.settings.log(action: "open_item_search", about: "\(tag.id)")
+                                
+                                let item = tag
+                                open_item = true
+                                self.item.item = item
+                            })
+                            
+                        }
                         
-                        let item = tag
-                        open_item = true
-                        self.item.item = item
-                    })
+                    }.frame(height: 70)
                     
                 }
 
