@@ -56,7 +56,7 @@ struct SearchItem : View {
                         }
                         
                         .padding(.horizontal, 20)
-                        .padding(.top, 10)
+                        
                         
                         
                     
