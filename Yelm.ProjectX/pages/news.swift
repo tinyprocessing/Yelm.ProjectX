@@ -87,7 +87,6 @@ struct News : View {
                                                 .aspectRatio(contentMode: .fill)
                                                 .cornerRadius(15)
                                                 .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
-                                                .padding(5)
 
                                         }
                                     }.padding(.trailing, 10)
@@ -107,11 +106,11 @@ struct News : View {
 //                    HSTACK END
                     .padding(.leading, 15)
                     .frame(height: 110)
-//                    .background(Color.green)
+
 //                    .padding(.top, 15)
                     
                 }.frame(height: 110)
-//                .background(Color.red)
+
                 
             }
             
