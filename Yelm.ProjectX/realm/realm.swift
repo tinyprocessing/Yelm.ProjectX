@@ -427,6 +427,7 @@ class RealmControl: ObservableObject, Identifiable {
             if (load){
                 
                 removable.forEach { (item) in
+                    print(item)
                     self.set_count(ID: item.item_id, count: item.count)
                 }
                 
@@ -441,6 +442,8 @@ class RealmControl: ObservableObject, Identifiable {
         let realm = try! Realm()
         let objects = realm.objects(ItemRealm.self).filter("ID = \(ID)")
         
+        print(self.get_ids())
+        self.objectWillChange.send()
         
         if let object = objects.first {
             try! realm.write {
