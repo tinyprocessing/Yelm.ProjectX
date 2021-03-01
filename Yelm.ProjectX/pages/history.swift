@@ -177,17 +177,23 @@ struct History: View {
                                 .padding(.top, 5)
                                 
                                 
+                             
+                                
+                                Button(action: {
+
+                                    if let url = URL(string: "") {
+                                        UIApplication.shared.open(url)
+                                    }
+                                    
+                                }) {
+                                    Text("Чек покупки")
+                                        .padding(.horizontal, 10)
+                                        .foregroundColor(.theme)
+                                        .padding(.top, 15)
+                                }.buttonStyle(ScaleButtonStyle())
+
                                 Spacer(minLength: 70)
-//                                Button(action: {
-//
-//                                }) {
-//                                    Text("Чек покупки")
-//                                        .padding(.horizontal, 10)
-//                                        .foregroundColor(.theme)
-//                                        .padding(.top, 15)
-//                                }.buttonStyle(ScaleButtonStyle())
-//
-//
+                                
 //                                Button(action: {
 //
 //                                }) {

@@ -270,6 +270,8 @@ struct Home: View {
                 if (self.notification_open.key == "chat"){
                     self.notification_open.key = ""
                     
+                    YelmChat.core.get()
+                    
                     self.selection_open = "open_chat"
                     ServerAPI.settings.log(action: "open_chat_notification", about: "")
                   
