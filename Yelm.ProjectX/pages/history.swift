@@ -181,7 +181,7 @@ struct History: View {
                                 
                                 Button(action: {
 
-                                    if let url = URL(string: "") {
+                                    if let url = URL(string: self.history_object.ofd) {
                                         UIApplication.shared.open(url)
                                     }
                                     
