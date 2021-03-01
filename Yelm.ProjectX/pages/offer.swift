@@ -529,7 +529,7 @@ struct Offer: View {
                                 UserDefaults.standard.set(self.phone, forKey: "phone")
                                 UserDefaults.standard.set(self.floor, forKey: "floor")
                                 
-                                YelmPay.start(platform: platform) { (load) in
+                                YelmPay.start(platform: platform, user: ServerAPI.user.username) { (load) in
 
                                     self.offer.objectWillChange.send()
                                     self.offer.phone = self.phone

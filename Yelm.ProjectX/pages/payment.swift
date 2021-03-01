@@ -196,7 +196,7 @@ struct Payment: View {
                         UserDefaults.standard.set(self.card, forKey: "card")
                         UserDefaults.standard.set(self.date, forKey: "date")
 
-                        YelmPay.start(platform: platform) { (load) in
+                        YelmPay.start(platform: platform, user: ServerAPI.user.username) { (load) in
                             YelmPay.core.payment(card_number: self.card,
                                                  date: self.date,
                                                  cvv: self.cvv,
