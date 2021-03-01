@@ -106,6 +106,8 @@ struct Offer: View {
                       
                         self.promocode.active = promocode_structure(id: 0, type: .nonactive, value: 0)
                         
+                        open_offer = false
+                        
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                             windows?.rootViewController =  UIHostingController(rootView: Start())
                         }
@@ -700,6 +702,8 @@ struct Offer: View {
                         
                         UserDefaults.standard.removeObject(forKey:"promocode_value")
                         UserDefaults.standard.removeObject(forKey:"promocode_type")
+                        
+                        open_offer = false
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                             windows?.rootViewController =  UIHostingController(rootView: Start())
