@@ -276,10 +276,12 @@ struct Cart: View {
                             open_offer = true
                             if (ServerAPI.settings.position == "lat=0&lon=0" ){
                                 ShowAlert(title: "Адрес", message: "Пожалуйста, выберите адрес для продложения оформления.")
+                                open_offer = false
                             }
                             
                             if (ServerAPI.settings.shop_id == 0){
                                 ShowAlert(title: "Адрес", message: "Доставка в данном регионе не производится.")
+                                open_offer = false
                             }
                            
                         })
