@@ -310,7 +310,7 @@ struct Home: View {
         }
         .onAppear{
             
-        
+            open_offer = false
             
             if(self.payment.payment_done){
                 self.payment.payment_done = false
