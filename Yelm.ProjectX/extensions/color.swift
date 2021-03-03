@@ -16,7 +16,7 @@ extension Color {
     static let theme_black_change_reverse = Color("BLWH-r")
     static let dropShadow = Color("Dark")
     static let dropLight = Color("Light")
-    static var theme = Color.blue
+    static var theme = Color.init(hex: "5DC837")
     static var theme_foreground = Color.white
 }
 
