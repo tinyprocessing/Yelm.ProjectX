@@ -76,6 +76,26 @@ struct Offer: View {
                 print("PaymentContextDelegate.result.done")
                 
                 
+                let type_promocode_load = UserDefaults.standard.string(forKey: "promocode_type") ?? ""
+                if (type_promocode_load != ""){
+                    
+                    
+                    if (type_promocode_load == "full"){
+                        
+                        self.promocode.active = promocode_structure(id: 0, type: .full, value: UserDefaults.standard.integer(forKey: "promocode_value"))
+                    }
+                    
+                    if (type_promocode_load == "delivery"){
+                        self.promocode.active = promocode_structure(id: 0, type: .delivery, value: UserDefaults.standard.integer(forKey: "promocode_value"))
+                    }
+                    
+                    if (type_promocode_load == "percent"){
+                        self.promocode.active = promocode_structure(id: 0, type: .percent, value: UserDefaults.standard.integer(forKey: "promocode_value"))
+                    }
+                    
+                }
+                
+                
                 let order_detail = OrdersDetail()
                 order_detail.phone = self.offer.phone
                 order_detail.floor = self.offer.floor
@@ -91,6 +111,8 @@ struct Offer: View {
                 order_detail.shop_id = ServerAPI.settings.shop_id
                 order_detail.payment = "applepay"
                 order_detail.transaction_id = YelmPay.last_transaction_id
+                order_detail.discount = Float(self.promocode.active.value)
+                order_detail.discount_type = type_promocode_load
                 
                 ServerAPI.orders.set_order(order: order_detail) { (load) in
                     if (load){
@@ -675,6 +697,26 @@ struct Offer: View {
             
             if (self.payment.payment_done){
                 
+                
+                let type_promocode_load = UserDefaults.standard.string(forKey: "promocode_type") ?? ""
+                if (type_promocode_load != ""){
+                    
+                    
+                    if (type_promocode_load == "full"){
+                        
+                        self.promocode.active = promocode_structure(id: 0, type: .full, value: UserDefaults.standard.integer(forKey: "promocode_value"))
+                    }
+                    
+                    if (type_promocode_load == "delivery"){
+                        self.promocode.active = promocode_structure(id: 0, type: .delivery, value: UserDefaults.standard.integer(forKey: "promocode_value"))
+                    }
+                    
+                    if (type_promocode_load == "percent"){
+                        self.promocode.active = promocode_structure(id: 0, type: .percent, value: UserDefaults.standard.integer(forKey: "promocode_value"))
+                    }
+                    
+                }
+                
                 let order_detail = OrdersDetail()
                 order_detail.phone = self.phone
                 order_detail.floor = self.floor
@@ -690,7 +732,8 @@ struct Offer: View {
                 order_detail.shop_id = ServerAPI.settings.shop_id
                 order_detail.payment = "card"
                 order_detail.transaction_id = YelmPay.last_transaction_id
-                
+                order_detail.discount = Float(self.promocode.active.value)
+                order_detail.discount_type = type_promocode_load
                 
               
                 
