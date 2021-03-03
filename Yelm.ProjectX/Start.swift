@@ -24,6 +24,7 @@ struct Start: View {
     
     
     @State var app_loaded : Bool = false
+    @State var settings_loaded : Bool = false
     
     @State var nav_bar_hide: Bool = true
     @State var items : [items_main_cateroties] = []
@@ -38,7 +39,8 @@ struct Start: View {
         
         ZStack(alignment: .top){
             ZStack{
-                if (app_loaded){
+                
+                if (self.settings_loaded){
                     ZStack(alignment: .bottomLeading){
                         NavigationView{
                             
@@ -98,11 +100,14 @@ struct Start: View {
                         
                         
                     }.edgesIgnoringSafeArea(.bottom)
+                    .opacity(app_loaded ? 1.0 : 0)
+                }
                     ModalAnchorView()
                     
-                }else{
+                
                     LoaderEnot()
-                }
+                        .opacity(app_loaded ? 0 : 1.0)
+                
                 confettiCelebrationView
             }
             
@@ -171,12 +176,22 @@ struct Start: View {
                     ServerAPI.settings.get_settings { (load) in
                         if (load){
                             
+                            
+                            ServerAPI.objectWillChange.send()
+                            
                             Color.theme = Color.init(hex: ServerAPI.settings.theme)
                             Color.theme_foreground = Color.init(hex: ServerAPI.settings.foreground)
                             
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                self.settings_loaded = true
+                            }
                             
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
-                                self.app_loaded = true
+                            
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.8) {
+                                withAnimation(.easeInOut(duration: 0.5), {
+                                    self.app_loaded = true
+                                 })
                             }
                             
                             
@@ -224,14 +239,18 @@ struct Start: View {
                     }
                     ServerAPI.items.get_items { (load, items) in
                         if (load){
-                            self.items = items
+                            DispatchQueue.main.async {
+                             self.items = items
+                            }
                         }
                     }
                     
                     ServerAPI.items.get_items_all { (load, items) in
                         if (load){
-                            
-                            self.search.items = items
+
+                            DispatchQueue.main.async {
+                                self.search.items = items
+                            }
                         }else{
                             
                         }
@@ -239,7 +258,9 @@ struct Start: View {
                     
                     ServerAPI.news.get_news { (load, news) in
                         if (load){
-                            self.news.news = news
+                            DispatchQueue.main.async {
+                                self.news.news = news
+                            }
                         }else{
                             
                         }
@@ -247,7 +268,9 @@ struct Start: View {
                     
                     ServerAPI.items.get_catalog { (load, objects) in
                         if (load){
-                            self.categories.all = objects
+                            DispatchQueue.main.async {
+                                self.categories.all = objects
+                            }
                         }
                     }
                 }
