@@ -58,10 +58,10 @@ struct catalog: View {
                                     .cornerRadius(20)
                             }
 
-//                            Text(tag.name)
-//                                .foregroundColor(.white)
-//                                .font(.system(size: 20, weight: .semibold, design: .rounded))
-//                                .padding()
+                            Text(tag.name)
+                                .foregroundColor(.white)
+                                .font(.system(size: 20, weight: .semibold, design: .rounded))
+                                .padding()
 
                         }
                         
