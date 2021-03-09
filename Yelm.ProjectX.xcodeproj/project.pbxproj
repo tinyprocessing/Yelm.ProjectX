@@ -194,7 +194,6 @@
 		4CDE840B25A874BB00F3453D /* maps_classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = maps_classes.swift; sourceTree = "<group>"; };
 		4CDE841025A8764300F3453D /* map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = map.swift; sourceTree = "<group>"; };
 		4CDE841725A8785100F3453D /* view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = view.swift; sourceTree = "<group>"; };
-		4CDE841A25A8820F00F3453D /* location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = location.gpx; path = /Users/michael/Desktop/Yelm.ProjectX/Yelm.ProjectX/extensions/location.gpx; sourceTree = "<absolute>"; };
 		4CDE841C25A89A4700F3453D /* Yelm.ProjectX.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Yelm.ProjectX.entitlements; sourceTree = "<group>"; };
 		4CDE841E25A8AA5A00F3453D /* item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = item.swift; sourceTree = "<group>"; };
 		4CDE842125A9E10300F3453D /* cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cart.swift; sourceTree = "<group>"; };
@@ -334,7 +333,6 @@
 				4C1BB4F125D2A75500604276 /* stroies */,
 				4C3CEB0825CC8A920089EFF9 /* confetti */,
 				4CDE844125AB612300F3453D /* chat */,
-				4CDE841A25A8820F00F3453D /* location.gpx */,
 				4CDE840A25A874AE00F3453D /* maps */,
 				4CDE83F825A86E8B00F3453D /* modal views */,
 				4CDE836825A78A1C00F3453D /* images */,
