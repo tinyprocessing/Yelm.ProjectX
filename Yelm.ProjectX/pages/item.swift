@@ -594,7 +594,7 @@ struct Item : View {
         
         .navigationBarTitle("hidden_layer")
         .navigationBarHidden(self.nav_bar_hide)
-        .edgesIgnoringSafeArea(.top)
+        .edgesIgnoringSafeArea(notch ? .top : [])
         .edgesIgnoringSafeArea(.bottom)
         
         
