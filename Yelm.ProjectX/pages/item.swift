@@ -51,6 +51,7 @@ struct Item : View {
     @ObservedObject var bottom: bottom = GlobalBottom
     @ObservedObject var item: items = GlobalItems
     @State var nav_bar_hide: Bool = true
+    @State var hide_statusbar: Bool = true
     @State var time = Timer.publish(every: 0.1, on: .current, in: .tracking).autoconnect()
     
     @ObservedObject var realm: RealmControl = GlobalRealm
@@ -72,21 +73,23 @@ struct Item : View {
     
     var body: some View{
         
+        
         ZStack(alignment: .bottom){
+            
             ZStack(alignment: .top){
                 ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
-                    
+
                     ScrollView(.vertical, showsIndicators: false) {
-                        
+
                         VStack{
-                            
+
                             // First Parallax Scroll...
-                            
+
                             GeometryReader{reader in
-                                
+
                                 VStack{
                                     if (self.item.item.all_images.count > 0){
-                                        
+
                                         URLImage(URL(string: self.item.item.all_images[0])!) { proxy in
                                             proxy.image
                                                 .resizable()
@@ -95,30 +98,33 @@ struct Item : View {
                                                 .frame(width: UIScreen.main.bounds.width+20, height: reader.frame(in: .global).minY > 0 ? CGFloat(Int(reader.frame(in: .global).minY + 245)) : 245)
                                                 // adjusting view postion when scrolls...
                                                 .offset(y: -reader.frame(in: .global).minY)
-                                            
-                                            
-                                            
+                                                .onAppear{
+                                                    self.hide_statusbar = proxy.uiimage.isDark
+                                                }
+
+
+
                                         }
                                     }
                                 }
                             }
                             // setting default height...
                             .frame(height: 200)
-                            
-                            
-                            
+
+
+
                             VStack(spacing: 5){
-                                
-                                
+
+
                                 if (self.item.item.title.count > 0){
-                                    
+
                                     GeometryReader{g in
                                         VStack{
                                             Text("")
                                         }
                                         .onReceive(self.time) { (_) in
-                                            
-                                            
+
+
                                             if (g.frame(in: .global).minY < 80){
                                                 withAnimation{
                                                     self.show = 1.0
@@ -130,27 +136,27 @@ struct Item : View {
                                             }
                                         }
                                     } .frame(height: 0)
-                                    
+
                                     HStack {
-                                        
-                                        
+
+
                                         Text(self.item.item.title)
                                             .font(.title)
                                             .fontWeight(.bold)
-                                        
-                                        
+
+
                                         Spacer()
-                                        
+
                                         if (self.item.item.discount_present != "-0%"){
                                             if (self.item.item.amount > 5){
-                                                
-                                                
+
+
                                                 HStack(spacing: 2){
                                                         Image(systemName: "shippingbox")
                                                             .font(.system(size: 12, weight: .medium, design: .rounded))
                                                             .padding(.leading, 5)
                                                             .foregroundColor(.white)
-                                                        
+
                                                         Text("Много")
                                                             .font(.system(size: 12, weight: .medium, design: .rounded))
                                                             .padding(5)
@@ -159,20 +165,20 @@ struct Item : View {
                                                     .padding(.horizontal, 10)
                                                     .background(Color.green)
                                                     .cornerRadius(20)
-                                                    
-                                                    
-                                                    
-                                                
+
+
+
+
                                             }
-                                            
+
                                             if (self.item.item.amount < 5){
-                                                
+
                                                 HStack(spacing: 2){
                                                         Image(systemName: "shippingbox")
                                                             .font(.system(size: 12, weight: .medium, design: .rounded))
                                                             .padding(.leading, 5)
                                                             .foregroundColor(.white)
-                                                        
+
                                                         Text("Мало")
                                                             .font(.system(size: 12, weight: .medium, design: .rounded))
                                                             .padding(5)
@@ -181,37 +187,37 @@ struct Item : View {
                                                     .padding(.horizontal, 10)
                                                     .background(Color.orange)
                                                     .cornerRadius(20)
-                                                    
-                                                
+
+
                                             }
-                                            
+
                                         }
-                                        
+
                                         if (self.item.item.discount_present == "-0%"){
-                                            
-                                            
+
+
                                             Rating(item: self.item)
-                                            
-                                            
+
+
                                         }
-                                        
-                                        
+
+
                                     }
                                     .padding(.horizontal, 20)
                                     .padding(.top, 10)
-                                    
+
                                 }
-                              
+
                                     if (self.item.item.discount_present == "-0%"){
                                         HStack{
                                     if (self.item.item.amount > 5){
-                                        
+
                                         HStack(spacing: 2){
                                                 Image(systemName: "shippingbox")
                                                     .font(.system(size: 12, weight: .medium, design: .rounded))
                                                     .padding(.leading, 5)
                                                     .foregroundColor(.white)
-                                                
+
                                                 Text("Много")
                                                     .font(.system(size: 12, weight: .medium, design: .rounded))
                                                     .padding(5)
@@ -222,15 +228,15 @@ struct Item : View {
                                             .cornerRadius(20)
                                             .padding(.top, 5)
                                     }
-                                    
+
                                     if (self.item.item.amount < 5){
-                                        
+
                                         HStack(spacing: 2){
                                                 Image(systemName: "shippingbox")
                                                     .font(.system(size: 12, weight: .medium, design: .rounded))
                                                     .padding(.leading, 5)
                                                     .foregroundColor(.white)
-                                                
+
                                                 Text("Мало")
                                                     .font(.system(size: 12, weight: .medium, design: .rounded))
                                                     .padding(5)
@@ -240,14 +246,14 @@ struct Item : View {
                                             .background(Color.orange)
                                             .cornerRadius(20)
                                             .padding(.top, 5)
-                                        
+
                                     }
-                                            
+
                                             Spacer()
                                         }.padding(.horizontal, 20)
                                 }
-                              
-                                
+
+
                                 if (self.item.item.discount_present != "-0%"){
                                     HStack {
                                         Text("%")
@@ -259,71 +265,71 @@ struct Item : View {
                                             .clipShape(Circle())
                                             .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
                                             .shadow(color: .dropLight, radius: 15, x: -10, y: -10)
-                                        
-                                        
-                                        
+
+
+
                                         Text("Скидка \(self.item.item.discount_present)")
                                             .padding(.horizontal, 5)
                                             .font(.system(size: 16, weight: .semibold, design: .rounded))
-                                        
+
                                         Spacer()
-                                        
+
                                         Rating(item: self.item)
-                                        
+
                                     }
                                     .padding(.horizontal, 20)
                                     .padding(.top, 10)
-                                    
-                                    
+
+
                                 }
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                
+
+
+
+
+
+
+
+
+
+
                                 ZStack(alignment: .top){
                                     VStack(alignment: .leading){
-                                        
+
                                         if (self.item.item.text.count > 1){
-                                            
+
                                             Text(self.item.item.text)
                                                 .foregroundColor(Color.secondary)
                                                 .font(.system(size: 16, weight: .medium, design: .rounded))
                                                 .padding(.horizontal, 20)
                                                 .padding(.top, 5)
-                                            
+
                                         }
-                                        
-                                        
-                                        
-                                        
+
+
+
+
                                         if (self.item.item.parameters.count > 0){
-                                            
+
                                             HStack {
-                                                
+
                                                 Text("Характеристики")
                                                     .font(.title)
                                                     .fontWeight(.bold)
-                                                
+
                                                 Spacer()
-                                                
-                                                
+
+
                                             }
                                             .padding(.horizontal, 20)
                                             .padding(.top, 10)
-                                            
+
                                         }
-                                        
-                                        
+
+
                                         if (self.item.item.parameters.count > 0){
                                             VStack{
-                                                
-                                                
+
+
                                                 ForEach(self.item.item.parameters, id: \.self) { parameter in
                                                     HStack{
                                                         Text(parameter.name)
@@ -334,113 +340,114 @@ struct Item : View {
                                                     }
                                                     Divider()
                                                 }
-                                                
+
                                             }
                                             .padding(.horizontal, 20)
                                             .clipped()
                                         }
-                                        
-                                        Spacer(minLength: self.item.item.text.count > 1 ? 120 : UIScreen.main.bounds.height)
-                                        
 
-                                        
+                                        Spacer(minLength: self.item.item.text.count > 1 ? 120 : UIScreen.main.bounds.height)
+
+
+
                                     }
-                                    
+
                                 }
-                                
-                                
-                                
-                                
-                                
+
+
+
+
+
                             }
                             .padding(.vertical)
                             .background(.theme_black_change_reverse)
-                            
+
                             .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 40))
-                            
+
                         } .background(Color.white)
                     }
-                    
+
                 }
-                
+
                 VStack{
-                    
+
                     HStack(alignment: .center){
                         Button(action: {
-                            
+
                             self.presentation.wrappedValue.dismiss()
                             let generator = UIImpactFeedbackGenerator(style: .soft)
                             generator.impactOccurred()
-                            
+
                         }) {
-                            
+
                             Image(systemName: "arrow.backward")
                                 .foregroundColor(Color.theme_foreground)
                                 .frame(width: 15, height: 15, alignment: .center)
                                 .padding([.top, .leading, .bottom, .trailing], 10)
-                                
+
                                 .font(.system(size: 15, weight: .bold, design: .rounded))
-                                
+
                                 .background(Color.theme)
                                 .clipShape(Circle())
-                            
+
                         }
                         .padding(.top, 10)
                         .buttonStyle(ScaleButtonStyle())
-                        
-                        
-                        
+
+
+
                         Spacer()
-                        
+
                         if (self.show == 1.0){
                             Text(self.item.item.title)
                                 .padding(.top, 10)
                                 .font(.system(size: 15, weight: .bold, design: .rounded))
                         }
-                        
-                        
-                        
-                        
+
+
+
+
                         Spacer()
-                        
-                        
+
+
                         Button(action: {
-                            
+
                             ServerAPI.settings.log(action: "share_item", about: "\(self.item.item.id)")
-                            
+
                             guard let data = URL(string: "https://yelm.io/item/\(self.item.item.id)") else { return }
                                   let av = UIActivityViewController(activityItems: [data], applicationActivities: nil)
                                   UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
-                            
+
                             let generator = UIImpactFeedbackGenerator(style: .soft)
                             generator.impactOccurred()
-                            
+
                         }) {
-                            
+
                             Image(systemName: "square.and.arrow.up")
                                 .foregroundColor(Color.theme_foreground)
                                 .frame(width: 15, height: 15, alignment: .center)
                                 .padding([.top, .leading, .bottom, .trailing], 10)
-                                
+
                                 .font(.system(size: 15, weight: .bold, design: .rounded))
-                                
+
                                 .background(Color.theme)
                                 .clipShape(Circle())
-                            
+
                         }
                         .padding(.top, 10)
-                        
+
                         .buttonStyle(ScaleButtonStyle())
-                        
-                        
-                        
+
+
+
                     }
                     .padding(.top, (UIApplication.shared.keyWindow?.safeAreaInsets.bottom)!)
+                    .padding(.top, notch ? 0 : 20)
                     .padding([.trailing, .leading], 20)
                     .padding(.bottom, 10)
                     .background(self.show == 1.0 ? Color.theme_black_change_reverse : Color.clear)
                 }
-                
+
             }
             
             VStack(spacing: 0){
@@ -594,9 +601,10 @@ struct Item : View {
         
         .navigationBarTitle("hidden_layer")
         .navigationBarHidden(self.nav_bar_hide)
-        .edgesIgnoringSafeArea(notch ? .top : [])
+        .edgesIgnoringSafeArea(.top)
         .edgesIgnoringSafeArea(.bottom)
         
+
         
         .onAppear {
             self.bottom.hide = true

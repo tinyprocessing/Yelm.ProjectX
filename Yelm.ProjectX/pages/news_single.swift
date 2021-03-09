@@ -257,6 +257,7 @@ struct NewsSingle : View {
                         
                     }
                     .padding(.top, (UIApplication.shared.keyWindow?.safeAreaInsets.bottom)!)
+                    .padding(.top, notch ? 0 : 20)
                     .padding([.trailing, .leading], 20)
                     .padding(.bottom, 10)
                     .background(self.show == 1.0 ? Color.theme_black_change_reverse : Color.clear)
@@ -270,7 +271,7 @@ struct NewsSingle : View {
         
         .navigationBarTitle("hidden_layer")
         .navigationBarHidden(self.nav_bar_hide)
-        .edgesIgnoringSafeArea(notch ? .top : [])
+        .edgesIgnoringSafeArea(.top)
         .edgesIgnoringSafeArea(.bottom)
         
         

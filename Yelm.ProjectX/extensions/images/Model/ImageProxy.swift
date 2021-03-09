@@ -99,6 +99,13 @@ public extension ImageProxy {
 
 
 public extension ImageProxy {
+    var uiimage: UIImage {
+        
+        
+        return uiImage
+    }
+}
+public extension ImageProxy {
 
     var news: CGSize {
         
