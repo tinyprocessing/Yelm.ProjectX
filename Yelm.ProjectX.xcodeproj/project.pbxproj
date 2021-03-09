@@ -109,6 +109,7 @@
 		4CF5601C25B7124F0038A4CC /* subcategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF5601B25B7124E0038A4CC /* subcategories.swift */; };
 		4CF5602125B716FF0038A4CC /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = 4CF5602025B716FF0038A4CC /* Grid */; };
 		A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */; };
+		D4B8C4A925F7EA3300B9E478 /* func.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B8C4A825F7EA3300B9E478 /* func.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -215,6 +216,7 @@
 		D48F29B325F7CF9300570A3A /* Yelm.Pay */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Pay; path = ../../../Yelm.Pay; sourceTree = "<group>"; };
 		D48F29B425F7CF9800570A3A /* Yelm.Server */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Server; path = ../../../Yelm.Server; sourceTree = "<group>"; };
 		D48F29B525F7CFB800570A3A /* Yelm.Chat */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Chat; path = ../../../Yelm.Chat; sourceTree = "<group>"; };
+		D4B8C4A825F7EA3300B9E478 /* func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = func.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +349,7 @@
 				4CDE841725A8785100F3453D /* view.swift */,
 				4CDE843325A9F15500F3453D /* variables.swift */,
 				4CF5601825B5AFA40038A4CC /* webview.swift */,
+				D4B8C4A825F7EA3300B9E478 /* func.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -743,6 +746,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4B8C4A925F7EA3300B9E478 /* func.swift in Sources */,
 				4CDE83B025A78A3F00F3453D /* ImageSource.swift in Sources */,
 				4CDE83A225A78A3F00F3453D /* DownloadCoordinator.swift in Sources */,
 				4CDE83A025A78A3F00F3453D /* ImageProxy.swift in Sources */,
