@@ -32,7 +32,6 @@
 		4CAA9F7125B83D78005CEB96 /* subcategories_grid_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAA9F7025B83D78005CEB96 /* subcategories_grid_item.swift */; };
 		4CC347F825DEBF120018A27A /* catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC347F725DEBF120018A27A /* catalog.swift */; };
 		4CDE834625A74ED700F3453D /* Yelm.Pay in Frameworks */ = {isa = PBXBuildFile; productRef = 4CDE834525A74ED700F3453D /* Yelm.Pay */; };
-		4CDE834B25A74F8F00F3453D /* Yelm.Logistics in Frameworks */ = {isa = PBXBuildFile; productRef = 4CDE834A25A74F8F00F3453D /* Yelm.Logistics */; };
 		4CDE835C25A788DD00F3453D /* items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE835B25A788DD00F3453D /* items.swift */; };
 		4CDE836025A7899E00F3453D /* blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE835F25A7899E00F3453D /* blur.swift */; };
 		4CDE836325A789B800F3453D /* shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE836225A789B800F3453D /* shapes.swift */; };
@@ -134,13 +133,9 @@
 		4C70236525A749BF00A750D2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4C70236825A749BF00A750D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C70236A25A749BF00A750D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C70237425A74BEE00A750D2 /* Yelm.Server */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Server; path = ../../../Yelm.Server; sourceTree = "<group>"; };
 		4CAA9F6C25B83B04005CEB96 /* subcategoies_grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subcategoies_grid.swift; sourceTree = "<group>"; };
 		4CAA9F7025B83D78005CEB96 /* subcategories_grid_item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subcategories_grid_item.swift; sourceTree = "<group>"; };
-		4CC33EE325C5C32900A9F80B /* Yelm.Chat */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Chat; path = ../../../Yelm.Chat; sourceTree = "<group>"; };
 		4CC347F725DEBF120018A27A /* catalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catalog.swift; sourceTree = "<group>"; };
-		4CDE834325A74EBE00F3453D /* Yelm.Pay */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Pay; path = ../../../Yelm.Pay; sourceTree = "<group>"; };
-		4CDE834825A74F8800F3453D /* Yelm.Logistics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Logistics; path = ../../../Yelm.Logistics; sourceTree = "<group>"; };
 		4CDE835B25A788DD00F3453D /* items.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = items.swift; sourceTree = "<group>"; };
 		4CDE835F25A7899E00F3453D /* blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blur.swift; sourceTree = "<group>"; };
 		4CDE836225A789B800F3453D /* shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shapes.swift; sourceTree = "<group>"; };
@@ -218,6 +213,9 @@
 		4CF5601B25B7124E0038A4CC /* subcategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subcategories.swift; sourceTree = "<group>"; };
 		58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelm_ProjectX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		736B0EF31A2553BDC8E3C2BA /* Pods-Yelm.ProjectX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelm.ProjectX.debug.xcconfig"; path = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.debug.xcconfig"; sourceTree = "<group>"; };
+		D48F29B325F7CF9300570A3A /* Yelm.Pay */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Pay; path = ../../../Yelm.Pay; sourceTree = "<group>"; };
+		D48F29B425F7CF9800570A3A /* Yelm.Server */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Server; path = ../../../Yelm.Server; sourceTree = "<group>"; };
+		D48F29B525F7CFB800570A3A /* Yelm.Chat */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Chat; path = ../../../Yelm.Chat; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,7 +223,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CDE834B25A74F8F00F3453D /* Yelm.Logistics in Frameworks */,
 				4C70237825A74C1200A750D2 /* Yelm.Server in Frameworks */,
 				4CDE83D725A78DF500F3453D /* Realm in Frameworks */,
 				4C3CEBB125D193540089EFF9 /* SwiftUIX in Frameworks */,
@@ -281,10 +278,10 @@
 		4C70235B25A749BD00A750D2 /* Yelm.ProjectX */ = {
 			isa = PBXGroup;
 			children = (
+				D48F29B225F7CF8500570A3A /* libs */,
 				4CDE841C25A89A4700F3453D /* Yelm.ProjectX.entitlements */,
 				4CDE835A25A788C400F3453D /* pages */,
 				4CDE835925A780F100F3453D /* extensions */,
-				4C70237325A74BE300A750D2 /* libs */,
 				4CDE83F625A7AE8800F3453D /* realm */,
 				4C70236025A749BD00A750D2 /* Start.swift */,
 				4CDE83DF25A794BA00F3453D /* Home.swift */,
@@ -302,17 +299,6 @@
 				4C70236525A749BF00A750D2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		4C70237325A74BE300A750D2 /* libs */ = {
-			isa = PBXGroup;
-			children = (
-				4CC33EE325C5C32900A9F80B /* Yelm.Chat */,
-				4CDE834825A74F8800F3453D /* Yelm.Logistics */,
-				4CDE834325A74EBE00F3453D /* Yelm.Pay */,
-				4C70237425A74BEE00A750D2 /* Yelm.Server */,
-			);
-			path = libs;
 			sourceTree = "<group>";
 		};
 		4C70237625A74C1200A750D2 /* Frameworks */ = {
@@ -615,6 +601,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D48F29B225F7CF8500570A3A /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				D48F29B525F7CFB800570A3A /* Yelm.Chat */,
+				D48F29B425F7CF9800570A3A /* Yelm.Server */,
+				D48F29B325F7CF9300570A3A /* Yelm.Pay */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -636,7 +632,6 @@
 			packageProductDependencies = (
 				4C70237725A74C1200A750D2 /* Yelm.Server */,
 				4CDE834525A74ED700F3453D /* Yelm.Pay */,
-				4CDE834A25A74F8F00F3453D /* Yelm.Logistics */,
 				4CDE83D625A78DF500F3453D /* Realm */,
 				4CDE83D825A78DF500F3453D /* RealmSwift */,
 				4CF5602025B716FF0038A4CC /* Grid */,
@@ -1129,10 +1124,6 @@
 		4CDE834525A74ED700F3453D /* Yelm.Pay */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Yelm.Pay;
-		};
-		4CDE834A25A74F8F00F3453D /* Yelm.Logistics */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Yelm.Logistics;
 		};
 		4CDE83D625A78DF500F3453D /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
