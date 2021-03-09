@@ -275,6 +275,8 @@ struct Start: View {
                     }
                 }
             }
+            
+            region_change()
         }
         
     }
