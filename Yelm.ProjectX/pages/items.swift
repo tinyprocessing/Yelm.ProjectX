@@ -57,7 +57,7 @@ struct ItemsViewLine: View {
                             NavigationLink(destination: Item()){
                             
                             VStack(alignment: .leading, spacing: 0){
-                                
+
                                 ZStack(alignment: .top){
                                     URLImage(URL(string: tag.thubnail)!) { proxy in
                                         proxy.image
@@ -72,30 +72,30 @@ struct ItemsViewLine: View {
                                             .cornerRadius(20)
                                             .opacity( self.realm.get_item_access(ID: tag.id) ? 0.3 : 0)
                                             .overlay(
-                                                
+
                                                 VStack{
                                                     if (self.realm.get_item_access(ID: tag.id)){
                                                         Text(String(self.realm.get_items_count(ID: tag.id)))
                                                             .font(.system(size: 40, weight: .bold, design: .rounded))
                                                             .foregroundColor(.white)
                                                             .frame(width: 100, height: 50)
-                                                        
+
                                                     }
-                                                    
+
                                                 }
                                             )
-                                        
-                                        
-                                        
-                                        
-                                        
+
+
+
+
+
                                     )
                                     HStack(spacing: 0){
-                                        
+
                                         Spacer()
-                                        
+
                                         HStack{
-                                            
+
                                             if (tag.action.contains("1+1")){
                                                 VStack{
                                                     Text("1+1")
@@ -109,13 +109,13 @@ struct ItemsViewLine: View {
                                                 .padding(.top, 7)
                                                 .padding(.trailing, 5)
                                             }
-                                            
+
                                         }
-                                        
+
                                         HStack{
-                                            
+
                                             if (tag.discount_present != "-0%"){
-                                                
+
                                                 VStack{
                                                     Text("\(tag.discount_present)")
                                                         .font(.system(size: 12, weight: .medium, design: .rounded))
@@ -127,35 +127,35 @@ struct ItemsViewLine: View {
                                                 .cornerRadius(20)
                                                 .padding(.top, 7)
                                                 .padding(.trailing, 7)
-                                                
+
                                             }
                                         }
                                     }
-                                    
+
                                 }
-                                
+
                                 Text(tag.title)
                                     .frame(height: 50)
                                     .font(.system(size: 14, weight: .regular, design: .rounded))
                                     .lineSpacing(2)
                                     .lineLimit(2)
                                     .frame(alignment: .leading)
-                                
+
                                 HStack{
-                                    
+
                                     HStack(spacing: 0){
-                                        
+
                                         if (self.realm.get_item_access(ID: tag.id)){
-                                            
-                                            
+
+
                                             Button(action: {
-                                                
-                                                
+
+
                                                 self.realm.post_cart(ID: tag.id, method: "decrement")
-                                                
-                                                
+
+
                                             }) {
-                                                
+
                                                 Rectangle()
                                                     .fill(Color.theme)
                                                     .frame(width: 16, height: 30)
@@ -164,20 +164,20 @@ struct ItemsViewLine: View {
                                                             .font(.system(size: 16, weight: .medium, design: .rounded))
                                                             .foregroundColor(.theme_foreground)
                                                     )
-                                                
-                                                
-                                                
-                                                
+
+
+
+
                                             }
-                                            
+
                                             .padding(.leading, 8)
                                             .padding(.trailing, 5)
                                             .buttonStyle(PlainButtonStyle())
-                                            
+
                                         }
-                                        
+
                                         if (floor((tag.discount as NSString).floatValue) == (tag.discount as NSString).floatValue){
-                                            
+
                                             Text("\(String(format:"%.0f", (tag.discount as NSString).floatValue) ) \(ServerAPI.settings.symbol)")
                                                 .lineLimit(1)
                                                 .foregroundColor(.theme_foreground)
@@ -187,9 +187,9 @@ struct ItemsViewLine: View {
                                                 .cornerRadius(20)
                                                 .fixedSize()
                                                 .padding(.leading, self.realm.get_item_access(ID: tag.id) ? 0 : 12)
-                                            
+
                                         }else{
-                                            
+
                                             Text("\(tag.discount) \(ServerAPI.settings.symbol)")
                                                 .lineLimit(1)
                                                 .foregroundColor(.theme_foreground)
@@ -200,33 +200,33 @@ struct ItemsViewLine: View {
                                                 .fixedSize()
                                                 .padding(.leading, self.realm.get_item_access(ID: tag.id) ? 0 : 12)
                                         }
-                                        
-                                        
+
+
                                         Button(action: {
-                                            
-                                            
-                                            
+
+
+
                                             if (self.realm.get_item_access(ID: tag.id) == false) {
-                                                
-                                                
+
+
                                                 self.realm.objectWillChange.send()
                                                 self.realm.create_item_cart(ID: tag.id, Title: tag.title, Price: tag.price_float, PriceItem: tag.price_float, Count: 1, Thumbnail: tag.thubnail, ItemType: tag.type, Quantity: tag.quanity, CanIncrement: "1", Discount: tag.discount_value)
-                                                
-                                                
+
+
                                                 self.realm.objectWillChange.send()
-                                                
-                                                
+
+
                                                 let generator = UIImpactFeedbackGenerator(style: .soft)
                                                 generator.impactOccurred()
                                             }else{
                                                 self.realm.post_cart(ID: tag.id, method: "increment")
                                             }
-                                            
-                                            
-                                            
-                                            
+
+
+
+
                                         }) {
-                                            
+
                                             Rectangle()
                                                 .fill(Color.theme)
                                                 .frame(width: 16, height: 30)
@@ -235,59 +235,59 @@ struct ItemsViewLine: View {
                                                         .font(.system(size: 16, weight: .medium, design: .rounded))
                                                         .foregroundColor(.theme_foreground)
                                                 )
-                                            
+
                                         }
                                         .padding(.trailing, 8)
                                         .padding(.leading, 5)
                                         .buttonStyle(PlainButtonStyle())
-                                        
+
                                     }
                                     .background(Color.theme)
                                     .cornerRadius(20)
-                                    
+
                                     Spacer()
-                                    
+
                                     VStack{
-                                        
+
                                         if (Float(tag.discount) != tag.price_float){
-                                            
+
                                             if (floor(tag.price_float) == tag.price_float){
-                                                
+
                                                 Text("\(String(format:"%.0f", tag.price_float)) \(ServerAPI.settings.symbol)")
                                                     .strikethrough()
                                                     .lineLimit(1)
                                                     .foregroundColor(.gray)
                                                     .font(.system(size: 12, weight: .medium, design: .rounded))
                                             }else{
-                                                
+
                                                 Text("\(String(format:"%.2f", tag.price_float)) \(ServerAPI.settings.symbol)")
                                                     .strikethrough()
                                                     .lineLimit(1)
                                                     .foregroundColor(.gray)
                                                     .font(.system(size: 12, weight: .medium, design: .rounded))
-                                            
+
                                             }
-                                          
+
                                         }
-                                        
-                                        
-                                        
+
+
+
                                         Text("\(tag.quanity) \(tag.type)")
                                             .lineLimit(1)
                                             .foregroundColor(.gray)
                                             .font(.system(size: 12, weight: .medium, design: .rounded))
                                     }
-                                    
-                                    
-                                    
+
+
+
                                 }
-                                
+
                                 Spacer()
-                                
+
                             }
                             
                             .frame(width: 180, height: 245)
-                            
+
                             .padding(.leading, 15)
                             .padding(.top, 15)
                             .padding(.bottom, 30)
