@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/devicekit/DeviceKit.git",
         "state": {
           "branch": null,
-          "revision": "dbddb0296e3ee4f83d52f9681e42705020a533e4",
-          "version": "4.2.1"
+          "revision": "4cf9f057db69104851634269f7839f8d0bd346a3",
+          "version": "4.3.0"
         }
       },
       {
