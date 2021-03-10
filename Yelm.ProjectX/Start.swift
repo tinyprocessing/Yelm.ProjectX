@@ -278,6 +278,10 @@ struct Start: View {
             }
             
             region_change()
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                AppStoreReviewManager.requestReviewIfAppropriate()
+            }
         }
         
     }
