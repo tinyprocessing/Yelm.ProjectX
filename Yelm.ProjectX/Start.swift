@@ -273,6 +273,7 @@ struct Start: View {
                             }
                         }
                     }
+                    
                 }
             }
             

@@ -1,1 +1,3 @@
-/Pods/*
+Pods/YandexMapKit/*
+Pods/YandexRuntime/*
+Pods/YandexMapKitSearch/*

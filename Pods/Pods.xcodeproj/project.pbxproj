@@ -1,0 +1,792 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		10166FF1FC534122A981754FFE526332 /* YandexMapKitSearch */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 15A376947DD26159FCF20B1830326039 /* Build configuration list for PBXAggregateTarget "YandexMapKitSearch" */;
+			buildPhases = (
+			);
+			dependencies = (
+				14D856CCE397479A5C6777C97569ED5D /* PBXTargetDependency */,
+				E798A751E98160A816F0DC1134AB24B1 /* PBXTargetDependency */,
+			);
+			name = YandexMapKitSearch;
+		};
+		7B2F0401EFEB72F4F85942A463E68350 /* YandexRuntime */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 7B859AA5ACF6EC33222F254CCF5F505D /* Build configuration list for PBXAggregateTarget "YandexRuntime" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = YandexRuntime;
+		};
+		7E12EC52E48A88CEE7C8250A1237A6B0 /* YandexMapKit */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 0F7B21B01AF785A6A75A13092DBF07FF /* Build configuration list for PBXAggregateTarget "YandexMapKit" */;
+			buildPhases = (
+			);
+			dependencies = (
+				BA4939D7FAB5F5BC7D5AF2066D8234C4 /* PBXTargetDependency */,
+			);
+			name = YandexMapKit;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		2AAAD07461A3B74E07160D2E1817215A /* Pods-Yelm.ProjectX-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D12C71C0C8ABC55F5B87FF316F1269E /* Pods-Yelm.ProjectX-dummy.m */; };
+		433345D21EA907A7A1E3E21276D8A1CF /* Pods-Yelm.ProjectX-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C556C834FECC57B94F7F18EA34661813 /* Pods-Yelm.ProjectX-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B0B9AAF15767121786E3B27E1893F9C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2E91DA3BA82BEC25481DEC9DF6BF3D59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B2F0401EFEB72F4F85942A463E68350;
+			remoteInfo = YandexRuntime;
+		};
+		45EA3453DFB683F3A41348DAD362FFB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 10166FF1FC534122A981754FFE526332;
+			remoteInfo = YandexMapKitSearch;
+		};
+		77B369C2EBBFA15996C458FCB2F25168 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B2F0401EFEB72F4F85942A463E68350;
+			remoteInfo = YandexRuntime;
+		};
+		8560A19CF43B3D98A4CF2A99F961FE0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B2F0401EFEB72F4F85942A463E68350;
+			remoteInfo = YandexRuntime;
+		};
+		EB9B113639E3CF4E0870255BCB5201FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E12EC52E48A88CEE7C8250A1237A6B0;
+			remoteInfo = YandexMapKit;
+		};
+		ED2BD263AEAB8A40352379F14CAC9810 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7E12EC52E48A88CEE7C8250A1237A6B0;
+			remoteInfo = YandexMapKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		044787832F9AF1606FBC689108067CCD /* YandexMapKitSearch.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = YandexMapKitSearch.bundle; path = YandexMapKitSearch.framework/Versions/A/Resources/YandexMapKitSearch.bundle; sourceTree = "<group>"; };
+		08485F3D12DEC4ADDADA63B9C32AF98B /* Pods-Yelm.ProjectX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Yelm.ProjectX.modulemap"; sourceTree = "<group>"; };
+		14606A8788C39499BBD81A10417EA227 /* YandexMapKit.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = YandexMapKit.bundle; path = YandexMapKit.framework/Versions/A/Resources/YandexMapKit.bundle; sourceTree = "<group>"; };
+		220F1AE629540FDC0294A6920F44665C /* Pods-Yelm.ProjectX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Yelm.ProjectX.debug.xcconfig"; sourceTree = "<group>"; };
+		2A717D396D498F96B95E52BD9B85F5D7 /* YandexMapKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YandexMapKit.debug.xcconfig; sourceTree = "<group>"; };
+		3D12C71C0C8ABC55F5B87FF316F1269E /* Pods-Yelm.ProjectX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Yelm.ProjectX-dummy.m"; sourceTree = "<group>"; };
+		3EA55917272199D10312C02C9D5735D4 /* YandexRuntime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YandexRuntime.debug.xcconfig; sourceTree = "<group>"; };
+		3EFDD44D09144340E1CCF177FAEF14BE /* YandexMapKitSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YandexMapKitSearch.debug.xcconfig; sourceTree = "<group>"; };
+		6BD03468039108B125E44699B514F49C /* YandexMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YandexMapKit.framework; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A2DD8A2FABE28D6DEC55F7401C7EED1A /* Pods-Yelm.ProjectX-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Yelm.ProjectX-resources.sh"; sourceTree = "<group>"; };
+		ACA22482F61C23D70B66743239EEC182 /* YandexRuntime.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = YandexRuntime.bundle; path = YandexRuntime.framework/Versions/A/Resources/YandexRuntime.bundle; sourceTree = "<group>"; };
+		AEF20AFC9BEFF7DCCF6CB84EDBC88FD6 /* Pods-Yelm.ProjectX-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Yelm.ProjectX-Info.plist"; sourceTree = "<group>"; };
+		B9FA6B3D7BCDF27D86AAA59E18BE3A05 /* YandexMapKitSearch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YandexMapKitSearch.framework; sourceTree = "<group>"; };
+		BD39FD2C60773CDBA3F04B7B090BD8CB /* YandexMapKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YandexMapKit.release.xcconfig; sourceTree = "<group>"; };
+		C556C834FECC57B94F7F18EA34661813 /* Pods-Yelm.ProjectX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Yelm.ProjectX-umbrella.h"; sourceTree = "<group>"; };
+		CA053FC7F149702819ED72B5D31E6D65 /* YandexRuntime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YandexRuntime.release.xcconfig; sourceTree = "<group>"; };
+		CAB65877B38A7C9F14220D07E5A732C4 /* YandexMapKitSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YandexMapKitSearch.release.xcconfig; sourceTree = "<group>"; };
+		CD057586E814991E89723180E1D53ACC /* Pods_Yelm_ProjectX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Yelm_ProjectX.framework; path = "Pods-Yelm.ProjectX.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB5331995A10D722657F0469FA5E37D4 /* YandexRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YandexRuntime.framework; sourceTree = "<group>"; };
+		E2A9994D422E3389C8E169972DB1E252 /* Pods-Yelm.ProjectX-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Yelm.ProjectX-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EBD0DEF0CAD170FA84760C9F6B73A4E8 /* Pods-Yelm.ProjectX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Yelm.ProjectX.release.xcconfig"; sourceTree = "<group>"; };
+		F797B89FD625E4A2B4F63964CD3250C1 /* Pods-Yelm.ProjectX-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Yelm.ProjectX-acknowledgements.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F20EF51B252C7EBCB38460884082612E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0B9AAF15767121786E3B27E1893F9C2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07004078B2E0A3A69F7AE469D7BBE90B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A717D396D498F96B95E52BD9B85F5D7 /* YandexMapKit.debug.xcconfig */,
+				BD39FD2C60773CDBA3F04B7B090BD8CB /* YandexMapKit.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/YandexMapKit";
+			sourceTree = "<group>";
+		};
+		0B4CB47218E524BA38B1E64368DD32C8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ACA22482F61C23D70B66743239EEC182 /* YandexRuntime.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		0FD3FE3B2C412B884D4F081C0BB2497C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3EFDD44D09144340E1CCF177FAEF14BE /* YandexMapKitSearch.debug.xcconfig */,
+				CAB65877B38A7C9F14220D07E5A732C4 /* YandexMapKitSearch.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/YandexMapKitSearch";
+			sourceTree = "<group>";
+		};
+		271396C301094F95277B25F1B0E607AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B9FA6B3D7BCDF27D86AAA59E18BE3A05 /* YandexMapKitSearch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		30A3CB8FA9D854FCEFCC6F48A3BF10A5 /* YandexMapKitSearch */ = {
+			isa = PBXGroup;
+			children = (
+				271396C301094F95277B25F1B0E607AC /* Frameworks */,
+				36EEE518DF0F9C432BF0413B0F8CEA87 /* Resources */,
+				0FD3FE3B2C412B884D4F081C0BB2497C /* Support Files */,
+			);
+			name = YandexMapKitSearch;
+			path = YandexMapKitSearch;
+			sourceTree = "<group>";
+		};
+		36EEE518DF0F9C432BF0413B0F8CEA87 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				044787832F9AF1606FBC689108067CCD /* YandexMapKitSearch.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		61AF66C4A333ADC6DBEBD0948B7E9CE0 /* YandexRuntime */ = {
+			isa = PBXGroup;
+			children = (
+				C6E2D871E38111095ABB9D80B7139521 /* Frameworks */,
+				0B4CB47218E524BA38B1E64368DD32C8 /* Resources */,
+				E0B8251E0ACF0A7816142832DE1459EA /* Support Files */,
+			);
+			name = YandexRuntime;
+			path = YandexRuntime;
+			sourceTree = "<group>";
+		};
+		62D30D45103F321ABDDDBEF209C9C6A5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD057586E814991E89723180E1D53ACC /* Pods_Yelm_ProjectX.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6F02465336EC746C778C4766D1457A87 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7C343093993FB3FDE0B8ED83563C7354 /* Pods-Yelm.ProjectX */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7C343093993FB3FDE0B8ED83563C7354 /* Pods-Yelm.ProjectX */ = {
+			isa = PBXGroup;
+			children = (
+				08485F3D12DEC4ADDADA63B9C32AF98B /* Pods-Yelm.ProjectX.modulemap */,
+				E2A9994D422E3389C8E169972DB1E252 /* Pods-Yelm.ProjectX-acknowledgements.markdown */,
+				F797B89FD625E4A2B4F63964CD3250C1 /* Pods-Yelm.ProjectX-acknowledgements.plist */,
+				3D12C71C0C8ABC55F5B87FF316F1269E /* Pods-Yelm.ProjectX-dummy.m */,
+				AEF20AFC9BEFF7DCCF6CB84EDBC88FD6 /* Pods-Yelm.ProjectX-Info.plist */,
+				A2DD8A2FABE28D6DEC55F7401C7EED1A /* Pods-Yelm.ProjectX-resources.sh */,
+				C556C834FECC57B94F7F18EA34661813 /* Pods-Yelm.ProjectX-umbrella.h */,
+				220F1AE629540FDC0294A6920F44665C /* Pods-Yelm.ProjectX.debug.xcconfig */,
+				EBD0DEF0CAD170FA84760C9F6B73A4E8 /* Pods-Yelm.ProjectX.release.xcconfig */,
+			);
+			name = "Pods-Yelm.ProjectX";
+			path = "Target Support Files/Pods-Yelm.ProjectX";
+			sourceTree = "<group>";
+		};
+		C6C3532F448919C72AEC4FB95F1BC1F3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC7E5BC42D91DBD51506BB60A905A060 /* YandexMapKit */,
+				30A3CB8FA9D854FCEFCC6F48A3BF10A5 /* YandexMapKitSearch */,
+				61AF66C4A333ADC6DBEBD0948B7E9CE0 /* YandexRuntime */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C6E2D871E38111095ABB9D80B7139521 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB5331995A10D722657F0469FA5E37D4 /* YandexRuntime.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD9E9DB1559BE1AE2694B7D695DBF4E7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				14606A8788C39499BBD81A10417EA227 /* YandexMapKit.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				C6C3532F448919C72AEC4FB95F1BC1F3 /* Pods */,
+				62D30D45103F321ABDDDBEF209C9C6A5 /* Products */,
+				6F02465336EC746C778C4766D1457A87 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D43E83837C33340158B317A8FEDF788B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6BD03468039108B125E44699B514F49C /* YandexMapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E0B8251E0ACF0A7816142832DE1459EA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3EA55917272199D10312C02C9D5735D4 /* YandexRuntime.debug.xcconfig */,
+				CA053FC7F149702819ED72B5D31E6D65 /* YandexRuntime.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/YandexRuntime";
+			sourceTree = "<group>";
+		};
+		FC7E5BC42D91DBD51506BB60A905A060 /* YandexMapKit */ = {
+			isa = PBXGroup;
+			children = (
+				D43E83837C33340158B317A8FEDF788B /* Frameworks */,
+				CD9E9DB1559BE1AE2694B7D695DBF4E7 /* Resources */,
+				07004078B2E0A3A69F7AE469D7BBE90B /* Support Files */,
+			);
+			name = YandexMapKit;
+			path = YandexMapKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		6105AF8E00349675925F7D303D5752AB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				433345D21EA907A7A1E3E21276D8A1CF /* Pods-Yelm.ProjectX-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B834EDDD5ABD40ECE50D21126AC17E47 /* Pods-Yelm.ProjectX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7552399B202C409CC58385E4965D4CC /* Build configuration list for PBXNativeTarget "Pods-Yelm.ProjectX" */;
+			buildPhases = (
+				6105AF8E00349675925F7D303D5752AB /* Headers */,
+				EC24AC31271576376A60AD18FF0FD676 /* Sources */,
+				F20EF51B252C7EBCB38460884082612E /* Frameworks */,
+				A268EE8EF104C799BC58BB7C15BA535C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E388CAE88DA211DD4DC72A0BEC861677 /* PBXTargetDependency */,
+				DC3974A544BD01082C00A4205BF8168E /* PBXTargetDependency */,
+				64CA5AA90B102AA6C35C7EA57F74A155 /* PBXTargetDependency */,
+			);
+			name = "Pods-Yelm.ProjectX";
+			productName = "Pods-Yelm.ProjectX";
+			productReference = CD057586E814991E89723180E1D53ACC /* Pods_Yelm_ProjectX.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 11.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 62D30D45103F321ABDDDBEF209C9C6A5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B834EDDD5ABD40ECE50D21126AC17E47 /* Pods-Yelm.ProjectX */,
+				7E12EC52E48A88CEE7C8250A1237A6B0 /* YandexMapKit */,
+				10166FF1FC534122A981754FFE526332 /* YandexMapKitSearch */,
+				7B2F0401EFEB72F4F85942A463E68350 /* YandexRuntime */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A268EE8EF104C799BC58BB7C15BA535C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EC24AC31271576376A60AD18FF0FD676 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AAAD07461A3B74E07160D2E1817215A /* Pods-Yelm.ProjectX-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		14D856CCE397479A5C6777C97569ED5D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = YandexMapKit;
+			target = 7E12EC52E48A88CEE7C8250A1237A6B0 /* YandexMapKit */;
+			targetProxy = ED2BD263AEAB8A40352379F14CAC9810 /* PBXContainerItemProxy */;
+		};
+		64CA5AA90B102AA6C35C7EA57F74A155 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = YandexRuntime;
+			target = 7B2F0401EFEB72F4F85942A463E68350 /* YandexRuntime */;
+			targetProxy = 8560A19CF43B3D98A4CF2A99F961FE0D /* PBXContainerItemProxy */;
+		};
+		BA4939D7FAB5F5BC7D5AF2066D8234C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = YandexRuntime;
+			target = 7B2F0401EFEB72F4F85942A463E68350 /* YandexRuntime */;
+			targetProxy = 2E91DA3BA82BEC25481DEC9DF6BF3D59 /* PBXContainerItemProxy */;
+		};
+		DC3974A544BD01082C00A4205BF8168E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = YandexMapKitSearch;
+			target = 10166FF1FC534122A981754FFE526332 /* YandexMapKitSearch */;
+			targetProxy = 45EA3453DFB683F3A41348DAD362FFB2 /* PBXContainerItemProxy */;
+		};
+		E388CAE88DA211DD4DC72A0BEC861677 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = YandexMapKit;
+			target = 7E12EC52E48A88CEE7C8250A1237A6B0 /* YandexMapKit */;
+			targetProxy = EB9B113639E3CF4E0870255BCB5201FC /* PBXContainerItemProxy */;
+		};
+		E798A751E98160A816F0DC1134AB24B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = YandexRuntime;
+			target = 7B2F0401EFEB72F4F85942A463E68350 /* YandexRuntime */;
+			targetProxy = 77B369C2EBBFA15996C458FCB2F25168 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		072CF24DD597B28B1EC6485A97C6DC75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		2B2BCB2500792C8CE05A33AD9396F1E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 220F1AE629540FDC0294A6920F44665C /* Pods-Yelm.ProjectX.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		53E6E049C8DBD19F496F4FB281F00D61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD39FD2C60773CDBA3F04B7B090BD8CB /* YandexMapKit.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		561BA1C424FE43E989F37C9802B8F31A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAB65877B38A7C9F14220D07E5A732C4 /* YandexMapKitSearch.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		606207D7F78D41F509F23BD6B328044C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EA55917272199D10312C02C9D5735D4 /* YandexRuntime.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		908B0981DC32BE816973C5D396B9D014 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A717D396D498F96B95E52BD9B85F5D7 /* YandexMapKit.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		93A13E6CA7E5D7ECE7C1D5702B1A5796 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3EFDD44D09144340E1CCF177FAEF14BE /* YandexMapKitSearch.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		94CA9DF48CE575FECE47DDD8786D50E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		B30D0897A8A0AAE5320373B88DF9530F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBD0DEF0CAD170FA84760C9F6B73A4E8 /* Pods-Yelm.ProjectX.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D1AEE4D553B1B8C9CD1846320546B715 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA053FC7F149702819ED72B5D31E6D65 /* YandexRuntime.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0F7B21B01AF785A6A75A13092DBF07FF /* Build configuration list for PBXAggregateTarget "YandexMapKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				908B0981DC32BE816973C5D396B9D014 /* Debug */,
+				53E6E049C8DBD19F496F4FB281F00D61 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		15A376947DD26159FCF20B1830326039 /* Build configuration list for PBXAggregateTarget "YandexMapKitSearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93A13E6CA7E5D7ECE7C1D5702B1A5796 /* Debug */,
+				561BA1C424FE43E989F37C9802B8F31A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94CA9DF48CE575FECE47DDD8786D50E7 /* Debug */,
+				072CF24DD597B28B1EC6485A97C6DC75 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B859AA5ACF6EC33222F254CCF5F505D /* Build configuration list for PBXAggregateTarget "YandexRuntime" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				606207D7F78D41F509F23BD6B328044C /* Debug */,
+				D1AEE4D553B1B8C9CD1846320546B715 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E7552399B202C409CC58385E4965D4CC /* Build configuration list for PBXNativeTarget "Pods-Yelm.ProjectX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B2BCB2500792C8CE05A33AD9396F1E1 /* Debug */,
+				B30D0897A8A0AAE5320373B88DF9530F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

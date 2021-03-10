@@ -312,11 +312,18 @@ struct Home: View {
             
             open_offer = false
             
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                AppStoreReviewManager.requestReviewIfAppropriate()
+            }
+            
             if(self.payment.payment_done){
                 self.payment.payment_done = false
                 
+                
+               
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     ShowAlert(title: "Отлично", message: "Оплата прошла успешно - детали Вашего заказа отправлены в чат.")
+                    
                 }
 
             }
