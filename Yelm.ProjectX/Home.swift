@@ -25,7 +25,7 @@ struct Home: View {
     @ObservedObject var modal : ModalManager = GlobalModular
     @ObservedObject var loading: loading = GlobalLoading
     @Binding var items : [items_main_cateroties]
-    @State var selection: Int? = nil
+    @State var selection: String? = nil
     
     
     @State var time = Timer.publish(every: 2, on: .current, in: .common).autoconnect()
@@ -123,7 +123,7 @@ struct Home: View {
                             
                             HStack{
                                 
-                                NavigationLink(destination: Search().accentColor(Color("BLWH")), tag: 3, selection: $selection) {
+                                NavigationLink(destination: Search().accentColor(Color("BLWH")), tag: "search", selection: $selection) {
                                     HStack{
                                         Image(systemName: "magnifyingglass").font(.system(size: 18, weight: .medium, design: .rounded))
                                     }
@@ -207,7 +207,7 @@ struct Home: View {
                                 }.buttonStyle(ScaleButtonStyle())
                                 Spacer()
                                 
-                                NavigationLink(destination: Chat(), tag: 2, selection: $selection) {
+                                NavigationLink(destination: Chat(), tag: "chat", selection: $selection) {
                                     ZStack(alignment: .top){
                                         HStack{
                                             ZStack{
