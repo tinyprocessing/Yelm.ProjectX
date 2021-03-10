@@ -29,6 +29,7 @@ struct ItemsViewLine: View {
                 Spacer()
                 
                 
+                
                 NavigationLink(destination: Subcategories(category_id: self.category_id, name: self.name), tag: "subcatalog", selection: $selection) {
                     Image(systemName: "chevron.right")
                         .foregroundColor(Color.theme_foreground)
