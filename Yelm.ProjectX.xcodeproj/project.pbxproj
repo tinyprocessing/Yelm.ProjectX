@@ -113,6 +113,7 @@
 		D4DFA14125F8B37700E608C8 /* Yelm.Pay in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14025F8B37700E608C8 /* Yelm.Pay */; };
 		D4DFA14525F8B39700E608C8 /* Yelm.Chat in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14425F8B39700E608C8 /* Yelm.Chat */; };
 		D4DFA14E25F8B72100E608C8 /* Yelm.Server in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14D25F8B72100E608C8 /* Yelm.Server */; };
+		D4DFA15125F8D27900E608C8 /* rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DFA15025F8D27900E608C8 /* rating.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -220,6 +221,7 @@
 		D48F29B425F7CF9800570A3A /* Yelm.Server */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Server; path = ../../../Yelm.Server; sourceTree = "<group>"; };
 		D48F29B525F7CFB800570A3A /* Yelm.Chat */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Chat; path = ../../../Yelm.Chat; sourceTree = "<group>"; };
 		D4B8C4A825F7EA3300B9E478 /* func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = func.swift; sourceTree = "<group>"; };
+		D4DFA15025F8D27900E608C8 /* rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -380,6 +382,7 @@
 				4C3CEB0C25CD2B260089EFF9 /* history_item.swift */,
 				4C192B0025C0739E00059597 /* D3DS.swift */,
 				4CC347F725DEBF120018A27A /* catalog.swift */,
+				D4DFA15025F8D27900E608C8 /* rating.swift */,
 				4CDE842825A9E33900F3453D /* cart */,
 			);
 			path = pages;
@@ -786,6 +789,7 @@
 				4C70236125A749BD00A750D2 /* Start.swift in Sources */,
 				4CDE83B425A78A3F00F3453D /* CoreDataAttributeDescription.swift in Sources */,
 				4CDE843725AB37AE00F3453D /* search.swift in Sources */,
+				D4DFA15125F8D27900E608C8 /* rating.swift in Sources */,
 				4CF5601525B5ADD60038A4CC /* news_single.swift in Sources */,
 				4CDE83A725A78A3F00F3453D /* DownloadService.swift in Sources */,
 				4CDE83A625A78A3F00F3453D /* DownloadObserver.swift in Sources */,
