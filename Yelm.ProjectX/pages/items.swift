@@ -16,7 +16,7 @@ struct ItemsViewLine: View {
     @State var items : [items_structure] = []
     @State var category_id : Int = 0
     @State var name : String = ""
-    @State var selection: Int? = nil
+    @State var selection: String? = nil
     @ObservedObject var realm: RealmControl = GlobalRealm
     
     
@@ -29,7 +29,7 @@ struct ItemsViewLine: View {
                 Spacer()
                 
                 
-                NavigationLink(destination: Subcategories(category_id: self.category_id, name: self.name), tag: 11, selection: $selection) {
+                NavigationLink(destination: Subcategories(category_id: self.category_id, name: self.name), tag: "subcatalog", selection: $selection) {
                     Image(systemName: "chevron.right")
                         .foregroundColor(Color.theme_foreground)
                         .frame(width: 15, height: 15, alignment: .center)
@@ -54,8 +54,9 @@ struct ItemsViewLine: View {
                         
                         
                         VStack{
-                            NavigationLink(destination: Item()){
-                            
+                            NavigationLink(destination: Item(), tag: "item\(tag.id)", selection: $selection){
+                                
+
                             VStack(alignment: .leading, spacing: 0){
 
                                 ZStack(alignment: .top){
@@ -285,7 +286,7 @@ struct ItemsViewLine: View {
                                 Spacer()
 
                             }
-                            
+
                             .frame(width: 180, height: 245)
 
                             .padding(.leading, 15)
