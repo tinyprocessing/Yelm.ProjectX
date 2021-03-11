@@ -602,6 +602,9 @@ struct Offer: View {
                         .frame(height: 50)
                         .buttonStyle(ApplePayButtonStyle())
                         .clipShape(CustomShape(corner: .allCorners, radii: 10))
+                        .disabled(self.floor == "" || self.entrance == "" || self.phone.count < 10 || self.apartment == "" ? true : false)
+                        .opacity(self.floor == "" || self.entrance == "" || self.phone.count < 10 || self.apartment == "" ? 0.7 : 1.0)
+                        
                         
                     }else{
                         
