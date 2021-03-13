@@ -21,7 +21,8 @@ struct Start: View {
     @ObservedObject var banner : notification_banner = GlobalNotificationBanner
     
     @ObservedObject var news : news = GlobalNews
-    
+    @ObservedObject var modal : ModalManager = GlobalModular
+
     
     @State var app_loaded : Bool = false
     @State var settings_loaded : Bool = false
@@ -192,6 +193,22 @@ struct Start: View {
                                 withAnimation(.easeInOut(duration: 0.5), {
                                     self.app_loaded = true
                                  })
+                                
+                                let region = UserDefaults.standard.integer(forKey: "rating")
+                                if (region == 0){
+                                    
+                                    self.modal.newModal(position: .closed) {
+                                        ModalLocation()
+                                            .clipped()
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
+                                        self.modal.openModal()
+                                    }
+                                    
+                                }
+                                
+                                AppStoreReviewManager.requestReviewIfAppropriate()
+                                
                             }
                             
                             
@@ -279,9 +296,7 @@ struct Start: View {
             
             region_change()
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                AppStoreReviewManager.requestReviewIfAppropriate()
-            }
+          
         }
         
     }
