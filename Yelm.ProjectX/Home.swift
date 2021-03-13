@@ -313,6 +313,7 @@ struct Home: View {
             open_offer = false
             
            
+           
             
             if(self.payment.payment_done){
                 self.payment.payment_done = false

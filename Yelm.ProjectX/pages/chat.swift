@@ -156,6 +156,7 @@ struct Chat : View {
                 VStack{
                     
                     
+                    if (self.chat.chat.messages.filter {$0.user.name != ""}.count > 0 ){
                     ScrollView {
                         if #available(iOS 14.0, *) {
                             ScrollViewReader { proxy in // 1
@@ -295,6 +296,18 @@ struct Chat : View {
                             
                         }
                     }.background(Color.clear)
+                    }else{
+                        Spacer()
+                        VStack(spacing: 5){
+                            Text("🥺")
+                                .font(.system(size: 40))
+                            
+                            Text("Мы очень рады с Вами пообщаться")
+                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                                .foregroundColor(Color.init(hex: "828282"))
+                        }
+                        Spacer()
+                    }
                     
                     
                     HStack(alignment: .center){
@@ -390,7 +403,8 @@ struct Chat : View {
             
             open_chat = true
             print("Open Chat")
-            
+            print(self.chat.chat.messages)
+            print(self.chat.chat.messages.count)
             self.chat.chat.bottom()
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
