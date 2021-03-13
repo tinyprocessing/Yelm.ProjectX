@@ -37,7 +37,7 @@ struct Offer: View {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
     }
     
-    @State var pickerSelection = 0
+    @State var pickerSelection = 1
     
     @State var isNavigationBarHidden: Bool = true
     
@@ -68,6 +68,7 @@ struct Offer: View {
         @ObservedObject var offer: offer = GlobalOffer
         @ObservedObject var payment: payment = GlobalPayment
         @ObservedObject var promocode : promocode = GlobalPromocode
+        @ObservedObject var bottom: bottom = GlobalBottom
 
         @Environment(\.presenter) var presenter
 
@@ -128,7 +129,12 @@ struct Offer: View {
                       
                         self.promocode.active = promocode_structure(id: 0, type: .nonactive, value: 0)
                         
+
                         open_offer = false
+                        
+                        self.bottom.objectWillChange.send()
+                        self.bottom.hide = false
+                        
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                             windows?.rootViewController =  UIHostingController(rootView: Start())
@@ -213,8 +219,17 @@ struct Offer: View {
                                     .font(.system(size: 20, weight: .semibold, design: .rounded))
                                 
                                 Spacer()
-                            }.padding(.bottom , 8)
+                            }.padding(.bottom , 5)
                             
+                            
+                            HStack(){
+                                Text("Нажмите на магическую кнопку, чтобы промокод применился.")
+                                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                                    .foregroundColor(Color.init(hex: "828282"))
+                                
+                                
+                                Spacer()
+                            }.padding(.bottom , 8)
                             
                             TextField("Промокод", text: $promocode_string)
                                 .padding(.vertical, 10)
@@ -312,8 +327,8 @@ struct Offer: View {
                             .cornerRadius(8)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.init(hex: "E0E0E0"), lineWidth: 2)
-                                    .opacity(0.6)
+                                    .stroke(self.entrance.count == 0 ? Color.pink : Color.green, lineWidth: 2)
+                                    .opacity(0.3)
                             )
                             .padding(.horizontal, 1)
                             .padding(.bottom , 8)
@@ -328,8 +343,8 @@ struct Offer: View {
                             .cornerRadius(8)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.init(hex: "E0E0E0"), lineWidth: 2)
-                                    .opacity(0.6)
+                                    .stroke(self.floor.count == 0 ? Color.pink : Color.green, lineWidth: 2)
+                                    .opacity(0.3)
                             )
                             .padding(.horizontal, 1)
                             .padding(.bottom , 8)
@@ -344,8 +359,8 @@ struct Offer: View {
                             .cornerRadius(8)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.init(hex: "E0E0E0"), lineWidth: 2)
-                                    .opacity(0.6)
+                                    .stroke(self.apartment.count == 0 ? Color.pink : Color.green, lineWidth: 2)
+                                    .opacity(0.3)
                             )
                             .padding(.horizontal, 1)
                             .padding(.bottom , 8)
@@ -368,8 +383,8 @@ struct Offer: View {
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.init(hex: "E0E0E0"), lineWidth: 2)
-                                .opacity(0.6)
+                                .stroke(self.phone.count < 10 ? Color.pink : Color.green, lineWidth: 2)
+                                .opacity(0.3)
                         )
                         .padding(.horizontal, 1)
                         .padding(.bottom , 8)
@@ -750,6 +765,9 @@ struct Offer: View {
                         UserDefaults.standard.removeObject(forKey:"promocode_type")
                         
                         open_offer = false
+                        
+                        self.bottom.objectWillChange.send()
+                        self.bottom.hide = false
                         
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                             windows?.rootViewController =  UIHostingController(rootView: Start())
