@@ -581,7 +581,7 @@ struct Offer: View {
                                                                 delivery: 0,
                                                                 merchant: merchant,
                                                                 country: "RU",
-                                                                currency: "RUB")
+                                                                currency: ServerAPI.settings.currency)
 
 
 
