@@ -127,14 +127,14 @@ class RealmControl: ObservableObject, Identifiable {
                     
                     let discount : Float = (1.0 - value / 100)
                     print("nonactive .percent .discount = \(discount)")
-                    let price_with_discount = (self.price + delivery) * discount
+                    let price_with_discount = (self.price) * discount
                     print("nonactive .percent .discount = \(price_with_discount)")
-                    return price_with_discount
+                    return price_with_discount + delivery
                 }else{
                     
-                    let price_with_discount = (self.price + delivery) * 0
+                    let price_with_discount = (self.price) * 0
                     
-                    return price_with_discount
+                    return price_with_discount + delivery
                 }
                 
               
