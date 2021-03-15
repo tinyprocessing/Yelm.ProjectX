@@ -314,7 +314,7 @@ struct Home: View {
             
            
            
-            
+            // check payments
             if(self.payment.payment_done){
                 self.payment.payment_done = false
                 
