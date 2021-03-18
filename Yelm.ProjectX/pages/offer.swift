@@ -321,6 +321,7 @@ struct Offer: View {
                         
                         TextField("Подъезд", text: $entrance)
                             .padding(.vertical, 10)
+                            .keyboardType(.numberPad)
                             .foregroundColor(Color.init(hex: "BDBDBD"))
                             .padding(.horizontal, 10)
                             .background(Color.white)
@@ -376,7 +377,7 @@ struct Offer: View {
                     
                     TextField("Номер телефона", text: $phone)
                         .padding(.vertical, 10)
-                        .keyboardType(.namePhonePad)
+                        .keyboardType(.numberPad)
                         .foregroundColor(Color.init(hex: "BDBDBD"))
                         .padding(.horizontal, 10)
                         .background(Color.white)
