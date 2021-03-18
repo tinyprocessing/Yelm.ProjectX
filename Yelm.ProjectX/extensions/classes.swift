@@ -24,12 +24,16 @@ var GlobalVideo: video = video()
 var GlobalConfetti: confetti = confetti()
 var GlobalPromocode: promocode = promocode()
 var GlobalCategories: categories = categories()
+var GlobalCutlery: cutlery = cutlery()
 var GlobalNotificationOpen: notification_open = notification_open()
 var GlobalNotificationBanner: notification_banner = notification_banner()
 
 var GlobalWebview: loading_webview = loading_webview()
 
-
+class cutlery: ObservableObject, Identifiable {
+    var id: Int = 0
+    var count : Int = 1
+}
 
 class categories: ObservableObject, Identifiable {
     var id: Int = 0
