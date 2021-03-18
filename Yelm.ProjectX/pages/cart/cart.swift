@@ -121,7 +121,7 @@ struct Cart: View {
                                 
                                 
                                 Image(systemName: "exclamationmark.triangle")
-                                    .foregroundColor(Color.orange)
+                                    .foregroundColor(Color.black)
                                     .font(.system(size: 14, weight: .semibold, design: .rounded))
                                     .lineLimit(2)
                                 
