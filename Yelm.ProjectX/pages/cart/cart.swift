@@ -118,6 +118,28 @@ struct Cart: View {
                         VStack{
                             HStack(spacing: 10){
                                 
+                                Text("Итог: ")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                    .lineLimit(2)
+                                    .frame(height: 25)
+                                
+                                Spacer()
+                                
+                                Text("\(String(format:"%.2f", self.realm.price)) \(ServerAPI.settings.symbol)")
+                                    .foregroundColor(.black)
+                                    .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                    .lineLimit(2)
+                                    .frame(height: 25)
+                                
+                                
+                            }.padding([.top, .bottom], 5)
+                            Divider()
+                        }.padding([.trailing, .leading], 20)
+                        
+                        VStack{
+                            HStack(spacing: 10){
+                                
                                 
                                 
                                 Image("cutlery")
@@ -140,7 +162,12 @@ struct Cart: View {
                                         let generator = UIImpactFeedbackGenerator(style: .soft)
                                         generator.impactOccurred()
                                         
+                                        self.cutlery.objectWillChange.send()
+                                        if (self.cutlery.count > 1){
+                                            self.cutlery.count -= 1
+                                        }
                                         
+                                        print(self.cutlery.count)
                                      
                                     }) {
 
@@ -158,7 +185,7 @@ struct Cart: View {
                                         
                                         .buttonStyle(ScaleButtonStyle())
                                     
-                                    Text("1")
+                                    Text("\(self.cutlery.count)")
                                         .padding(.horizontal, 4)
                                     
                                     Button(action: {
@@ -166,7 +193,12 @@ struct Cart: View {
                                         let generator = UIImpactFeedbackGenerator(style: .soft)
                                         generator.impactOccurred()
                                         
+                                        self.cutlery.objectWillChange.send()
+                                        if (self.cutlery.count < 5){
+                                            self.cutlery.count += 1
+                                        }
 
+                                        print(self.cutlery.count)
                                      
                                     }) {
 
