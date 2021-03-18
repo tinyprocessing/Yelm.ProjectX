@@ -71,9 +71,12 @@ struct ModalLocation: View {
                             Image(systemName: "mappin.circle.fill")
                                 .font(.system(size: 25, weight: .medium, design: .rounded))
                                 .foregroundColor(self.location.point == row.point ? Color.theme : .gray)
+                            
+                            Text("\(row.name)")
+                            
                         }.buttonStyle(ScaleButtonStyle())
                         
-                        Text("\(row.name)")
+                      
                         Spacer()
                         VStack{
                            
@@ -137,7 +140,11 @@ struct ModalLocation: View {
                     HStack{
                         
                         Button(action: {
-                            self.showmap.toggle()
+                            if (self.realm.locations.count <= 5){
+                                self.showmap.toggle()
+                            }else{
+                                ShowAlert(title: "Уведомление", message: "Нельзя добавить более 5и адресов - удалить один из списка.")
+                            }
                         }) {
                             Image(systemName: "plus")
                                 .font(.system(size: 25, weight: .medium, design: .rounded))

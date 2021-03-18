@@ -25,7 +25,8 @@ struct MapLocations: View {
 
     var body: some View {
             
-        ZStack(alignment: .bottom) {
+        ZStack(alignment: .top){
+            ZStack(alignment: .bottom) {
             
             ZStack(alignment: .center){
             ZStack{
@@ -159,6 +160,32 @@ struct MapLocations: View {
             .padding(.bottom, 40)
             
             
+        }
+            
+            
+            HStack{
+                Button(action: {
+                    self.presentation.wrappedValue.dismiss()
+                   
+                }) {
+                    VStack{
+                        Image(systemName: "xmark")
+                            .foregroundColor(.theme_foreground)
+                            
+                            
+                    }
+                        .frame(width: 15, height: 15)
+                        .padding(10)
+                        .background(Color.theme)
+                        .clipShape(Circle())
+                       
+                }.buttonStyle(ScaleButtonStyle())
+                
+                Spacer()
+            }
+            .padding(.horizontal)
+            .padding(.top, (UIApplication.shared.keyWindow?.safeAreaInsets.bottom)!)
+            .padding(.top, notch ? 0 : 20)
         }
         
     }

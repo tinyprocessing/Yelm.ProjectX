@@ -368,7 +368,7 @@ struct Offer: View {
                     
                     
                     HStack(){
-                        Text("Получатель")
+                        Text("Номер телефона")
                             .font(.system(size: 20, weight: .semibold, design: .rounded))
                         
                         Spacer()
