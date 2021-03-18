@@ -115,27 +115,7 @@ struct Cart: View {
                         }
                         
                         
-                        VStack{
-                            HStack(spacing: 10){
-                                
-                                Text("Итог: ")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 14, weight: .semibold, design: .rounded))
-                                    .lineLimit(2)
-                                    .frame(height: 25)
-                                
-                                Spacer()
-                                
-                                Text("\(String(format:"%.2f", self.realm.price)) \(ServerAPI.settings.symbol)")
-                                    .foregroundColor(.black)
-                                    .font(.system(size: 14, weight: .semibold, design: .rounded))
-                                    .lineLimit(2)
-                                    .frame(height: 25)
-                                
-                                
-                            }.padding([.top, .bottom], 5)
-                            Divider()
-                        }.padding([.trailing, .leading], 20)
+                    
                         
                         VStack{
                             HStack(spacing: 10){
@@ -146,9 +126,9 @@ struct Cart: View {
                                     .resizable()
                                     .frame(width: 20, height: 20)
                                 
-                                Text("Количество приборов")
+                                Text("Приборы")
                                     .foregroundColor(.black)
-                                    .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                    .fontWeight(.semibold)
                                     .lineLimit(2)
                                     .frame(height: 40)
                                 
@@ -226,6 +206,24 @@ struct Cart: View {
                         }.padding([.trailing, .leading], 20)
                         
                         
+                        VStack{
+                            HStack(spacing: 10){
+                                
+                                Text("Итог ")
+                                    .fontWeight(.semibold)
+                                    .lineLimit(2)
+                                    .frame(height: 25)
+                                
+                                Spacer()
+                                
+                                Text("\(String(format:"%.2f", self.realm.price)) \(ServerAPI.settings.symbol)")
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.theme)
+                                
+                                
+                            }.padding([.top, .bottom], 5)
+                            Divider()
+                        }.padding([.trailing, .leading], 20)
                         
                         if (ServerAPI.settings.shop_id != 0){
                             VStack{
@@ -235,9 +233,10 @@ struct Cart: View {
                                     
                                     VStack(alignment: .leading, spacing: 5){
                                         Text("Доставка")
+                                            .fontWeight(.semibold)
                                             .lineLimit(2)
                                             
-                                            .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                            
                                         
                                         //
                                         
@@ -273,7 +272,7 @@ struct Cart: View {
                                         }
                                         
                                         
-                                    } .padding(.horizontal, 10)
+                                    }
                                     
                                     
                                 }.padding([.top, .bottom], 5)
