@@ -120,13 +120,12 @@ struct Cart: View {
                                 
                                 
                                 
-                                Image(systemName: "exclamationmark.triangle")
-                                    .foregroundColor(Color.black)
-                                    .font(.system(size: 14, weight: .semibold, design: .rounded))
-                                    .lineLimit(2)
+                                Image("cutlery")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
                                 
                                 Text("Количество приборов")
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.black)
                                     .font(.system(size: 14, weight: .semibold, design: .rounded))
                                     .lineLimit(2)
                                     .frame(height: 40)
