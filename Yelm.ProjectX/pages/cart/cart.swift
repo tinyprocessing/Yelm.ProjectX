@@ -20,7 +20,7 @@ struct Cart: View {
     @Environment(\.presentationMode) var presentation
     
     @ObservedObject var payment: payment = GlobalPayment
-
+    
     
     @State var time : String = ""
     @State var price : Float = 0
@@ -113,7 +113,89 @@ struct Cart: View {
                                 
                                 .padding([.trailing, .leading], 20)
                         }
+                        
+                        
+                        VStack{
+                            HStack(spacing: 10){
+                                
+                                
+                                
+                                Image(systemName: "exclamationmark.triangle")
+                                    .foregroundColor(Color.orange)
+                                    .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                    .lineLimit(2)
+                                
+                                Text("Количество приборов")
+                                    .foregroundColor(.secondary)
+                                    .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                    .lineLimit(2)
+                                    .frame(height: 40)
+                                
+                                
+                                Spacer()
+                                
+                                HStack(spacing: 5){
+                                    
+                                    Button(action: {
+                                        
+                                        let generator = UIImpactFeedbackGenerator(style: .soft)
+                                        generator.impactOccurred()
+                                        
+                                        
+                                     
+                                    }) {
 
+                                        Image(systemName: "minus")
+                                            .foregroundColor(Color.theme_foreground)
+                                            .frame(width: 12, height: 12, alignment: .center)
+                                            .padding([.top, .leading, .bottom, .trailing], 7)
+
+                                            .font(.system(size: 12, weight: .bold, design: .rounded))
+
+                                            .background(Color.theme)
+                                            .clipShape(Circle())
+
+                                    }
+                                        
+                                        .buttonStyle(ScaleButtonStyle())
+                                    
+                                    Text("1")
+                                        .padding(.horizontal, 4)
+                                    
+                                    Button(action: {
+                                        
+                                        let generator = UIImpactFeedbackGenerator(style: .soft)
+                                        generator.impactOccurred()
+                                        
+
+                                     
+                                    }) {
+
+                                        Image(systemName: "plus")
+                                            .foregroundColor(Color.theme_foreground)
+                                            .frame(width: 12, height: 12, alignment: .center)
+                                            .padding([.top, .leading, .bottom, .trailing], 7)
+
+                                            .font(.system(size: 12, weight: .bold, design: .rounded))
+
+                                            .background(Color.theme)
+                                            .clipShape(Circle())
+
+                                    }
+                                        
+                                        .buttonStyle(ScaleButtonStyle())
+                                    
+                                    
+                                } .padding(.leading, 10)
+                                
+                                
+                                
+                            }.padding([.top, .bottom], 5)
+                            Divider()
+                        }.padding([.trailing, .leading], 20)
+                        
+                        
+                        
                         if (ServerAPI.settings.shop_id != 0){
                             VStack{
                                 HStack(spacing: 0){
@@ -126,7 +208,7 @@ struct Cart: View {
                                             
                                             .font(.system(size: 18, weight: .semibold, design: .rounded))
                                         
-    //
+                                        //
                                         
                                         if (ServerAPI.settings.order_free_delivery_price > self.realm.price){
                                             
@@ -137,8 +219,8 @@ struct Cart: View {
                                                 .frame(height: 40)
                                             
                                         }
-
-//
+                                        
+                                        //
                                         
                                     }
                                     
@@ -158,7 +240,7 @@ struct Cart: View {
                                                 .foregroundColor(.green)
                                             
                                         }
-                                   
+                                        
                                         
                                     } .padding(.horizontal, 10)
                                     
@@ -170,29 +252,29 @@ struct Cart: View {
                         
                         
                         if (ServerAPI.settings.order_minimal_price > self.realm.price){
-                           
+                            
                             
                             VStack{
                                 HStack(spacing: 10){
                                     
                                     
                                     
-                                        Image(systemName: "exclamationmark.triangle")
-                                            .foregroundColor(Color.orange)
-                                            .font(.system(size: 14, weight: .semibold, design: .rounded))
-                                            .lineLimit(2)
-    
-                                        Text("Минимальная сумма заказа - \( String(format:"%.2f", ServerAPI.settings.order_minimal_price)) \(ServerAPI.settings.symbol)")
-                                            .foregroundColor(.secondary)
-                                            .font(.system(size: 14, weight: .semibold, design: .rounded))
-                                            .lineLimit(2)
-                                            .frame(height: 40)
-                                        
-                                        
+                                    Image(systemName: "exclamationmark.triangle")
+                                        .foregroundColor(Color.orange)
+                                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                        .lineLimit(2)
+                                    
+                                    Text("Минимальная сумма заказа - \( String(format:"%.2f", ServerAPI.settings.order_minimal_price)) \(ServerAPI.settings.symbol)")
+                                        .foregroundColor(.secondary)
+                                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                        .lineLimit(2)
+                                        .frame(height: 40)
+                                    
+                                    
                                     
                                     
                                     Spacer()
-                                 
+                                    
                                     
                                 }.padding([.top, .bottom], 5)
                                 Divider()
@@ -203,29 +285,29 @@ struct Cart: View {
                         
                         
                         if (ServerAPI.settings.shop_id == 0){
-                           
+                            
                             
                             VStack{
                                 HStack(spacing: 10){
                                     
                                     
                                     
-                                        Image(systemName: "exclamationmark.triangle")
-                                            .foregroundColor(Color.orange)
-                                            .font(.system(size: 14, weight: .semibold, design: .rounded))
-                                            .lineLimit(2)
-    
-                                        Text("Доставка по этому адресу недоступна")
-                                            .foregroundColor(.secondary)
-                                            .font(.system(size: 14, weight: .semibold, design: .rounded))
-                                            .lineLimit(2)
-                                            .frame(height: 40)
-                                        
-                                        
+                                    Image(systemName: "exclamationmark.triangle")
+                                        .foregroundColor(Color.orange)
+                                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                        .lineLimit(2)
+                                    
+                                    Text("Доставка по этому адресу недоступна")
+                                        .foregroundColor(.secondary)
+                                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                        .lineLimit(2)
+                                        .frame(height: 40)
+                                    
+                                    
                                     
                                     
                                     Spacer()
-                                 
+                                    
                                     
                                 }.padding([.top, .bottom], 5)
                                 Divider()
@@ -285,14 +367,14 @@ struct Cart: View {
                                 ShowAlert(title: "Адрес", message: "Доставка в данном регионе не производится.")
                                 open_offer = false
                             }
-                           
+                            
                         })
                         
                         
                         
                         
-//                        Кнопка для покупки
-//                        Данные о сумме заказа
+                        //                        Кнопка для покупки
+                        //                        Данные о сумме заказа
                     }.padding([.trailing, .leading], 20)
                 }
                 .padding(.bottom, 40)
@@ -332,7 +414,7 @@ struct Cart: View {
             if (self.payment.payment_done){
                 self.presentation.wrappedValue.dismiss()
             }
-
+            
             
         }
         
