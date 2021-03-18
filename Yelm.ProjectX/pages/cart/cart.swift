@@ -15,6 +15,8 @@ struct Cart: View {
     @ObservedObject var realm: RealmControl = GlobalRealm
     @ObservedObject var cart: cart = GlobalCart
     @ObservedObject var bottom: bottom = GlobalBottom
+    @ObservedObject var cutlery: cutlery = GlobalCutlery
+    
     @Environment(\.presentationMode) var presentation
     
     @ObservedObject var payment: payment = GlobalPayment
