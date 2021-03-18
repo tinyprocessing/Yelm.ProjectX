@@ -188,7 +188,7 @@ struct MapCreatePoint: UIViewRepresentable {
         
 //        userLocationLayer.setAnchorWithAnchorNormal(CGPoint(x: 0.5 * YandexMap.frame.size.width * scale, y: 0.5 * YandexMap.frame.size.height * scale), anchorCourse: CGPoint(x: 0.5 * YandexMap.frame.size.width * scale, y: 0.83 * YandexMap.frame.size.height * scale))
        
-        let TARGET_LOCATION_new = YMKPoint(latitude: 55.751244, longitude: 37.618423)
+        let TARGET_LOCATION_new = YMKPoint(latitude: 54.782635, longitude: 32.045251)
         
         YandexMap.mapWindow.map.move(
                   with: YMKCameraPosition(target: TARGET_LOCATION_new, zoom: 15, azimuth: 0, tilt: 0),
@@ -205,7 +205,7 @@ struct MapCreatePoint: UIViewRepresentable {
                
             
             #if targetEnvironment(simulator)
-                let TARGET_LOCATION = YMKPoint(latitude: 55.751244, longitude: 37.618423)
+                let TARGET_LOCATION = YMKPoint(latitude: 54.782635, longitude: 32.045251)
 
                 
                 YandexMap.mapWindow.map.move(
@@ -224,7 +224,7 @@ struct MapCreatePoint: UIViewRepresentable {
             
         }else{
             
-            let TARGET_LOCATION = YMKPoint(latitude: 55.751244, longitude: 37.618423)
+            let TARGET_LOCATION = YMKPoint(latitude: 54.782635, longitude: 32.045251)
 
             
             YandexMap.mapWindow.map.move(

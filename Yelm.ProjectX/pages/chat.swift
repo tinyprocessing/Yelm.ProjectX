@@ -299,7 +299,7 @@ struct Chat : View {
                     }else{
                         Spacer()
                         VStack(spacing: 5){
-                            Text("🥺")
+                            Text("☺️")
                                 .font(.system(size: 40))
                             
                             Text("Мы очень рады с Вами пообщаться")
