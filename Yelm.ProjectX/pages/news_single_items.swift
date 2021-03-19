@@ -246,6 +246,7 @@ struct ItemsInNews : View {
                     
                     .simultaneousGesture(TapGesture().onEnded{
                         ServerAPI.settings.log(action: "open_item_from_news", about: "\(tag.id)")
+                        open_item = true
                         let item = tag
                         self.item.item = item
                     })
@@ -262,6 +263,7 @@ struct ItemsInNews : View {
             }
             
         }
+            
         }.onAppear{
             
             print(self.items)

@@ -216,6 +216,8 @@ struct Cart: View {
                                 
                                 Spacer()
                                 
+                               
+                                
                                 Text("\(String(format:"%.2f", self.realm.price)) \(ServerAPI.settings.symbol)")
                                     .fontWeight(.semibold)
                                     .foregroundColor(.theme)
@@ -363,9 +365,16 @@ struct Cart: View {
                             Text("\(String(format:"%.2f", self.realm.get_price_full())) \(ServerAPI.settings.symbol)")
                                 .font(.system(size: 20, weight: .bold, design: .rounded))
                                 .foregroundColor(.theme)
-                            Text("\(self.time) мин")
-                                .font(.system(size: 12, weight: .semibold, design: .rounded))
-                                .foregroundColor(.secondary)
+                            
+                            HStack{
+                                Image(systemName: "clock")
+                                    .font(.system(size: 12, weight: .semibold, design: .rounded))
+                                    .foregroundColor(.secondary)
+                                
+                                Text("\(self.time) мин")
+                                    .font(.system(size: 12, weight: .semibold, design: .rounded))
+                                    .foregroundColor(.secondary)
+                            }
                         }
                         
                         

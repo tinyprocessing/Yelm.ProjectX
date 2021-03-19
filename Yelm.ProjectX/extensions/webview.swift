@@ -53,7 +53,6 @@ struct HTMLStringView: UIViewRepresentable {
                 DispatchQueue.main.async {
                     self.status.height = 0
                     self.status.height = response as! CGFloat
-                    print(response)
                     print("I has found height")
                 }
             }
@@ -87,5 +86,7 @@ struct HTMLStringView: UIViewRepresentable {
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
     
+    
+        
     }
 }

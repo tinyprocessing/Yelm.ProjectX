@@ -213,11 +213,6 @@ struct Home: View {
                                             ZStack{
                                             Image(systemName: "bubble.left").font(.system(size: 18, weight: .medium, design: .rounded))
 
-//                                                if (self.chat.core.socket_state == false){
-//                                                    Circle()
-//                                                        .fill(Color.orange)
-//                                                        .frame(width: 1, height: 1)
-//                                                }
                                             }
                                         }
 

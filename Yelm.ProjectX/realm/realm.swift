@@ -23,7 +23,8 @@ class RealmControl: ObservableObject, Identifiable {
     @Published var start_price: Float = 0
     @ObservedObject var promocode : promocode = GlobalPromocode
 
-    
+    @ObservedObject var banner : notification_banner = GlobalNotificationBanner
+
     
     
     let realm : Realm
@@ -429,6 +430,19 @@ class RealmControl: ObservableObject, Identifiable {
                 removable.forEach { (item) in
                     print(item)
                     self.set_count(ID: item.item_id, count: item.count)
+                }
+                
+                if (removable.count > 0){
+                    
+                    self.banner.objectWillChange.send()
+                    self.banner.title = "Склад"
+                    self.banner.text = "Увы, больше этого товара у нас нет 😔"
+                    
+                    if (open_chat == false){
+                        self.banner.objectWillChange.send()
+                        self.banner.show = true
+                    }
+                    
                 }
                 
             }

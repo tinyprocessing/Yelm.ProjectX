@@ -25,6 +25,8 @@ struct NewsSingle : View {
     @State var width = UIScreen.main.bounds.width
     @State var show : Float = 0.0
     
+    @State var items_loaded : Bool = false
+    
     @ObservedObject var bottom: bottom = GlobalBottom
     @ObservedObject var news: news = GlobalNews
     @ObservedObject var item: items = GlobalItems
@@ -126,12 +128,11 @@ struct NewsSingle : View {
                                         
                                         if (self.news.news_single.description.count > 1){
                                             
-                                            
                                             HTMLStringView(htmlContent: self.news.news_single.description)
                                                 .frame(height: self.status.height)
                                                 .padding(.horizontal, 16)
                                                 .padding(.top, 5)
-//                                                .background(Color.theme_black_change_reverse)
+
                                             
                                             
                                         }
@@ -152,7 +153,10 @@ struct NewsSingle : View {
                                             .padding(.horizontal, 20)
                                             
                                             
-                                            ItemsInNews(items: self.items)
+                                            if (self.items_loaded){
+                                                ItemsInNews(items: self.items)
+                                            }
+                                                
                                         }
                                         
                                         
@@ -176,7 +180,7 @@ struct NewsSingle : View {
                             .padding(.vertical)
                             .background(Color.theme_black_change_reverse)
                             .cornerRadius(40)
-                            .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 40))
+//                            .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 40))
                             
                         } .background(Color.theme_black_change_reverse)
                     }
@@ -276,7 +280,7 @@ struct NewsSingle : View {
         
         
         .onAppear {
-            self.status.height = 0
+            
             
             self.bottom.hide = true
             self.nav_bar_hide = true
@@ -284,7 +288,7 @@ struct NewsSingle : View {
             ServerAPI.news.get_news_items(id: self.news.news_single.id) { (load, items) in
                 if (load){
                     self.items = items
-                    print(items)
+                    self.items_loaded = true
                 }
             }
         }
@@ -294,8 +298,6 @@ struct NewsSingle : View {
             if (open_item == false){
                 self.bottom.objectWillChange.send()
                 self.bottom.hide = false
-            }else{
-                open_item = false
             }
         }
     }
