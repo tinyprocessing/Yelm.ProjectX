@@ -105,14 +105,14 @@ struct Home: View {
         
         ZStack{
             
-            VStack{
+            VStack(spacing: 0){
                 
                 VStack{
                     Color.white
                 }.frame(width: UIScreen.main.bounds.width, height: 0)
                 .offset(y: -5)
                 
-                ScrollView(showsIndicators: false) {
+                
                     
                     
                     
@@ -207,19 +207,28 @@ struct Home: View {
                                 }.buttonStyle(ScaleButtonStyle())
                                 Spacer()
                                 
-                                NavigationLink(destination: Chat(), tag: "chat", selection: $selection) {
-                                    ZStack(alignment: .top){
-                                        HStack{
-                                            ZStack{
-                                            Image(systemName: "bubble.left").font(.system(size: 18, weight: .medium, design: .rounded))
+                                ZStack(alignment: .topTrailing){
+                                    NavigationLink(destination: Chat(), tag: "chat", selection: $selection) {
+                                        ZStack(alignment: .top){
+                                            HStack{
+                                                ZStack{
+                                                Image(systemName: "bubble.left").font(.system(size: 18, weight: .medium, design: .rounded))
 
+                                                }
                                             }
-                                        }
 
-                                        
-                                    }
-                                }.buttonStyle(ScaleButtonStyle())
-                              
+                                            
+                                        }
+                                    }.buttonStyle(ScaleButtonStyle())
+                                    ZStack{
+                                        Circle()
+                                            .fill(Color.red)
+                                            .frame(width: 15, height: 15)
+                                        Text("!")
+                                            .font(.system(size: 10))
+                                            .foregroundColor(.white)
+                                    }.offset(x: 5, y: -10)
+                                }
                                 
                             }.frame(width: UIScreen.main.bounds.width-30)
                             
@@ -228,6 +237,8 @@ struct Home: View {
                     }
                     .frame(width: UIScreen.main.bounds.width-30)
                     .frame(height: 50)
+                    
+                    
                     
                     ScrollView(.vertical, showsIndicators: false){
                         
@@ -245,7 +256,7 @@ struct Home: View {
                         Spacer(minLength: 100)
                     }
                     
-                }
+                
                 
                 NavigationLink(destination: Item(), tag: "open_item", selection: $selection_open) {
                   
