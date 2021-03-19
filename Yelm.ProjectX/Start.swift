@@ -115,7 +115,7 @@ struct Start: View {
             if self.banner.show {
                 VStack {
                     HStack {
-                        VStack(alignment: .leading, spacing: 2) {
+                        VStack(alignment: .leading, spacing: 3) {
                             Text(self.banner.title)
                                 .foregroundColor(.theme_black_change)
                                 .bold()
@@ -126,11 +126,9 @@ struct Start: View {
                         Spacer()
                     }
                     .background(
-                        Blur(style: .regular)
+                        Blur(style: .prominent)
                     )
                     .clipShape(CustomShape(corner: .allCorners, radii: 15))
-                    .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
-                    .shadow(color: .dropLight, radius: 15, x: -10, y: -10)
                     .foregroundColor(.primary)
                     
                     Spacer()
