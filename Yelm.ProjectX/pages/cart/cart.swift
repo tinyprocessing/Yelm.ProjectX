@@ -127,7 +127,6 @@ struct Cart: View {
                                     .frame(width: 20, height: 20)
                                 
                                 Text("Приборы")
-                                    .foregroundColor(.black)
                                     .fontWeight(.semibold)
                                     .lineLimit(2)
                                     .frame(height: 40)

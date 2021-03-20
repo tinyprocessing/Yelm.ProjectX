@@ -103,7 +103,7 @@ struct Payment: View {
                         TextField("Номер карты", text: $card)
                             .padding(.vertical, 5)
                             .foregroundColor(Color.init(hex: "828282"))
-                            .background(Color.init(hex: "FBFCFC"))
+                            .background(Color.systemGray6)
                         
                         Line().fill(Color.init(hex: "AEADAD").opacity(0.5)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1)
                     }
@@ -118,7 +118,7 @@ struct Payment: View {
                             TextField("MM/YY", text: $date)
                                 .padding(.vertical, 5)
                                 .foregroundColor(Color.init(hex: "828282"))
-                                .background(Color.init(hex: "FBFCFC"))
+                                .background(Color.systemGray6)
                                 .onReceive(Just(date)) { (count_new) in
                                     if (count < count_new.count){
                                         if (count_new.count == 2){
@@ -139,7 +139,7 @@ struct Payment: View {
                             SecureField("CVV", text: $cvv)
                                 .padding(.vertical, 5)
                                 .foregroundColor(Color.init(hex: "828282"))
-                                .background(Color.init(hex: "FBFCFC"))
+                                .background(Color.systemGray6)
                             
                             Line().fill(Color.init(hex: "AEADAD").opacity(0.5)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1)
                         }
@@ -176,7 +176,7 @@ struct Payment: View {
                 }
                 .padding(.horizontal, 10)
                 .padding(.vertical, 5)
-                .background(Color.init(hex: "FBFCFC"))
+                .background(Color.systemGray6)
                 .clipShape(CustomShape(corner: .allCorners, radii: 20))
                 .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
                 .shadow(color: .dropLight, radius: 15, x: -10, y: -10)

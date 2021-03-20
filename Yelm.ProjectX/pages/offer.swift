@@ -10,6 +10,12 @@ import SwiftUI
 import Yelm_Server
 import Yelm_Pay
 import SwiftUIX
+import UIKit
+
+@available(iOS 13.0, *)
+var osTheme: UIUserInterfaceStyle {
+    return UIScreen.main.traitCollection.userInterfaceStyle
+}
 
 struct Offer: View {
     
@@ -34,7 +40,11 @@ struct Offer: View {
     init() {
         UISegmentedControl.appearance().selectedSegmentTintColor = Color.theme.uiColor()
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: Color.theme_foreground.uiColor()], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+        if (osTheme == .dark){
+            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+        }else{
+            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black], for: .normal)
+        }
     }
     
     @State var pickerSelection = 1
@@ -236,11 +246,11 @@ struct Offer: View {
                                 .autocapitalization(UITextAutocapitalizationType.none)
                                 .foregroundColor(Color.init(hex: "BDBDBD"))
                                 .padding(.leading, 10)
-                                .background(Color.white)
+                                .background(Color(.systemGray6))
                                 .cornerRadius(8)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.init(hex: "E0E0E0"), lineWidth: 2)
+                                        .stroke(Color.systemGray6, lineWidth: 2)
                                         .opacity(0.6)
                                         .overlay(
                                             HStack{
@@ -324,7 +334,7 @@ struct Offer: View {
                             .keyboardType(.numberPad)
                             .foregroundColor(Color.init(hex: "BDBDBD"))
                             .padding(.horizontal, 10)
-                            .background(Color.white)
+                            .background(Color(.systemGray6))
                             .cornerRadius(8)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 8)
@@ -340,7 +350,7 @@ struct Offer: View {
                             .keyboardType(.numberPad)
                             .foregroundColor(Color.init(hex: "BDBDBD"))
                             .padding(.horizontal, 10)
-                            .background(Color.white)
+                            .background(Color(.systemGray6))
                             .cornerRadius(8)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 8)
@@ -356,7 +366,7 @@ struct Offer: View {
                             .keyboardType(.numberPad)
                             .foregroundColor(Color.init(hex: "BDBDBD"))
                             .padding(.horizontal, 10)
-                            .background(Color.white)
+                            .background(Color(.systemGray6))
                             .cornerRadius(8)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 8)
@@ -380,7 +390,7 @@ struct Offer: View {
                         .keyboardType(.numberPad)
                         .foregroundColor(Color.init(hex: "BDBDBD"))
                         .padding(.horizontal, 10)
-                        .background(Color.white)
+                        .background(Color(.systemGray6))
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
