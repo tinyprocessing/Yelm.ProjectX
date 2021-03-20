@@ -75,6 +75,9 @@ struct CustomCameraRepresentable: UIViewControllerRepresentable {
             if let imageData = photo.fileDataRepresentation() {
                 parent.image = UIImage(data: imageData)
                 
+                UIImageWriteToSavedPhotosAlbum(UIImage(data: imageData)!, nil, nil, nil)
+
+                
                 let base64 : String = UIImage(data: imageData)!.jpegData(compressionQuality: 0.5)?.base64EncodedString() ?? ""
                 self.chat.core.send(message: base64, type: "images")
                 

@@ -13,7 +13,7 @@ enum AppStoreReviewManager {
         
         let region = UserDefaults.standard.integer(forKey: "rating")
         print(region)
-        if (region % 10 == 0 && region != 0){
+        if (region % 25 == 0 && region != 0){
             SKStoreReviewController.requestReview()
         }
         UserDefaults.standard.set(region+1, forKey: "rating")

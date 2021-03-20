@@ -109,7 +109,7 @@ struct CartItem: View {
                     Text("\(quanity) \(type) ")
                         .foregroundColor(.secondary)
                        
-                } .padding(.horizontal, 10)
+                } .padding(.leading, 10)
                 
             
             }.padding([.top, .bottom], 5)

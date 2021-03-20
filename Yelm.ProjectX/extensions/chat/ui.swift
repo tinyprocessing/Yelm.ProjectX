@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 import Photos
 import Yelm_Server
+import UIKit
+
 
 struct Message: View {
     @State var message: String
@@ -27,6 +29,8 @@ struct Message: View {
     @State var tag : items_structure = items_structure()
     @ObservedObject var realm: RealmControl = GlobalRealm
 
+
+    
     
     @State private var rect: CGRect = CGRect()
     
@@ -73,7 +77,7 @@ struct Message: View {
                                     .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
                                     .contextMenu {
                                         Button(action: {
-                                            
+                                            UIImageWriteToSavedPhotosAlbum(proxy.uiimage, nil, nil, nil)
                                         }) {
                                             Text("Сохранить")
                                             Image(systemName: "square.and.arrow.down")
@@ -96,14 +100,7 @@ struct Message: View {
                                         .cornerRadius(15)
                                         .addBorder(message_color, width: 2, cornerRadius: 15)
                                         .contentShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
-                                        .contextMenu {
-                                            Button(action: {
-                                                
-                                            }) {
-                                                Text("Сохранить")
-                                                Image(systemName: "square.and.arrow.down")
-                                            }
-                                        }
+                                     
                                     }
                                 }.onAppear{
                                     
@@ -468,6 +465,10 @@ struct Message: View {
                                 .contextMenu {
                                     Button(action: {
                                         // change country setting
+                                        
+                                        let pasteboard = UIPasteboard.general
+                                        pasteboard.string = message
+                                        
                                     }) {
                                         Text("Скопировать")
                                         Image(systemName: "doc.on.clipboard")

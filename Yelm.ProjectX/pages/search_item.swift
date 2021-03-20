@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 import Yelm_Server
-
+import UIKit
 
 
 struct SearchItem : View {
@@ -27,6 +27,7 @@ struct SearchItem : View {
                         .resizable()
                         .frame(width: 50, height: 50)
                         .cornerRadius(8)
+                        
                 }
                 
                 VStack{
