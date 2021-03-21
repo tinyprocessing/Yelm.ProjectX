@@ -347,6 +347,38 @@ struct Cart: View {
                             
                         }
                         
+                        if (ServerAPI.settings.deliverly_type == "close"){
+                            
+                            
+                            VStack{
+                                HStack(spacing: 10){
+                                    
+                                    
+                                    
+                                    Image(systemName: "exclamationmark.triangle")
+                                        .foregroundColor(Color.orange)
+                                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                        .lineLimit(2)
+                                    
+                                    Text("Время работы: \(ServerAPI.settings.deliverly_time_work)")
+                                        .foregroundColor(.secondary)
+                                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                        .lineLimit(2)
+                                        .frame(height: 40)
+                                    
+                                    
+                                    
+                                    
+                                    Spacer()
+                                    
+                                    
+                                }.padding([.top, .bottom], 5)
+                                Divider()
+                            }.padding([.trailing, .leading], 20)
+                            
+                            
+                        }
+                        
                         Spacer(minLength: 150)
                         
                         
@@ -392,8 +424,8 @@ struct Cart: View {
                             .cornerRadius(10)
                             
                         }.buttonStyle(ScaleButtonStyle())
-                        .disabled(ServerAPI.settings.position == "lat=0&lon=0" || self.realm.price == 0 || ServerAPI.settings.shop_id == 0 || ServerAPI.settings.order_minimal_price > self.realm.price || self.time == "" ? true : false)
-                        .opacity(ServerAPI.settings.position == "lat=0&lon=0" || self.realm.price == 0 || ServerAPI.settings.shop_id == 0 || ServerAPI.settings.order_minimal_price > self.realm.price || self.time == "" ? 0.7 : 1.0)
+                        .disabled(ServerAPI.settings.position == "lat=0&lon=0" || self.realm.price == 0 || ServerAPI.settings.shop_id == 0 || ServerAPI.settings.order_minimal_price > self.realm.price || self.time == "" || ServerAPI.settings.deliverly_type == "close" ? true : false)
+                        .opacity(ServerAPI.settings.position == "lat=0&lon=0" || self.realm.price == 0 || ServerAPI.settings.shop_id == 0 || ServerAPI.settings.order_minimal_price > self.realm.price || self.time == "" || ServerAPI.settings.deliverly_type == "close" ? 0.7 : 1.0)
                         .simultaneousGesture(TapGesture().onEnded{
                             open_offer = true
                             if (ServerAPI.settings.position == "lat=0&lon=0" ){
