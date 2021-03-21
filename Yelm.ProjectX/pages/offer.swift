@@ -29,7 +29,8 @@ struct Offer: View {
     @ObservedObject var bottom: bottom = GlobalBottom
     @ObservedObject var item: items = GlobalItems
     @State var nav_bar_hide: Bool = true
-    
+    @ObservedObject var cutlery: cutlery = GlobalCutlery
+
     @ObservedObject var payment: payment = GlobalPayment
     
     
@@ -79,6 +80,7 @@ struct Offer: View {
         @ObservedObject var payment: payment = GlobalPayment
         @ObservedObject var promocode : promocode = GlobalPromocode
         @ObservedObject var bottom: bottom = GlobalBottom
+        @ObservedObject var cutlery: cutlery = GlobalCutlery
 
         @Environment(\.presenter) var presenter
 
@@ -124,6 +126,7 @@ struct Offer: View {
                 order_detail.transaction_id = YelmPay.last_transaction_id
                 order_detail.discount = Float(self.promocode.active.value)
                 order_detail.discount_type = type_promocode_load
+                order_detail.cutlery = self.cutlery.count
                 
                 ServerAPI.orders.set_order(order: order_detail) { (load) in
                     if (load){
@@ -763,6 +766,7 @@ struct Offer: View {
                 order_detail.transaction_id = YelmPay.last_transaction_id
                 order_detail.discount = Float(self.promocode.active.value)
                 order_detail.discount_type = type_promocode_load
+                order_detail.cutlery = self.cutlery.count
                 
               
                 
