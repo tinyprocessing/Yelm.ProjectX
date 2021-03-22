@@ -18,6 +18,7 @@ struct Home: View {
     @ObservedObject var item: items = GlobalItems
     @ObservedObject var categories : categories = GlobalCategories
     @ObservedObject var search : search = GlobalSearch
+    @ObservedObject var badge : chat_badge = GlobalBadge
 
 
     
@@ -207,28 +208,32 @@ struct Home: View {
                                 }.buttonStyle(ScaleButtonStyle())
                                 Spacer()
                                 
-                                ZStack(alignment: .topTrailing){
-                                    NavigationLink(destination: Chat(), tag: "chat", selection: $selection) {
-                                        ZStack(alignment: .top){
-                                            HStack{
-                                                ZStack{
-                                                Image(systemName: "bubble.left").font(.system(size: 18, weight: .medium, design: .rounded))
+                        
+                                    ZStack(alignment: .topTrailing){
+                                        NavigationLink(destination: Chat(), tag: "chat", selection: $selection) {
+                                            ZStack(alignment: .top){
+                                                HStack{
+                                                    ZStack{
+                                                    Image(systemName: "bubble.left").font(.system(size: 18, weight: .medium, design: .rounded))
 
+                                                    }
                                                 }
-                                            }
 
-                                            
+                                                
+                                            }
+                                        }.buttonStyle(ScaleButtonStyle())
+                                        if (self.badge.count > 0){
+                                            ZStack{
+                                                Circle()
+                                                    .fill(Color.red)
+                                                    .frame(width: 15, height: 15)
+                                                Text("!")
+                                                    .font(.system(size: 10))
+                                                    .foregroundColor(.white)
+                                            }.offset(x: 5, y: -10)
                                         }
-                                    }.buttonStyle(ScaleButtonStyle())
-                                    ZStack{
-                                        Circle()
-                                            .fill(Color.red)
-                                            .frame(width: 15, height: 15)
-                                        Text("!")
-                                            .font(.system(size: 10))
-                                            .foregroundColor(.white)
-                                    }.offset(x: 5, y: -10)
-                                }
+                                    }
+                                
                                 
                             }.frame(width: UIScreen.main.bounds.width-30)
                             
