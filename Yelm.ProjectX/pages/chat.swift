@@ -20,7 +20,8 @@ struct Chat : View {
     @State var time = Timer.publish(every: 0.1, on: .current, in: .tracking).autoconnect()
     
     @State var offset_moved : Bool = false
-    
+    @ObservedObject var badge : chat_badge = GlobalBadge
+
     
     @ObservedObject var chat : ChatIO = YelmChat
     
@@ -400,7 +401,8 @@ struct Chat : View {
         
         .onAppear {
             
-            
+            self.badge.objectWillChange.send()
+            self.badge.count = 0
             open_chat = true
             print("Open Chat")
             print(self.chat.chat.messages)
