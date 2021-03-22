@@ -19,7 +19,8 @@ struct Start: View {
     @ObservedObject var search : search = GlobalSearch
     @ObservedObject var categories : categories = GlobalCategories
     @ObservedObject var banner : notification_banner = GlobalNotificationBanner
-    
+
+
     @ObservedObject var news : news = GlobalNews
     @ObservedObject var modal : ModalManager = GlobalModular
 
