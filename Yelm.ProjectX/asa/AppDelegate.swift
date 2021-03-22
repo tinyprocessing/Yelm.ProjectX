@@ -19,20 +19,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     @ObservedObject var banner : notification_banner = GlobalNotificationBanner
     @ObservedObject var notification_open : notification_open = GlobalNotificationOpen
 
-    
+    @ObservedObject var badge : chat_badge = GlobalBadge
+
    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         let title = notification.request.content.title
         let subtitle = notification.request.content.body
         
-        
+      
         
         self.banner.objectWillChange.send()
         self.banner.title = title
         self.banner.text = subtitle
         
         if (open_chat == false){
+            self.badge.objectWillChange.send()
+            self.badge.count += 1
             self.banner.objectWillChange.send()
             self.banner.show = true
         }
