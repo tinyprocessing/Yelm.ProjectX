@@ -25,10 +25,17 @@ var GlobalConfetti: confetti = confetti()
 var GlobalPromocode: promocode = promocode()
 var GlobalCategories: categories = categories()
 var GlobalCutlery: cutlery = cutlery()
+var GlobalBadge: chat_badge = chat_badge()
 var GlobalNotificationOpen: notification_open = notification_open()
 var GlobalNotificationBanner: notification_banner = notification_banner()
 
 var GlobalWebview: loading_webview = loading_webview()
+
+
+class chat_badge: ObservableObject, Identifiable {
+    var id: Int = 0
+    var count : Int = 0
+}
 
 class cutlery: ObservableObject, Identifiable {
     var id: Int = 0
