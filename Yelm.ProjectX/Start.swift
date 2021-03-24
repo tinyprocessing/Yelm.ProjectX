@@ -73,7 +73,7 @@ struct Start: View {
                                 Spacer()
                                 
                                 if (true){
-                                    
+                                    HStack{
                                     Button(action: {
                                         self.selection = "cart"
                                         
@@ -89,6 +89,21 @@ struct Start: View {
                                         .cornerRadius(20)
                                         
                                     }.buttonStyle(ScaleButtonStyle())
+                                        VStack{
+                                            
+                                        }
+                                        .padding(.top)
+                                        .frame(height: 28)
+                                        
+                                        .tooltip(.leadingTop){
+                                            Text("Это корзина - тут будет все что Вы добавите!")
+                                                .lineLimit(2)
+                                                .font(.system(size: 14, weight: .bold, design: .rounded))
+                                                .foregroundColor(.white)
+                                                .frame(width: 250, height: 50)
+                                        }
+                                    }
+                                  
                                     
                                 }
                                 
@@ -96,8 +111,10 @@ struct Start: View {
                                 
                                 
                             }
+                           
                             .padding()
                             .padding(.bottom, 20)
+                          
                         }
                         
                         
