@@ -222,6 +222,7 @@ struct Home: View {
                                                 
                                             }
                                         }.buttonStyle(ScaleButtonStyle())
+                                       
                                         if (self.badge.count > 0){
                                             ZStack{
                                                 Circle()
@@ -232,34 +233,50 @@ struct Home: View {
                                                     .foregroundColor(.white)
                                             }.offset(x: 5, y: -10)
                                         }
+                                        VStack{
+                                            
+                                        }
+                                        .padding([.bottom], 20)
+                                        .tooltip(.leadingBottom){
+                                            Text("Это чат! Вы можете задать любые вопросы нам ☺️")
+                                                .lineLimit(2)
+                                                .font(.system(size: 14, weight: .bold, design: .rounded))
+                                                .foregroundColor(.white)
+                                                .frame(width: 250, height: 50)
+                                        }
                                     }
+                                   
                                 
                                 
                             }.frame(width: UIScreen.main.bounds.width-30)
+                            
+                            
+                        
                             
                         )
                         
                     }
                     .frame(width: UIScreen.main.bounds.width-30)
                     .frame(height: 50)
+                    .zIndex(1)
                     
-                    
-                    
-                    ScrollView(.vertical, showsIndicators: false){
-                        
-                        
-                       
+                
+                ScrollView(.vertical, showsIndicators: false){
 
-                        News()
 
-                        ForEach(self.items, id: \.self) { object in
-                            ItemsViewLine(items: object.items, category_id: object.id, name: object.name)
-                        }
-                        
-                        catalog()
-                        
-                        Spacer(minLength: 100)
+
+
+                    News()
+
+                    ForEach(self.items, id: \.self) { object in
+                        ItemsViewLine(items: object.items, category_id: object.id, name: object.name)
                     }
+
+                    catalog()
+
+                    Spacer(minLength: 100)
+                }.zIndex(0)
+                    
                     
                 
                 
