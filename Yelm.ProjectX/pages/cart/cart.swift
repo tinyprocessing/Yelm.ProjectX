@@ -203,7 +203,7 @@ struct Cart: View {
                             }.padding([.top, .bottom], 5)
                             Divider()
                         }.padding([.trailing, .leading], 20)
-                        
+                        .zIndex(-1)
                         
                         VStack{
                             HStack(spacing: 10){
@@ -225,6 +225,7 @@ struct Cart: View {
                             }.padding([.top, .bottom], 5)
                             Divider()
                         }.padding([.trailing, .leading], 20)
+                        
                         
                         if (ServerAPI.settings.shop_id != 0){
                             VStack{
