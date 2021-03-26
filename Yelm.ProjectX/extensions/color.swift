@@ -18,6 +18,8 @@ extension Color {
     static let dropLight = Color("Light")
     static var theme = Color.init(hex: "5DC837")
     static var theme_foreground = Color.white
+    static var theme_tooltips = Color.black
+    static var tooltips = Color.init(hex: "E5E7E9")
 }
 
 extension Color {
