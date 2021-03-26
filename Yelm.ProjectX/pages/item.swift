@@ -151,22 +151,34 @@ struct Item : View {
                                             if (self.item.item.amount > 5){
 
 
-                                                HStack(spacing: 2){
-                                                        Image(systemName: "shippingbox")
-                                                            .font(.system(size: 12, weight: .medium, design: .rounded))
-                                                            .padding(.leading, 5)
-                                                            .foregroundColor(.white)
+                                                HStack{
+                                                    HStack(spacing: 2){
+                                                            Image(systemName: "shippingbox")
+                                                                .font(.system(size: 12, weight: .medium, design: .rounded))
+                                                                .padding(.leading, 5)
+                                                                .foregroundColor(.white)
 
-                                                        Text("Много")
-                                                            .font(.system(size: 12, weight: .medium, design: .rounded))
-                                                            .padding(5)
-                                                            .foregroundColor(.white)
+                                                            Text("Много")
+                                                                .font(.system(size: 12, weight: .medium, design: .rounded))
+                                                                .padding(5)
+                                                                .foregroundColor(.white)
+                                                        }
+                                                        .padding(.horizontal, 10)
+                                                        .background(Color.green)
+                                                        .cornerRadius(20)
+                                                        .zIndex(1)
+
+                                                    VStack{
+                                                        
                                                     }
-                                                    .padding(.horizontal, 10)
-                                                    .background(Color.green)
-                                                    .cornerRadius(20)
-
-
+                                                    .tooltip(.leadingBottom, "store"){
+                                                        Text("Количество товара на складе")
+                                                            .lineLimit(2)
+                                                            .font(.system(size: 14, weight: .medium, design: .rounded))
+                                                            .foregroundColor(.theme_tooltips)
+                                                            .frame(width: 220, height: 30)
+                                                    }
+                                                }
 
 
                                             }
@@ -212,6 +224,7 @@ struct Item : View {
                                         HStack{
                                     if (self.item.item.amount > 5){
 
+                                        HStack{
                                         HStack(spacing: 2){
                                                 Image(systemName: "shippingbox")
                                                     .font(.system(size: 12, weight: .medium, design: .rounded))
@@ -227,6 +240,18 @@ struct Item : View {
                                             .background(Color.green)
                                             .cornerRadius(20)
                                             .padding(.top, 5)
+                                            
+                                            VStack{
+                                                
+                                            }
+                                            .tooltip(.trailingBottom, "store"){
+                                                Text("Количество товара на складе")
+                                                    .lineLimit(2)
+                                                    .font(.system(size: 14, weight: .medium, design: .rounded))
+                                                    .foregroundColor(.theme_tooltips)
+                                                    .frame(width: 220, height: 30)
+                                            }
+                                        }
                                     }
 
                                     if (self.item.item.amount < 5){
@@ -251,12 +276,13 @@ struct Item : View {
 
                                             Spacer()
                                         }.padding(.horizontal, 20)
+                                        .zIndex(10)
                                 }
 
 
                                 if (self.item.item.discount_present != "-0%"){
                                     HStack {
-                                        Text("%")
+                                        Text("%2")
                                             .foregroundColor(Color.white)
                                             .frame(width: 20, height: 20, alignment: .center)
                                             .padding([.top, .leading, .bottom, .trailing], 10)
@@ -279,6 +305,7 @@ struct Item : View {
                                     }
                                     .padding(.horizontal, 20)
                                     .padding(.top, 10)
+                                    .zIndex(-1)
 
 
                                 }
@@ -351,8 +378,10 @@ struct Item : View {
 
 
                                     }
+                                    .zIndex(0)
 
                                 }
+
 
 
 
