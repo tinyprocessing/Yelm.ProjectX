@@ -237,11 +237,11 @@ struct Home: View {
                                             
                                         }
                                         .padding([.bottom], 20)
-                                        .tooltip(.leadingBottom){
+                                        .tooltip(.leadingBottom, "chat"){
                                             Text("Это чат! Вы можете задать любые вопросы нам ☺️")
                                                 .lineLimit(2)
-                                                .font(.system(size: 14, weight: .bold, design: .rounded))
-                                                .foregroundColor(.white)
+                                                .font(.system(size: 14, weight: .medium, design: .rounded))
+                                                .foregroundColor(.theme_tooltips)
                                                 .frame(width: 250, height: 50)
                                         }
                                     }
