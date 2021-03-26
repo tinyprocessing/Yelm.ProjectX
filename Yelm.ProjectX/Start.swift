@@ -95,11 +95,11 @@ struct Start: View {
                                         .padding(.top)
                                         .frame(height: 28)
                                         
-                                        .tooltip(.leadingTop){
+                                        .tooltip(.leadingTop, "cart"){
                                             Text("Это корзина - тут будет все что Вы добавите!")
                                                 .lineLimit(2)
-                                                .font(.system(size: 14, weight: .bold, design: .rounded))
-                                                .foregroundColor(.white)
+                                                .font(.system(size: 14, weight: .medium, design: .rounded))
+                                                .foregroundColor(.theme_tooltips)
                                                 .frame(width: 250, height: 50)
                                         }
                                     }
