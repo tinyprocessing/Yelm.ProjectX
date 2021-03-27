@@ -116,7 +116,7 @@
 		D4C6FA4A260BBAEB003DC4A1 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C6FA42260BBAEB003DC4A1 /* extension.swift */; };
 		D4C6FA4B260BBAEB003DC4A1 /* setup_config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C6FA44260BBAEB003DC4A1 /* setup_config.swift */; };
 		D4C6FA4C260BBAEB003DC4A1 /* defaults_config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C6FA45260BBAEB003DC4A1 /* defaults_config.swift */; };
-		D4C6FA4D260BBAEB003DC4A1 /* arraow_config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C6FA46260BBAEB003DC4A1 /* arraow_config.swift */; };
+		D4C6FA4D260BBAEB003DC4A1 /* arrow_config.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C6FA46260BBAEB003DC4A1 /* arrow_config.swift */; };
 		D4DFA14125F8B37700E608C8 /* Yelm.Pay in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14025F8B37700E608C8 /* Yelm.Pay */; };
 		D4DFA14525F8B39700E608C8 /* Yelm.Chat in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14425F8B39700E608C8 /* Yelm.Chat */; };
 		D4DFA14E25F8B72100E608C8 /* Yelm.Server in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14D25F8B72100E608C8 /* Yelm.Server */; };
@@ -234,7 +234,7 @@
 		D4C6FA42260BBAEB003DC4A1 /* extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		D4C6FA44260BBAEB003DC4A1 /* setup_config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setup_config.swift; sourceTree = "<group>"; };
 		D4C6FA45260BBAEB003DC4A1 /* defaults_config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defaults_config.swift; sourceTree = "<group>"; };
-		D4C6FA46260BBAEB003DC4A1 /* arraow_config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = arraow_config.swift; sourceTree = "<group>"; };
+		D4C6FA46260BBAEB003DC4A1 /* arrow_config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = arrow_config.swift; sourceTree = "<group>"; };
 		D4DFA15025F8D27900E608C8 /* rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rating.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -654,7 +654,7 @@
 			children = (
 				D4C6FA44260BBAEB003DC4A1 /* setup_config.swift */,
 				D4C6FA45260BBAEB003DC4A1 /* defaults_config.swift */,
-				D4C6FA46260BBAEB003DC4A1 /* arraow_config.swift */,
+				D4C6FA46260BBAEB003DC4A1 /* arrow_config.swift */,
 			);
 			path = TooltipConfigurations;
 			sourceTree = "<group>";
@@ -895,7 +895,7 @@
 				4CDE83AD25A78A3F00F3453D /* Log.swift in Sources */,
 				4CDE83C525A78A4D00F3453D /* AnimatedImageView.swift in Sources */,
 				4CAA9F6D25B83B04005CEB96 /* subcategoies_grid.swift in Sources */,
-				D4C6FA4D260BBAEB003DC4A1 /* arraow_config.swift in Sources */,
+				D4C6FA4D260BBAEB003DC4A1 /* arrow_config.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
