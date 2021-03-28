@@ -18,7 +18,7 @@ var open_item = false
 // avestal - 6005869caa1c32.27974459
 var platform : String = "5fd33466e17963.29052139"
 var merchant : String = "merchant.5fd33466e17963.29052139.yelm.io"
-
+var distribution : Bool = false
 
 var notch: Bool {
     if #available(iOS 11.0, tvOS 11.0, *) {
