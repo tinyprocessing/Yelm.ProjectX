@@ -89,19 +89,19 @@ struct Start: View {
                                         .cornerRadius(20)
                                         
                                     }.buttonStyle(ScaleButtonStyle())
-                                        VStack{
-                                            
-                                        }
-                                        .padding(.top)
-                                        .frame(height: 28)
-                                        
-                                        .tooltip(.leadingTop, "cart"){
-                                            Text("Это корзина - тут будет все что Вы добавите!")
-                                                .lineLimit(2)
-                                                .font(.system(size: 14, weight: .medium, design: .rounded))
-                                                .foregroundColor(.theme_tooltips)
-                                                .frame(width: 250, height: 50)
-                                        }
+//                                        VStack{
+//                                            
+//                                        }
+//                                        .padding(.top)
+//                                        .frame(height: 28)
+//                                        
+//                                        .tooltip(.leadingTop, "cart"){
+//                                            Text("Это корзина - тут будет все что Вы добавите!")
+//                                                .lineLimit(2)
+//                                                .font(.system(size: 14, weight: .medium, design: .rounded))
+//                                                .foregroundColor(.theme_tooltips)
+//                                                .frame(width: 250, height: 50)
+//                                        }
                                     }
                                   
                                     
