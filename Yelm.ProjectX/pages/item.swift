@@ -168,16 +168,16 @@ struct Item : View {
                                                         .cornerRadius(20)
                                                         .zIndex(1)
 
-                                                    VStack{
-                                                        
-                                                    }
-                                                    .tooltip(.leadingBottom, "store"){
-                                                        Text("Количество товара на складе")
-                                                            .lineLimit(2)
-                                                            .font(.system(size: 14, weight: .medium, design: .rounded))
-                                                            .foregroundColor(.theme_tooltips)
-                                                            .frame(width: 220, height: 30)
-                                                    }
+//                                                    VStack{
+//
+//                                                    }
+//                                                    .tooltip(.leadingBottom, "store"){
+//                                                        Text("Количество товара на складе")
+//                                                            .lineLimit(2)
+//                                                            .font(.system(size: 14, weight: .medium, design: .rounded))
+//                                                            .foregroundColor(.theme_tooltips)
+//                                                            .frame(width: 220, height: 30)
+//                                                    }
                                                 }
 
 
@@ -241,16 +241,16 @@ struct Item : View {
                                             .cornerRadius(20)
                                             .padding(.top, 5)
                                             
-                                            VStack{
-                                                
-                                            }
-                                            .tooltip(.trailingBottom, "store"){
-                                                Text("Количество товара на складе")
-                                                    .lineLimit(2)
-                                                    .font(.system(size: 14, weight: .medium, design: .rounded))
-                                                    .foregroundColor(.theme_tooltips)
-                                                    .frame(width: 220, height: 30)
-                                            }
+//                                            VStack{
+//                                                
+//                                            }
+//                                            .tooltip(.trailingBottom, "store"){
+//                                                Text("Количество товара на складе")
+//                                                    .lineLimit(2)
+//                                                    .font(.system(size: 14, weight: .medium, design: .rounded))
+//                                                    .foregroundColor(.theme_tooltips)
+//                                                    .frame(width: 220, height: 30)
+//                                            }
                                         }
                                     }
 
