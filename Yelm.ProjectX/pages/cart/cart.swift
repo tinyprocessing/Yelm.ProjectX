@@ -117,93 +117,93 @@ struct Cart: View {
                         
                     
                         
-                        VStack{
-                            HStack(spacing: 10){
-                                
-                                
-                                
-                                Image("cutlery")
-                                    .resizable()
-                                    .frame(width: 20, height: 20)
-                                
-                                Text("Приборы")
-                                    .fontWeight(.semibold)
-                                    .lineLimit(2)
-                                    .frame(height: 40)
-                                
-                                
-                                Spacer()
-                                
-                                HStack(spacing: 5){
-                                    
-                                    Button(action: {
-                                        
-                                        let generator = UIImpactFeedbackGenerator(style: .soft)
-                                        generator.impactOccurred()
-                                        
-                                        self.cutlery.objectWillChange.send()
-                                        if (self.cutlery.count > 1){
-                                            self.cutlery.count -= 1
-                                        }
-                                        
-                                        print(self.cutlery.count)
-                                     
-                                    }) {
-
-                                        Image(systemName: "minus")
-                                            .foregroundColor(Color.theme_foreground)
-                                            .frame(width: 12, height: 12, alignment: .center)
-                                            .padding([.top, .leading, .bottom, .trailing], 7)
-
-                                            .font(.system(size: 12, weight: .bold, design: .rounded))
-
-                                            .background(Color.theme)
-                                            .clipShape(Circle())
-
-                                    }
-                                        
-                                        .buttonStyle(ScaleButtonStyle())
-                                    
-                                    Text("\(self.cutlery.count)")
-                                        .padding(.horizontal, 4)
-                                    
-                                    Button(action: {
-                                        
-                                        let generator = UIImpactFeedbackGenerator(style: .soft)
-                                        generator.impactOccurred()
-                                        
-                                        self.cutlery.objectWillChange.send()
-                                        if (self.cutlery.count < 5){
-                                            self.cutlery.count += 1
-                                        }
-
-                                        print(self.cutlery.count)
-                                     
-                                    }) {
-
-                                        Image(systemName: "plus")
-                                            .foregroundColor(Color.theme_foreground)
-                                            .frame(width: 12, height: 12, alignment: .center)
-                                            .padding([.top, .leading, .bottom, .trailing], 7)
-
-                                            .font(.system(size: 12, weight: .bold, design: .rounded))
-
-                                            .background(Color.theme)
-                                            .clipShape(Circle())
-
-                                    }
-                                        
-                                        .buttonStyle(ScaleButtonStyle())
-                                    
-                                    
-                                } .padding(.leading, 10)
-                                
-                                
-                                
-                            }.padding([.top, .bottom], 5)
-                            Divider()
-                        }.padding([.trailing, .leading], 20)
-                        .zIndex(-1)
+//                        VStack{
+//                            HStack(spacing: 10){
+//
+//                                
+//
+//                                Image("cutlery")
+//                                    .resizable()
+//                                    .frame(width: 20, height: 20)
+//
+//                                Text("Приборы")
+//                                    .fontWeight(.semibold)
+//                                    .lineLimit(2)
+//                                    .frame(height: 40)
+//
+//
+//                                Spacer()
+//
+//                                HStack(spacing: 5){
+//
+//                                    Button(action: {
+//
+//                                        let generator = UIImpactFeedbackGenerator(style: .soft)
+//                                        generator.impactOccurred()
+//
+//                                        self.cutlery.objectWillChange.send()
+//                                        if (self.cutlery.count > 1){
+//                                            self.cutlery.count -= 1
+//                                        }
+//
+//                                        print(self.cutlery.count)
+//
+//                                    }) {
+//
+//                                        Image(systemName: "minus")
+//                                            .foregroundColor(Color.theme_foreground)
+//                                            .frame(width: 12, height: 12, alignment: .center)
+//                                            .padding([.top, .leading, .bottom, .trailing], 7)
+//
+//                                            .font(.system(size: 12, weight: .bold, design: .rounded))
+//
+//                                            .background(Color.theme)
+//                                            .clipShape(Circle())
+//
+//                                    }
+//
+//                                        .buttonStyle(ScaleButtonStyle())
+//
+//                                    Text("\(self.cutlery.count)")
+//                                        .padding(.horizontal, 4)
+//
+//                                    Button(action: {
+//
+//                                        let generator = UIImpactFeedbackGenerator(style: .soft)
+//                                        generator.impactOccurred()
+//
+//                                        self.cutlery.objectWillChange.send()
+//                                        if (self.cutlery.count < 5){
+//                                            self.cutlery.count += 1
+//                                        }
+//
+//                                        print(self.cutlery.count)
+//
+//                                    }) {
+//
+//                                        Image(systemName: "plus")
+//                                            .foregroundColor(Color.theme_foreground)
+//                                            .frame(width: 12, height: 12, alignment: .center)
+//                                            .padding([.top, .leading, .bottom, .trailing], 7)
+//
+//                                            .font(.system(size: 12, weight: .bold, design: .rounded))
+//
+//                                            .background(Color.theme)
+//                                            .clipShape(Circle())
+//
+//                                    }
+//
+//                                        .buttonStyle(ScaleButtonStyle())
+//
+//
+//                                } .padding(.leading, 10)
+//
+//
+//
+//                            }.padding([.top, .bottom], 5)
+//                            Divider()
+//                        }.padding([.trailing, .leading], 20)
+//                        .zIndex(-1)
                         
                         VStack{
                             HStack(spacing: 10){
