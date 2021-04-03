@@ -111,27 +111,27 @@ struct CartItem: View {
                        
                 } .padding(.leading, 10)
                 
-                if (title == "Курица гриль"){
-                    HStack{
-                    Image(systemName: "flame.fill")
-                        .foregroundColor(.red)
-                        .font(.system(size: 20))
-                        .padding(.leading)
-                        .zIndex(10)
-                        
-                        VStack{
-                            
-                        }
-                        .padding(.bottom, 10)
-                        .tooltip(.leadingBottom, "store"){
-                            Text("Мы сами подогрем Вашу еду")
-                                .lineLimit(2)
-                                .font(.system(size: 14, weight: .medium, design: .rounded))
-                                .foregroundColor(.theme_tooltips)
-                                .frame(width: 220, height: 30)
-                        }
-                    }
-                }
+//                if (title == "Курица гриль"){
+//                    HStack{
+//                    Image(systemName: "flame.fill")
+//                        .foregroundColor(.red)
+//                        .font(.system(size: 20))
+//                        .padding(.leading)
+//                        .zIndex(10)
+//                        
+//                        VStack{
+//                            
+//                        }
+//                        .padding(.bottom, 10)
+//                        .tooltip(.leadingBottom, "store"){
+//                            Text("Мы сами подогрем Вашу еду")
+//                                .lineLimit(2)
+//                                .font(.system(size: 14, weight: .medium, design: .rounded))
+//                                .foregroundColor(.theme_tooltips)
+//                                .frame(width: 220, height: 30)
+//                        }
+//                    }
+//                }
                 
             
             }.padding([.top, .bottom], 5)
