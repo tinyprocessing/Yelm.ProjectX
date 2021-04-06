@@ -233,17 +233,7 @@ struct Home: View {
                                                     .foregroundColor(.white)
                                             }.offset(x: 5, y: -10)
                                         }
-//                                        VStack{
-//
-//                                        }
-//                                        .padding([.bottom], 20)
-//                                        .tooltip(.leadingBottom, "chat"){
-//                                            Text("Это чат! Вы можете задать любые вопросы нам ☺️")
-//                                                .lineLimit(2)
-//                                                .font(.system(size: 14, weight: .medium, design: .rounded))
-//                                                .foregroundColor(.theme_tooltips)
-//                                                .frame(width: 250, height: 50)
-//                                        }
+
                                     }
                                    
                                 
