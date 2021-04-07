@@ -48,7 +48,7 @@ struct Offer: View {
         }
     }
     
-    @State var pickerSelection = 1
+    @State var pickerSelection = 0
     
     @State var isNavigationBarHidden: Bool = true
     
@@ -509,14 +509,24 @@ struct Offer: View {
                     
                     
                     Picker(selection: $pickerSelection, label: Text("")) {
-                        Text("Карта")
-                            .tag(0)
-                            .foregroundColor(Color.theme_foreground)
-                            .font(.system(size: 16, weight: .medium, design: .rounded))
+                        if (ServerAPI.settings.payments_card){
+                            Text("Карта")
+                                .tag(0)
+                                .foregroundColor(Color.theme_foreground)
+                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                        }
                         
-                        Text("Apple Pay")
-                            .tag(1)
-                            .font(.system(size: 16, weight: .medium, design: .rounded))
+                        if (ServerAPI.settings.payments_applepay){
+                            Text("Apple Pay")
+                                .tag(1)
+                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                        }
+                        
+                        if (ServerAPI.settings.payments_placeorder){
+                            Text("Оформить")
+                                .tag(2)
+                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                        }
                     }.pickerStyle(SegmentedPickerStyle())
                     
                     
@@ -635,7 +645,9 @@ struct Offer: View {
                         .opacity(self.floor == "" || self.entrance == "" || self.phone.count < 10 || self.apartment == "" ? 0.7 : 1.0)
                         
                         
-                    }else{
+                    }
+                    
+                    if (self.pickerSelection == 0){
                         
                         NavigationLink(destination: Payment(), tag: 100, selection: $selection) {
                             
@@ -643,6 +655,118 @@ struct Offer: View {
                             HStack{
                                 Spacer()
                                 Text("Оплатить")
+                                Spacer()
+                            }
+                            .padding(.horizontal)
+                            .padding(.vertical, 10)
+                            .background(Color.theme)
+                            .foregroundColor(.theme_foreground)
+                            .cornerRadius(10)
+                            
+                        }
+                        .frame(height: 50)
+                        .buttonStyle(ScaleButtonStyle())
+                        .clipShape(CustomShape(corner: .allCorners, radii: 10))
+                        .disabled(self.floor == "" || self.entrance == "" || self.phone.count < 10 || self.apartment == "" ? true : false)
+                        .opacity(self.floor == "" || self.entrance == "" || self.phone.count < 10 || self.apartment == "" ? 0.7 : 1.0)
+                        
+                        .simultaneousGesture(TapGesture().onEnded{
+                           
+                            UserDefaults.standard.set(self.entrance, forKey: "entrance")
+                            UserDefaults.standard.set(self.apartment, forKey: "apartment")
+                            UserDefaults.standard.set(self.phone, forKey: "phone")
+                            UserDefaults.standard.set(self.floor, forKey: "floor")
+                            
+                        })
+                        
+                    }
+                    
+                    
+                    if (self.pickerSelection == 2){
+                        
+                        Button(action: {
+                           
+                            
+                            
+                            
+                            let type_promocode_load = UserDefaults.standard.string(forKey: "promocode_type") ?? ""
+                            if (type_promocode_load != ""){
+                                
+                                
+                                if (type_promocode_load == "full"){
+                                    
+                                    self.promocode.active = promocode_structure(id: 0, type: .full, value: UserDefaults.standard.integer(forKey: "promocode_value"))
+                                }
+                                
+                                if (type_promocode_load == "delivery"){
+                                    self.promocode.active = promocode_structure(id: 0, type: .delivery, value: UserDefaults.standard.integer(forKey: "promocode_value"))
+                                }
+                                
+                                if (type_promocode_load == "percent"){
+                                    self.promocode.active = promocode_structure(id: 0, type: .percent, value: UserDefaults.standard.integer(forKey: "promocode_value"))
+                                }
+                                
+                            }
+                            
+                            
+                            let order_detail = OrdersDetail()
+                            order_detail.phone = self.phone
+                            order_detail.floor = self.floor
+                            order_detail.address = self.location.name
+                            order_detail.comment = ""
+                            order_detail.entrance = self.entrance
+                            order_detail.flat = self.apartment
+                            order_detail.items = self.realm.get_ids()
+                            order_detail.total = self.realm.price
+                            order_detail.start_price = self.realm.start_price
+                            order_detail.delivery_price = ServerAPI.settings.deliverly_price
+                            order_detail.currency_value = ServerAPI.settings.currency
+                            order_detail.shop_id = ServerAPI.settings.shop_id
+                            order_detail.payment = "placeorder"
+                            order_detail.transaction_id = "-1"
+                            order_detail.discount = Float(self.promocode.active.value)
+                            order_detail.discount_type = type_promocode_load
+                            order_detail.cutlery = self.cutlery.count
+                            
+                            
+                            
+                            ServerAPI.orders.set_order(order: order_detail) { (load) in
+                                if (load){
+                                    print("order did send")
+                                    
+                                    self.realm.clear_cart(order: true)
+                                    self.payment.payment_done = true
+                                    self.payment.payment_free = true
+                                    
+                                    UserDefaults.standard.removeObject(forKey:"promocode_value")
+                                    UserDefaults.standard.removeObject(forKey:"promocode_type")
+                                    
+                                  
+                                    self.promocode.active = promocode_structure(id: 0, type: .nonactive, value: 0)
+                                    
+
+                                    open_offer = false
+                                    
+                                    self.bottom.objectWillChange.send()
+                                    self.bottom.hide = false
+                                    
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                        windows?.rootViewController =  UIHostingController(rootView: Start())
+                                    }
+                                    
+                                    
+                                    
+                                }
+                            }
+                            
+                            
+                        }) {
+                            
+                            
+                            HStack{
+                                Spacer()
+                                Text("Заказать")
                                 Spacer()
                             }
                             .padding(.horizontal)
@@ -693,12 +817,33 @@ struct Offer: View {
         
         
         .onAppear {
+            
+            
+            
             self.nav_bar_hide = true
             self.bottom.hide = true
             
             YelmPay.apple_pay.delegate = self.paymentContextDelegate
             
             
+            var access : [Int] = []
+            if (ServerAPI.settings.payments_card == true){
+                access.append(0)
+            }
+            
+            if (ServerAPI.settings.payments_applepay == true){
+                access.append(1)
+            }
+            
+            if (ServerAPI.settings.payments_placeorder == true){
+                access.append(2)
+            }
+            
+            if (access.count > 0){
+                self.pickerSelection = access.first!
+            }else{
+                self.pickerSelection = 2
+            }
             
             self.entrance = UserDefaults.standard.string(forKey: "entrance") ?? ""
             self.apartment = UserDefaults.standard.string(forKey: "apartment") ?? ""
