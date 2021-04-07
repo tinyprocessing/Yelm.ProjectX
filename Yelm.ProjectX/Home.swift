@@ -337,10 +337,18 @@ struct Home: View {
                 self.payment.payment_done = false
                 
                 
-               
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    ShowAlert(title: "Отлично", message: "Оплата прошла успешно - детали Вашего заказа отправлены в чат.")
-                    
+               //payment_free
+                if (self.payment.payment_free){
+                    self.payment.payment_free = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        ShowAlert(title: "Отлично", message: "Детали Вашего заказа отправлены в чат.")
+                        
+                    }
+                }else{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        ShowAlert(title: "Отлично", message: "Оплата прошла успешно - детали Вашего заказа отправлены в чат.")
+                        
+                    }
                 }
 
             }
