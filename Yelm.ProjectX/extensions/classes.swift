@@ -109,6 +109,7 @@ class payment: ObservableObject, Identifiable {
     @Published var payment_done : Bool = false
     @Published var transaction : String = ""
     @Published var message : String = ""
+    @Published var payment_free : Bool = false
 }
 
 
