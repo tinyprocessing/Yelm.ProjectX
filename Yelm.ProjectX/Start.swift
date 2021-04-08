@@ -177,7 +177,8 @@ struct Start: View {
                     
                     
                     
-                    ServerAPI.settings.get_settings { (load) in
+                    DispatchQueue.main.async {
+                        ServerAPI.settings.get_settings { (load) in
                         if (load){
                             
                             
@@ -217,12 +218,16 @@ struct Start: View {
                             
                         }
                     }
+                    }
+//                    user controlls
                     let user = UserDefaults.standard.string(forKey: "USER") ?? ""
                     ServerAPI.user.username = user
                     
                   
                     
-                    if (user == ""){
+                    
+                    DispatchQueue.main.async {
+                        if (user == ""){
                         
                         ServerAPI.user.registration { (load, user) in
                             
@@ -257,39 +262,49 @@ struct Start: View {
                             }
                         }
                     }
-                    ServerAPI.items.get_items { (load, items) in
-                        if (load){
-                            DispatchQueue.main.async {
-                             self.items = items
+                    }
+                    
+                    DispatchQueue.main.async {
+                        ServerAPI.items.get_items { (load, items) in
+                            if (load){
+                                DispatchQueue.main.async {
+                                 self.items = items
+                                }
                             }
                         }
                     }
                     
-                    ServerAPI.items.get_items_all { (load, items) in
-                        if (load){
+                    DispatchQueue.main.async {
+                        ServerAPI.items.get_items_all { (load, items) in
+                            if (load){
 
-                            DispatchQueue.main.async {
-                                self.search.items = items
+                                DispatchQueue.main.async {
+                                    self.search.items = items
+                                }
+                            }else{
+                                
                             }
-                        }else{
-                            
                         }
                     }
                     
-                    ServerAPI.news.get_news { (load, news) in
-                        if (load){
-                            DispatchQueue.main.async {
-                                self.news.news = news
+                    DispatchQueue.main.async {
+                        ServerAPI.news.get_news { (load, news) in
+                            if (load){
+                                DispatchQueue.main.async {
+                                    self.news.news = news
+                                }
+                            }else{
+                                
                             }
-                        }else{
-                            
                         }
                     }
                     
-                    ServerAPI.items.get_catalog { (load, objects) in
-                        if (load){
-                            DispatchQueue.main.async {
-                                self.categories.all = objects
+                    DispatchQueue.main.async {
+                        ServerAPI.items.get_catalog { (load, objects) in
+                            if (load){
+                                DispatchQueue.main.async {
+                                    self.categories.all = objects
+                                }
                             }
                         }
                     }
