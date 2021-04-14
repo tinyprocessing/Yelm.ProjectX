@@ -60,6 +60,7 @@ struct Cart: View {
                             .padding(.top, 10)
                             .padding(.trailing, 10)
                             .buttonStyle(ScaleButtonStyle())
+                            .accessibility(identifier: "exit")
                             
                             Text("Корзина")
                                 .padding(.top, 10)

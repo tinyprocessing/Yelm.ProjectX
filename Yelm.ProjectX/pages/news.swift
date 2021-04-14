@@ -92,7 +92,7 @@ struct News : View {
                                     }.padding(.trailing, 10)
                                     
                                 }.buttonStyle(ScaleButtonStyle())
-                               
+                                .accessibility(identifier: "news")
                                 
                                 .simultaneousGesture(TapGesture().onEnded{
                                     ServerAPI.settings.log(action: "open_news", about: "\(object.id)")
@@ -115,7 +115,7 @@ struct News : View {
             }
             
         }
-        .padding(.bottom, self.news.news.count > 0 ? 10 : 0)
+//        .padding(.bottom, self.news.news.count > 0 ? 10 : 0)
       
     }
 }

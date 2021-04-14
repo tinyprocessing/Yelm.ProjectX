@@ -402,7 +402,7 @@ struct Item : View {
                         }
                         .padding(.top, 10)
                         .buttonStyle(ScaleButtonStyle())
-
+                        .accessibility(identifier: "exit")
 
 
                         Spacer()
