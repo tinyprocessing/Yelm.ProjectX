@@ -9,14 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C70235825A749BD00A750D2"
-               BuildableName = "Yelm.ProjectX.app"
-               BlueprintName = "Yelm.ProjectX"
+               BlueprintIdentifier = "D4718BBD2626EB1200E140C2"
+               BuildableName = "Yelm.ProjectXUITests.xctest"
+               BlueprintName = "Yelm.ProjectXUITests"
                ReferencedContainer = "container:Yelm.ProjectX.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,16 +50,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C70235825A749BD00A750D2"
-            BuildableName = "Yelm.ProjectX.app"
-            BlueprintName = "Yelm.ProjectX"
-            ReferencedContainer = "container:Yelm.ProjectX.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -67,16 +57,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C70235825A749BD00A750D2"
-            BuildableName = "Yelm.ProjectX.app"
-            BlueprintName = "Yelm.ProjectX"
+            BlueprintIdentifier = "D4718BBD2626EB1200E140C2"
+            BuildableName = "Yelm.ProjectXUITests.xctest"
+            BlueprintName = "Yelm.ProjectXUITests"
             ReferencedContainer = "container:Yelm.ProjectX.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
