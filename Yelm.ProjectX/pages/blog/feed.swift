@@ -13,6 +13,9 @@ import Yelm_Server
 
 struct Feed: View {
     
+    @State var selection: String? = nil
+
+    
     var body: some View{
         VStack{
             
@@ -24,8 +27,14 @@ struct Feed: View {
             }
             .padding(.leading, 15)
             
-            Feed_Item()
-                .padding(.horizontal)
+            VStack(spacing: 25){
+                
+                NavigationLink(destination: Feed_Read(), tag: "feed", selection:  $selection){
+                    Feed_Item()
+                        .padding(.horizontal)
+                }
+            
+            }
             
         }.padding(.bottom)
     }

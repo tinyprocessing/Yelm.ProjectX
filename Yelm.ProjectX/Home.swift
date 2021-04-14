@@ -258,7 +258,9 @@ struct Home: View {
 
                     News()
 
-                    Feed()
+                    if (distribution == false){
+                        Feed()
+                    }
                     
                     ForEach(self.items, id: \.self) { object in
                         ItemsViewLine(items: object.items, category_id: object.id, name: object.name)
