@@ -111,12 +111,25 @@
 		A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */; };
 		D4718B9826243A2E00E140C2 /* feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4718B9726243A2E00E140C2 /* feed.swift */; };
 		D4718B9B26243A3800E140C2 /* feed_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4718B9A26243A3800E140C2 /* feed_item.swift */; };
+		D4718B9E26244E7B00E140C2 /* feed_read.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4718B9D26244E7B00E140C2 /* feed_read.swift */; };
+		D4718BC12626EB1200E140C2 /* Yelm_ProjectXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4718BC02626EB1200E140C2 /* Yelm_ProjectXUITests.swift */; };
+		D4718BCB2626EB2100E140C2 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4718BCA2626EB2100E140C2 /* SnapshotHelper.swift */; };
 		D4B8C4A925F7EA3300B9E478 /* func.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B8C4A825F7EA3300B9E478 /* func.swift */; };
 		D4DFA14125F8B37700E608C8 /* Yelm.Pay in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14025F8B37700E608C8 /* Yelm.Pay */; };
 		D4DFA14525F8B39700E608C8 /* Yelm.Chat in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14425F8B39700E608C8 /* Yelm.Chat */; };
 		D4DFA14E25F8B72100E608C8 /* Yelm.Server in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14D25F8B72100E608C8 /* Yelm.Server */; };
 		D4DFA15125F8D27900E608C8 /* rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DFA15025F8D27900E608C8 /* rating.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D4718BC32626EB1200E140C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C70235125A749BD00A750D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C70235825A749BD00A750D2;
+			remoteInfo = Yelm.ProjectX;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1B69168527B2637AB35B1B9A /* Pods-Yelm.ProjectX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelm.ProjectX.release.xcconfig"; path = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.release.xcconfig"; sourceTree = "<group>"; };
@@ -221,6 +234,11 @@
 		736B0EF31A2553BDC8E3C2BA /* Pods-Yelm.ProjectX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelm.ProjectX.debug.xcconfig"; path = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.debug.xcconfig"; sourceTree = "<group>"; };
 		D4718B9726243A2E00E140C2 /* feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feed.swift; sourceTree = "<group>"; };
 		D4718B9A26243A3800E140C2 /* feed_item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feed_item.swift; sourceTree = "<group>"; };
+		D4718B9D26244E7B00E140C2 /* feed_read.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feed_read.swift; sourceTree = "<group>"; };
+		D4718BBE2626EB1200E140C2 /* Yelm.ProjectXUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Yelm.ProjectXUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4718BC02626EB1200E140C2 /* Yelm_ProjectXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Yelm_ProjectXUITests.swift; sourceTree = "<group>"; };
+		D4718BC22626EB1200E140C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4718BCA2626EB2100E140C2 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		D48F29B325F7CF9300570A3A /* Yelm.Pay */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Pay; path = ../../../Yelm.Pay; sourceTree = "<group>"; };
 		D48F29B425F7CF9800570A3A /* Yelm.Server */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Server; path = ../../../Yelm.Server; sourceTree = "<group>"; };
 		D48F29B525F7CFB800570A3A /* Yelm.Chat */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yelm.Chat; path = ../../../Yelm.Chat; sourceTree = "<group>"; };
@@ -249,6 +267,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4718BBB2626EB1200E140C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -274,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				4C70235B25A749BD00A750D2 /* Yelm.ProjectX */,
+				D4718BBF2626EB1200E140C2 /* Yelm.ProjectXUITests */,
 				4C70235A25A749BD00A750D2 /* Products */,
 				4C70237625A74C1200A750D2 /* Frameworks */,
 				748C13968F0BBEB99F72135E /* Pods */,
@@ -284,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				4C70235925A749BD00A750D2 /* Yelm.ProjectX.app */,
+				D4718BBE2626EB1200E140C2 /* Yelm.ProjectXUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -621,8 +648,19 @@
 			children = (
 				D4718B9726243A2E00E140C2 /* feed.swift */,
 				D4718B9A26243A3800E140C2 /* feed_item.swift */,
+				D4718B9D26244E7B00E140C2 /* feed_read.swift */,
 			);
 			path = blog;
+			sourceTree = "<group>";
+		};
+		D4718BBF2626EB1200E140C2 /* Yelm.ProjectXUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D4718BCA2626EB2100E140C2 /* SnapshotHelper.swift */,
+				D4718BC02626EB1200E140C2 /* Yelm_ProjectXUITests.swift */,
+				D4718BC22626EB1200E140C2 /* Info.plist */,
+			);
+			path = Yelm.ProjectXUITests;
 			sourceTree = "<group>";
 		};
 		D48F29B225F7CF8500570A3A /* libs */ = {
@@ -671,17 +709,39 @@
 			productReference = 4C70235925A749BD00A750D2 /* Yelm.ProjectX.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D4718BBD2626EB1200E140C2 /* Yelm.ProjectXUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4718BC72626EB1200E140C2 /* Build configuration list for PBXNativeTarget "Yelm.ProjectXUITests" */;
+			buildPhases = (
+				D4718BBA2626EB1200E140C2 /* Sources */,
+				D4718BBB2626EB1200E140C2 /* Frameworks */,
+				D4718BBC2626EB1200E140C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D4718BC42626EB1200E140C2 /* PBXTargetDependency */,
+			);
+			name = Yelm.ProjectXUITests;
+			productName = Yelm.ProjectXUITests;
+			productReference = D4718BBE2626EB1200E140C2 /* Yelm.ProjectXUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		4C70235125A749BD00A750D2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1230;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					4C70235825A749BD00A750D2 = {
 						CreatedOnToolsVersion = 12.3;
+					};
+					D4718BBD2626EB1200E140C2 = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 4C70235825A749BD00A750D2;
 					};
 				};
 			};
@@ -710,6 +770,7 @@
 			projectRoot = "";
 			targets = (
 				4C70235825A749BD00A750D2 /* Yelm.ProjectX */,
+				D4718BBD2626EB1200E140C2 /* Yelm.ProjectXUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -723,6 +784,13 @@
 				4C1BB4EA25D29DAF00604276 /* Localizable.strings in Resources */,
 				4C70236625A749BF00A750D2 /* Preview Assets.xcassets in Resources */,
 				4C70236325A749BF00A750D2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4718BBC2626EB1200E140C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +881,7 @@
 				4CDE836325A789B800F3453D /* shapes.swift in Sources */,
 				4CF55FCF25B2F5280038A4CC /* news.swift in Sources */,
 				4CF5601925B5AFA40038A4CC /* webview.swift in Sources */,
+				D4718B9E26244E7B00E140C2 /* feed_read.swift in Sources */,
 				4CDE836F25A78A3200F3453D /* FileIndex.swift in Sources */,
 				4CDE83EA25A7A26200F3453D /* gestures.swift in Sources */,
 				4CDE83E025A794BA00F3453D /* Home.swift in Sources */,
@@ -870,7 +939,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4718BBA2626EB1200E140C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4718BC12626EB1200E140C2 /* Yelm_ProjectXUITests.swift in Sources */,
+				D4718BCB2626EB2100E140C2 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D4718BC42626EB1200E140C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C70235825A749BD00A750D2 /* Yelm.ProjectX */;
+			targetProxy = D4718BC32626EB1200E140C2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4C1BB4EC25D29DAF00604276 /* Localizable.strings */ = {
@@ -1065,6 +1151,46 @@
 			};
 			name = Release;
 		};
+		D4718BC52626EB1200E140C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9DFQMR4JG9;
+				INFOPLIST_FILE = Yelm.ProjectXUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "projects.yelm.io.Yelm-ProjectXUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Yelm.ProjectX;
+			};
+			name = Debug;
+		};
+		D4718BC62626EB1200E140C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9DFQMR4JG9;
+				INFOPLIST_FILE = Yelm.ProjectXUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "projects.yelm.io.Yelm-ProjectXUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Yelm.ProjectX;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1082,6 +1208,15 @@
 			buildConfigurations = (
 				4C70236E25A749BF00A750D2 /* Debug */,
 				4C70236F25A749BF00A750D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4718BC72626EB1200E140C2 /* Build configuration list for PBXNativeTarget "Yelm.ProjectXUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4718BC52626EB1200E140C2 /* Debug */,
+				D4718BC62626EB1200E140C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
