@@ -211,7 +211,7 @@ struct NewsSingle : View {
                         }
                         .padding(.top, 10)
                         .buttonStyle(ScaleButtonStyle())
-                        
+                        .accessibility(identifier: "exit")
                         
                         
                         Spacer()
