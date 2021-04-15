@@ -187,6 +187,8 @@ struct Start: View {
                             Color.theme = Color.init(hex: ServerAPI.settings.theme)
                             Color.theme_foreground = Color.init(hex: ServerAPI.settings.foreground)
                             
+                            Color.theme_catalog = Color.init(hex: ServerAPI.settings.theme_catalog)
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 self.settings_loaded = true
                             }
