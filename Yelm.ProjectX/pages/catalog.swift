@@ -59,7 +59,7 @@ struct catalog: View {
                             }
 
                             Text(tag.name)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color.theme_catalog)
                                 .font(.system(size: 20, weight: .semibold, design: .rounded))
                                 .padding()
 

@@ -20,6 +20,7 @@ extension Color {
     static var theme_foreground = Color.white
     static var theme_tooltips = Color.black
     static var tooltips = Color.init(hex: "E5E7E9")
+    static var theme_catalog = Color.init(hex: "FFFFFF")
 }
 
 extension Color {
