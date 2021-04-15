@@ -22,4 +22,8 @@ platform :ios do
     build_app(workspace: "Yelm.ProjectX.xcworkspace", scheme: "Yelm.ProjectX")
     upload_to_testflight
   end
+
+  lane :build_project do
+    build_app(workspace: "Yelm.ProjectX.xcworkspace", scheme: "Yelm.ProjectX")
+  end
 end
