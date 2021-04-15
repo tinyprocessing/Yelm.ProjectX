@@ -12,12 +12,30 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Select Xcode Version
+      uses: mikhail-safir/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+      
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_KEY }}
+        known_hosts: ${{ secrets.KNOWN_HOSTS }}
+    
+    - name: Setup ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.7.2
+        bundler-cache: true
+        
+    - name: Install Pods
+      run: pod install
+      
+    - name: Build 
       run: |
-        pod install
-        swift build -v
-    - name: Run tests
-      run: |
-          pod install
-          swift test -v
+        export LC_ALL=en_US.UTF-8
+        export LANG=en_US.UTF-8
+        bundle exec fastlane snpashot 
