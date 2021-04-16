@@ -23,7 +23,30 @@ platform :ios do
     upload_to_testflight
   end
 
-  lane :build_project do
+  lane :build_project do |options|
+
+  	if options[:release] then
+      # Make sure the working directory does not have uncommitted changes
+      ensure_git_status_clean
+    end
+
+
+    signing_type = (options[:release] ? "appstore" : "development")
+    # Make sure we have certs and provisioning profiles
+    if is_ci?
+      # If running on CI, uses a separate keychain
+      setup_keychain_for_ci(signing_type: signing_type)
+    else
+      # If running on a user's machine, uses the default keychain
+      setup_keychain(signing_type: signing_type)
+    end
+
+	disable_automatic_code_signing(path: "Yelm.ProjectX.xcworkspace")
+
+
     build_app(workspace: "Yelm.ProjectX.xcworkspace", scheme: "Yelm.ProjectX")
+
+    enable_automatic_code_signing(path: "Yelm.ProjectX.xcodeproj")
+
   end
 end
