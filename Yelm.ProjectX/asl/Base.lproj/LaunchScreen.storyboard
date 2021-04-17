@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="enot" translatesAutoresizingMaskIntoConstraints="NO" id="Iwd-PG-Ubi">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="start" translatesAutoresizingMaskIntoConstraints="NO" id="Iwd-PG-Ubi">
                                 <rect key="frame" x="167" y="408" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="kkx-aQ-UFt"/>
@@ -39,7 +39,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="enot" width="2586" height="2225"/>
+        <image name="start" width="180" height="180"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -201,17 +201,18 @@ struct Start: View {
                                  })
                                 
                                 let region = UserDefaults.standard.integer(forKey: "rating")
-                                if (region == 0){
-                                    
-                                    self.modal.newModal(position: .closed) {
-                                        ModalLocation()
-                                            .clipped()
-                                    }
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
-                                        self.modal.openModal()
-                                    }
-                                    
-                                }
+                                
+//                                if (region == 0){
+//
+//                                    self.modal.newModal(position: .closed) {
+//                                        ModalLocation()
+//                                            .clipped()
+//                                    }
+//                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [self] in
+//                                        self.modal.openModal()
+//                                    }
+//
+//                                }
                                 
                                 AppStoreReviewManager.requestReviewIfAppropriate()
                                 
