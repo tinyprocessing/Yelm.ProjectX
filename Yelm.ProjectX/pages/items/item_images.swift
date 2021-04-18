@@ -8,10 +8,13 @@
 import SwiftUI
 import Yelm_Server
 
+
 struct item_images: View {
     
-    @State var show: Bool = true
+ 
+    
     @ObservedObject var item: items = GlobalItems
+    @ObservedObject var image_view: image_view = GlobalImageView
 
     var body: some View {
         VStack{
@@ -31,27 +34,40 @@ struct item_images: View {
             
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing: 10){
-                    
-                    Color.red
-                        .frame(width: 70, height: 70)
-                        .cornerRadius(10)
-                    
-                    Color.red
-                        .frame(width: 70, height: 70)
-                        .cornerRadius(10)
-                    
-                    Color.red
-                        .frame(width: 70, height: 70)
-                        .cornerRadius(10)
-                    
+
+                    ForEach(self.item.item.all_images, id: \.self) { image in
+
+                        Button(action: {
+                            self.image_view.objectWillChange.send()
+                            self.image_view.image = image
+                            self.image_view.objectWillChange.send()
+                            self.image_view.show = true
+                            
+                            print("press it")
+                        }) {
+
+                            URLImage(URL(string: image)!) { proxy in
+                                proxy.image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 70, height: 70)
+                                    .cornerRadius(10)
+                            }
+
+                        }
+
+                        .buttonStyle(ScaleButtonStyle())
+
+
+                    }
+
+
                 }.padding(.leading, 20)
             }
         }
+        .padding(.bottom)
+       
+       
     }
 }
 
-struct item_images_Previews: PreviewProvider {
-    static var previews: some View {
-        item_images()
-    }
-}
