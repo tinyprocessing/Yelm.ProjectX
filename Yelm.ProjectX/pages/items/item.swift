@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Yelm_Server
+import ImageViewerRemote
 
 struct Rating : View{
     
@@ -73,8 +74,8 @@ struct Item : View {
     
     var body: some View{
         
-        
-        ZStack(alignment: .bottom){
+//        VStack{
+            ZStack(alignment: .bottom){
             
             ZStack(alignment: .top){
                 ZStack(alignment: Alignment(horizontal: .center, vertical: .top)) {
@@ -262,7 +263,7 @@ struct Item : View {
 
                                 if (self.item.item.discount_present != "-0%"){
                                     HStack {
-                                        Text("%2")
+                                        Text("%")
                                             .foregroundColor(Color.white)
                                             .frame(width: 20, height: 20, alignment: .center)
                                             .padding([.top, .leading, .bottom, .trailing], 10)
@@ -354,6 +355,8 @@ struct Item : View {
                                         }
                                         
                                      
+                                        
+                                        item_images(item: self.item)
 
                                         Spacer(minLength: self.item.item.text.count > 1 ? 120 : UIScreen.main.bounds.height)
 
@@ -609,6 +612,9 @@ struct Item : View {
             
             
         }
+//        }
+//        .frame(maxWidth: .infinity, maxHeight: .infinity)
+//        .overlay(ImageViewerRemote(imageURL: self.$image_view.image, viewerShown: self.$image_view.show))
         
         .navigationBarTitle("hidden_layer")
         .navigationBarHidden(self.nav_bar_hide)
