@@ -10,6 +10,7 @@ import Yelm_Server
 import Yelm_Chat
 import ConfettiView
 
+
 struct Start: View {
     
     @ObservedObject var bottom: bottom = GlobalBottom
@@ -33,7 +34,8 @@ struct Start: View {
     @State private var selection: String? = nil
     
     @State private var isShowingConfetti: Bool = false
-    
+    @ObservedObject var image_view: image_view = GlobalImageView
+
     
     var body: some View {
         
@@ -55,6 +57,7 @@ struct Start: View {
                                 
                                 
                                 Home(items: self.$items)
+                                   
                                 
                                 
                             }
@@ -159,6 +162,9 @@ struct Start: View {
                 }
             }
         }
+        
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .overlay(ImageViewerRemote(imageURL: self.$image_view.image, viewerShown: self.$image_view.show))
         
         
         
