@@ -352,6 +352,8 @@ struct Item : View {
                                             .padding(.horizontal, 20)
                                             .clipped()
                                         }
+                                        
+                                     
 
                                         Spacer(minLength: self.item.item.text.count > 1 ? 120 : UIScreen.main.bounds.height)
 
@@ -619,6 +621,7 @@ struct Item : View {
             self.bottom.hide = true
             self.nav_bar_hide = true
             
+            print(self.item.item.all_images)
           
         }
         
