@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 import UIKit
-import URLImage
 import Combine
 
 @available(iOS 13.0, *)
