@@ -35,7 +35,6 @@
 		4CDE835C25A788DD00F3453D /* items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE835B25A788DD00F3453D /* items.swift */; };
 		4CDE836025A7899E00F3453D /* blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE835F25A7899E00F3453D /* blur.swift */; };
 		4CDE836325A789B800F3453D /* shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE836225A789B800F3453D /* shapes.swift */; };
-		4CDE836625A789D000F3453D /* color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE836525A789D000F3453D /* color.swift */; };
 		4CDE836A25A78A2A00F3453D /* URLImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE836925A78A2A00F3453D /* URLImageService.swift */; };
 		4CDE836F25A78A3200F3453D /* FileIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE836D25A78A3200F3453D /* FileIndex.swift */; };
 		4CDE837025A78A3200F3453D /* RemoteFileCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE836E25A78A3200F3453D /* RemoteFileCacheService.swift */; };
@@ -109,6 +108,8 @@
 		4CF5601C25B7124F0038A4CC /* subcategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF5601B25B7124E0038A4CC /* subcategories.swift */; };
 		4CF5602125B716FF0038A4CC /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = 4CF5602025B716FF0038A4CC /* Grid */; };
 		A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */; };
+		D44DF5DB2639617E005CE414 /* scanner_preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF5DA2639617E005CE414 /* scanner_preview.swift */; };
+		D44DF5E32639621A005CE414 /* color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF5E22639621A005CE414 /* color.swift */; };
 		D4718B9826243A2E00E140C2 /* feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4718B9726243A2E00E140C2 /* feed.swift */; };
 		D4718B9B26243A3800E140C2 /* feed_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4718B9A26243A3800E140C2 /* feed_item.swift */; };
 		D4718B9E26244E7B00E140C2 /* feed_read.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4718B9D26244E7B00E140C2 /* feed_read.swift */; };
@@ -161,7 +162,6 @@
 		4CDE835B25A788DD00F3453D /* items.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = items.swift; sourceTree = "<group>"; };
 		4CDE835F25A7899E00F3453D /* blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = blur.swift; sourceTree = "<group>"; };
 		4CDE836225A789B800F3453D /* shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shapes.swift; sourceTree = "<group>"; };
-		4CDE836525A789D000F3453D /* color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = color.swift; sourceTree = "<group>"; };
 		4CDE836925A78A2A00F3453D /* URLImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLImageService.swift; sourceTree = "<group>"; };
 		4CDE836D25A78A3200F3453D /* FileIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileIndex.swift; sourceTree = "<group>"; };
 		4CDE836E25A78A3200F3453D /* RemoteFileCacheService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteFileCacheService.swift; sourceTree = "<group>"; };
@@ -234,6 +234,8 @@
 		4CF5601B25B7124E0038A4CC /* subcategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subcategories.swift; sourceTree = "<group>"; };
 		58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yelm_ProjectX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		736B0EF31A2553BDC8E3C2BA /* Pods-Yelm.ProjectX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yelm.ProjectX.debug.xcconfig"; path = "Target Support Files/Pods-Yelm.ProjectX/Pods-Yelm.ProjectX.debug.xcconfig"; sourceTree = "<group>"; };
+		D44DF5DA2639617E005CE414 /* scanner_preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scanner_preview.swift; sourceTree = "<group>"; };
+		D44DF5E22639621A005CE414 /* color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = color.swift; sourceTree = "<group>"; };
 		D4718B9726243A2E00E140C2 /* feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feed.swift; sourceTree = "<group>"; };
 		D4718B9A26243A3800E140C2 /* feed_item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feed_item.swift; sourceTree = "<group>"; };
 		D4718B9D26244E7B00E140C2 /* feed_read.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feed_read.swift; sourceTree = "<group>"; };
@@ -384,7 +386,6 @@
 				4CDE835F25A7899E00F3453D /* blur.swift */,
 				4CDE836225A789B800F3453D /* shapes.swift */,
 				D4DFA15025F8D27900E608C8 /* rating.swift */,
-				4CDE836525A789D000F3453D /* color.swift */,
 				4CDE83CE25A78B2000F3453D /* buttons.swift */,
 				4CDE83E325A797FA00F3453D /* animations.swift */,
 				4CDE83E625A79C0900F3453D /* classes.swift */,
@@ -394,6 +395,7 @@
 				4CDE843325A9F15500F3453D /* variables.swift */,
 				4CF5601825B5AFA40038A4CC /* webview.swift */,
 				D4B8C4A825F7EA3300B9E478 /* func.swift */,
+				D44DF5E22639621A005CE414 /* color.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -401,6 +403,7 @@
 		4CDE835A25A788C400F3453D /* pages */ = {
 			isa = PBXGroup;
 			children = (
+				D44DF5D926396169005CE414 /* scanner */,
 				D490E63E262CAD8600362345 /* items */,
 				D4718B9626243A1B00E140C2 /* blog */,
 				4CDE842F25A9EFC300F3453D /* offer.swift */,
@@ -413,10 +416,10 @@
 				4CF5601B25B7124E0038A4CC /* subcategories.swift */,
 				4CAA9F6C25B83B04005CEB96 /* subcategoies_grid.swift */,
 				4CAA9F7025B83D78005CEB96 /* subcategories_grid_item.swift */,
-				4C192AFC25BCD44C00059597 /* payment.swift */,
 				4C3CEB0025CC7D4E0089EFF9 /* history.swift */,
 				4C3CEB0C25CD2B260089EFF9 /* history_item.swift */,
 				4C192B0025C0739E00059597 /* D3DS.swift */,
+				4C192AFC25BCD44C00059597 /* payment.swift */,
 				4CC347F725DEBF120018A27A /* catalog.swift */,
 				4CDE842825A9E33900F3453D /* cart */,
 			);
@@ -647,6 +650,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D44DF5D926396169005CE414 /* scanner */ = {
+			isa = PBXGroup;
+			children = (
+				D44DF5DA2639617E005CE414 /* scanner_preview.swift */,
+			);
+			path = scanner;
+			sourceTree = "<group>";
+		};
 		D4718B9626243A1B00E140C2 /* blog */ = {
 			isa = PBXGroup;
 			children = (
@@ -863,7 +874,6 @@
 				4CDE83A225A78A3F00F3453D /* DownloadCoordinator.swift in Sources */,
 				D4718B9B26243A3800E140C2 /* feed_item.swift in Sources */,
 				4CDE83A025A78A3F00F3453D /* ImageProxy.swift in Sources */,
-				4CDE836625A789D000F3453D /* color.swift in Sources */,
 				4CDE840725A873D800F3453D /* add_location.swift in Sources */,
 				4CF55FC725B070B20038A4CC /* camera.swift in Sources */,
 				4CDE83C825A78A4D00F3453D /* CircleActivityView.swift in Sources */,
@@ -927,6 +937,7 @@
 				4C1BB4F925D2A78700604276 /* story_loading.swift in Sources */,
 				4CDE83FE25A86FAE00F3453D /* core.swift in Sources */,
 				4CDE839B25A78A3F00F3453D /* ImageProcessing.swift in Sources */,
+				D44DF5E32639621A005CE414 /* color.swift in Sources */,
 				4CDE836025A7899E00F3453D /* blur.swift in Sources */,
 				4CDE83AC25A78A3F00F3453D /* CGImage+Extensions.swift in Sources */,
 				4CDE83AA25A78A3F00F3453D /* ImageDownloadHandler.swift in Sources */,
@@ -948,6 +959,7 @@
 				4CF55FC325AEFE2B0038A4CC /* images.swift in Sources */,
 				4CDE83B125A78A3F00F3453D /* CoreDataModelDescription.swift in Sources */,
 				4CDE83B525A78A3F00F3453D /* DefaultPlaceholder.swift in Sources */,
+				D44DF5DB2639617E005CE414 /* scanner_preview.swift in Sources */,
 				4CDE841825A8785100F3453D /* view.swift in Sources */,
 				4CDE83AD25A78A3F00F3453D /* Log.swift in Sources */,
 				4CDE83C525A78A4D00F3453D /* AnimatedImageView.swift in Sources */,
@@ -1134,7 +1146,7 @@
 				);
 				MARKETING_VERSION = 1.0.96;
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-Xfrontend -warn-long-function-bodies=50 -Xfrontend -warn-long-expression-type-checking=50";
-				PRODUCT_BUNDLE_IDENTIFIER = "yelm.io.projects.Yelm-ProjectX";
+				PRODUCT_BUNDLE_IDENTIFIER = yelm.io.projects.yelmio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1160,7 +1172,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.96;
-				PRODUCT_BUNDLE_IDENTIFIER = "yelm.io.projects.Yelm-ProjectX";
+				PRODUCT_BUNDLE_IDENTIFIER = yelm.io.projects.yelmio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
