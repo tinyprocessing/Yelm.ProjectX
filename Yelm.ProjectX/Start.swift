@@ -165,7 +165,7 @@ struct Start: View {
         
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .overlay(ImageViewerRemote(imageURL: self.$image_view.image, viewerShown: self.$image_view.show))
-        
+        .preferredColorScheme(platform == "yelmio" ? .light : .none)
         
         
         .onAppear{
