@@ -21,7 +21,8 @@ struct Feed_Read: View {
     @ObservedObject var search_server : search = GlobalSearch
 
     @State var nav_bar_hide: Bool = true
-    
+    @State var url: String = "https://yelm.io"
+    @State var name: String = "Yelm Media"
     
     @Environment(\.presentationMode) var presentation
     
@@ -55,7 +56,7 @@ struct Feed_Read: View {
                             .padding(.trailing, 10)
                             .buttonStyle(ScaleButtonStyle())
                         
-                        Text("Новость")
+                        Text(self.name)
                             .padding(.top, 10)
                             .font(.system(size: 28, weight: .semibold, design: .rounded))
                          
@@ -70,7 +71,7 @@ struct Feed_Read: View {
             .shadow(color: .dropLight, radius: 15, x: -10, y: -10)
 
     
-            WebView(request: URLRequest(url: URL(string: "https://wylsa.com/konczept-chehol-dlya-iphone-v-stile-mac-pro/")!))
+            WebView(request: URLRequest(url: URL(string: self.url)!))
 
             
             Spacer()
