@@ -431,7 +431,7 @@ struct Cart: View {
                         .simultaneousGesture(TapGesture().onEnded{
                             open_offer = true
                             if (ServerAPI.settings.position == "lat=0&lon=0" ){
-                                ShowAlert(title: "Адрес", message: "Пожалуйста, выберите адрес для продложения оформления.")
+                                ShowAlert(title: "Адрес", message: "Пожалуйста, выберите адрес для продолжения оформления.")
                                 open_offer = false
                             }
                             
