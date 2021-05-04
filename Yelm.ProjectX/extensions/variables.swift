@@ -14,9 +14,10 @@ var open_offer = false
 var open_item = false
 
 
-var platform : String = "5fd33466e17963.29052139"
-var merchant : String = "merchant.5fd33466e17963.29052139.yelm.io"
+var platform : String = "yelmio"
+var merchant : String = "merchant.yelmio.yelm.io"
 var distribution : Bool = true
+
 
 var notch: Bool {
     if #available(iOS 11.0, tvOS 11.0, *) {

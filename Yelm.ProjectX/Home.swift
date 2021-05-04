@@ -258,7 +258,7 @@ struct Home: View {
 
                     News()
 
-                    if (distribution == false){
+                    if (platform == "yelmio"){
                         Feed()
                     }
                     
@@ -266,7 +266,13 @@ struct Home: View {
                         ItemsViewLine(items: object.items, category_id: object.id, name: object.name)
                     }
 
-                    catalog()
+                    if (platform != "yelmio"){
+                        catalog()
+                    }
+                    
+                    if (platform == "yelmio"){
+                        ScannerPreview()
+                    }
 
                     Spacer(minLength: 100)
                 }.zIndex(0)
