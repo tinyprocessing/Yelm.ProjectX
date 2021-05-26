@@ -43,7 +43,11 @@ struct Home: View {
     
     
     func width(y: CGFloat) -> CGFloat {
-        let screen = CGFloat(UIScreen.main.bounds.width-90)
+        var minus : CGFloat = 90
+        if (account == true){
+            minus = 120
+        }
+        let screen = CGFloat(UIScreen.main.bounds.width-minus)
         let header: CGFloat = 47
         let width = (screen)-pow(((y-header)*0.01+1.2), 6.995)
         
@@ -206,6 +210,7 @@ struct Home: View {
                                     )
                                     
                                 }.buttonStyle(ScaleButtonStyle())
+                                
                                 Spacer()
                                 
                         
@@ -236,7 +241,28 @@ struct Home: View {
 
                                     }
                                    
+                               
                                 
+                                if (account == true){
+                                    Spacer()
+                                    ZStack(alignment: .topTrailing){
+                                    NavigationLink(destination: Account(), tag: "account", selection: $selection) {
+                                        ZStack(alignment: .top){
+                                            HStack{
+                                                ZStack{
+                                                Image(systemName: "person").font(.system(size: 18, weight: .medium, design: .rounded))
+
+                                                }
+                                            }
+
+                                            
+                                        }
+                                    }.buttonStyle(ScaleButtonStyle())
+                                   
+                                   
+
+                                }
+                                }
                                 
                             }.frame(width: UIScreen.main.bounds.width-30)
                             

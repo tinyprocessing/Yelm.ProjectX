@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "CodeScanner",
+        "repositoryURL": "https://github.com/twostraws/CodeScanner.git",
+        "state": {
+          "branch": null,
+          "revision": "a2144ddaa7c43a6ee00873edd4cc7815ad97942f",
+          "version": "1.0.7"
+        }
+      },
+      {
         "package": "ConfettiView",
         "repositoryURL": "https://github.com/ziligy/ConfettiView.git",
         "state": {
@@ -98,6 +107,15 @@
           "branch": null,
           "revision": "623f995c6ee0e5a5ed0e104d142daeae67b0ec92",
           "version": "1.1.0"
+        }
+      },
+      {
+        "package": "Introspect",
+        "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect",
+        "state": {
+          "branch": null,
+          "revision": "2e09be8af614401bc9f87d40093ec19ce56ccaf2",
+          "version": "0.1.3"
         }
       },
       {

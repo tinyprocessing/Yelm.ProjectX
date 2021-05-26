@@ -117,11 +117,14 @@
 		D4718BCB2626EB2100E140C2 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4718BCA2626EB2100E140C2 /* SnapshotHelper.swift */; };
 		D490E640262CAD9A00362345 /* item_images.swift in Sources */ = {isa = PBXBuildFile; fileRef = D490E63F262CAD9A00362345 /* item_images.swift */; };
 		D490E64D262CB98000362345 /* image_view_repo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D490E64C262CB98000362345 /* image_view_repo.swift */; };
+		D4AE280726411DEC00B9C911 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D4AE280626411DEC00B9C911 /* CodeScanner */; };
 		D4B8C4A925F7EA3300B9E478 /* func.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B8C4A825F7EA3300B9E478 /* func.swift */; };
 		D4DFA14125F8B37700E608C8 /* Yelm.Pay in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14025F8B37700E608C8 /* Yelm.Pay */; };
 		D4DFA14525F8B39700E608C8 /* Yelm.Chat in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14425F8B39700E608C8 /* Yelm.Chat */; };
 		D4DFA14E25F8B72100E608C8 /* Yelm.Server in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14D25F8B72100E608C8 /* Yelm.Server */; };
 		D4DFA15125F8D27900E608C8 /* rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DFA15025F8D27900E608C8 /* rating.swift */; };
+		D4E1A4002656AEAF003ECAF9 /* account.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E1A3FF2656AEAF003ECAF9 /* account.swift */; };
+		D4E1A4032656B23C003ECAF9 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D4E1A4022656B23C003ECAF9 /* Introspect */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -250,6 +253,7 @@
 		D490E64C262CB98000362345 /* image_view_repo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = image_view_repo.swift; sourceTree = "<group>"; };
 		D4B8C4A825F7EA3300B9E478 /* func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = func.swift; sourceTree = "<group>"; };
 		D4DFA15025F8D27900E608C8 /* rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rating.swift; sourceTree = "<group>"; };
+		D4E1A3FF2656AEAF003ECAF9 /* account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = account.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,11 +268,13 @@
 				4CF5602125B716FF0038A4CC /* Grid in Frameworks */,
 				D4DFA14E25F8B72100E608C8 /* Yelm.Server in Frameworks */,
 				4CDE83D925A78DF500F3453D /* RealmSwift in Frameworks */,
+				D4E1A4032656B23C003ECAF9 /* Introspect in Frameworks */,
 				4CDE834625A74ED700F3453D /* Yelm.Pay in Frameworks */,
 				4C9AC9C125C5F634002C1C04 /* Yelm.Chat in Frameworks */,
 				A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */,
 				4C3CEB0625CC8A6C0089EFF9 /* ConfettiView in Frameworks */,
 				D4DFA14525F8B39700E608C8 /* Yelm.Chat in Frameworks */,
+				D4AE280726411DEC00B9C911 /* CodeScanner in Frameworks */,
 				D4DFA14125F8B37700E608C8 /* Yelm.Pay in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,6 +427,7 @@
 				4C192B0025C0739E00059597 /* D3DS.swift */,
 				4C192AFC25BCD44C00059597 /* payment.swift */,
 				4CC347F725DEBF120018A27A /* catalog.swift */,
+				D4E1A3FF2656AEAF003ECAF9 /* account.swift */,
 				4CDE842825A9E33900F3453D /* cart */,
 			);
 			path = pages;
@@ -729,6 +736,8 @@
 				D4DFA14025F8B37700E608C8 /* Yelm.Pay */,
 				D4DFA14425F8B39700E608C8 /* Yelm.Chat */,
 				D4DFA14D25F8B72100E608C8 /* Yelm.Server */,
+				D4AE280626411DEC00B9C911 /* CodeScanner */,
+				D4E1A4022656B23C003ECAF9 /* Introspect */,
 			);
 			productName = Yelm.ProjectX;
 			productReference = 4C70235925A749BD00A750D2 /* Yelm.ProjectX.app */;
@@ -789,6 +798,8 @@
 				D4DFA13F25F8B37700E608C8 /* XCRemoteSwiftPackageReference "Yelm.Pay" */,
 				D4DFA14325F8B39700E608C8 /* XCRemoteSwiftPackageReference "Yelm.Chat" */,
 				D4DFA14C25F8B72100E608C8 /* XCRemoteSwiftPackageReference "Yelm.Server" */,
+				D4AE280526411DEC00B9C911 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				D4E1A4012656B23C003ECAF9 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 4C70235A25A749BD00A750D2 /* Products */;
 			projectDirPath = "";
@@ -890,6 +901,7 @@
 				4CDE83A525A78A3F00F3453D /* URLSessionDownloadDelegateWrapper.swift in Sources */,
 				4C70235D25A749BD00A750D2 /* AppDelegate.swift in Sources */,
 				4C70235F25A749BD00A750D2 /* SceneDelegate.swift in Sources */,
+				D4E1A4002656AEAF003ECAF9 /* account.swift in Sources */,
 				4CF5601C25B7124F0038A4CC /* subcategories.swift in Sources */,
 				4CDE839D25A78A3F00F3453D /* ImageProcessorClosure.swift in Sources */,
 				4CDE841125A8764300F3453D /* map.swift in Sources */,
@@ -1292,6 +1304,14 @@
 				minimumVersion = 1.1.0;
 			};
 		};
+		D4AE280526411DEC00B9C911 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.7;
+			};
+		};
 		D4DFA13F25F8B37700E608C8 /* XCRemoteSwiftPackageReference "Yelm.Pay" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Michaelsafir/Yelm.Pay.git";
@@ -1314,6 +1334,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.7;
+			};
+		};
+		D4E1A4012656B23C003ECAF9 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1361,6 +1389,11 @@
 			package = 4CF5601F25B716FF0038A4CC /* XCRemoteSwiftPackageReference "swiftui-grid" */;
 			productName = Grid;
 		};
+		D4AE280626411DEC00B9C911 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4AE280526411DEC00B9C911 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
 		D4DFA14025F8B37700E608C8 /* Yelm.Pay */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D4DFA13F25F8B37700E608C8 /* XCRemoteSwiftPackageReference "Yelm.Pay" */;
@@ -1375,6 +1408,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D4DFA14C25F8B72100E608C8 /* XCRemoteSwiftPackageReference "Yelm.Server" */;
 			productName = Yelm.Server;
+		};
+		D4E1A4022656B23C003ECAF9 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4E1A4012656B23C003ECAF9 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
