@@ -72,6 +72,57 @@ struct Start: View {
                         if (self.bottom.hide == false){
                             HStack{
                                 
+                                if (platform != "yelmio" && distribution == false){
+                                    HStack{
+                                    Button(action: {
+                                        platform = "yelmio"
+                                        self.realm.clear_cart()
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                            windows?.rootViewController =  UIHostingController(rootView: Start())
+                                        }
+                                        
+                                    }) {
+                                        HStack{
+                                            Image(systemName: "xmark")
+                                                .font(.system(size: 16, weight: .bold, design: .rounded))
+                                        }
+                                        .padding()
+                                        .frame(width: 40, height: 40)
+                                        .background(Color.theme)
+                                        .foregroundColor(.theme_foreground)
+                                        .cornerRadius(20)
+                                        
+                                    }.buttonStyle(ScaleButtonStyle())
+                                    }
+                                  
+                                    
+                                }
+                                
+                                if (platform != "yelmio" && distribution == false){
+                                    HStack{
+                                    Button(action: {
+                                        
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                            windows?.rootViewController =  UIHostingController(rootView: Start())
+                                        }
+                                        
+                                    }) {
+                                        HStack{
+                                            Image(systemName: "arrow.clockwise")
+                                                .font(.system(size: 16, weight: .bold, design: .rounded))
+                                        }
+                                        .padding()
+                                        .frame(width: 40, height: 40)
+                                        .background(Color.theme)
+                                        .foregroundColor(.theme_foreground)
+                                        .cornerRadius(20)
+                                        
+                                    }.buttonStyle(ScaleButtonStyle())
+                                    }
+                                  
+                                    
+                                }
+                                
                                 
                                 Spacer()
                                 
@@ -176,7 +227,7 @@ struct Start: View {
             self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
             
             let position = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
-            ServerAPI.settings.debug = false
+            ServerAPI.settings.debug = true
             YelmChat.settings.debug = false
             ServerAPI.start(platform: platform, position: position) { (result) in
                 if (result == true){

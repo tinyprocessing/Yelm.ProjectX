@@ -29,7 +29,7 @@ struct Feed: View {
             
             VStack(spacing: 25){
                 
-                NavigationLink(destination: Feed_Read(url: "https://lab.yelm.io",
+                NavigationLink(destination: Feed_Read(url: "https://yelm.io",
                                                       name: "Лаборатория"),
                                tag: "feed",
                                selection:  $selection){
