@@ -262,7 +262,7 @@ struct Offer: View {
                                 .cornerRadius(8)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.secondary, lineWidth: 2)
+                                        .stroke(Color(.systemGray6), lineWidth: 2)
                                         .opacity(0.6)
                                         .overlay(
                                             HStack{
@@ -543,25 +543,26 @@ struct Offer: View {
                         .pickerStyle(SegmentedPickerStyle())
                         .padding(.bottom , 8)
                         
-                        
-                        HStack(){
-                            Text("Ваши бонусы: \(String(format:"%.2f", Float(self.user.balance)-Float(self.balance_bonus))) \(ServerAPI.settings.symbol)")
-                                .font(.system(size: 20, weight: .semibold, design: .rounded))
+                        if (Float(self.user.balance) > 0){
+                            HStack(){
+                                Text("Ваши бонусы: \(String(format:"%.2f", Float(self.user.balance)-Float(self.balance_bonus))) \(ServerAPI.settings.symbol)")
+                                    .font(.system(size: 20, weight: .semibold, design: .rounded))
+                                
+                                Spacer()
+                            }.padding(.bottom , 8)
                             
-                            Spacer()
-                        }.padding(.bottom , 8)
-                        
-                        HStack(){
-                            Text("0 \(ServerAPI.settings.symbol)")
-                                .font(.system(size: 16, weight: .medium, design: .rounded))
-                                .foregroundColor(Color.init(hex: "828282"))
-                            Spacer()
-                            Slider(value: $balance_bonus, in: 0...(self.realm.get_price_full() > Float(self.user.balance) ? Double(self.user.balance) : Double(self.realm.get_price_full())) , step: 1)
-                                .accentColor(.theme)
-                            Spacer()
-                            Text("\(String(format:"%.2f", Float(self.realm.get_price_full() > Float(self.user.balance) ? Double(self.user.balance) : Double(self.realm.get_price_full())))) \(ServerAPI.settings.symbol)")
-                                .font(.system(size: 16, weight: .medium, design: .rounded))
-                                .foregroundColor(Color.init(hex: "828282"))
+                            HStack(){
+                                Text("0 \(ServerAPI.settings.symbol)")
+                                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                                    .foregroundColor(Color.init(hex: "828282"))
+                                Spacer()
+                                Slider(value: $balance_bonus, in: 0...(self.realm.get_price_full() > Float(self.user.balance) ? Double(self.user.balance) : Double(self.realm.get_price_full())) , step: 1)
+                                    .accentColor(.theme)
+                                Spacer()
+                                Text("\(String(format:"%.2f", Float(self.realm.get_price_full() > Float(self.user.balance) ? Double(self.user.balance) : Double(self.realm.get_price_full())))) \(ServerAPI.settings.symbol)")
+                                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                                    .foregroundColor(Color.init(hex: "828282"))
+                            }
                         }
                     }
                     
