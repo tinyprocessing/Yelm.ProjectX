@@ -637,7 +637,8 @@ struct Offer: View {
                                     self.offer.floor = self.floor
                                     self.offer.bonus = Float(self.balance_bonus)
 
-                                    YelmPay.apple_pay.apple_pay(price: self.realm.get_price_full()-Float(self.balance_bonus),
+                                    YelmPay.apple_pay.apple_pay(shop_name: name,
+                                                                price: self.realm.get_price_full()-Float(self.balance_bonus),
                                                                 delivery: 0,
                                                                 merchant: merchant,
                                                                 country: "RU",
