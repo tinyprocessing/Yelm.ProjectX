@@ -467,7 +467,7 @@ struct Account: View {
                         .padding(.bottom , 10)
                  
                     Button(action: {
-                        ServerAPI.user.account_update(name: self.user.name, notification: self.notifications) { load in
+                        ServerAPI.user.account_update(name: self.user.name, notification: self.user.notifications) { load in
                             if (load){
                                 print("Changed Name Account")
                             }

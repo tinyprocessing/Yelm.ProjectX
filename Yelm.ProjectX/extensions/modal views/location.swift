@@ -68,11 +68,13 @@ struct ModalLocation: View {
                             
                             
                         }) {
-                            Image(systemName: "mappin.circle.fill")
-                                .font(.system(size: 25, weight: .medium, design: .rounded))
-                                .foregroundColor(self.location.point == row.point ? Color.theme : .gray)
-                            
-                            Text("\(row.name)")
+                            HStack{
+                                Image(systemName: "mappin.circle.fill")
+                                    .font(.system(size: 25, weight: .medium, design: .rounded))
+                                    .foregroundColor(self.location.point == row.point ? Color.theme : .gray)
+                                
+                                Text("\(row.name)")
+                            }
                             
                         }.buttonStyle(ScaleButtonStyle())
                         
