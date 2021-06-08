@@ -102,9 +102,10 @@ struct Payment: View {
                     
                     VStack(spacing: 0){
                         TextField("Номер карты", text: $card)
-                            .padding(.vertical, 5)
+                            .padding(5)
                             .foregroundColor(Color.init(hex: "828282"))
-                            .background(Color.secondary)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(8)
                         
                         Line().fill(Color.init(hex: "AEADAD").opacity(0.5)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1)
                     }
@@ -117,9 +118,10 @@ struct Payment: View {
                         
                         VStack(spacing: 0){
                             TextField("MM/YY", text: $date)
-                                .padding(.vertical, 5)
+                                .padding(5)
                                 .foregroundColor(Color.init(hex: "828282"))
-                                .background(Color.secondary)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(8)
                                 .onReceive(Just(date)) { (count_new) in
                                     if (count < count_new.count){
                                         if (count_new.count == 2){
@@ -138,9 +140,10 @@ struct Payment: View {
                         
                         VStack(spacing: 0){
                             SecureField("CVV", text: $cvv)
-                                .padding(.vertical, 5)
+                                .padding(5)
                                 .foregroundColor(Color.init(hex: "828282"))
-                                .background(Color.secondary)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(8)
                             
                             Line().fill(Color.init(hex: "AEADAD").opacity(0.5)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1)
                         }
@@ -177,7 +180,7 @@ struct Payment: View {
                 }
                 .padding(.horizontal, 10)
                 .padding(.vertical, 5)
-                .background(Color.secondary)
+                .background(Color(.systemGray6))
                 .clipShape(CustomShape(corner: .allCorners, radii: 20))
                 .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
                 .shadow(color: .dropLight, radius: 15, x: -10, y: -10)

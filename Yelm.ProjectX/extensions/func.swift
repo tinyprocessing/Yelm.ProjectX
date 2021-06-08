@@ -16,6 +16,7 @@ func region_change() {
     let region_current = Locale.current.regionCode
     if (region != region_current){
         GlobalRealm.clear_cart()
+        print("clear cart")
     }
     
     if (Locale.current.regionCode != nil){
