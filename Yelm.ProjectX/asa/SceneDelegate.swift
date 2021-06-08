@@ -10,7 +10,7 @@ import SwiftUI
 import Foundation
 import Yelm_Chat
 import Yelm_Server
-import SwiftUIX
+
 
 var windows: UIWindow?
 

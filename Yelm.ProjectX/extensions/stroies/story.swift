@@ -250,7 +250,7 @@ struct story: View {
                                     self.video.objectWillChange.send()
                                     self.video.play = false
                                     
-                                    self.presentation.dismiss()
+                                    
                                 }
                                 if value.translation.height < -50 {
                                     // up
@@ -270,7 +270,7 @@ struct story: View {
                                     self.video.play = false
                                     
                                     
-                                    self.presentation.dismiss()
+                                    
                                         
     //                                self.presentation.dismiss()
                                 }

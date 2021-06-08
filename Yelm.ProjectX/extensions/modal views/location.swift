@@ -177,6 +177,8 @@ struct ModalLocation: View {
                             self.modal.closeModal()
                             self.realm.get_locations()
 
+                            logLocation()
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { 
                                 windows?.rootViewController =  UIHostingController(rootView: Start())
                             }

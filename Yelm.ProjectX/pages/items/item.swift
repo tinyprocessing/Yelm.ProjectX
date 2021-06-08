@@ -374,7 +374,7 @@ struct Item : View {
 
                             }
                             .padding(.vertical)
-                            .background(.theme_black_change_reverse)
+                            .background(Color.theme_black_change_reverse)
 
                             .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 40))
 
@@ -570,6 +570,12 @@ struct Item : View {
                                 }else{
                                     self.realm.post_cart(ID: self.item.item.id, method: "increment")
                                     self.realm.get_total_price()
+                                    
+                                    logAddToCartEvent(contentData: self.item.item.title,
+                                                      contentId: String(self.item.item.id),
+                                                      contentType: "item",
+                                                      currency: ServerAPI.settings.currency,
+                                                      price: Double(self.item.item.price_float))
                                 }
                                 
                                 
@@ -605,7 +611,7 @@ struct Item : View {
             }
             .padding(.bottom, 40)
             .padding(.top, 30)
-            .background(.theme_black_change_reverse)
+            .background(Color.theme_black_change_reverse)
             .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 20))
             
             .shadow(color: .dropShadow, radius: 15, x: 0, y: 2)

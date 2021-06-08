@@ -179,8 +179,20 @@ struct SubcategoriesGridObject : View {
 
                             let generator = UIImpactFeedbackGenerator(style: .soft)
                             generator.impactOccurred()
+                            
+                            logAddToCartEvent(contentData: tag.title,
+                                              contentId: String(tag.id),
+                                              contentType: "item",
+                                              currency: ServerAPI.settings.currency,
+                                              price: Double(tag.price_float))
                         }else{
                             self.realm.post_cart(ID: tag.id, method: "increment")
+                            
+                            logAddToCartEvent(contentData: tag.title,
+                                              contentId: String(tag.id),
+                                              contentType: "item",
+                                              currency: ServerAPI.settings.currency,
+                                              price: Double(tag.price_float))
                         }
 
 

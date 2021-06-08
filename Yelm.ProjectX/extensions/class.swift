@@ -1,20 +1,19 @@
 //
-//  classes.swift
-//  Yelm.ProjectX
+//  class.swift
+//  Avestal
 //
-//  Created by Michael on 07.01.2021.
+//  Created by Michael Safir on 28.05.2021.
 //
 
 import Foundation
-import Yelm_Server
 import UIKit
 
 var GlobalLoading: loading = loading()
 var GlobalLocation: location_cache = location_cache()
 var GlobalNotification: notification = notification()
-var GlobalSearch: search = search()
-var GlobalItems: items = items()
-var GlobalNews: news = news()
+
+
+
 var GlobalBottom: bottom = bottom()
 var GlobalCart: cart = cart()
 var GlobalPayment: payment = payment()
@@ -22,8 +21,8 @@ var GlobalOffer: offer = offer()
 var GlobalCamera: camera = camera()
 var GlobalVideo: video = video()
 var GlobalConfetti: confetti = confetti()
-var GlobalPromocode: promocode = promocode()
-var GlobalCategories: categories = categories()
+
+
 var GlobalCutlery: cutlery = cutlery()
 var GlobalBadge: chat_badge = chat_badge()
 var GlobalImageView: image_view = image_view()
@@ -32,17 +31,6 @@ var GlobalNotificationBanner: notification_banner = notification_banner()
 
 var GlobalWebview: loading_webview = loading_webview()
 
-
-var GlobalUserAuth: user_auth = user_auth()
-
-class user_auth: ObservableObject, Identifiable {
-    var id: Int = 0
-    @Published var name : String = ""
-    @Published var balance : Int = 0
-    @Published var auth : Bool = false
-    
-    @Published var notifications : Bool = false
-}
 
 class image_view: ObservableObject, Identifiable {
     var id: Int = 0
@@ -60,11 +48,7 @@ class cutlery: ObservableObject, Identifiable {
     var count : Int = 1
 }
 
-class categories: ObservableObject, Identifiable {
-    var id: Int = 0
-    @Published var all : [categories_local_structure] = []
 
-}
 
 
 class notification_open: ObservableObject, Identifiable {
@@ -74,10 +58,7 @@ class notification_open: ObservableObject, Identifiable {
 }
 
 
-class promocode: ObservableObject, Identifiable {
-    var id: Int = 0
-    @Published var active : promocode_structure = promocode_structure(id: 0, type: .nonactive, value: 0)
-}
+
 
 
 class notification_banner: ObservableObject, Identifiable {
@@ -119,8 +100,6 @@ class offer: ObservableObject, Identifiable{
     @Published var apartment: String = ""
     @Published var phone: String = ""
     
-    @Published var bonus: Float = 0
-    
     
 }
 
@@ -154,28 +133,7 @@ class cart: ObservableObject, Identifiable {
     @Published var cart_items : [cart_structure] = []
 }
 
-public class items: ObservableObject, Identifiable {
-    
-    internal init(id: Int = 0, item: items_structure = items_structure()) {
-        self.id = id
-        self.item = item
-    }
-    
-    
-    public var id : Int = 0
-    @Published var item : items_structure
-}
 
-class news: ObservableObject, Identifiable {
-    var id : Int = 0
-    @Published var news : [news_structure] = []
-    @Published var news_single : news_structure = news_structure(id: 0)
-}
-
-class search: ObservableObject, Identifiable {
-    var id : Int = 0
-    @Published var items : [items_structure] = []
-}
 
 class notification: ObservableObject, Identifiable {
     var id : Int = 0
@@ -209,3 +167,4 @@ extension Bundle {
         return nil
     }
 }
+

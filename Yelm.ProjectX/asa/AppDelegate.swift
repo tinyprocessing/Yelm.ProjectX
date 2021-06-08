@@ -10,6 +10,8 @@ import Yelm_Server
 import YandexMapKit
 import UserNotifications
 import SwiftUI
+import FBSDKCoreKit
+
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -108,6 +110,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+       
+        if (fb){
+            Settings.setAdvertiserTrackingEnabled(true)
+            ApplicationDelegate.shared.application(
+                      application,
+                      didFinishLaunchingWithOptions: launchOptions
+            )
+        }
+        
         YMKMapKit.setApiKey("09ee0a39-0ad1-490a-9ea8-8600c46b9ef8")
 
         registerForPushNotifications()
@@ -123,10 +135,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         print(remoteNotif)
         print(remoteNotif["aps"] as? [String: Any])
                 
+    
         
         return true
     }
 
+    func application(
+            _ app: UIApplication,
+            open url: URL,
+            options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+        ) -> Bool {
+
+            ApplicationDelegate.shared.application(
+                app,
+                open: url,
+                sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+            )
+
+        }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         

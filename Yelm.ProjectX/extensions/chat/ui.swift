@@ -29,6 +29,7 @@ struct Message: View {
     @State var tag : items_structure = items_structure()
     @ObservedObject var realm: RealmControl = GlobalRealm
 
+    @State var selection_history: String? = nil
 
     
     
@@ -312,8 +313,21 @@ struct Message: View {
                                                     
                                                     let generator = UIImpactFeedbackGenerator(style: .soft)
                                                     generator.impactOccurred()
+                                                    
+                                                    logAddToCartEvent(contentData: tag.title,
+                                                                      contentId: String(tag.id),
+                                                                      contentType: "item",
+                                                                      currency: ServerAPI.settings.currency,
+                                                                      price: Double(tag.price_float))
+                                                    
                                                 }else{
                                                     self.realm.post_cart(ID: self.tag.id, method: "increment")
+                                                    
+                                                    logAddToCartEvent(contentData: tag.title,
+                                                                      contentId: String(tag.id),
+                                                                      contentType: "item",
+                                                                      currency: ServerAPI.settings.currency,
+                                                                      price: Double(tag.price_float))
                                                 }
                                                 
                                                 
@@ -406,13 +420,14 @@ struct Message: View {
                             
                             
                             VStack(alignment: .leading) {
+                                NavigationLink(destination: EmptyView(), label: {})
                                 
                                 VStack{
                                     Text(message)
                                         .fixedSize(horizontal: false, vertical: true)
                                         .foregroundColor(message_text_color)
                                     
-                                    NavigationLink(destination: History(id_order: self.attachment["id"]!), tag: 45, selection:  $selection){
+                                    NavigationLink(destination: History(id_order: self.attachment["id"]!), tag: "order_\(self.attachment["id"]!)", selection:  $selection_history){
                                         HStack(spacing: 10){
                                             Image(systemName: "map")
                                                 .foregroundColor(.black)
@@ -429,10 +444,13 @@ struct Message: View {
                                         .padding(.vertical, 5)
                                         
                                     }.buttonStyle(PlainButtonStyle())
+                                    .tag("\(self.attachment["id"]!)")
                                     
                                     .simultaneousGesture(TapGesture().onEnded{
                                         ServerAPI.settings.log(action: "open_order_history")
                                         open_item = true
+                                        
+                                        print(Int(attachment["id"]!) ?? 0)
                                     })
                                        
                                 }
@@ -445,6 +463,7 @@ struct Message: View {
                                 
                             }
                             .frame(width: UIScreen.main.bounds.width/1.5)
+                            .tag("order_cell_\(self.attachment["id"]!)")
                             
                         }
 

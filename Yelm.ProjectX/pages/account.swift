@@ -20,17 +20,22 @@ struct Account: View {
     @ObservedObject var bottom: bottom = GlobalBottom
     @ObservedObject var realm: RealmControl = GlobalRealm
     @ObservedObject var search_server : search = GlobalSearch
+    
+    @ObservedObject var user : user_auth = GlobalUserAuth
 
+    
     @State var nav_bar_hide: Bool = true
     @State var phone: String = ""
     
     @State var sms_code_send: Bool = false
-    @State var auth_done: Bool = true
+    @State var showingPopup = false
     
     @Environment(\.presentationMode) var presentation
     
     @State var search : String = ""
+    @State var name : String = ""
     @State private var notifications = true
+    @State var hash : String = ""
     
     
     var body: some View {
@@ -75,7 +80,7 @@ struct Account: View {
                 
                 
                 
-                if (self.auth_done == false){
+                if (self.user.auth == false){
                 HStack{
                     
                     Spacer()
@@ -126,15 +131,45 @@ struct Account: View {
                 }else{
                     SMS { code, state in
                         print(code)
+                        print(code.sha256())
+                        if (self.hash == code.sha256()){
+                            self.user.auth = true
+                            
+                            UserDefaults.standard.set(self.user.balance, forKey: "balance")
+                            UserDefaults.standard.set(self.user.name, forKey: "name")
+                            UserDefaults.standard.set(true, forKey: "auth")
+                        }
                     }
                 }
                 
                 Button(action: {
+                    
+                   
+                    
                     if (self.sms_code_send == false){
                         self.sms_code_send = true
+                        print("send sms")
+                        if (self.phone.count > 5){
+                            ServerAPI.user.account_login(phone: self.phone) { load, result, json in
+                                if (load){
+                                    print("load auth result need")
+                                    self.hash = result
+                                    
+                                    self.user.balance = json["user"]["info"]["balance"].int!
+                                    self.user.name = json["user"]["info"]["name"].string!
+                                    
+                                    self.user.notifications = json["user"]["notification"].bool!
+                                  
+                                    
+                                   
+                                }
+                            }
+                        }
                     }else{
                         self.sms_code_send = false
                     }
+                    
+                   
                     
                 }) {
                     
@@ -172,7 +207,7 @@ struct Account: View {
                             }.padding(.trailing)
                             
                             VStack(alignment: .leading, spacing: 5){
-                                Text("Михаил")
+                                Text("\(self.user.name)")
                                     .font(.system(size: 25, weight: .semibold, design: .rounded))
                                 
                                 Text("Аккаунт проверен")
@@ -185,7 +220,7 @@ struct Account: View {
                             
                             
                             Button(action: {
-                              
+                                self.showingPopup.toggle()
                                 
                             }) {
                                 ZStack{
@@ -216,7 +251,7 @@ struct Account: View {
                                     
                                     VStack{
                                         HStack{
-                                            Text("1500 ₽")
+                                            Text("\(self.user.balance) \(ServerAPI.settings.symbol)")
                                                 .font(.system(size: 33, weight: .semibold, design: .rounded))
                                             
                                             
@@ -231,8 +266,9 @@ struct Account: View {
                                             
                                             
                                             Button(action: {
-                                              
-                                                
+                                                if let url = URL(string: "https://yelm.io/add_bonus?login=\(ServerAPI.user.username)") {
+                                                    UIApplication.shared.open(url)
+                                                }
                                             }) {
                                                 
                                                 
@@ -241,7 +277,7 @@ struct Account: View {
                                                         .fill(Color.secondary.opacity(0.2))
                                                         .frame(width: 45, height: 45)
                                                     
-                                                    Image(systemName: "qrcode")
+                                                    Image(systemName: "plus.circle")
                                                         .font(.system(size: 24, weight: .semibold, design: .rounded))
                                                         .foregroundColor(.black)
                                                 }
@@ -264,47 +300,70 @@ struct Account: View {
                         }
                         .padding(.bottom , 10)
                         
-                        HStack(){
-                            Text("Как потратить бонусы?")
-                                .foregroundColor(.secondary)
-                                .font(.system(size: 18, weight: .semibold, design: .rounded))
+                        Button(action: {
+                            if let url = URL(string: "https://yelm.io/bonus.html") {
+                                UIApplication.shared.open(url)
+                            }
+                        }) {
                             
-                            Spacer()
+                            HStack(){
+                                Text("Как потратить бонусы?")
+                                    .foregroundColor(.secondary)
+                                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                
+                                Spacer()
+                                
+                                Image(systemName: "chevron.forward")
+                                    .foregroundColor(.secondary)
+                                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                    .padding(.trailing, 5)
+                            }
+                            .padding(.bottom , 8)
                             
-                            Image(systemName: "chevron.forward")
-                                .foregroundColor(.secondary)
-                                .font(.system(size: 18, weight: .semibold, design: .rounded))
-                                .padding(.trailing, 5)
-                        }
-                        .padding(.bottom , 8)
+                        }.buttonStyle(ScaleButtonStyle())
                         
-                        HStack(){
-                            Text("Чат с поддержкой")
-                                .foregroundColor(.secondary)
-                                .font(.system(size: 18, weight: .semibold, design: .rounded))
-                            
-                            Spacer()
-                            
-                            Image(systemName: "chevron.forward")
-                                .foregroundColor(.secondary)
-                                .font(.system(size: 18, weight: .semibold, design: .rounded))
-                                .padding(.trailing, 5)
-                        }
-                        .padding(.bottom , 8)
+                       
                         
-                        HStack(){
-                            Text("Мои заказы")
-                                .foregroundColor(.secondary)
-                                .font(.system(size: 18, weight: .semibold, design: .rounded))
-                            
-                            Spacer()
-                            
-                            Image(systemName: "chevron.forward")
-                                .foregroundColor(.secondary)
-                                .font(.system(size: 18, weight: .semibold, design: .rounded))
-                                .padding(.trailing, 5)
-                        }
-                        .padding(.bottom , 10)
+                        
+                        NavigationLink(destination: Chat(), tag: "chatiosupport", selection: $selection) {
+                            HStack(){
+                                Text("Чат с поддержкой")
+                                    .foregroundColor(.secondary)
+                                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                
+                                Spacer()
+                                
+                                Image(systemName: "chevron.forward")
+                                    .foregroundColor(.secondary)
+                                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                    .padding(.trailing, 5)
+                            }
+                            .padding(.bottom , 8)
+                        }.buttonStyle(ScaleButtonStyle())
+                        .simultaneousGesture(TapGesture().onEnded{
+                            open_item = true
+                        })
+                        
+                        
+                        NavigationLink(destination: Chat(), tag: "chatio", selection: $selection) {
+                            HStack(){
+                                Text("Мои заказы")
+                                    .foregroundColor(.secondary)
+                                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                
+                                Spacer()
+                                
+                                Image(systemName: "chevron.forward")
+                                    .foregroundColor(.secondary)
+                                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                                    .padding(.trailing, 5)
+                            }
+                            .padding(.bottom , 10)
+                        }.buttonStyle(ScaleButtonStyle())
+                        .simultaneousGesture(TapGesture().onEnded{
+                            open_item = true
+                        })
+                       
                         
                         
                         HStack(){
@@ -323,8 +382,16 @@ struct Account: View {
                             
                             Spacer()
                             
-                            Toggle("", isOn: $notifications)
+                            Toggle("", isOn: self.$user.notifications)
                                 .padding(.trailing, 5)
+                                .onReceive(Just(self.user.notifications)) { (notifications) in
+                                    print(self.user.notifications)
+                                    ServerAPI.user.account_update(name: self.user.name, notification: self.user.notifications) { load in
+                                        if (load){
+                                            print("Changed Name Account")
+                                        }
+                                    }
+                                }
                                 
                         }
                         .padding(.bottom , 5)
@@ -334,6 +401,13 @@ struct Account: View {
                         Spacer()
                         
                         Button(action: {
+                            
+                            self.sms_code_send = false
+                            self.user.auth = false
+                            
+                            UserDefaults.standard.set(0, forKey: "balance")
+                            UserDefaults.standard.set("", forKey: "name")
+                            UserDefaults.standard.set(false, forKey: "auth")
                             
                         }) {
                             
@@ -369,6 +443,64 @@ struct Account: View {
             
             
            
+        }
+        .popup(isPresented: self.$showingPopup, closeOnTap: false, closeOnTapOutside: true) {
+            
+            VStack(spacing: 10) {
+                    
+                    HStack(){
+                        Text("Изменить имя")
+                            .font(.system(size: 25, weight: .semibold, design: .rounded))
+                        
+                        Spacer()
+                    }
+                    .padding(.bottom , 10)
+                    
+                    TextField("Ваше имя", text: self.$user.name)
+                        .padding(.vertical, 10)
+                        .foregroundColor(Color.init(hex: "BDBDBD"))
+                        .padding(.horizontal, 10)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(8)
+                        
+                        .padding(.horizontal, 1)
+                        .padding(.bottom , 10)
+                 
+                    Button(action: {
+                        ServerAPI.user.account_update(name: self.user.name, notification: self.notifications) { load in
+                            if (load){
+                                print("Changed Name Account")
+                            }
+                        }
+                        self.showingPopup.toggle()
+                    }) {
+                        
+                        
+                        HStack{
+                            Spacer()
+                            Text("Сохранить")
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+                        .padding(.vertical, 10)
+                        .background(Color.secondary.opacity(0.2))
+                        .foregroundColor(.black)
+                        .cornerRadius(10)
+                        
+                    }
+                    .frame(height: 50)
+                    .buttonStyle(ScaleButtonStyle())
+                    .clipShape(CustomShape(corner: .allCorners, radii: 10))
+        
+                    
+                }
+                .padding(.horizontal, 20)
+                .frame(width: UIScreen.main.bounds.width-70, height: 250)
+                .background(Color.white)
+                .cornerRadius(15)
+                .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
+                .shadow(color: .dropShadow, radius: 15, x: -10, y: -10)
+                
         }
         
         .navigationBarTitle("hidden_layer")

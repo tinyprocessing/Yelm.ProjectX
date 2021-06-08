@@ -20,7 +20,7 @@ struct Start: View {
     @ObservedObject var search : search = GlobalSearch
     @ObservedObject var categories : categories = GlobalCategories
     @ObservedObject var banner : notification_banner = GlobalNotificationBanner
-
+    @ObservedObject var user: user_auth = GlobalUserAuth
 
     @ObservedObject var news : news = GlobalNews
     @ObservedObject var modal : ModalManager = GlobalModular
@@ -67,7 +67,7 @@ struct Start: View {
                             .accentColor(Color("BLWH"))
                             .navigationBarTitle("hidden_layer")
                             .navigationBarHidden(self.nav_bar_hide)
-                        }
+                        }.navigationViewStyle(StackNavigationViewStyle())
                         
                         if (self.bottom.hide == false){
                             HStack{
@@ -227,8 +227,17 @@ struct Start: View {
             self.location.point = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
             
             let position = UserDefaults.standard.string(forKey: "SELECTED_SHOP_POINTS") ?? "lat=0&lon=0"
-            ServerAPI.settings.debug = true
+            ServerAPI.settings.debug = false
             YelmChat.settings.debug = false
+            
+
+            self.user.objectWillChange.send()
+//            self.user.auth = true
+            self.user.auth = UserDefaults.standard.bool(forKey: "auth") ?? false
+            self.user.balance = UserDefaults.standard.integer(forKey: "balance") ?? 0
+            self.user.name = UserDefaults.standard.string(forKey: "name") ?? ""
+         
+            
             ServerAPI.start(platform: platform, position: position) { (result) in
                 if (result == true){
                     
@@ -306,9 +315,39 @@ struct Start: View {
                                         }
                                     }
                                 }
+                               
+                                if (self.user.auth){
+                                ServerAPI.user.account_get_information(){ load, json in
+
+                                    self.user.balance = json["user"]["info"]["balance"].int!
+                                    self.user.name = json["user"]["info"]["name"].string!
+
+                                    self.user.notifications = json["user"]["notification"].bool!
+
+                                    UserDefaults.standard.set(json["user"]["info"]["balance"].int!, forKey: "balance")
+                                    UserDefaults.standard.set(json["user"]["info"]["name"].string!, forKey: "name")
+
+                                    }
+                                }
                             }
                         }
                     }else{
+                        
+                    
+                        if (self.user.auth){
+                            ServerAPI.user.account_get_information(){ load, json in
+                            
+                                print(json)
+                            self.user.balance = json["user"]["info"]["balance"].int!
+                            self.user.name = json["user"]["info"]["name"].string!
+                             
+                            self.user.notifications = json["user"]["notification"].bool!
+                                
+                            UserDefaults.standard.set(json["user"]["info"]["balance"].int!, forKey: "balance")
+                            UserDefaults.standard.set(json["user"]["info"]["name"].string!, forKey: "name")
+                            
+                            }
+                        }
                         
                         ServerAPI.settings.log(action: "open_load")
                         

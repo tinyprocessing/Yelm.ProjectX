@@ -237,6 +237,12 @@ struct LineItems : View{
                                             if (self.realm.get_item_access(ID: tag.id) == false) {
                                                 
                                                 
+                                                logAddToCartEvent(contentData: tag.title,
+                                                                  contentId: String(tag.id),
+                                                                  contentType: "item",
+                                                                  currency: ServerAPI.settings.currency,
+                                                                  price: Double(tag.price_float))
+                                                
                                                 self.realm.objectWillChange.send()
                                                 self.realm.create_item_cart(ID: tag.id, Title: tag.title, Price: tag.price_float, PriceItem: tag.price_float, Count: 1, Thumbnail: tag.thubnail, ItemType: tag.type, Quantity: tag.quanity, CanIncrement: "1", Discount: tag.discount_value)
                                                 
@@ -248,6 +254,13 @@ struct LineItems : View{
                                                 generator.impactOccurred()
                                             }else{
                                                 self.realm.post_cart(ID: tag.id, method: "increment")
+                                                
+                                                logAddToCartEvent(contentData: tag.title,
+                                                                  contentId: String(tag.id),
+                                                                  contentType: "item",
+                                                                  currency: ServerAPI.settings.currency,
+                                                                  price: Double(tag.price_float))
+                                                
                                             }
                                             
                                             

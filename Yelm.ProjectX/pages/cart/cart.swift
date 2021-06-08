@@ -451,7 +451,7 @@ struct Cart: View {
                 }
                 .padding(.bottom, 40)
                 .padding(.top, 30)
-                .background(.theme_black_change_reverse)
+                .background(Color.theme_black_change_reverse)
                 .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 20))
                 //                .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
                 .shadow(color: .dropShadow, radius: 15, x: 0, y: 2)

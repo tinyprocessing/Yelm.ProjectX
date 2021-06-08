@@ -34,6 +34,7 @@ struct Payment: View {
     @State var response_main : HTTPURLResponse = HTTPURLResponse()
 
     @State var count : Int = 0
+    @State var bonus : Float = 0
     @Environment(\.presentationMode) var presentation
     
 
@@ -103,7 +104,7 @@ struct Payment: View {
                         TextField("Номер карты", text: $card)
                             .padding(.vertical, 5)
                             .foregroundColor(Color.init(hex: "828282"))
-                            .background(Color.systemGray6)
+                            .background(Color.secondary)
                         
                         Line().fill(Color.init(hex: "AEADAD").opacity(0.5)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1)
                     }
@@ -118,7 +119,7 @@ struct Payment: View {
                             TextField("MM/YY", text: $date)
                                 .padding(.vertical, 5)
                                 .foregroundColor(Color.init(hex: "828282"))
-                                .background(Color.systemGray6)
+                                .background(Color.secondary)
                                 .onReceive(Just(date)) { (count_new) in
                                     if (count < count_new.count){
                                         if (count_new.count == 2){
@@ -139,7 +140,7 @@ struct Payment: View {
                             SecureField("CVV", text: $cvv)
                                 .padding(.vertical, 5)
                                 .foregroundColor(Color.init(hex: "828282"))
-                                .background(Color.systemGray6)
+                                .background(Color.secondary)
                             
                             Line().fill(Color.init(hex: "AEADAD").opacity(0.5)).frame(maxWidth: .infinity, minHeight: 1, maxHeight: 1)
                         }
@@ -176,7 +177,7 @@ struct Payment: View {
                 }
                 .padding(.horizontal, 10)
                 .padding(.vertical, 5)
-                .background(Color.systemGray6)
+                .background(Color.secondary)
                 .clipShape(CustomShape(corner: .allCorners, radii: 20))
                 .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
                 .shadow(color: .dropLight, radius: 15, x: -10, y: -10)
@@ -185,7 +186,7 @@ struct Payment: View {
               
                 
                 VStack(spacing: 15){
-                    Text("\(String(format:"%.2f", self.realm.get_price_full())) \(ServerAPI.settings.symbol)")
+                    Text("\(String(format:"%.2f", self.realm.get_price_full()-bonus)) \(ServerAPI.settings.symbol)")
                         .font(.title)
                         .fontWeight(.bold)
                     
@@ -201,7 +202,7 @@ struct Payment: View {
                                                  date: self.date,
                                                  cvv: self.cvv,
                                                  merchant: ServerAPI.settings.public_id,
-                                                 price: self.realm.get_price_full(),
+                                                 price: self.realm.get_price_full()-bonus,
                                                  currency: ServerAPI.settings.currency) { (load, response, data)  in
                                 if (load){
                                     self.response_main = response

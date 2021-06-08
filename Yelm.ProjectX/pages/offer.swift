@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 import Yelm_Server
 import Yelm_Pay
-import SwiftUIX
 import UIKit
 
 @available(iOS 13.0, *)
@@ -32,7 +31,8 @@ struct Offer: View {
     @ObservedObject var cutlery: cutlery = GlobalCutlery
 
     @ObservedObject var payment: payment = GlobalPayment
-    
+    @ObservedObject var user : user_auth = GlobalUserAuth
+
     
     @Environment(\.presentationMode) var presentation
     
@@ -64,6 +64,7 @@ struct Offer: View {
     @State var phone: String = ""
     
     
+    @State private var balance_bonus: Double = 0
     
     @ObservedObject var promocode : promocode = GlobalPromocode
     
@@ -82,7 +83,7 @@ struct Offer: View {
         @ObservedObject var bottom: bottom = GlobalBottom
         @ObservedObject var cutlery: cutlery = GlobalCutlery
 
-        @Environment(\.presenter) var presenter
+//        @Environment(\.presenter) var presenter
 
         func PaymentDone(result: Bool) {
             if (result){
@@ -108,6 +109,13 @@ struct Offer: View {
                     
                 }
                 
+                logPurchase(price: Double(self.realm.start_price),
+                            currency: ServerAPI.settings.currency,
+                            parameters: ["phone" : self.offer.phone,
+                                         "address" : self.location.name,
+                                         "total" : self.realm.price,
+                                         "payment" : "card",
+                                         "start_price" : self.realm.start_price])
                 
                 let order_detail = OrdersDetail()
                 order_detail.phone = self.offer.phone
@@ -127,6 +135,7 @@ struct Offer: View {
                 order_detail.discount = Float(self.promocode.active.value)
                 order_detail.discount_type = type_promocode_load
                 order_detail.cutlery = self.cutlery.count
+                order_detail.total_bonus = Int(self.offer.bonus)
                 
                 ServerAPI.orders.set_order(order: order_detail) { (load) in
                     if (load){
@@ -253,7 +262,7 @@ struct Offer: View {
                                 .cornerRadius(8)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.systemGray6, lineWidth: 2)
+                                        .stroke(Color.secondary, lineWidth: 2)
                                         .opacity(0.6)
                                         .overlay(
                                             HStack{
@@ -262,6 +271,7 @@ struct Offer: View {
                                                 
                                                 Button(action: {
                                                     
+                                                    self.balance_bonus = 0
                                                     
                                                     ServerAPI.promocode.get(promo: self.promocode_string, user: ServerAPI.user.username) { (load, message, promocode_data) in
                                                         if (load){
@@ -499,37 +509,61 @@ struct Offer: View {
                     }
                     
                     
-                    HStack(){
-                        Text("Способ оплаты")
-                            .font(.system(size: 20, weight: .semibold, design: .rounded))
+                    VStack(){
                         
-                        Spacer()
-                    }.padding(.bottom , 5)
+                        HStack(){
+                            Text("Способ оплаты")
+                                .font(.system(size: 20, weight: .semibold, design: .rounded))
+                            
+                            Spacer()
+                        }.padding(.bottom , 5)
                     
                     
-                    
-                    Picker(selection: $pickerSelection, label: Text("")) {
-                        if (ServerAPI.settings.payments_card){
-                            Text("Карта")
-                                .tag(0)
-                                .foregroundColor(Color.theme_foreground)
-                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                  
+                        Picker(selection: $pickerSelection, label: Text("")) {
+                            if (ServerAPI.settings.payments_card){
+                                Text("Карта")
+                                    .tag(0)
+                                    .foregroundColor(Color.theme_foreground)
+                                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                            }
+                            
+                            if (ServerAPI.settings.payments_applepay){
+                                Text("Apple Pay")
+                                    .tag(1)
+                                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                            }
+                            
+                            if (ServerAPI.settings.payments_placeorder){
+                                Text("Оформить")
+                                    .tag(2)
+                                    .font(.system(size: 16, weight: .medium, design: .rounded))
+                            }
                         }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .padding(.bottom , 8)
                         
-                        if (ServerAPI.settings.payments_applepay){
-                            Text("Apple Pay")
-                                .tag(1)
-                                .font(.system(size: 16, weight: .medium, design: .rounded))
-                        }
                         
-                        if (ServerAPI.settings.payments_placeorder){
-                            Text("Оформить")
-                                .tag(2)
+                        HStack(){
+                            Text("Ваши бонусы: \(String(format:"%.2f", Float(self.user.balance)-Float(self.balance_bonus))) \(ServerAPI.settings.symbol)")
+                                .font(.system(size: 20, weight: .semibold, design: .rounded))
+                            
+                            Spacer()
+                        }.padding(.bottom , 8)
+                        
+                        HStack(){
+                            Text("0 \(ServerAPI.settings.symbol)")
                                 .font(.system(size: 16, weight: .medium, design: .rounded))
+                                .foregroundColor(Color.init(hex: "828282"))
+                            Spacer()
+                            Slider(value: $balance_bonus, in: 0...(self.realm.get_price_full() > Float(self.user.balance) ? Double(self.user.balance) : Double(self.realm.get_price_full())) , step: 1)
+                                .accentColor(.theme)
+                            Spacer()
+                            Text("\(String(format:"%.2f", Float(self.realm.get_price_full() > Float(self.user.balance) ? Double(self.user.balance) : Double(self.realm.get_price_full())))) \(ServerAPI.settings.symbol)")
+                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                                .foregroundColor(Color.init(hex: "828282"))
                         }
-                    }.pickerStyle(SegmentedPickerStyle())
-                    
-                    
+                    }
                     
                     Spacer(minLength: 150)
                     
@@ -548,13 +582,13 @@ struct Offer: View {
             VStack(spacing: 0){
                 HStack(spacing: 15){
                     VStack(spacing: 5){
-                        Text("\(String(format:"%.2f", self.realm.get_price_full())) \(ServerAPI.settings.symbol)")
+                        Text("\(String(format:"%.2f", self.realm.get_price_full()-Float(self.balance_bonus))) \(ServerAPI.settings.symbol)")
                             .font(.system(size: 20, weight: .bold, design: .rounded))
                             .foregroundColor(.theme)
                         Text("Итого")
                             .font(.system(size: 12, weight: .semibold, design: .rounded))
                             .foregroundColor(.secondary)
-                    }
+                    }.frame(width: 100)
                     
                     
                     if (self.pickerSelection == 1){
@@ -600,8 +634,9 @@ struct Offer: View {
                                     self.offer.apartment = self.apartment
                                     self.offer.objectWillChange.send()
                                     self.offer.floor = self.floor
+                                    self.offer.bonus = Float(self.balance_bonus)
 
-                                    YelmPay.apple_pay.apple_pay(price: self.realm.get_price_full(),
+                                    YelmPay.apple_pay.apple_pay(price: self.realm.get_price_full()-Float(self.balance_bonus),
                                                                 delivery: 0,
                                                                 merchant: merchant,
                                                                 country: "RU",
@@ -649,7 +684,7 @@ struct Offer: View {
                     
                     if (self.pickerSelection == 0){
                         
-                        NavigationLink(destination: Payment(), tag: 100, selection: $selection) {
+                        NavigationLink(destination: Payment(bonus: Float(self.balance_bonus)), tag: 100, selection: $selection) {
                             
                             
                             HStack{
@@ -727,6 +762,7 @@ struct Offer: View {
                             order_detail.discount = Float(self.promocode.active.value)
                             order_detail.discount_type = type_promocode_load
                             order_detail.cutlery = self.cutlery.count
+                            order_detail.total_bonus = Int(self.balance_bonus)
                             
                             
                             
@@ -801,7 +837,7 @@ struct Offer: View {
             }
             .padding(.bottom, 40)
             .padding(.top, 30)
-            .background(.theme_black_change_reverse)
+            .background(Color.theme_black_change_reverse)
             .clipShape(CustomShape(corner: [.topLeft, .topRight], radii: 20))
             //                .shadow(color: .dropShadow, radius: 15, x: 10, y: 10)
             .shadow(color: .dropShadow, radius: 15, x: 0, y: 2)
@@ -871,9 +907,25 @@ struct Offer: View {
                 
             }
             
+            if (!self.payment.payment_done){
+                logInitiateCheckoutEvent(contentData: "",
+                                         contentId: ServerAPI.user.username,
+                                         contentType: "checkout",
+                                         numItems: self.realm.get_ids().count,
+                                         paymentInfoAvailable: false,
+                                         currency: ServerAPI.settings.currency,
+                                         totalPrice: Double(self.realm.start_price))
+            }
             
             if (self.payment.payment_done){
                 
+                logPurchase(price: Double(self.realm.start_price),
+                            currency: ServerAPI.settings.currency,
+                            parameters: ["phone" : self.phone,
+                                         "address" : self.location.name,
+                                         "total" : self.realm.price,
+                                         "payment" : "card",
+                                         "start_price" : self.realm.start_price])
                 
                 let type_promocode_load = UserDefaults.standard.string(forKey: "promocode_type") ?? ""
                 if (type_promocode_load != ""){
@@ -912,7 +964,8 @@ struct Offer: View {
                 order_detail.discount = Float(self.promocode.active.value)
                 order_detail.discount_type = type_promocode_load
                 order_detail.cutlery = self.cutlery.count
-                
+                order_detail.total_bonus = Int(self.balance_bonus)
+
               
                 
                 ServerAPI.orders.set_order(order: order_detail) { (load) in

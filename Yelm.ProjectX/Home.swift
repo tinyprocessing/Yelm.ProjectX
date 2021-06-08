@@ -215,7 +215,7 @@ struct Home: View {
                                 
                         
                                     ZStack(alignment: .topTrailing){
-                                        NavigationLink(destination: Chat(), tag: "chat", selection: $selection) {
+                                        NavigationLink(destination: Chat(), tag: "chatio", selection: $selection) {
                                             ZStack(alignment: .top){
                                                 HStack{
                                                     ZStack{

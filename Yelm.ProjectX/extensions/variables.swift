@@ -17,7 +17,8 @@ var open_item = false
 var platform : String = "5fd33466e17963.29052139"
 var merchant : String = "merchant.5fd33466e17963.29052139.yelm.io"
 var distribution : Bool = true
-var account : Bool = false
+var account : Bool = true
+var fb : Bool = true
 
 
 var notch: Bool {
