@@ -11,7 +11,7 @@ import YandexMapKit
 import UserNotifications
 import SwiftUI
 import FBSDKCoreKit
-
+import YandexMobileMetrica
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -113,6 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
        
         if (fb){
+            
             Settings.setAdvertiserTrackingEnabled(true)
             ApplicationDelegate.shared.application(
                       application,
@@ -122,9 +123,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         YMKMapKit.setApiKey("09ee0a39-0ad1-490a-9ea8-8600c46b9ef8")
 
+        let configuration = YMMYandexMetricaConfiguration.init(apiKey: "b9ac6491-ebfa-4366-8626-c3a48c7edb6f")
+        YMMYandexMetrica.activate(with: configuration!)
+        
         registerForPushNotifications()
         application.applicationIconBadgeNumber = 0
         UNUserNotificationCenter.current().delegate = self
+        
+       
         
         guard let options = launchOptions,  let remoteNotif = options[UIApplication.LaunchOptionsKey.remoteNotification] as? [String: Any]
         else{
@@ -137,21 +143,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 
     
         
+        
         return true
     }
 
+    
     func application(
             _ app: UIApplication,
             open url: URL,
             options: [UIApplication.OpenURLOptionsKey : Any] = [:]
         ) -> Bool {
-
+            
             ApplicationDelegate.shared.application(
                 app,
                 open: url,
                 sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
                 annotation: options[UIApplication.OpenURLOptionsKey.annotation]
             )
+            
+            
 
         }
     

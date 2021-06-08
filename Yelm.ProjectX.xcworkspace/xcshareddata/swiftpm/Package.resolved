@@ -56,6 +56,15 @@
         }
       },
       {
+        "package": "metrica-sdk-ios",
+        "repositoryURL": "https://github.com/yandexmobile/metrica-sdk-ios",
+        "state": {
+          "branch": null,
+          "revision": "cdb53ae2846d10f817cf616b55308061e7ccb0d7",
+          "version": "3.16.0"
+        }
+      },
+      {
         "package": "ObjectMapper",
         "repositoryURL": "https://github.com/tristanhimmelman/ObjectMapper.git",
         "state": {

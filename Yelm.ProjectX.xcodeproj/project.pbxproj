@@ -107,6 +107,7 @@
 		4CF5601C25B7124F0038A4CC /* subcategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF5601B25B7124E0038A4CC /* subcategories.swift */; };
 		4CF5602125B716FF0038A4CC /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = 4CF5602025B716FF0038A4CC /* Grid */; };
 		A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */; };
+		D41ED34E266F98F400A20F39 /* YandexMobileMetrica in Frameworks */ = {isa = PBXBuildFile; productRef = D41ED34D266F98F400A20F39 /* YandexMobileMetrica */; };
 		D44DF5DB2639617E005CE414 /* scanner_preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF5DA2639617E005CE414 /* scanner_preview.swift */; };
 		D44DF5E32639621A005CE414 /* color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF5E22639621A005CE414 /* color.swift */; };
 		D4718B9826243A2E00E140C2 /* feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4718B9726243A2E00E140C2 /* feed.swift */; };
@@ -272,6 +273,7 @@
 				D4E1A4032656B23C003ECAF9 /* Introspect in Frameworks */,
 				4CDE834625A74ED700F3453D /* Yelm.Pay in Frameworks */,
 				4C9AC9C125C5F634002C1C04 /* Yelm.Chat in Frameworks */,
+				D41ED34E266F98F400A20F39 /* YandexMobileMetrica in Frameworks */,
 				A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */,
 				4C3CEB0625CC8A6C0089EFF9 /* ConfettiView in Frameworks */,
 				D4DFA14525F8B39700E608C8 /* Yelm.Chat in Frameworks */,
@@ -741,6 +743,7 @@
 				D4AE280626411DEC00B9C911 /* CodeScanner */,
 				D4E1A4022656B23C003ECAF9 /* Introspect */,
 				D483469226612F8500938337 /* FacebookCore */,
+				D41ED34D266F98F400A20F39 /* YandexMobileMetrica */,
 			);
 			productName = Yelm.ProjectX;
 			productReference = 4C70235925A749BD00A750D2 /* Yelm.ProjectX.app */;
@@ -803,6 +806,7 @@
 				D4AE280526411DEC00B9C911 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				D4E1A4012656B23C003ECAF9 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				D483469126612F8500938337 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				D41ED34C266F98F400A20F39 /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */,
 			);
 			productRefGroup = 4C70235A25A749BD00A750D2 /* Products */;
 			projectDirPath = "";
@@ -1148,6 +1152,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Yelm.ProjectX/Yelm.ProjectX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Yelm.ProjectX/asl/Preview Content\"";
@@ -1175,6 +1180,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Yelm.ProjectX/Yelm.ProjectX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Yelm.ProjectX/asl/Preview Content\"";
@@ -1300,6 +1306,14 @@
 				minimumVersion = 1.1.0;
 			};
 		};
+		D41ED34C266F98F400A20F39 /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yandexmobile/metrica-sdk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		D483469126612F8500938337 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
@@ -1387,6 +1401,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4CF5601F25B716FF0038A4CC /* XCRemoteSwiftPackageReference "swiftui-grid" */;
 			productName = Grid;
+		};
+		D41ED34D266F98F400A20F39 /* YandexMobileMetrica */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D41ED34C266F98F400A20F39 /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */;
+			productName = YandexMobileMetrica;
 		};
 		D483469226612F8500938337 /* FacebookCore */ = {
 			isa = XCSwiftPackageProductDependency;
