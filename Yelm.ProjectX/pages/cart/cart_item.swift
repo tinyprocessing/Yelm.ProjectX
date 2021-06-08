@@ -74,6 +74,7 @@ struct CartItem: View {
                             generator.impactOccurred()
                             
                             self.realm.post_cart(ID: self.id, method: "increment")
+                            
 
                          
                         }) {

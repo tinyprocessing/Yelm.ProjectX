@@ -43,7 +43,7 @@ struct ScannerPreview: View {
                             .foregroundColor(.white)
                             .padding(.horizontal, 70)
                             .padding(.vertical, 10)
-                            .background(.theme)
+                            .background(Color.theme)
                             .cornerRadius(15)
                         
                     }

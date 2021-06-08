@@ -95,6 +95,12 @@ struct Search: View {
                                 let item = tag
                                 open_item = true
                                 self.item.item = item
+                                
+                                logSearchEvent(contentType: "search_item",
+                                               contentData: tag.title,
+                                               contentId: "\(tag.id)",
+                                               searchString: self.search,
+                                               success: true)
                             })
                             
                         }

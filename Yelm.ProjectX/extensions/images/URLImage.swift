@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import Yelm_Chat
+
 
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
@@ -93,10 +93,8 @@ public struct URLImage<Content, Placeholder, Failure> : View where Content : Vie
                         case .success(let imageProxy):
                             self.error = nil
                             self.imageProxy = imageProxy
-                            if (open_chat){
-                                YelmChat.chat.bottom()
-                            }
-//                            print("DOWNLOADED IMAGE")
+                           
+
                             
                         case .failure(let error):
                             self.imageProxy = nil

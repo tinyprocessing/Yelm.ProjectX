@@ -27,32 +27,14 @@ struct LoaderEnot: View {
     var body: some View {
         if (distribution == false){
             VStack{
-//                if (self.show){
-//                Image("logo")
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fill)
-//                    .frame(width: 80, height: 80)
-//                    .rotationEffect(Angle(degrees: self.isAnimating ? 360 : 0.0))
-//                    .animation(self.isAnimating ? .interpolatingSpring(mass: 1, stiffness: 1, damping: 0.7, initialVelocity: 2) : .default)
-//                    .onAppear {
-//                        withAnimation() {
-//                            self.isAnimating = true
-//                        }
-//
-//                    }
-//                    .onDisappear {
-//                        withAnimation() {
-//                            self.isAnimating = false
-//                        }
-//                    }
-//                }else{
+
                 Image(uiImage: Bundle.main.icon!)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 80, height: 80)
                         .cornerRadius(15)
                         .shadow(color: Color.secondary.opacity(0.4), radius: 6, x: 6, y: 6)
-//                }
+
             }.onAppear{
                 self.show = false
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
@@ -70,7 +52,7 @@ struct LoaderEnot: View {
                     .shadow(color: Color.secondary.opacity(0.4), radius: 6, x: 6, y: 6)
                 
                 ActivityIndicator()
-                    .frame(CGSize(width: 60, height: 60))
+                    .frame(width: 60, height: 60)
                     .foregroundColor(.theme)
                 
             }
