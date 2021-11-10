@@ -25,12 +25,9 @@
 		4C70236325A749BF00A750D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C70236225A749BF00A750D2 /* Assets.xcassets */; };
 		4C70236625A749BF00A750D2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C70236525A749BF00A750D2 /* Preview Assets.xcassets */; };
 		4C70236925A749BF00A750D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C70236725A749BF00A750D2 /* LaunchScreen.storyboard */; };
-		4C70237825A74C1200A750D2 /* Yelm.Server in Frameworks */ = {isa = PBXBuildFile; productRef = 4C70237725A74C1200A750D2 /* Yelm.Server */; };
-		4C9AC9C125C5F634002C1C04 /* Yelm.Chat in Frameworks */ = {isa = PBXBuildFile; productRef = 4C9AC9C025C5F634002C1C04 /* Yelm.Chat */; };
 		4CAA9F6D25B83B04005CEB96 /* subcategoies_grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAA9F6C25B83B04005CEB96 /* subcategoies_grid.swift */; };
 		4CAA9F7125B83D78005CEB96 /* subcategories_grid_item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAA9F7025B83D78005CEB96 /* subcategories_grid_item.swift */; };
 		4CC347F825DEBF120018A27A /* catalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC347F725DEBF120018A27A /* catalog.swift */; };
-		4CDE834625A74ED700F3453D /* Yelm.Pay in Frameworks */ = {isa = PBXBuildFile; productRef = 4CDE834525A74ED700F3453D /* Yelm.Pay */; };
 		4CDE835C25A788DD00F3453D /* items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE835B25A788DD00F3453D /* items.swift */; };
 		4CDE836025A7899E00F3453D /* blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE835F25A7899E00F3453D /* blur.swift */; };
 		4CDE836325A789B800F3453D /* shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDE836225A789B800F3453D /* shapes.swift */; };
@@ -107,6 +104,9 @@
 		4CF5601C25B7124F0038A4CC /* subcategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF5601B25B7124E0038A4CC /* subcategories.swift */; };
 		4CF5602125B716FF0038A4CC /* Grid in Frameworks */ = {isa = PBXBuildFile; productRef = 4CF5602025B716FF0038A4CC /* Grid */; };
 		A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E7E1E7480802335A5DAE62 /* Pods_Yelm_ProjectX.framework */; };
+		D41E6293266FA4B80078ABCF /* Yelm.Server in Frameworks */ = {isa = PBXBuildFile; productRef = D41E6292266FA4B80078ABCF /* Yelm.Server */; };
+		D41E6295266FA4BB0078ABCF /* Yelm.Pay in Frameworks */ = {isa = PBXBuildFile; productRef = D41E6294266FA4BB0078ABCF /* Yelm.Pay */; };
+		D41E6297266FA4BE0078ABCF /* Yelm.Chat in Frameworks */ = {isa = PBXBuildFile; productRef = D41E6296266FA4BE0078ABCF /* Yelm.Chat */; };
 		D41ED34E266F98F400A20F39 /* YandexMobileMetrica in Frameworks */ = {isa = PBXBuildFile; productRef = D41ED34D266F98F400A20F39 /* YandexMobileMetrica */; };
 		D44DF5DB2639617E005CE414 /* scanner_preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF5DA2639617E005CE414 /* scanner_preview.swift */; };
 		D44DF5E32639621A005CE414 /* color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44DF5E22639621A005CE414 /* color.swift */; };
@@ -121,9 +121,7 @@
 		D4AE280726411DEC00B9C911 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = D4AE280626411DEC00B9C911 /* CodeScanner */; };
 		D4B397502669343E00D57AAC /* facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B3974F2669343E00D57AAC /* facebook.swift */; };
 		D4B8C4A925F7EA3300B9E478 /* func.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B8C4A825F7EA3300B9E478 /* func.swift */; };
-		D4DFA14125F8B37700E608C8 /* Yelm.Pay in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14025F8B37700E608C8 /* Yelm.Pay */; };
-		D4DFA14525F8B39700E608C8 /* Yelm.Chat in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14425F8B39700E608C8 /* Yelm.Chat */; };
-		D4DFA14E25F8B72100E608C8 /* Yelm.Server in Frameworks */ = {isa = PBXBuildFile; productRef = D4DFA14D25F8B72100E608C8 /* Yelm.Server */; };
+		D4D9E99D26CE715600B17985 /* Yelm.Chat in Frameworks */ = {isa = PBXBuildFile; productRef = D4D9E99C26CE715600B17985 /* Yelm.Chat */; };
 		D4DFA15125F8D27900E608C8 /* rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DFA15025F8D27900E608C8 /* rating.swift */; };
 		D4E1A4002656AEAF003ECAF9 /* account.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E1A3FF2656AEAF003ECAF9 /* account.swift */; };
 		D4E1A4032656B23C003ECAF9 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D4E1A4022656B23C003ECAF9 /* Introspect */; };
@@ -264,21 +262,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C70237825A74C1200A750D2 /* Yelm.Server in Frameworks */,
+				D4D9E99D26CE715600B17985 /* Yelm.Chat in Frameworks */,
+				D41E6297266FA4BE0078ABCF /* Yelm.Chat in Frameworks */,
 				4CDE83D725A78DF500F3453D /* Realm in Frameworks */,
 				4C1BB4FD25D2CF8900604276 /* VideoPlayer in Frameworks */,
 				4CF5602125B716FF0038A4CC /* Grid in Frameworks */,
-				D4DFA14E25F8B72100E608C8 /* Yelm.Server in Frameworks */,
 				4CDE83D925A78DF500F3453D /* RealmSwift in Frameworks */,
+				D41E6293266FA4B80078ABCF /* Yelm.Server in Frameworks */,
 				D4E1A4032656B23C003ECAF9 /* Introspect in Frameworks */,
-				4CDE834625A74ED700F3453D /* Yelm.Pay in Frameworks */,
-				4C9AC9C125C5F634002C1C04 /* Yelm.Chat in Frameworks */,
 				D41ED34E266F98F400A20F39 /* YandexMobileMetrica in Frameworks */,
+				D41E6295266FA4BB0078ABCF /* Yelm.Pay in Frameworks */,
 				A7705D6F5A3DC1EFD32DAF86 /* Pods_Yelm_ProjectX.framework in Frameworks */,
 				4C3CEB0625CC8A6C0089EFF9 /* ConfettiView in Frameworks */,
-				D4DFA14525F8B39700E608C8 /* Yelm.Chat in Frameworks */,
 				D4AE280726411DEC00B9C911 /* CodeScanner in Frameworks */,
-				D4DFA14125F8B37700E608C8 /* Yelm.Pay in Frameworks */,
 				D483469326612F8500938337 /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,21 +725,19 @@
 			);
 			name = Yelm.ProjectX;
 			packageProductDependencies = (
-				4C70237725A74C1200A750D2 /* Yelm.Server */,
-				4CDE834525A74ED700F3453D /* Yelm.Pay */,
 				4CDE83D625A78DF500F3453D /* Realm */,
 				4CDE83D825A78DF500F3453D /* RealmSwift */,
 				4CF5602025B716FF0038A4CC /* Grid */,
-				4C9AC9C025C5F634002C1C04 /* Yelm.Chat */,
 				4C3CEB0525CC8A6C0089EFF9 /* ConfettiView */,
 				4C1BB4FC25D2CF8900604276 /* VideoPlayer */,
-				D4DFA14025F8B37700E608C8 /* Yelm.Pay */,
-				D4DFA14425F8B39700E608C8 /* Yelm.Chat */,
-				D4DFA14D25F8B72100E608C8 /* Yelm.Server */,
 				D4AE280626411DEC00B9C911 /* CodeScanner */,
 				D4E1A4022656B23C003ECAF9 /* Introspect */,
 				D483469226612F8500938337 /* FacebookCore */,
 				D41ED34D266F98F400A20F39 /* YandexMobileMetrica */,
+				D41E6292266FA4B80078ABCF /* Yelm.Server */,
+				D41E6294266FA4BB0078ABCF /* Yelm.Pay */,
+				D41E6296266FA4BE0078ABCF /* Yelm.Chat */,
+				D4D9E99C26CE715600B17985 /* Yelm.Chat */,
 			);
 			productName = Yelm.ProjectX;
 			productReference = 4C70235925A749BD00A750D2 /* Yelm.ProjectX.app */;
@@ -800,13 +794,13 @@
 				4CF5601F25B716FF0038A4CC /* XCRemoteSwiftPackageReference "swiftui-grid" */,
 				4C3CEB0425CC8A6C0089EFF9 /* XCRemoteSwiftPackageReference "ConfettiView" */,
 				4C1BB4FB25D2CF8900604276 /* XCRemoteSwiftPackageReference "VideoPlayer" */,
-				D4DFA13F25F8B37700E608C8 /* XCRemoteSwiftPackageReference "Yelm.Pay" */,
-				D4DFA14325F8B39700E608C8 /* XCRemoteSwiftPackageReference "Yelm.Chat" */,
-				D4DFA14C25F8B72100E608C8 /* XCRemoteSwiftPackageReference "Yelm.Server" */,
 				D4AE280526411DEC00B9C911 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				D4E1A4012656B23C003ECAF9 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				D483469126612F8500938337 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				D41ED34C266F98F400A20F39 /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */,
+				D4ED6C4B266FA339002769DD /* XCRemoteSwiftPackageReference "Yelm.Server" */,
+				D4ED6C4E266FA348002769DD /* XCRemoteSwiftPackageReference "Yelm.Pay" */,
+				D4D9E99B26CE715600B17985 /* XCRemoteSwiftPackageReference "Yelm.Chat" */,
 			);
 			productRefGroup = 4C70235A25A749BD00A750D2 /* Products */;
 			projectDirPath = "";
@@ -1330,28 +1324,12 @@
 				minimumVersion = 1.0.7;
 			};
 		};
-		D4DFA13F25F8B37700E608C8 /* XCRemoteSwiftPackageReference "Yelm.Pay" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Michaelsafir/Yelm.Pay.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		D4DFA14325F8B39700E608C8 /* XCRemoteSwiftPackageReference "Yelm.Chat" */ = {
+		D4D9E99B26CE715600B17985 /* XCRemoteSwiftPackageReference "Yelm.Chat" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Michaelsafir/Yelm.Chat.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-		D4DFA14C25F8B72100E608C8 /* XCRemoteSwiftPackageReference "Yelm.Server" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Michaelsafir/Yelm.Server.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.7;
+				minimumVersion = 1.0.5;
 			};
 		};
 		D4E1A4012656B23C003ECAF9 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
@@ -1360,6 +1338,22 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.1.3;
+			};
+		};
+		D4ED6C4B266FA339002769DD /* XCRemoteSwiftPackageReference "Yelm.Server" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Michaelsafir/Yelm.Server.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.11;
+			};
+		};
+		D4ED6C4E266FA348002769DD /* XCRemoteSwiftPackageReference "Yelm.Pay" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Michaelsafir/Yelm.Pay.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1374,18 +1368,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4C3CEB0425CC8A6C0089EFF9 /* XCRemoteSwiftPackageReference "ConfettiView" */;
 			productName = ConfettiView;
-		};
-		4C70237725A74C1200A750D2 /* Yelm.Server */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Yelm.Server;
-		};
-		4C9AC9C025C5F634002C1C04 /* Yelm.Chat */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Yelm.Chat;
-		};
-		4CDE834525A74ED700F3453D /* Yelm.Pay */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Yelm.Pay;
 		};
 		4CDE83D625A78DF500F3453D /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1402,6 +1384,18 @@
 			package = 4CF5601F25B716FF0038A4CC /* XCRemoteSwiftPackageReference "swiftui-grid" */;
 			productName = Grid;
 		};
+		D41E6292266FA4B80078ABCF /* Yelm.Server */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Yelm.Server;
+		};
+		D41E6294266FA4BB0078ABCF /* Yelm.Pay */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Yelm.Pay;
+		};
+		D41E6296266FA4BE0078ABCF /* Yelm.Chat */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Yelm.Chat;
+		};
 		D41ED34D266F98F400A20F39 /* YandexMobileMetrica */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D41ED34C266F98F400A20F39 /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */;
@@ -1417,20 +1411,10 @@
 			package = D4AE280526411DEC00B9C911 /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
 		};
-		D4DFA14025F8B37700E608C8 /* Yelm.Pay */ = {
+		D4D9E99C26CE715600B17985 /* Yelm.Chat */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D4DFA13F25F8B37700E608C8 /* XCRemoteSwiftPackageReference "Yelm.Pay" */;
-			productName = Yelm.Pay;
-		};
-		D4DFA14425F8B39700E608C8 /* Yelm.Chat */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D4DFA14325F8B39700E608C8 /* XCRemoteSwiftPackageReference "Yelm.Chat" */;
+			package = D4D9E99B26CE715600B17985 /* XCRemoteSwiftPackageReference "Yelm.Chat" */;
 			productName = Yelm.Chat;
-		};
-		D4DFA14D25F8B72100E608C8 /* Yelm.Server */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D4DFA14C25F8B72100E608C8 /* XCRemoteSwiftPackageReference "Yelm.Server" */;
-			productName = Yelm.Server;
 		};
 		D4E1A4022656B23C003ECAF9 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
