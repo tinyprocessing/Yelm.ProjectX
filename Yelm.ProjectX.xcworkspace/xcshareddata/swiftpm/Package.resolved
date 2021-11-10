@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
         "state": {
           "branch": null,
-          "revision": "eaf6e622dd41b07b251d8f01752eab31bc811493",
-          "version": "5.4.1"
+          "revision": "f96b619bcb2383b43d898402283924b80e2c4bae",
+          "version": "5.4.3"
         }
       },
       {
@@ -33,12 +33,12 @@
         "repositoryURL": "https://github.com/devicekit/DeviceKit.git",
         "state": {
           "branch": null,
-          "revision": "4cf9f057db69104851634269f7839f8d0bd346a3",
-          "version": "4.3.0"
+          "revision": "70f1564e4218f0b68b73a4a795cb31aee5696f08",
+          "version": "4.4.0"
         }
       },
       {
-        "package": "facebook-ios-sdk",
+        "package": "Facebook",
         "repositoryURL": "https://github.com/facebook/facebook-ios-sdk",
         "state": {
           "branch": null,
@@ -51,12 +51,12 @@
         "repositoryURL": "https://github.com/wxxsw/GSPlayer.git",
         "state": {
           "branch": null,
-          "revision": "bce715b60427935902ae2adaa173b594338ca202",
-          "version": "0.2.19"
+          "revision": "5904551cf33e0c38831fdc56c6a2c9770eadc30d",
+          "version": "0.2.25"
         }
       },
       {
-        "package": "metrica-sdk-ios",
+        "package": "YandexMobileMetrica",
         "repositoryURL": "https://github.com/yandexmobile/metrica-sdk-ios",
         "state": {
           "branch": null,
@@ -74,25 +74,25 @@
         }
       },
       {
-        "package": "realm-cocoa",
+        "package": "Realm",
         "repositoryURL": "https://github.com/realm/realm-cocoa.git",
         "state": {
           "branch": null,
-          "revision": "239a6a383af5d4b445626a95aa6356925e6acf22",
-          "version": "10.7.4"
+          "revision": "7e5c77fd7fbb30259e8e6e6a41f32289f72e0812",
+          "version": "10.7.6"
         }
       },
       {
-        "package": "realm-core",
+        "package": "RealmDatabase",
         "repositoryURL": "https://github.com/realm/realm-core",
         "state": {
           "branch": null,
-          "revision": "28ed052d10d2245542b4fbdc71d388febb1e9bc4",
-          "version": "10.6.0"
+          "revision": "018adb3469c2882904febca251778129ef4a9b70",
+          "version": "10.7.2"
         }
       },
       {
-        "package": "socket.io-client-swift",
+        "package": "SocketIO",
         "repositoryURL": "https://github.com/socketio/socket.io-client-swift.git",
         "state": {
           "branch": null,
@@ -119,7 +119,7 @@
         }
       },
       {
-        "package": "swiftui-grid",
+        "package": "Grid",
         "repositoryURL": "https://github.com/spacenation/swiftui-grid.git",
         "state": {
           "branch": null,
@@ -128,7 +128,7 @@
         }
       },
       {
-        "package": "SwiftUI-Introspect",
+        "package": "Introspect",
         "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect",
         "state": {
           "branch": null,
@@ -150,8 +150,8 @@
         "repositoryURL": "https://github.com/wxxsw/VideoPlayer",
         "state": {
           "branch": null,
-          "revision": "c79852f86c8e89e6917646be957d1a737d186d5d",
-          "version": "1.1.7"
+          "revision": "3c5b9531ee20e34d3a86142ca2c076a5b99afdb2",
+          "version": "1.2.3"
         }
       }
     ]
